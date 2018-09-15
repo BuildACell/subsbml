@@ -1,0 +1,3145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level2/version4" level="2" version="4">
+  <annotation>
+    <SimBiology xmlns="http://www.mathworks.com">
+      <Version Major="5" Minor="5" Point="0"/>
+    </SimBiology>
+  </annotation>
+  <model id="mw7604a264_1d1b_4426_acc5_061d8d17b628" name="mix_of_E30VNPRL_E30VNPRL_gene_expression">
+    <listOfCompartments>
+      <compartment id="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" name="contents" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species id="mwb0343236_d8ee_47a3_911c_d22c042081af" name="RNAP" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="100.000066666711" boundaryCondition="false" constant="false"/>
+      <species id="mw6f001bb3_24e7_4c91_8082_bada566d4832" name="Ribo" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="30.0000200000133" boundaryCondition="false" constant="false"/>
+      <species id="mwf32a3198_2ed5_41ac_98f0_3cd4dcd02e75" name="RecBCD" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="5.00000333333556" boundaryCondition="false" constant="false"/>
+      <species id="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" name="RNase" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="100.000066666711" boundaryCondition="false" constant="false"/>
+      <species id="mwf647df8e_575b_47cf_a794_3b55a6d29079" name="AGTP" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="3180048.20076943" boundaryCondition="false" constant="false"/>
+      <species id="mwa1abaec4_a028_468a_83dd_9b06410bb615" name="CUTP" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="1908028.92046166" boundaryCondition="false" constant="false"/>
+      <species id="mwf5ed5ed1_b9a2_47a0_b2df_6763250cc3ad" name="AA" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="31800482.0076943" boundaryCondition="false" constant="false"/>
+      <species id="mw49c21de4_0b59_4f47_8af1_82355423dcf0" name="protein tetR" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw4c59b806_0829_4faf_a31c_1adefc23c608" name="aTc" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw696a0244_c288_4a57_906a_efc8dffb5fcb" name="protein tetRdimer" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mwef1c66a1_7386_4d4e_b5cb_3c9c89e3f6cb" name="RNA utr1--tetR" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw54bdb506_9b7c_49ae_95a1_3bd35036e693" name="Ribo:RNA utr1--tetR" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw5e98d576_2983_452a_a8ff_bbb5a4bac325" name="DNA psigX--utr1--tetR" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="5.00000333333556" boundaryCondition="false" constant="false"/>
+      <species id="mwbbc0a90c_74dc_42c2_ae48_aa4f1010c329" name="RNAPSIGX" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mwa6c1c9f4_ac52_4119_8ff5_7347871ed857" name="RNAPSIGX:DNA psigX--utr1--tetR" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mwe28c9001_17af_4edc_8b61_0cf700af125c" name="AA:2AGTP:Ribo:RNA utr1--tetR" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mwe807dcb4_42cb_4f60_b448_036fe65bc13d" name="term_Ribo:RNA utr1--tetR" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw3dabd164_87ea_4f0d_b56b_035a047766d1" name="protein deGFP" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mwa34af442_496e_44f6_8bea_a57f283df25b" name="protein deGFP*" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mwe3156279_9eea_43b6_a446_259d020cea0d" name="RNA utr1--deGFP" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mwa6ef4fa8_a9ad_4b35_88aa_1b6d4fcfb612" name="Ribo:RNA utr1--deGFP" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mwa506c1f8_04f3_401a_8180_9658d026891f" name="DNA p28_ptet--utr1--deGFP" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="5.00000333333556" boundaryCondition="false" constant="false"/>
+      <species id="mwd6d6d9b4_86de_46ea_aca6_e3586590afd0" name="RNAP28" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw79fd3fd6_4163_405d_b9a9_af23d6b094e6" name="RNAP28:DNA p28_ptet--utr1--deGFP" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mwae7438d6_bdde_41b3_b31a_dd19d0d3e747" name="protein sigma28" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw4e5dbe2b_2560_4e52_a1b2_d05188ec403d" name="CUTP:AGTP:RNAP28:DNA p28_ptet--utr1--deGFP" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mwb3f21652_5cc4_42da_846f_ff648baac3f3" name="term_RNAP28:DNA p28_ptet--utr1--deGFP" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw46cc4c92_3ee2_4712_8b1f_97044ea5c6e4" name="RNAP28:DNA p28_ptet--utr1--deGFP:protein tetRdimer" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw71b42a67_e162_4e10_b157_5bdd04885ac1" name="CUTP:AGTP:RNAP28:DNA p28_ptet--utr1--deGFP:protein tetRdimer" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw67add5c4_6af7_44a4_94a6_68ce8cedb6b2" name="term_RNAP28:DNA p28_ptet--utr1--deGFP:protein tetRdimer" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mwf27c2cef_fd98_45a9_a676_c4cfc3bfee9f" name="AA:2AGTP:Ribo:RNA utr1--deGFP" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw8fea26fd_a005_4d1a_8a94_9bc4f4509b9b" name="term_Ribo:RNA utr1--deGFP" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw1002e515_6ba8_481d_aaa9_89647b90f29f" name="protein sigmaX" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw0915efe7_1341_49ab_a8ef_0eb7fee30bc1" name="RNA utr1--sigmaX" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw8905d669_d482_4967_9c6f_f69677ea0794" name="Ribo:RNA utr1--sigmaX" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw4d8333a7_ce38_45b7_a707_b13dff7fe0ee" name="DNA plac--utr1--sigmaX" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="5.00000333333556" boundaryCondition="false" constant="false"/>
+      <species id="mwffb8d502_f884_4483_85e9_2071d6311ffe" name="RNAP:DNA plac--utr1--sigmaX" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw01e10fb5_a2f0_4d9e_a7d4_6184b5c73c36" name="CUTP:AGTP:RNAP:DNA plac--utr1--sigmaX" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw32bf80c0_91e6_4c1a_9e9a_76a2c9ab2862" name="term_RNAP:DNA plac--utr1--sigmaX" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw03911c10_ff33_48bc_8941_67dd809dbfb1" name="AA:2AGTP:Ribo:RNA utr1--sigmaX" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw64f68b39_4419_4660_9c74_c83ce83b8b49" name="term_Ribo:RNA utr1--sigmaX" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw94981671_7083_4440_8e82_63ca06f9d455" name="RNA utr1--sigma28" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw01a17d68_e849_4648_9303_7614457aa3ae" name="Ribo:RNA utr1--sigma28" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mwc97b4dee_90db_42fb_bee2_0d78d764af26" name="DNA plac--utr1--sigma28" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="5.00000333333556" boundaryCondition="false" constant="false"/>
+      <species id="mwf72ff6eb_c3b5_4e87_82e0_f62c88a256a3" name="RNAP:DNA plac--utr1--sigma28" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw289f18db_bdf0_4329_a3bd_8c2cbb880e62" name="CUTP:AGTP:RNAP:DNA plac--utr1--sigma28" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mwbf5884bf_d2f0_4af1_b95c_416abe1c97bb" name="term_RNAP:DNA plac--utr1--sigma28" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw81108bd5_3dc6_4990_8ace_139d7e9bf2d7" name="AA:2AGTP:Ribo:RNA utr1--sigma28" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mwb5b249fa_3a1f_4ece_8b1e_5ce0f68b0e2a" name="term_Ribo:RNA utr1--sigma28" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw53efbe4b_ae0f_47cf_805e_3f18156d1229" name="2 aTc:protein tetRdimer" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mwe673fe9e_0e05_4daf_b207_b189b2cc70b2" name="CUTP:AGTP:RNAPSIGX:DNA psigX--utr1--tetR" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mwffdfeea9_51e5_4903_ae88_d9cdee0273f0" name="term_RNAPSIGX:DNA psigX--utr1--tetR" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mwdf972817_4cee_424a_b843_e616734a728d" name="AGTP:RNAPSIGX:DNA psigX--utr1--tetR" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw10cb0763_5016_4dbe_ad45_b4300050538f" name="CUTP:RNAPSIGX:DNA psigX--utr1--tetR" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw8a7149c1_031d_4c57_846a_494ec2fd52b7" name="AA:Ribo:RNA utr1--tetR" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mwe6f6c2db_6474_4e56_ba3b_b7b72536d986" name="RNA utr1--tetR:RNase" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mwa53e01c7_b2ea_4d0e_8be1_5da5f0545026" name="Ribo:RNA utr1--tetR:RNase" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw55530e0d_a990_408c_9f12_42b31bd54bf6" name="AA:2AGTP:Ribo:RNA utr1--tetR:RNase" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw7ae54144_44f9_4cf8_8405_54ddd0f26253" name="term_Ribo:RNA utr1--tetR:RNase" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw8cad2fd0_f45e_4e7a_9063_9ff5aa9ff281" name="AA:Ribo:RNA utr1--tetR:RNase" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw8f74b51c_3aaa_44e2_9fa7_628cdec6769e" name="DNA p28_ptet--utr1--deGFP:protein tetRdimer" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw328100f5_a74c_40bc_a5be_48eae5f21d2e" name="AGTP:RNAP28:DNA p28_ptet--utr1--deGFP" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mwa9dcfcc7_c348_4f3b_9309_b52a28004b38" name="CUTP:RNAP28:DNA p28_ptet--utr1--deGFP" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw6df6ff4c_2088_46c1_9bdb_a459b5f3b562" name="AGTP:RNAP28:DNA p28_ptet--utr1--deGFP:protein tetRdimer" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw3267f942_0277_4ba7_87f4_b8cce339cca8" name="CUTP:RNAP28:DNA p28_ptet--utr1--deGFP:protein tetRdimer" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mwa486bc01_66c4_4756_9b85_cdbcf260be38" name="AA:Ribo:RNA utr1--deGFP" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mweddfabff_f95e_47d3_a383_083f3b3732fc" name="RNA utr1--deGFP:RNase" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw00efdfb2_142d_4f4f_87b8_fa0d5655b7bf" name="Ribo:RNA utr1--deGFP:RNase" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw85f2d6bd_2ccf_46d9_893e_9c4c8074a611" name="AA:2AGTP:Ribo:RNA utr1--deGFP:RNase" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw3b1431cc_b80d_47bf_84bc_b70bb55cd38c" name="term_Ribo:RNA utr1--deGFP:RNase" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mwd7650a50_28e8_4b5e_bdf4_e13712258519" name="AA:Ribo:RNA utr1--deGFP:RNase" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mwf0e02418_a1a1_4c34_ac37_b00c1d93e783" name="AGTP:RNAP:DNA plac--utr1--sigmaX" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw4cf760ff_4a6f_4101_9592_7fea1e24a539" name="CUTP:RNAP:DNA plac--utr1--sigmaX" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw06d6ab53_bdfd_4580_9f4d_5d34dd8cec54" name="AA:Ribo:RNA utr1--sigmaX" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw9b6766dc_a71e_473a_bc70_66fb66cab180" name="RNA utr1--sigmaX:RNase" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw457838f0_4f38_475f_b39e_af87507949ca" name="Ribo:RNA utr1--sigmaX:RNase" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw9207e17d_6f37_430a_9d7e_9b616b612e57" name="AA:2AGTP:Ribo:RNA utr1--sigmaX:RNase" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw67db745d_ed07_4716_bb41_0117c710e1a7" name="term_Ribo:RNA utr1--sigmaX:RNase" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw367403bf_e154_43e2_a7f7_6fe0f70aa5b0" name="AA:Ribo:RNA utr1--sigmaX:RNase" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mwcc85e235_850f_49c4_993b_ed7a29834d65" name="AGTP:RNAP:DNA plac--utr1--sigma28" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw00e1225c_9093_4a2f_800b_490b69f71a46" name="CUTP:RNAP:DNA plac--utr1--sigma28" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw04d084c6_3e64_481b_82f2_8dbbd5f7f071" name="AA:Ribo:RNA utr1--sigma28" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw5d7f31c9_fcfa_43be_ad67_8fb65cd7fa37" name="RNA utr1--sigma28:RNase" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw9dba7279_e0c9_48e6_ad52_a235ea58f439" name="Ribo:RNA utr1--sigma28:RNase" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw7b9170d5_423b_4e8f_892e_4d196b1484b5" name="AA:2AGTP:Ribo:RNA utr1--sigma28:RNase" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw77bd724a_07e9_485b_af15_1b91761e8481" name="term_Ribo:RNA utr1--sigma28:RNase" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw387556e3_bc1c_4873_8ad7_810e472e230b" name="AA:Ribo:RNA utr1--sigma28:RNase" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+      <species id="mw1c60740a_9b26_49db_a02d_f9e424215ab8" name="AGTP_USED" compartment="mwcb7af28b_6800_4b94_8124_7e2d6682ea66" initialAmount="0" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter id="mw7362d43e_23e2_4a10_b8fd_20940f881307" name="AGTPdeg_F" value="0" constant="false"/>
+    </listOfParameters>
+    <listOfReactions>
+      <reaction id="mw88c56807_c06f_4b65_a8bf_343da5343507" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw696a0244_c288_4a57_906a_efc8dffb5fcb" stoichiometry="1"/>
+          <speciesReference species="mw4c59b806_0829_4faf_a31c_1adefc23c608" stoichiometry="2"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw53efbe4b_ae0f_47cf_805e_3f18156d1229" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw121b5596_8f89_456f_9f41_0d6e854344b2 </ci>
+                <ci> mw696a0244_c288_4a57_906a_efc8dffb5fcb </ci>
+                <apply>
+                  <power/>
+                  <ci> mw4c59b806_0829_4faf_a31c_1adefc23c608 </ci>
+                  <cn type="integer"> 2 </cn>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw3e27fea6_5e42_4f23_8c6a_2cc0920c172b </ci>
+                <ci> mw53efbe4b_ae0f_47cf_805e_3f18156d1229 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw121b5596_8f89_456f_9f41_0d6e854344b2" name="TXTL_INDUCER_TETR_ATC_F" value="1e-05" constant="true"/>
+            <parameter id="mw3e27fea6_5e42_4f23_8c6a_2cc0920c172b" name="TXTL_INDUCER_TETR_ATC_R" value="0.1" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwfacda61a_1285_49ae_9c45_6e1368cb85a2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw49c21de4_0b59_4f47_8af1_82355423dcf0" stoichiometry="2"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw696a0244_c288_4a57_906a_efc8dffb5fcb" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwca484dba_cd0a_4265_af23_1ea192ad63c1 </ci>
+                <apply>
+                  <power/>
+                  <ci> mw49c21de4_0b59_4f47_8af1_82355423dcf0 </ci>
+                  <cn type="integer"> 2 </cn>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwfe7041ca_84c4_475a_8239_34a90e26e58d </ci>
+                <ci> mw696a0244_c288_4a57_906a_efc8dffb5fcb </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwca484dba_cd0a_4265_af23_1ea192ad63c1" name="kf" value="1" constant="true"/>
+            <parameter id="mwfe7041ca_84c4_475a_8239_34a90e26e58d" name="kr" value="1" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwee731618_f791_4212_8731_13447e95827f" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwef1c66a1_7386_4d4e_b5cb_3c9c89e3f6cb" stoichiometry="1"/>
+          <speciesReference species="mw6f001bb3_24e7_4c91_8082_bada566d4832" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw54bdb506_9b7c_49ae_95a1_3bd35036e693" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwe10e07b4_61d6_48d0_b629_0038d95107bf </ci>
+                <ci> mwef1c66a1_7386_4d4e_b5cb_3c9c89e3f6cb </ci>
+                <ci> mw6f001bb3_24e7_4c91_8082_bada566d4832 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw3c5482d2_68d5_4bd5_97df_3d344c0e78ab </ci>
+                <ci> mw54bdb506_9b7c_49ae_95a1_3bd35036e693 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwe10e07b4_61d6_48d0_b629_0038d95107bf" name="TXTL_UTR_UTR1_F" value="0.2" constant="true"/>
+            <parameter id="mw3c5482d2_68d5_4bd5_97df_3d344c0e78ab" name="TXTL_UTR_UTR1_R" value="4" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwde8e693f_ca69_408b_9464_48d2ae0414ed" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw5e98d576_2983_452a_a8ff_bbb5a4bac325" stoichiometry="1"/>
+          <speciesReference species="mwbbc0a90c_74dc_42c2_ae48_aa4f1010c329" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwa6c1c9f4_ac52_4119_8ff5_7347871ed857" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwbd15e4e8_5a88_4672_9d9e_bd7fee109965 </ci>
+                <ci> mw5e98d576_2983_452a_a8ff_bbb5a4bac325 </ci>
+                <ci> mwbbc0a90c_74dc_42c2_ae48_aa4f1010c329 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw8c644f44_7f18_4f65_a3a6_a31ab2bf0c26 </ci>
+                <ci> mwa6c1c9f4_ac52_4119_8ff5_7347871ed857 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwbd15e4e8_5a88_4672_9d9e_bd7fee109965" name="TXTL_SIGX_RNAPbound_F" value="10" constant="true"/>
+            <parameter id="mw8c644f44_7f18_4f65_a3a6_a31ab2bf0c26" name="TXTL_SIGX_RNAPbound_R" value="0.1" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwfb72d504_c6f1_4936_8942_c25fcffe2f61" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwe673fe9e_0e05_4daf_b207_b189b2cc70b2" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwa6c1c9f4_ac52_4119_8ff5_7347871ed857" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw2125d029_f9a7_429f_b549_8ce8b4b96514 </ci>
+              <ci> mwe673fe9e_0e05_4daf_b207_b189b2cc70b2 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw2125d029_f9a7_429f_b549_8ce8b4b96514" name="TXTL_NTP_consumption" value="0.748770491803279" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw76514dfd_80b7_4b7a_965c_45ad6ac3f114" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwffdfeea9_51e5_4903_ae88_d9cdee0273f0" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwbbc0a90c_74dc_42c2_ae48_aa4f1010c329" stoichiometry="1"/>
+          <speciesReference species="mw5e98d576_2983_452a_a8ff_bbb5a4bac325" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw930f7cbe_93de_45ad_8ade_ac9cf3776e3a </ci>
+              <ci> mwffdfeea9_51e5_4903_ae88_d9cdee0273f0 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw930f7cbe_93de_45ad_8ade_ac9cf3776e3a" name="TXTL_RNAPBOUND_TERMINATION_RATE" value="0.05" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw9783e8ff_82f4_4782_a728_57a42d04d01d" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwa6c1c9f4_ac52_4119_8ff5_7347871ed857" stoichiometry="1"/>
+          <speciesReference species="mwf647df8e_575b_47cf_a794_3b55a6d29079" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwdf972817_4cee_424a_b843_e616734a728d" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwc07d1b8b_1d5a_4922_b08e_e159420733e4 </ci>
+                <ci> mwa6c1c9f4_ac52_4119_8ff5_7347871ed857 </ci>
+                <ci> mwf647df8e_575b_47cf_a794_3b55a6d29079 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw6c98e90b_53c2_459c_a0f3_d92029b9a606 </ci>
+                <ci> mwdf972817_4cee_424a_b843_e616734a728d </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwc07d1b8b_1d5a_4922_b08e_e159420733e4" name="TXTL_NTP_RNAP_F" value="1000" constant="true"/>
+            <parameter id="mw6c98e90b_53c2_459c_a0f3_d92029b9a606" name="TXTL_NTP_RNAP_R" value="120000000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw734bba5b_6087_4d68_8927_4ccccc766f6d" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwa6c1c9f4_ac52_4119_8ff5_7347871ed857" stoichiometry="1"/>
+          <speciesReference species="mwa1abaec4_a028_468a_83dd_9b06410bb615" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw10cb0763_5016_4dbe_ad45_b4300050538f" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwdfadb451_7469_461a_9779_81da0e2f2649 </ci>
+                <ci> mwa6c1c9f4_ac52_4119_8ff5_7347871ed857 </ci>
+                <ci> mwa1abaec4_a028_468a_83dd_9b06410bb615 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw40f51b89_402e_4ab4_bac0_f337baa64c08 </ci>
+                <ci> mw10cb0763_5016_4dbe_ad45_b4300050538f </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwdfadb451_7469_461a_9779_81da0e2f2649" name="TXTL_NTP_RNAP_F" value="1000" constant="true"/>
+            <parameter id="mw40f51b89_402e_4ab4_bac0_f337baa64c08" name="TXTL_NTP_RNAP_R" value="120000000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwd377e11f_f4b1_4593_bec8_9516b617a6b1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwdf972817_4cee_424a_b843_e616734a728d" stoichiometry="1"/>
+          <speciesReference species="mwa1abaec4_a028_468a_83dd_9b06410bb615" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwe673fe9e_0e05_4daf_b207_b189b2cc70b2" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw3ee71167_3922_4ec0_8d5f_3a0a1e820eda </ci>
+                <ci> mwdf972817_4cee_424a_b843_e616734a728d </ci>
+                <ci> mwa1abaec4_a028_468a_83dd_9b06410bb615 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw04c56c37_e3bc_409f_b43f_61ced0ad8fc2 </ci>
+                <ci> mwe673fe9e_0e05_4daf_b207_b189b2cc70b2 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw3ee71167_3922_4ec0_8d5f_3a0a1e820eda" name="TXTL_NTP_RNAP_F" value="1" constant="true"/>
+            <parameter id="mw04c56c37_e3bc_409f_b43f_61ced0ad8fc2" name="TXTL_NTP_RNAP_R" value="120000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw78b887ee_c386_4f9a_bfd3_098310e564ba" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw10cb0763_5016_4dbe_ad45_b4300050538f" stoichiometry="1"/>
+          <speciesReference species="mwf647df8e_575b_47cf_a794_3b55a6d29079" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwe673fe9e_0e05_4daf_b207_b189b2cc70b2" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwebda333a_7716_484a_a822_02273c6a0307 </ci>
+                <ci> mw10cb0763_5016_4dbe_ad45_b4300050538f </ci>
+                <ci> mwf647df8e_575b_47cf_a794_3b55a6d29079 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw866dd814_2165_4469_b952_89bcc8bd4df3 </ci>
+                <ci> mwe673fe9e_0e05_4daf_b207_b189b2cc70b2 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwebda333a_7716_484a_a822_02273c6a0307" name="TXTL_NTP_RNAP_F" value="1" constant="true"/>
+            <parameter id="mw866dd814_2165_4469_b952_89bcc8bd4df3" name="TXTL_NTP_RNAP_R" value="120000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw27288e5a_3141_44f6_b756_c7b327aaed5f" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwe673fe9e_0e05_4daf_b207_b189b2cc70b2" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwffdfeea9_51e5_4903_ae88_d9cdee0273f0" stoichiometry="1"/>
+          <speciesReference species="mwef1c66a1_7386_4d4e_b5cb_3c9c89e3f6cb" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwfd75e2a2_d267_40e4_8369_6f71df4af37a </ci>
+              <ci> mwe673fe9e_0e05_4daf_b207_b189b2cc70b2 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwfd75e2a2_d267_40e4_8369_6f71df4af37a" name="TXTL_transcription_rate1" value="0.00122950819672131" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw726139dd_b1ec_4139_94ec_a05503933918" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw54bdb506_9b7c_49ae_95a1_3bd35036e693" stoichiometry="1"/>
+          <speciesReference species="mwf5ed5ed1_b9a2_47a0_b2df_6763250cc3ad" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw8a7149c1_031d_4c57_846a_494ec2fd52b7" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw0d2bada1_c32e_41b9_8515_910ac0f296f2 </ci>
+                <ci> mw54bdb506_9b7c_49ae_95a1_3bd35036e693 </ci>
+                <ci> mwf5ed5ed1_b9a2_47a0_b2df_6763250cc3ad </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwc7e3d236_68e5_4bca_b4e9_2e7c457316ae </ci>
+                <ci> mw8a7149c1_031d_4c57_846a_494ec2fd52b7 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw0d2bada1_c32e_41b9_8515_910ac0f296f2" name="TL_AA_F" value="300" constant="true"/>
+            <parameter id="mwc7e3d236_68e5_4bca_b4e9_2e7c457316ae" name="TL_AA_R" value="0.1" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwb17df42a_5953_4500_9cda_b772dff14577" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw8a7149c1_031d_4c57_846a_494ec2fd52b7" stoichiometry="1"/>
+          <speciesReference species="mwf647df8e_575b_47cf_a794_3b55a6d29079" stoichiometry="2"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwe28c9001_17af_4edc_8b61_0cf700af125c" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw4377e1ae_aba6_407f_920e_8048ce602db3 </ci>
+                <ci> mw8a7149c1_031d_4c57_846a_494ec2fd52b7 </ci>
+                <apply>
+                  <power/>
+                  <ci> mwf647df8e_575b_47cf_a794_3b55a6d29079 </ci>
+                  <cn type="integer"> 2 </cn>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw2cf96245_04fd_49e8_a852_efdab3cfff12 </ci>
+                <ci> mwe28c9001_17af_4edc_8b61_0cf700af125c </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw4377e1ae_aba6_407f_920e_8048ce602db3" name="TL_AGTP_F" value="30" constant="true"/>
+            <parameter id="mw2cf96245_04fd_49e8_a852_efdab3cfff12" name="TL_AGTP_R" value="10" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwe3ee1819_9b7e_43d1_96bf_22614e26532e" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwe28c9001_17af_4edc_8b61_0cf700af125c" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwe807dcb4_42cb_4f60_b448_036fe65bc13d" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw7b967265_995d_49db_817e_785c9eed4aec </ci>
+              <ci> mwe28c9001_17af_4edc_8b61_0cf700af125c </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw7b967265_995d_49db_817e_785c9eed4aec" name="TXTL_TL_AA_consumption" value="0.03" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwf9c0e8cf_e4b9_4b23_bbb6_d71ff415d5fb" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwe28c9001_17af_4edc_8b61_0cf700af125c" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwe807dcb4_42cb_4f60_b448_036fe65bc13d" stoichiometry="1"/>
+          <speciesReference species="mw49c21de4_0b59_4f47_8af1_82355423dcf0" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw53108baa_1467_42ae_931a_631a55962132 </ci>
+              <ci> mwe28c9001_17af_4edc_8b61_0cf700af125c </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw53108baa_1467_42ae_931a_631a55962132" name="TXTL_TL_rate" value="0.01" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw4fbc0633_af38_484e_b690_580e3b39eb8b" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwe807dcb4_42cb_4f60_b448_036fe65bc13d" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwef1c66a1_7386_4d4e_b5cb_3c9c89e3f6cb" stoichiometry="1"/>
+          <speciesReference species="mw6f001bb3_24e7_4c91_8082_bada566d4832" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw08273d39_4706_44b4_8e56_ead24c22c090 </ci>
+              <ci> mwe807dcb4_42cb_4f60_b448_036fe65bc13d </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw08273d39_4706_44b4_8e56_ead24c22c090" name="TXTL_RIBOBOUND_TERMINATION_RATE" value="50" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw078c7996_4149_45bb_bf76_8395bb5d07cc" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwef1c66a1_7386_4d4e_b5cb_3c9c89e3f6cb" stoichiometry="1"/>
+          <speciesReference species="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwe6f6c2db_6474_4e56_ba3b_b7b72536d986" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw44ee2395_b7c3_4449_b5a3_3d6241518cf6 </ci>
+                <ci> mwef1c66a1_7386_4d4e_b5cb_3c9c89e3f6cb </ci>
+                <ci> mw0ba92b06_a96b_4b93_801c_b589b9715ad4 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw9407bdd1_ce31_4c8c_874c_63c65eb7f618 </ci>
+                <ci> mwe6f6c2db_6474_4e56_ba3b_b7b72536d986 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw44ee2395_b7c3_4449_b5a3_3d6241518cf6" name="TXTL_RNAdeg_F" value="10" constant="true"/>
+            <parameter id="mw9407bdd1_ce31_4c8c_874c_63c65eb7f618" name="TXTL_RNAdeg_R" value="2000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwd138cb47_961d_4f16_b79e_7dda33d2518e" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwe6f6c2db_6474_4e56_ba3b_b7b72536d986" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwbcba3243_78a9_43af_8def_b43628af875a </ci>
+              <ci> mwe6f6c2db_6474_4e56_ba3b_b7b72536d986 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwbcba3243_78a9_43af_8def_b43628af875a" name="TXTL_RNAdeg_F" value="0.00277777777777778" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw3eec23a3_276b_418d_8175_2d71bce18551" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw54bdb506_9b7c_49ae_95a1_3bd35036e693" stoichiometry="1"/>
+          <speciesReference species="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwa53e01c7_b2ea_4d0e_8be1_5da5f0545026" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw4a8ec6d1_d6a6_4e72_9c29_d3c0664dad2b </ci>
+                <ci> mw54bdb506_9b7c_49ae_95a1_3bd35036e693 </ci>
+                <ci> mw0ba92b06_a96b_4b93_801c_b589b9715ad4 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw78f3e410_0594_475a_a0be_91759a2fd6d4 </ci>
+                <ci> mwa53e01c7_b2ea_4d0e_8be1_5da5f0545026 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw4a8ec6d1_d6a6_4e72_9c29_d3c0664dad2b" name="TXTL_RNAdeg_F" value="10" constant="true"/>
+            <parameter id="mw78f3e410_0594_475a_a0be_91759a2fd6d4" name="TXTL_RNAdeg_R" value="2000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw8c659664_36d9_469e_bd6b_bfeac4e5da0d" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwa53e01c7_b2ea_4d0e_8be1_5da5f0545026" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" stoichiometry="1"/>
+          <speciesReference species="mw6f001bb3_24e7_4c91_8082_bada566d4832" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw1c45395b_748f_4f98_b0c3_49086b4eec71 </ci>
+              <ci> mwa53e01c7_b2ea_4d0e_8be1_5da5f0545026 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw1c45395b_748f_4f98_b0c3_49086b4eec71" name="TXTL_RNAdeg_F" value="0.00277777777777778" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw221b72e7_e68b_42cc_b6ee_17ab38f2bb20" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwe28c9001_17af_4edc_8b61_0cf700af125c" stoichiometry="1"/>
+          <speciesReference species="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw55530e0d_a990_408c_9f12_42b31bd54bf6" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwc623be89_ce50_4dff_930c_8639dc73a9ee </ci>
+                <ci> mwe28c9001_17af_4edc_8b61_0cf700af125c </ci>
+                <ci> mw0ba92b06_a96b_4b93_801c_b589b9715ad4 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwb63aae5f_a81e_4cd0_a704_fd13d19507fd </ci>
+                <ci> mw55530e0d_a990_408c_9f12_42b31bd54bf6 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwc623be89_ce50_4dff_930c_8639dc73a9ee" name="TXTL_RNAdeg_F" value="10" constant="true"/>
+            <parameter id="mwb63aae5f_a81e_4cd0_a704_fd13d19507fd" name="TXTL_RNAdeg_R" value="2000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwe808960a_8973_4964_b83a_e7f9cf5db65c" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw55530e0d_a990_408c_9f12_42b31bd54bf6" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" stoichiometry="1"/>
+          <speciesReference species="mwf5ed5ed1_b9a2_47a0_b2df_6763250cc3ad" stoichiometry="1"/>
+          <speciesReference species="mwf647df8e_575b_47cf_a794_3b55a6d29079" stoichiometry="2"/>
+          <speciesReference species="mw6f001bb3_24e7_4c91_8082_bada566d4832" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwbdf61db0_0b81_490c_b98b_c8c2b854b34b </ci>
+              <ci> mw55530e0d_a990_408c_9f12_42b31bd54bf6 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwbdf61db0_0b81_490c_b98b_c8c2b854b34b" name="TXTL_RNAdeg_F" value="0.00277777777777778" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw98eeb5f1_fdf4_44dd_a7c1_14f421299028" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwe807dcb4_42cb_4f60_b448_036fe65bc13d" stoichiometry="1"/>
+          <speciesReference species="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw7ae54144_44f9_4cf8_8405_54ddd0f26253" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw4c711817_06be_4f9e_ae81_8af3bd9ae5fe </ci>
+                <ci> mwe807dcb4_42cb_4f60_b448_036fe65bc13d </ci>
+                <ci> mw0ba92b06_a96b_4b93_801c_b589b9715ad4 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw7f9c3e5b_f108_4a95_94df_5df8c3fb60a7 </ci>
+                <ci> mw7ae54144_44f9_4cf8_8405_54ddd0f26253 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw4c711817_06be_4f9e_ae81_8af3bd9ae5fe" name="TXTL_RNAdeg_F" value="10" constant="true"/>
+            <parameter id="mw7f9c3e5b_f108_4a95_94df_5df8c3fb60a7" name="TXTL_RNAdeg_R" value="2000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw6a87e7a5_5cd8_4e38_b559_21da09d1caca" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw7ae54144_44f9_4cf8_8405_54ddd0f26253" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" stoichiometry="1"/>
+          <speciesReference species="mw6f001bb3_24e7_4c91_8082_bada566d4832" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwb5d9d45a_2527_433f_aeda_fc3400f7561e </ci>
+              <ci> mw7ae54144_44f9_4cf8_8405_54ddd0f26253 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwb5d9d45a_2527_433f_aeda_fc3400f7561e" name="TXTL_RNAdeg_F" value="0.00277777777777778" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw8bdb74fb_8736_4c9f_9c29_04b29e8c566c" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw8a7149c1_031d_4c57_846a_494ec2fd52b7" stoichiometry="1"/>
+          <speciesReference species="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw8cad2fd0_f45e_4e7a_9063_9ff5aa9ff281" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw8eea7ae7_2ff4_423e_aa41_400299e7c4d1 </ci>
+                <ci> mw8a7149c1_031d_4c57_846a_494ec2fd52b7 </ci>
+                <ci> mw0ba92b06_a96b_4b93_801c_b589b9715ad4 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw2190b10b_c746_440e_85a7_ce09d1f107d3 </ci>
+                <ci> mw8cad2fd0_f45e_4e7a_9063_9ff5aa9ff281 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw8eea7ae7_2ff4_423e_aa41_400299e7c4d1" name="TXTL_RNAdeg_F" value="10" constant="true"/>
+            <parameter id="mw2190b10b_c746_440e_85a7_ce09d1f107d3" name="TXTL_RNAdeg_R" value="2000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw03768405_e03e_4d0e_9330_f9973efffb03" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw8cad2fd0_f45e_4e7a_9063_9ff5aa9ff281" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" stoichiometry="1"/>
+          <speciesReference species="mwf5ed5ed1_b9a2_47a0_b2df_6763250cc3ad" stoichiometry="1"/>
+          <speciesReference species="mw6f001bb3_24e7_4c91_8082_bada566d4832" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw52414140_dd51_4de9_b0bd_3070b1cd792f </ci>
+              <ci> mw8cad2fd0_f45e_4e7a_9063_9ff5aa9ff281 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw52414140_dd51_4de9_b0bd_3070b1cd792f" name="TXTL_RNAdeg_F" value="0.00277777777777778" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw837eeb48_792d_43a2_87b6_5908d9b56425" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw3dabd164_87ea_4f0d_b56b_035a047766d1" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwa34af442_496e_44f6_8bea_a57f283df25b" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwd3b52aff_232d_4276_aef8_b7d06a550c31 </ci>
+              <ci> mw3dabd164_87ea_4f0d_b56b_035a047766d1 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwd3b52aff_232d_4276_aef8_b7d06a550c31" name="TXTL_PROT_deGFP_MATURATION" value="0.00231049060186648" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwedb5259e_96b3_4adf_ab44_688da0a7d965" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwe3156279_9eea_43b6_a446_259d020cea0d" stoichiometry="1"/>
+          <speciesReference species="mw6f001bb3_24e7_4c91_8082_bada566d4832" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwa6ef4fa8_a9ad_4b35_88aa_1b6d4fcfb612" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw4368c70d_a2ba_4e57_85e8_5a251101d486 </ci>
+                <ci> mwe3156279_9eea_43b6_a446_259d020cea0d </ci>
+                <ci> mw6f001bb3_24e7_4c91_8082_bada566d4832 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw79127e24_face_4ca0_961d_095fd0060cef </ci>
+                <ci> mwa6ef4fa8_a9ad_4b35_88aa_1b6d4fcfb612 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw4368c70d_a2ba_4e57_85e8_5a251101d486" name="TXTL_UTR_UTR1_F" value="0.2" constant="true"/>
+            <parameter id="mw79127e24_face_4ca0_961d_095fd0060cef" name="TXTL_UTR_UTR1_R" value="4" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwe2e439f7_87d3_424a_b42c_f99a006e932f" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwa506c1f8_04f3_401a_8180_9658d026891f" stoichiometry="1"/>
+          <speciesReference species="mwd6d6d9b4_86de_46ea_aca6_e3586590afd0" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw79fd3fd6_4163_405d_b9a9_af23d6b094e6" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwcfbcc0e6_d117_4eb1_bf52_c336ca916cde </ci>
+                <ci> mwa506c1f8_04f3_401a_8180_9658d026891f </ci>
+                <ci> mwd6d6d9b4_86de_46ea_aca6_e3586590afd0 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw7f01f669_95f4_42f5_acfd_85c6d2133a86 </ci>
+                <ci> mw79fd3fd6_4163_405d_b9a9_af23d6b094e6 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwcfbcc0e6_d117_4eb1_bf52_c336ca916cde" name="TXTL_PTET_RNAPbound_F" value="0.006" constant="true"/>
+            <parameter id="mw7f01f669_95f4_42f5_acfd_85c6d2133a86" name="TXTL_PTET_RNAPbound_R" value="5" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw0b954b3e_c792_4145_a17d_8b756d9a520e" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwa506c1f8_04f3_401a_8180_9658d026891f" stoichiometry="1"/>
+          <speciesReference species="mw696a0244_c288_4a57_906a_efc8dffb5fcb" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw8f74b51c_3aaa_44e2_9fa7_628cdec6769e" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwe7171027_a579_419a_90a2_b6996a80808b </ci>
+                <ci> mwa506c1f8_04f3_401a_8180_9658d026891f </ci>
+                <ci> mw696a0244_c288_4a57_906a_efc8dffb5fcb </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwef6393b7_1550_4d02_80e3_65bdd0d826b3 </ci>
+                <ci> mw8f74b51c_3aaa_44e2_9fa7_628cdec6769e </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwe7171027_a579_419a_90a2_b6996a80808b" name="kf" value="0.00286" constant="true"/>
+            <parameter id="mwef6393b7_1550_4d02_80e3_65bdd0d826b3" name="kr" value="1.1e-05" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw2166c6a0_4def_48cb_9731_82df7ef513fe" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw79fd3fd6_4163_405d_b9a9_af23d6b094e6" stoichiometry="1"/>
+          <speciesReference species="mw696a0244_c288_4a57_906a_efc8dffb5fcb" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw46cc4c92_3ee2_4712_8b1f_97044ea5c6e4" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw941fc138_5c95_4bfc_959a_64b94a3720f3 </ci>
+                <ci> mw79fd3fd6_4163_405d_b9a9_af23d6b094e6 </ci>
+                <ci> mw696a0244_c288_4a57_906a_efc8dffb5fcb </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwf3b65bb4_db7a_4bf0_a85b_20441e109c1d </ci>
+                <ci> mw46cc4c92_3ee2_4712_8b1f_97044ea5c6e4 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw941fc138_5c95_4bfc_959a_64b94a3720f3" name="kf" value="0.00286" constant="true"/>
+            <parameter id="mwf3b65bb4_db7a_4bf0_a85b_20441e109c1d" name="kr" value="1.1e-05" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw8bbe5ef8_5fc3_46ad_b215_eb9a5edadce2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw8f74b51c_3aaa_44e2_9fa7_628cdec6769e" stoichiometry="1"/>
+          <speciesReference species="mwd6d6d9b4_86de_46ea_aca6_e3586590afd0" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw46cc4c92_3ee2_4712_8b1f_97044ea5c6e4" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwc401336e_1e53_43b6_858e_5501a3ce0254 </ci>
+                <ci> mw8f74b51c_3aaa_44e2_9fa7_628cdec6769e </ci>
+                <ci> mwd6d6d9b4_86de_46ea_aca6_e3586590afd0 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mweb4c53fc_9d7b_4bed_a38a_c08b679863d4 </ci>
+                <ci> mw46cc4c92_3ee2_4712_8b1f_97044ea5c6e4 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwc401336e_1e53_43b6_858e_5501a3ce0254" name="kf" value="0.006" constant="true"/>
+            <parameter id="mweb4c53fc_9d7b_4bed_a38a_c08b679863d4" name="kr" value="5000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw07c925fd_2ded_4900_882a_59d015f3c763" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw4e5dbe2b_2560_4e52_a1b2_d05188ec403d" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw79fd3fd6_4163_405d_b9a9_af23d6b094e6" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwff382cf8_e1ba_4be1_86ad_18de300bc16e </ci>
+              <ci> mw4e5dbe2b_2560_4e52_a1b2_d05188ec403d </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwff382cf8_e1ba_4be1_86ad_18de300bc16e" name="TXTL_NTP_consumption" value="0.748529411764706" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwde95eb25_6a78_49c8_ac24_3f1035528351" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwb3f21652_5cc4_42da_846f_ff648baac3f3" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwd6d6d9b4_86de_46ea_aca6_e3586590afd0" stoichiometry="1"/>
+          <speciesReference species="mwa506c1f8_04f3_401a_8180_9658d026891f" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw99897dd5_1f71_4880_89e3_6dc74dea1854 </ci>
+              <ci> mwb3f21652_5cc4_42da_846f_ff648baac3f3 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw99897dd5_1f71_4880_89e3_6dc74dea1854" name="TXTL_RNAPBOUND_TERMINATION_RATE" value="0.05" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw49603939_ee2e_47ec_b55e_9a4e40f336ff" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw79fd3fd6_4163_405d_b9a9_af23d6b094e6" stoichiometry="1"/>
+          <speciesReference species="mwf647df8e_575b_47cf_a794_3b55a6d29079" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw328100f5_a74c_40bc_a5be_48eae5f21d2e" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwf5db55ef_0cdf_491c_8b2b_fb43e2351da5 </ci>
+                <ci> mw79fd3fd6_4163_405d_b9a9_af23d6b094e6 </ci>
+                <ci> mwf647df8e_575b_47cf_a794_3b55a6d29079 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw235e5a13_d10c_486f_a5e9_63842c6d554d </ci>
+                <ci> mw328100f5_a74c_40bc_a5be_48eae5f21d2e </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwf5db55ef_0cdf_491c_8b2b_fb43e2351da5" name="TXTL_NTP_RNAP_F" value="1000" constant="true"/>
+            <parameter id="mw235e5a13_d10c_486f_a5e9_63842c6d554d" name="TXTL_NTP_RNAP_R" value="120000000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwc3227d08_fd23_4740_8ab2_03fc49d9ddab" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw79fd3fd6_4163_405d_b9a9_af23d6b094e6" stoichiometry="1"/>
+          <speciesReference species="mwa1abaec4_a028_468a_83dd_9b06410bb615" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwa9dcfcc7_c348_4f3b_9309_b52a28004b38" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwf03695d1_8d34_4b6a_9dcc_16b5a37c5226 </ci>
+                <ci> mw79fd3fd6_4163_405d_b9a9_af23d6b094e6 </ci>
+                <ci> mwa1abaec4_a028_468a_83dd_9b06410bb615 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw1fbbc5aa_ae3a_4df0_b2d1_543ddd7900f3 </ci>
+                <ci> mwa9dcfcc7_c348_4f3b_9309_b52a28004b38 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwf03695d1_8d34_4b6a_9dcc_16b5a37c5226" name="TXTL_NTP_RNAP_F" value="1000" constant="true"/>
+            <parameter id="mw1fbbc5aa_ae3a_4df0_b2d1_543ddd7900f3" name="TXTL_NTP_RNAP_R" value="120000000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw69530b72_84c8_4796_b95d_dd0eb4cce7c0" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw328100f5_a74c_40bc_a5be_48eae5f21d2e" stoichiometry="1"/>
+          <speciesReference species="mwa1abaec4_a028_468a_83dd_9b06410bb615" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw4e5dbe2b_2560_4e52_a1b2_d05188ec403d" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw9f406881_20d2_401e_8776_3f0795da691f </ci>
+                <ci> mw328100f5_a74c_40bc_a5be_48eae5f21d2e </ci>
+                <ci> mwa1abaec4_a028_468a_83dd_9b06410bb615 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwf2c3578b_769c_4d78_a4bb_19d22c034bd5 </ci>
+                <ci> mw4e5dbe2b_2560_4e52_a1b2_d05188ec403d </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw9f406881_20d2_401e_8776_3f0795da691f" name="TXTL_NTP_RNAP_F" value="1" constant="true"/>
+            <parameter id="mwf2c3578b_769c_4d78_a4bb_19d22c034bd5" name="TXTL_NTP_RNAP_R" value="120000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwb9bb2073_6991_4348_b194_11e7f951543c" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwa9dcfcc7_c348_4f3b_9309_b52a28004b38" stoichiometry="1"/>
+          <speciesReference species="mwf647df8e_575b_47cf_a794_3b55a6d29079" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw4e5dbe2b_2560_4e52_a1b2_d05188ec403d" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw41b7cb9c_f625_4b14_aea4_912423b7e323 </ci>
+                <ci> mwa9dcfcc7_c348_4f3b_9309_b52a28004b38 </ci>
+                <ci> mwf647df8e_575b_47cf_a794_3b55a6d29079 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw2050ceb8_bba2_49ff_87ff_1d85cc643b7c </ci>
+                <ci> mw4e5dbe2b_2560_4e52_a1b2_d05188ec403d </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw41b7cb9c_f625_4b14_aea4_912423b7e323" name="TXTL_NTP_RNAP_F" value="1" constant="true"/>
+            <parameter id="mw2050ceb8_bba2_49ff_87ff_1d85cc643b7c" name="TXTL_NTP_RNAP_R" value="120000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwbbbb90ee_9bd5_4192_b580_6b0637899692" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw4e5dbe2b_2560_4e52_a1b2_d05188ec403d" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwb3f21652_5cc4_42da_846f_ff648baac3f3" stoichiometry="1"/>
+          <speciesReference species="mwe3156279_9eea_43b6_a446_259d020cea0d" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw3ae8df71_f356_4862_87c0_5c418b3ee12e </ci>
+              <ci> mw4e5dbe2b_2560_4e52_a1b2_d05188ec403d </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw3ae8df71_f356_4862_87c0_5c418b3ee12e" name="TXTL_transcription_rate1" value="0.00147058823529412" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw18edc829_6b5a_49e0_a782_db3b61a9b01b" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw71b42a67_e162_4e10_b157_5bdd04885ac1" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw46cc4c92_3ee2_4712_8b1f_97044ea5c6e4" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw19ca37b5_c543_4ac8_85a0_c96cc1d59704 </ci>
+              <ci> mw71b42a67_e162_4e10_b157_5bdd04885ac1 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw19ca37b5_c543_4ac8_85a0_c96cc1d59704" name="TXTL_NTP_consumption" value="0.748529411764706" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw825000e8_8ecd_4296_a430_ade3430cbcdb" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw67add5c4_6af7_44a4_94a6_68ce8cedb6b2" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwd6d6d9b4_86de_46ea_aca6_e3586590afd0" stoichiometry="1"/>
+          <speciesReference species="mwa506c1f8_04f3_401a_8180_9658d026891f" stoichiometry="1"/>
+          <speciesReference species="mw696a0244_c288_4a57_906a_efc8dffb5fcb" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw8b8640a1_1003_4e0a_bf7b_69434e1cba9e </ci>
+              <ci> mw67add5c4_6af7_44a4_94a6_68ce8cedb6b2 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw8b8640a1_1003_4e0a_bf7b_69434e1cba9e" name="TXTL_RNAPBOUND_TERMINATION_RATE" value="0.05" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw85d6d669_902e_40d6_9ace_ab3642be3fe5" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw46cc4c92_3ee2_4712_8b1f_97044ea5c6e4" stoichiometry="1"/>
+          <speciesReference species="mwf647df8e_575b_47cf_a794_3b55a6d29079" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw6df6ff4c_2088_46c1_9bdb_a459b5f3b562" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwffcedf2c_8168_430d_8ff7_aa52b62c5311 </ci>
+                <ci> mw46cc4c92_3ee2_4712_8b1f_97044ea5c6e4 </ci>
+                <ci> mwf647df8e_575b_47cf_a794_3b55a6d29079 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwac069570_f09b_4118_a6b7_c1729f04a148 </ci>
+                <ci> mw6df6ff4c_2088_46c1_9bdb_a459b5f3b562 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwffcedf2c_8168_430d_8ff7_aa52b62c5311" name="TXTL_NTP_RNAP_F" value="1000" constant="true"/>
+            <parameter id="mwac069570_f09b_4118_a6b7_c1729f04a148" name="TXTL_NTP_RNAP_R" value="120000000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw91a47d88_2456_41d0_9e77_1deb74dd2bc0" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw46cc4c92_3ee2_4712_8b1f_97044ea5c6e4" stoichiometry="1"/>
+          <speciesReference species="mwa1abaec4_a028_468a_83dd_9b06410bb615" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw3267f942_0277_4ba7_87f4_b8cce339cca8" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw75e3eb03_b093_4692_8b79_4ab986ae0ef5 </ci>
+                <ci> mw46cc4c92_3ee2_4712_8b1f_97044ea5c6e4 </ci>
+                <ci> mwa1abaec4_a028_468a_83dd_9b06410bb615 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw420c4bf6_3591_420d_8225_4a9a8cf2d00a </ci>
+                <ci> mw3267f942_0277_4ba7_87f4_b8cce339cca8 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw75e3eb03_b093_4692_8b79_4ab986ae0ef5" name="TXTL_NTP_RNAP_F" value="1000" constant="true"/>
+            <parameter id="mw420c4bf6_3591_420d_8225_4a9a8cf2d00a" name="TXTL_NTP_RNAP_R" value="120000000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwc09c7127_c88e_4016_a975_229302ddc011" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw6df6ff4c_2088_46c1_9bdb_a459b5f3b562" stoichiometry="1"/>
+          <speciesReference species="mwa1abaec4_a028_468a_83dd_9b06410bb615" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw71b42a67_e162_4e10_b157_5bdd04885ac1" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwd76211e6_29e3_4043_9dd6_103c95b56104 </ci>
+                <ci> mw6df6ff4c_2088_46c1_9bdb_a459b5f3b562 </ci>
+                <ci> mwa1abaec4_a028_468a_83dd_9b06410bb615 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw213d8503_178e_4797_a5e8_36108f64e586 </ci>
+                <ci> mw71b42a67_e162_4e10_b157_5bdd04885ac1 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwd76211e6_29e3_4043_9dd6_103c95b56104" name="TXTL_NTP_RNAP_F" value="1" constant="true"/>
+            <parameter id="mw213d8503_178e_4797_a5e8_36108f64e586" name="TXTL_NTP_RNAP_R" value="120000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw225ffb14_4e5c_4881_9f25_93f6dc270966" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw3267f942_0277_4ba7_87f4_b8cce339cca8" stoichiometry="1"/>
+          <speciesReference species="mwf647df8e_575b_47cf_a794_3b55a6d29079" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw71b42a67_e162_4e10_b157_5bdd04885ac1" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwb501453c_e3b3_4622_bb1e_0df36f2037ba </ci>
+                <ci> mw3267f942_0277_4ba7_87f4_b8cce339cca8 </ci>
+                <ci> mwf647df8e_575b_47cf_a794_3b55a6d29079 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw3aec51ed_1a15_4c86_900d_4d373f8e762f </ci>
+                <ci> mw71b42a67_e162_4e10_b157_5bdd04885ac1 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwb501453c_e3b3_4622_bb1e_0df36f2037ba" name="TXTL_NTP_RNAP_F" value="1" constant="true"/>
+            <parameter id="mw3aec51ed_1a15_4c86_900d_4d373f8e762f" name="TXTL_NTP_RNAP_R" value="120000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwa1b6650a_77e0_4d28_a326_3ca4805a958e" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw71b42a67_e162_4e10_b157_5bdd04885ac1" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw67add5c4_6af7_44a4_94a6_68ce8cedb6b2" stoichiometry="1"/>
+          <speciesReference species="mwe3156279_9eea_43b6_a446_259d020cea0d" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw80876a38_3a8c_4dbc_b0b7_707995429bd0 </ci>
+              <ci> mw71b42a67_e162_4e10_b157_5bdd04885ac1 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw80876a38_3a8c_4dbc_b0b7_707995429bd0" name="TXTL_transcription_rate1" value="0.00147058823529412" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwfd126431_cb19_4ab2_90db_8fd7f131d6c1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwa6ef4fa8_a9ad_4b35_88aa_1b6d4fcfb612" stoichiometry="1"/>
+          <speciesReference species="mwf5ed5ed1_b9a2_47a0_b2df_6763250cc3ad" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwa486bc01_66c4_4756_9b85_cdbcf260be38" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwac9f6d94_400e_428d_af6d_126b9b0e8116 </ci>
+                <ci> mwa6ef4fa8_a9ad_4b35_88aa_1b6d4fcfb612 </ci>
+                <ci> mwf5ed5ed1_b9a2_47a0_b2df_6763250cc3ad </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw29d74d4c_06a8_429c_b966_934344b83abf </ci>
+                <ci> mwa486bc01_66c4_4756_9b85_cdbcf260be38 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwac9f6d94_400e_428d_af6d_126b9b0e8116" name="TL_AA_F" value="300" constant="true"/>
+            <parameter id="mw29d74d4c_06a8_429c_b966_934344b83abf" name="TL_AA_R" value="0.1" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw595e91b3_9865_46e9_b460_795c8cd57cb7" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwa486bc01_66c4_4756_9b85_cdbcf260be38" stoichiometry="1"/>
+          <speciesReference species="mwf647df8e_575b_47cf_a794_3b55a6d29079" stoichiometry="2"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwf27c2cef_fd98_45a9_a676_c4cfc3bfee9f" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwa066e696_3200_4c87_9149_78a8019a7e68 </ci>
+                <ci> mwa486bc01_66c4_4756_9b85_cdbcf260be38 </ci>
+                <apply>
+                  <power/>
+                  <ci> mwf647df8e_575b_47cf_a794_3b55a6d29079 </ci>
+                  <cn type="integer"> 2 </cn>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw3ab577c5_ac6c_4acc_bcb6_513b37d267ec </ci>
+                <ci> mwf27c2cef_fd98_45a9_a676_c4cfc3bfee9f </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwa066e696_3200_4c87_9149_78a8019a7e68" name="TL_AGTP_F" value="30" constant="true"/>
+            <parameter id="mw3ab577c5_ac6c_4acc_bcb6_513b37d267ec" name="TL_AGTP_R" value="10" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwade64999_1370_4388_840b_4329ca18b4ed" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwf27c2cef_fd98_45a9_a676_c4cfc3bfee9f" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw8fea26fd_a005_4d1a_8a94_9bc4f4509b9b" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwbf3233f2_dd73_45cd_8154_575f9c0fdfb9 </ci>
+              <ci> mwf27c2cef_fd98_45a9_a676_c4cfc3bfee9f </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwbf3233f2_dd73_45cd_8154_575f9c0fdfb9" name="TXTL_TL_AA_consumption" value="0.024" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwc9fd6d5f_ddec_4fb5_ab3b_8dae3f5dbe0b" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwf27c2cef_fd98_45a9_a676_c4cfc3bfee9f" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw8fea26fd_a005_4d1a_8a94_9bc4f4509b9b" stoichiometry="1"/>
+          <speciesReference species="mw3dabd164_87ea_4f0d_b56b_035a047766d1" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwe1bf693f_25a0_4694_950e_3e07cf4c1a88 </ci>
+              <ci> mwf27c2cef_fd98_45a9_a676_c4cfc3bfee9f </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwe1bf693f_25a0_4694_950e_3e07cf4c1a88" name="TXTL_TL_rate" value="0.012" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw4cb74554_c953_451a_a3a0_3cf4ccde3255" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw8fea26fd_a005_4d1a_8a94_9bc4f4509b9b" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwe3156279_9eea_43b6_a446_259d020cea0d" stoichiometry="1"/>
+          <speciesReference species="mw6f001bb3_24e7_4c91_8082_bada566d4832" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw2551b671_7bbf_453f_a59c_67ab674830a3 </ci>
+              <ci> mw8fea26fd_a005_4d1a_8a94_9bc4f4509b9b </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw2551b671_7bbf_453f_a59c_67ab674830a3" name="TXTL_RIBOBOUND_TERMINATION_RATE" value="50" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw7164da3e_010c_4d78_a64b_a7a860144297" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwe3156279_9eea_43b6_a446_259d020cea0d" stoichiometry="1"/>
+          <speciesReference species="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mweddfabff_f95e_47d3_a383_083f3b3732fc" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw22715c48_febc_42c5_939b_b2ae1f042a49 </ci>
+                <ci> mwe3156279_9eea_43b6_a446_259d020cea0d </ci>
+                <ci> mw0ba92b06_a96b_4b93_801c_b589b9715ad4 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw6fc12ae5_2a62_4f64_af8e_02ac8b3ca2d8 </ci>
+                <ci> mweddfabff_f95e_47d3_a383_083f3b3732fc </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw22715c48_febc_42c5_939b_b2ae1f042a49" name="TXTL_RNAdeg_F" value="10" constant="true"/>
+            <parameter id="mw6fc12ae5_2a62_4f64_af8e_02ac8b3ca2d8" name="TXTL_RNAdeg_R" value="2000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw13fcc5fe_71be_4228_b715_68293d8ed46b" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mweddfabff_f95e_47d3_a383_083f3b3732fc" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwfd5653b8_7f28_4e3b_a3ad_b6ba17c9280b </ci>
+              <ci> mweddfabff_f95e_47d3_a383_083f3b3732fc </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwfd5653b8_7f28_4e3b_a3ad_b6ba17c9280b" name="TXTL_RNAdeg_F" value="0.00277777777777778" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwb1cbd8db_2c09_4b16_93d4_b79f77a6f46f" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwa6ef4fa8_a9ad_4b35_88aa_1b6d4fcfb612" stoichiometry="1"/>
+          <speciesReference species="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw00efdfb2_142d_4f4f_87b8_fa0d5655b7bf" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw692fb53d_3496_41a5_a205_4ceed9b830e1 </ci>
+                <ci> mwa6ef4fa8_a9ad_4b35_88aa_1b6d4fcfb612 </ci>
+                <ci> mw0ba92b06_a96b_4b93_801c_b589b9715ad4 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw509ef8b0_3926_41d6_a5ed_5f43a5026858 </ci>
+                <ci> mw00efdfb2_142d_4f4f_87b8_fa0d5655b7bf </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw692fb53d_3496_41a5_a205_4ceed9b830e1" name="TXTL_RNAdeg_F" value="10" constant="true"/>
+            <parameter id="mw509ef8b0_3926_41d6_a5ed_5f43a5026858" name="TXTL_RNAdeg_R" value="2000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwe6420da9_579a_4fba_8c9a_4a75318ef251" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw00efdfb2_142d_4f4f_87b8_fa0d5655b7bf" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" stoichiometry="1"/>
+          <speciesReference species="mw6f001bb3_24e7_4c91_8082_bada566d4832" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwde2edbc4_6b70_4605_bc40_cd13252d39c9 </ci>
+              <ci> mw00efdfb2_142d_4f4f_87b8_fa0d5655b7bf </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwde2edbc4_6b70_4605_bc40_cd13252d39c9" name="TXTL_RNAdeg_F" value="0.00277777777777778" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw00e33c2f_3299_47ff_88a9_ec197f51d4d0" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwf27c2cef_fd98_45a9_a676_c4cfc3bfee9f" stoichiometry="1"/>
+          <speciesReference species="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw85f2d6bd_2ccf_46d9_893e_9c4c8074a611" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwbe27c1c9_19da_4537_b282_5879f92448fd </ci>
+                <ci> mwf27c2cef_fd98_45a9_a676_c4cfc3bfee9f </ci>
+                <ci> mw0ba92b06_a96b_4b93_801c_b589b9715ad4 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw82907d9c_9690_4f1b_b259_688f637f74a7 </ci>
+                <ci> mw85f2d6bd_2ccf_46d9_893e_9c4c8074a611 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwbe27c1c9_19da_4537_b282_5879f92448fd" name="TXTL_RNAdeg_F" value="10" constant="true"/>
+            <parameter id="mw82907d9c_9690_4f1b_b259_688f637f74a7" name="TXTL_RNAdeg_R" value="2000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwcf876a7f_9585_4a29_aee9_3db9723c8997" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw85f2d6bd_2ccf_46d9_893e_9c4c8074a611" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" stoichiometry="1"/>
+          <speciesReference species="mwf5ed5ed1_b9a2_47a0_b2df_6763250cc3ad" stoichiometry="1"/>
+          <speciesReference species="mwf647df8e_575b_47cf_a794_3b55a6d29079" stoichiometry="2"/>
+          <speciesReference species="mw6f001bb3_24e7_4c91_8082_bada566d4832" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw2354a585_ab31_4534_8f7c_76ac19f7ef2a </ci>
+              <ci> mw85f2d6bd_2ccf_46d9_893e_9c4c8074a611 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw2354a585_ab31_4534_8f7c_76ac19f7ef2a" name="TXTL_RNAdeg_F" value="0.00277777777777778" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw4c384db5_0f99_4e67_be1e_54d4992f0cab" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw8fea26fd_a005_4d1a_8a94_9bc4f4509b9b" stoichiometry="1"/>
+          <speciesReference species="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw3b1431cc_b80d_47bf_84bc_b70bb55cd38c" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw76e67f66_8360_41c8_a7af_131a9eccef5b </ci>
+                <ci> mw8fea26fd_a005_4d1a_8a94_9bc4f4509b9b </ci>
+                <ci> mw0ba92b06_a96b_4b93_801c_b589b9715ad4 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw5aa9e2bb_03b2_489c_a052_4e65d6ddf534 </ci>
+                <ci> mw3b1431cc_b80d_47bf_84bc_b70bb55cd38c </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw76e67f66_8360_41c8_a7af_131a9eccef5b" name="TXTL_RNAdeg_F" value="10" constant="true"/>
+            <parameter id="mw5aa9e2bb_03b2_489c_a052_4e65d6ddf534" name="TXTL_RNAdeg_R" value="2000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw2d3ced79_7739_4aa0_a965_04ad0ebf6442" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw3b1431cc_b80d_47bf_84bc_b70bb55cd38c" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" stoichiometry="1"/>
+          <speciesReference species="mw6f001bb3_24e7_4c91_8082_bada566d4832" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw2ca12257_b9e2_49a8_a5de_2e7ce3f6a5a1 </ci>
+              <ci> mw3b1431cc_b80d_47bf_84bc_b70bb55cd38c </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw2ca12257_b9e2_49a8_a5de_2e7ce3f6a5a1" name="TXTL_RNAdeg_F" value="0.00277777777777778" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwa542057f_6d98_4bb7_b147_b69723a3e08c" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwa486bc01_66c4_4756_9b85_cdbcf260be38" stoichiometry="1"/>
+          <speciesReference species="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwd7650a50_28e8_4b5e_bdf4_e13712258519" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw7552fcb7_4008_472e_bb41_f911f1c8f4a2 </ci>
+                <ci> mwa486bc01_66c4_4756_9b85_cdbcf260be38 </ci>
+                <ci> mw0ba92b06_a96b_4b93_801c_b589b9715ad4 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw0485b1d3_06e5_4b3d_ac26_f52f0991006f </ci>
+                <ci> mwd7650a50_28e8_4b5e_bdf4_e13712258519 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw7552fcb7_4008_472e_bb41_f911f1c8f4a2" name="TXTL_RNAdeg_F" value="10" constant="true"/>
+            <parameter id="mw0485b1d3_06e5_4b3d_ac26_f52f0991006f" name="TXTL_RNAdeg_R" value="2000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw95743c5d_b1a5_4851_b525_f0a13bce25ec" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwd7650a50_28e8_4b5e_bdf4_e13712258519" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" stoichiometry="1"/>
+          <speciesReference species="mwf5ed5ed1_b9a2_47a0_b2df_6763250cc3ad" stoichiometry="1"/>
+          <speciesReference species="mw6f001bb3_24e7_4c91_8082_bada566d4832" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw67dbd495_035e_4c60_b8b1_098224a7ea9a </ci>
+              <ci> mwd7650a50_28e8_4b5e_bdf4_e13712258519 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw67dbd495_035e_4c60_b8b1_098224a7ea9a" name="TXTL_RNAdeg_F" value="0.00277777777777778" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw7b1ce0a6_b287_4250_94c0_153208cf130d" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwb0343236_d8ee_47a3_911c_d22c042081af" stoichiometry="1"/>
+          <speciesReference species="mw1002e515_6ba8_481d_aaa9_89647b90f29f" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwbbc0a90c_74dc_42c2_ae48_aa4f1010c329" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw24a9bbff_ae72_4a24_868c_210237b82d7e </ci>
+                <ci> mwb0343236_d8ee_47a3_911c_d22c042081af </ci>
+                <ci> mw1002e515_6ba8_481d_aaa9_89647b90f29f </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw779ffb21_9d68_4ae1_a107_f06bf0fe7bc8 </ci>
+                <ci> mwbbc0a90c_74dc_42c2_ae48_aa4f1010c329 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw24a9bbff_ae72_4a24_868c_210237b82d7e" name="SigmaX_RNAP_F" value="100" constant="true"/>
+            <parameter id="mw779ffb21_9d68_4ae1_a107_f06bf0fe7bc8" name="SigmaX_RNAP_R" value="0.1" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwe0146b97_bd3b_4472_a6ef_1b24613d6d22" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw0915efe7_1341_49ab_a8ef_0eb7fee30bc1" stoichiometry="1"/>
+          <speciesReference species="mw6f001bb3_24e7_4c91_8082_bada566d4832" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw8905d669_d482_4967_9c6f_f69677ea0794" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwffb9e3c7_a3c6_4556_b4c7_82a84428643f </ci>
+                <ci> mw0915efe7_1341_49ab_a8ef_0eb7fee30bc1 </ci>
+                <ci> mw6f001bb3_24e7_4c91_8082_bada566d4832 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwb8ea05f0_6266_4692_8b1e_913805ebdc78 </ci>
+                <ci> mw8905d669_d482_4967_9c6f_f69677ea0794 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwffb9e3c7_a3c6_4556_b4c7_82a84428643f" name="TXTL_UTR_UTR1_F" value="0.2" constant="true"/>
+            <parameter id="mwb8ea05f0_6266_4692_8b1e_913805ebdc78" name="TXTL_UTR_UTR1_R" value="4" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwc6274494_428c_49e8_8212_55ae347c4efc" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw4d8333a7_ce38_45b7_a707_b13dff7fe0ee" stoichiometry="1"/>
+          <speciesReference species="mwb0343236_d8ee_47a3_911c_d22c042081af" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwffb8d502_f884_4483_85e9_2071d6311ffe" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw349745ed_9011_4d3f_887a_7bc876d99904 </ci>
+                <ci> mw4d8333a7_ce38_45b7_a707_b13dff7fe0ee </ci>
+                <ci> mwb0343236_d8ee_47a3_911c_d22c042081af </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw0149aca8_b793_456e_a1ae_03da52543221 </ci>
+                <ci> mwffb8d502_f884_4483_85e9_2071d6311ffe </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw349745ed_9011_4d3f_887a_7bc876d99904" name="TXTL_PLAC_RNAPbound_F" value="20" constant="true"/>
+            <parameter id="mw0149aca8_b793_456e_a1ae_03da52543221" name="TXTL_PLAC_RNAPbound_R" value="400" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwf88779bf_c741_43b0_af4b_a49cf2e6c646" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw01e10fb5_a2f0_4d9e_a7d4_6184b5c73c36" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwffb8d502_f884_4483_85e9_2071d6311ffe" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw00ee52c8_42cb_45b6_854f_f857cc99ead5 </ci>
+              <ci> mw01e10fb5_a2f0_4d9e_a7d4_6184b5c73c36 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw00ee52c8_42cb_45b6_854f_f857cc99ead5" name="TXTL_NTP_consumption" value="0.748529411764706" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw25a1c01e_29f1_4546_b423_c80a3ecb29c6" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw32bf80c0_91e6_4c1a_9e9a_76a2c9ab2862" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwb0343236_d8ee_47a3_911c_d22c042081af" stoichiometry="1"/>
+          <speciesReference species="mw4d8333a7_ce38_45b7_a707_b13dff7fe0ee" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwdca9322c_c7ef_4300_9c8e_4c81b99e85b8 </ci>
+              <ci> mw32bf80c0_91e6_4c1a_9e9a_76a2c9ab2862 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwdca9322c_c7ef_4300_9c8e_4c81b99e85b8" name="TXTL_RNAPBOUND_TERMINATION_RATE" value="0.05" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw43583dd2_b70a_4386_b912_a70081827a17" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwffb8d502_f884_4483_85e9_2071d6311ffe" stoichiometry="1"/>
+          <speciesReference species="mwf647df8e_575b_47cf_a794_3b55a6d29079" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwf0e02418_a1a1_4c34_ac37_b00c1d93e783" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw40dadaa6_16bb_43d2_8213_64ab59ed2bca </ci>
+                <ci> mwffb8d502_f884_4483_85e9_2071d6311ffe </ci>
+                <ci> mwf647df8e_575b_47cf_a794_3b55a6d29079 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwa3f584a7_6fcf_497f_a959_ba5acaa220f8 </ci>
+                <ci> mwf0e02418_a1a1_4c34_ac37_b00c1d93e783 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw40dadaa6_16bb_43d2_8213_64ab59ed2bca" name="TXTL_NTP_RNAP_F" value="1000" constant="true"/>
+            <parameter id="mwa3f584a7_6fcf_497f_a959_ba5acaa220f8" name="TXTL_NTP_RNAP_R" value="120000000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw26292bee_a2a9_45b1_911f_105c4f955dc1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwffb8d502_f884_4483_85e9_2071d6311ffe" stoichiometry="1"/>
+          <speciesReference species="mwa1abaec4_a028_468a_83dd_9b06410bb615" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw4cf760ff_4a6f_4101_9592_7fea1e24a539" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw52a20970_006b_40b0_9d69_c0e0c5604e07 </ci>
+                <ci> mwffb8d502_f884_4483_85e9_2071d6311ffe </ci>
+                <ci> mwa1abaec4_a028_468a_83dd_9b06410bb615 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwf63c96a2_ca94_4076_bb69_10206684e1fb </ci>
+                <ci> mw4cf760ff_4a6f_4101_9592_7fea1e24a539 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw52a20970_006b_40b0_9d69_c0e0c5604e07" name="TXTL_NTP_RNAP_F" value="1000" constant="true"/>
+            <parameter id="mwf63c96a2_ca94_4076_bb69_10206684e1fb" name="TXTL_NTP_RNAP_R" value="120000000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw5d18d3d5_3568_4dd4_a96e_d534480bdf50" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwf0e02418_a1a1_4c34_ac37_b00c1d93e783" stoichiometry="1"/>
+          <speciesReference species="mwa1abaec4_a028_468a_83dd_9b06410bb615" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw01e10fb5_a2f0_4d9e_a7d4_6184b5c73c36" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwb0d175bf_9bdc_426d_bfd9_16db8c2a6ae0 </ci>
+                <ci> mwf0e02418_a1a1_4c34_ac37_b00c1d93e783 </ci>
+                <ci> mwa1abaec4_a028_468a_83dd_9b06410bb615 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw0e12d1c1_93e9_47ce_9d44_9746a7bfac66 </ci>
+                <ci> mw01e10fb5_a2f0_4d9e_a7d4_6184b5c73c36 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwb0d175bf_9bdc_426d_bfd9_16db8c2a6ae0" name="TXTL_NTP_RNAP_F" value="1" constant="true"/>
+            <parameter id="mw0e12d1c1_93e9_47ce_9d44_9746a7bfac66" name="TXTL_NTP_RNAP_R" value="120000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw43d6a15e_9a83_473e_9607_b4d6b19d6df4" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw4cf760ff_4a6f_4101_9592_7fea1e24a539" stoichiometry="1"/>
+          <speciesReference species="mwf647df8e_575b_47cf_a794_3b55a6d29079" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw01e10fb5_a2f0_4d9e_a7d4_6184b5c73c36" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwed71ea9a_9309_4f90_a56a_ce0b223530ac </ci>
+                <ci> mw4cf760ff_4a6f_4101_9592_7fea1e24a539 </ci>
+                <ci> mwf647df8e_575b_47cf_a794_3b55a6d29079 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw984d3158_cbce_46d5_aee6_c11010d4f689 </ci>
+                <ci> mw01e10fb5_a2f0_4d9e_a7d4_6184b5c73c36 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwed71ea9a_9309_4f90_a56a_ce0b223530ac" name="TXTL_NTP_RNAP_F" value="1" constant="true"/>
+            <parameter id="mw984d3158_cbce_46d5_aee6_c11010d4f689" name="TXTL_NTP_RNAP_R" value="120000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw3a70753f_2dcd_4e8f_8a91_19a1abb75bf7" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw01e10fb5_a2f0_4d9e_a7d4_6184b5c73c36" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw32bf80c0_91e6_4c1a_9e9a_76a2c9ab2862" stoichiometry="1"/>
+          <speciesReference species="mw0915efe7_1341_49ab_a8ef_0eb7fee30bc1" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw505abdbc_b7fd_4e7e_8f1f_dfb07563b34d </ci>
+              <ci> mw01e10fb5_a2f0_4d9e_a7d4_6184b5c73c36 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw505abdbc_b7fd_4e7e_8f1f_dfb07563b34d" name="TXTL_transcription_rate1" value="0.00147058823529412" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw066e3d19_a38a_4b75_b02f_f8baedda8dab" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw8905d669_d482_4967_9c6f_f69677ea0794" stoichiometry="1"/>
+          <speciesReference species="mwf5ed5ed1_b9a2_47a0_b2df_6763250cc3ad" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw06d6ab53_bdfd_4580_9f4d_5d34dd8cec54" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw64194371_9755_4467_b86f_2d26acda25a9 </ci>
+                <ci> mw8905d669_d482_4967_9c6f_f69677ea0794 </ci>
+                <ci> mwf5ed5ed1_b9a2_47a0_b2df_6763250cc3ad </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw994cfe90_3791_4462_9721_7e16c80bcd93 </ci>
+                <ci> mw06d6ab53_bdfd_4580_9f4d_5d34dd8cec54 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw64194371_9755_4467_b86f_2d26acda25a9" name="TL_AA_F" value="300" constant="true"/>
+            <parameter id="mw994cfe90_3791_4462_9721_7e16c80bcd93" name="TL_AA_R" value="0.1" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwafdfd08f_de95_4b7f_af7b_7fc1184942f7" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw06d6ab53_bdfd_4580_9f4d_5d34dd8cec54" stoichiometry="1"/>
+          <speciesReference species="mwf647df8e_575b_47cf_a794_3b55a6d29079" stoichiometry="2"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw03911c10_ff33_48bc_8941_67dd809dbfb1" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw6a58b898_f421_425b_8578_caa8062932dd </ci>
+                <ci> mw06d6ab53_bdfd_4580_9f4d_5d34dd8cec54 </ci>
+                <apply>
+                  <power/>
+                  <ci> mwf647df8e_575b_47cf_a794_3b55a6d29079 </ci>
+                  <cn type="integer"> 2 </cn>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw72e0d827_25c0_4b7b_9998_1a68c40b38e8 </ci>
+                <ci> mw03911c10_ff33_48bc_8941_67dd809dbfb1 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw6a58b898_f421_425b_8578_caa8062932dd" name="TL_AGTP_F" value="30" constant="true"/>
+            <parameter id="mw72e0d827_25c0_4b7b_9998_1a68c40b38e8" name="TL_AGTP_R" value="10" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw73dc8a6f_40c6_4492_914d_bfe94e7c69e8" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw03911c10_ff33_48bc_8941_67dd809dbfb1" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw64f68b39_4419_4660_9c74_c83ce83b8b49" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwa7074843_ca5b_442f_9e82_829bd0d683ee </ci>
+              <ci> mw03911c10_ff33_48bc_8941_67dd809dbfb1 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwa7074843_ca5b_442f_9e82_829bd0d683ee" name="TXTL_TL_AA_consumption" value="0.024" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwd83ea452_2218_4bbb_b75f_c5e1c5303332" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw03911c10_ff33_48bc_8941_67dd809dbfb1" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw64f68b39_4419_4660_9c74_c83ce83b8b49" stoichiometry="1"/>
+          <speciesReference species="mw1002e515_6ba8_481d_aaa9_89647b90f29f" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw1615fb1b_0107_4873_9437_0a9e68966d81 </ci>
+              <ci> mw03911c10_ff33_48bc_8941_67dd809dbfb1 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw1615fb1b_0107_4873_9437_0a9e68966d81" name="TXTL_TL_rate" value="0.012" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwb3a565de_b6bc_4b3f_9a11_01efdd3bc8f5" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw64f68b39_4419_4660_9c74_c83ce83b8b49" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw0915efe7_1341_49ab_a8ef_0eb7fee30bc1" stoichiometry="1"/>
+          <speciesReference species="mw6f001bb3_24e7_4c91_8082_bada566d4832" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwbcb57b67_cc74_4991_8b1b_ebb7754f25e5 </ci>
+              <ci> mw64f68b39_4419_4660_9c74_c83ce83b8b49 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwbcb57b67_cc74_4991_8b1b_ebb7754f25e5" name="TXTL_RIBOBOUND_TERMINATION_RATE" value="50" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwc4e45cda_adf0_4501_a05e_fc21c27c4562" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw0915efe7_1341_49ab_a8ef_0eb7fee30bc1" stoichiometry="1"/>
+          <speciesReference species="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw9b6766dc_a71e_473a_bc70_66fb66cab180" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwd2523d79_0f44_4b57_aadb_340fbe277ca3 </ci>
+                <ci> mw0915efe7_1341_49ab_a8ef_0eb7fee30bc1 </ci>
+                <ci> mw0ba92b06_a96b_4b93_801c_b589b9715ad4 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwf22726c0_cccf_45b5_843f_bad6c47a81f4 </ci>
+                <ci> mw9b6766dc_a71e_473a_bc70_66fb66cab180 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwd2523d79_0f44_4b57_aadb_340fbe277ca3" name="TXTL_RNAdeg_F" value="10" constant="true"/>
+            <parameter id="mwf22726c0_cccf_45b5_843f_bad6c47a81f4" name="TXTL_RNAdeg_R" value="2000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw292f1dac_14cc_4ddd_9c70_d9408f5be349" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw9b6766dc_a71e_473a_bc70_66fb66cab180" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mweef98df5_a947_4da2_8d49_dffc38d0ace1 </ci>
+              <ci> mw9b6766dc_a71e_473a_bc70_66fb66cab180 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mweef98df5_a947_4da2_8d49_dffc38d0ace1" name="TXTL_RNAdeg_F" value="0.00277777777777778" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw9a107351_7055_452b_841d_abbbcd9631bc" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw8905d669_d482_4967_9c6f_f69677ea0794" stoichiometry="1"/>
+          <speciesReference species="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw457838f0_4f38_475f_b39e_af87507949ca" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw1e2e7681_4759_4ff1_aacd_d0ce1bb5dca8 </ci>
+                <ci> mw8905d669_d482_4967_9c6f_f69677ea0794 </ci>
+                <ci> mw0ba92b06_a96b_4b93_801c_b589b9715ad4 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwb7686fe5_b9d0_4800_880c_64d94d45292f </ci>
+                <ci> mw457838f0_4f38_475f_b39e_af87507949ca </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw1e2e7681_4759_4ff1_aacd_d0ce1bb5dca8" name="TXTL_RNAdeg_F" value="10" constant="true"/>
+            <parameter id="mwb7686fe5_b9d0_4800_880c_64d94d45292f" name="TXTL_RNAdeg_R" value="2000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw6f4502f9_67d3_4266_af9c_49188de29a21" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw457838f0_4f38_475f_b39e_af87507949ca" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" stoichiometry="1"/>
+          <speciesReference species="mw6f001bb3_24e7_4c91_8082_bada566d4832" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw36702c19_c8a4_45e4_acc1_fe4c99526d60 </ci>
+              <ci> mw457838f0_4f38_475f_b39e_af87507949ca </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw36702c19_c8a4_45e4_acc1_fe4c99526d60" name="TXTL_RNAdeg_F" value="0.00277777777777778" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwb66e0ff5_8691_4214_8c1d_d85b32817f08" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw03911c10_ff33_48bc_8941_67dd809dbfb1" stoichiometry="1"/>
+          <speciesReference species="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw9207e17d_6f37_430a_9d7e_9b616b612e57" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwd97fe2b4_8024_49f0_a0b6_307afa4eaaaf </ci>
+                <ci> mw03911c10_ff33_48bc_8941_67dd809dbfb1 </ci>
+                <ci> mw0ba92b06_a96b_4b93_801c_b589b9715ad4 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw94cbe563_4311_42ec_9e3e_edc2d9d18356 </ci>
+                <ci> mw9207e17d_6f37_430a_9d7e_9b616b612e57 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwd97fe2b4_8024_49f0_a0b6_307afa4eaaaf" name="TXTL_RNAdeg_F" value="10" constant="true"/>
+            <parameter id="mw94cbe563_4311_42ec_9e3e_edc2d9d18356" name="TXTL_RNAdeg_R" value="2000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw941be9c9_b96a_4257_9548_60668766e654" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw9207e17d_6f37_430a_9d7e_9b616b612e57" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" stoichiometry="1"/>
+          <speciesReference species="mwf5ed5ed1_b9a2_47a0_b2df_6763250cc3ad" stoichiometry="1"/>
+          <speciesReference species="mwf647df8e_575b_47cf_a794_3b55a6d29079" stoichiometry="2"/>
+          <speciesReference species="mw6f001bb3_24e7_4c91_8082_bada566d4832" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwb430f476_9975_45ff_bab4_ae095fe3dd00 </ci>
+              <ci> mw9207e17d_6f37_430a_9d7e_9b616b612e57 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwb430f476_9975_45ff_bab4_ae095fe3dd00" name="TXTL_RNAdeg_F" value="0.00277777777777778" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwc04e6a5a_7247_49ff_8383_f9ff2eb0a0d0" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw64f68b39_4419_4660_9c74_c83ce83b8b49" stoichiometry="1"/>
+          <speciesReference species="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw67db745d_ed07_4716_bb41_0117c710e1a7" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw99b9fe87_b5ef_4dee_a193_9c740472c8c3 </ci>
+                <ci> mw64f68b39_4419_4660_9c74_c83ce83b8b49 </ci>
+                <ci> mw0ba92b06_a96b_4b93_801c_b589b9715ad4 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwb13c13c4_f984_4fd1_90a4_cd8b3d92ffb5 </ci>
+                <ci> mw67db745d_ed07_4716_bb41_0117c710e1a7 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw99b9fe87_b5ef_4dee_a193_9c740472c8c3" name="TXTL_RNAdeg_F" value="10" constant="true"/>
+            <parameter id="mwb13c13c4_f984_4fd1_90a4_cd8b3d92ffb5" name="TXTL_RNAdeg_R" value="2000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw3c4cf93b_f681_4d59_80df_0e384c9b708c" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw67db745d_ed07_4716_bb41_0117c710e1a7" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" stoichiometry="1"/>
+          <speciesReference species="mw6f001bb3_24e7_4c91_8082_bada566d4832" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw5ac8d5a2_94ef_4098_843b_11ccc424286a </ci>
+              <ci> mw67db745d_ed07_4716_bb41_0117c710e1a7 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw5ac8d5a2_94ef_4098_843b_11ccc424286a" name="TXTL_RNAdeg_F" value="0.00277777777777778" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw187d1724_1142_40b5_ab0e_0e82ae13c11e" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw06d6ab53_bdfd_4580_9f4d_5d34dd8cec54" stoichiometry="1"/>
+          <speciesReference species="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw367403bf_e154_43e2_a7f7_6fe0f70aa5b0" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw1d8cd881_9278_4209_b728_69894ac6d75a </ci>
+                <ci> mw06d6ab53_bdfd_4580_9f4d_5d34dd8cec54 </ci>
+                <ci> mw0ba92b06_a96b_4b93_801c_b589b9715ad4 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwc529deb4_86d5_4a5c_b9c6_0990d30b4e4a </ci>
+                <ci> mw367403bf_e154_43e2_a7f7_6fe0f70aa5b0 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw1d8cd881_9278_4209_b728_69894ac6d75a" name="TXTL_RNAdeg_F" value="10" constant="true"/>
+            <parameter id="mwc529deb4_86d5_4a5c_b9c6_0990d30b4e4a" name="TXTL_RNAdeg_R" value="2000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw096cf642_475a_4699_870c_3098291dd827" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw367403bf_e154_43e2_a7f7_6fe0f70aa5b0" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" stoichiometry="1"/>
+          <speciesReference species="mwf5ed5ed1_b9a2_47a0_b2df_6763250cc3ad" stoichiometry="1"/>
+          <speciesReference species="mw6f001bb3_24e7_4c91_8082_bada566d4832" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw8c4da869_279a_472b_8ab7_501281d7301c </ci>
+              <ci> mw367403bf_e154_43e2_a7f7_6fe0f70aa5b0 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw8c4da869_279a_472b_8ab7_501281d7301c" name="TXTL_RNAdeg_F" value="0.00277777777777778" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw77f513e1_ca00_40c9_92f5_12774831e8d0" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwb0343236_d8ee_47a3_911c_d22c042081af" stoichiometry="1"/>
+          <speciesReference species="mwae7438d6_bdde_41b3_b31a_dd19d0d3e747" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwd6d6d9b4_86de_46ea_aca6_e3586590afd0" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwa503cd96_db0c_4d61_8e52_46d964ef67f0 </ci>
+                <ci> mwb0343236_d8ee_47a3_911c_d22c042081af </ci>
+                <ci> mwae7438d6_bdde_41b3_b31a_dd19d0d3e747 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw4c6c614b_eacf_4eb5_867c_8dbabff33aef </ci>
+                <ci> mwd6d6d9b4_86de_46ea_aca6_e3586590afd0 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwa503cd96_db0c_4d61_8e52_46d964ef67f0" name="Sigma28_RNAP_F" value="100" constant="true"/>
+            <parameter id="mw4c6c614b_eacf_4eb5_867c_8dbabff33aef" name="Sigma28_RNAP_R" value="0.1" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw42ac8dce_20b4_4c63_881a_993611d03efc" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw94981671_7083_4440_8e82_63ca06f9d455" stoichiometry="1"/>
+          <speciesReference species="mw6f001bb3_24e7_4c91_8082_bada566d4832" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw01a17d68_e849_4648_9303_7614457aa3ae" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwf8db6714_f66b_4b04_ace0_38b0931d95a9 </ci>
+                <ci> mw94981671_7083_4440_8e82_63ca06f9d455 </ci>
+                <ci> mw6f001bb3_24e7_4c91_8082_bada566d4832 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwc7ba3ca6_ee7c_4c73_8fce_546a6769f9e1 </ci>
+                <ci> mw01a17d68_e849_4648_9303_7614457aa3ae </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwf8db6714_f66b_4b04_ace0_38b0931d95a9" name="TXTL_UTR_UTR1_F" value="0.2" constant="true"/>
+            <parameter id="mwc7ba3ca6_ee7c_4c73_8fce_546a6769f9e1" name="TXTL_UTR_UTR1_R" value="4" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw1bff152d_b1c8_4b79_ae40_54c01ac60883" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwc97b4dee_90db_42fb_bee2_0d78d764af26" stoichiometry="1"/>
+          <speciesReference species="mwb0343236_d8ee_47a3_911c_d22c042081af" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwf72ff6eb_c3b5_4e87_82e0_f62c88a256a3" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw26d03b7c_1d5a_440b_b336_751171628197 </ci>
+                <ci> mwc97b4dee_90db_42fb_bee2_0d78d764af26 </ci>
+                <ci> mwb0343236_d8ee_47a3_911c_d22c042081af </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwedef5b5f_0729_42a8_830f_f8e8bb47ac65 </ci>
+                <ci> mwf72ff6eb_c3b5_4e87_82e0_f62c88a256a3 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw26d03b7c_1d5a_440b_b336_751171628197" name="TXTL_PLAC_RNAPbound_F" value="20" constant="true"/>
+            <parameter id="mwedef5b5f_0729_42a8_830f_f8e8bb47ac65" name="TXTL_PLAC_RNAPbound_R" value="400" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw69c443cc_2003_4b67_8aac_acdb3d72beb7" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw289f18db_bdf0_4329_a3bd_8c2cbb880e62" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwf72ff6eb_c3b5_4e87_82e0_f62c88a256a3" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw39451b92_9561_4ec2_9cdc_7cbd0f82c298 </ci>
+              <ci> mw289f18db_bdf0_4329_a3bd_8c2cbb880e62 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw39451b92_9561_4ec2_9cdc_7cbd0f82c298" name="TXTL_NTP_consumption" value="0.748770491803279" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwba97d6c0_ff50_48df_8f9b_e30102f5d77d" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwbf5884bf_d2f0_4af1_b95c_416abe1c97bb" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwb0343236_d8ee_47a3_911c_d22c042081af" stoichiometry="1"/>
+          <speciesReference species="mwc97b4dee_90db_42fb_bee2_0d78d764af26" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw554a1af8_bdc6_44d0_b39f_456dbfc1477e </ci>
+              <ci> mwbf5884bf_d2f0_4af1_b95c_416abe1c97bb </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw554a1af8_bdc6_44d0_b39f_456dbfc1477e" name="TXTL_RNAPBOUND_TERMINATION_RATE" value="0.05" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwd691ed66_2116_49de_9412_6c2055c8e9d2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwf72ff6eb_c3b5_4e87_82e0_f62c88a256a3" stoichiometry="1"/>
+          <speciesReference species="mwf647df8e_575b_47cf_a794_3b55a6d29079" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwcc85e235_850f_49c4_993b_ed7a29834d65" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwa5bbf234_ae9f_4105_a1a8_dcf39d85aea8 </ci>
+                <ci> mwf72ff6eb_c3b5_4e87_82e0_f62c88a256a3 </ci>
+                <ci> mwf647df8e_575b_47cf_a794_3b55a6d29079 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwea2d5697_91f8_44c2_9767_925c88d0ea89 </ci>
+                <ci> mwcc85e235_850f_49c4_993b_ed7a29834d65 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwa5bbf234_ae9f_4105_a1a8_dcf39d85aea8" name="TXTL_NTP_RNAP_F" value="1000" constant="true"/>
+            <parameter id="mwea2d5697_91f8_44c2_9767_925c88d0ea89" name="TXTL_NTP_RNAP_R" value="120000000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwb7a7ed2f_4f65_403d_a57a_d61243b9369f" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwf72ff6eb_c3b5_4e87_82e0_f62c88a256a3" stoichiometry="1"/>
+          <speciesReference species="mwa1abaec4_a028_468a_83dd_9b06410bb615" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw00e1225c_9093_4a2f_800b_490b69f71a46" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwced12813_06b8_4868_9556_3da5740ed338 </ci>
+                <ci> mwf72ff6eb_c3b5_4e87_82e0_f62c88a256a3 </ci>
+                <ci> mwa1abaec4_a028_468a_83dd_9b06410bb615 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw9753013f_34a1_4b36_959e_163047b79d24 </ci>
+                <ci> mw00e1225c_9093_4a2f_800b_490b69f71a46 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwced12813_06b8_4868_9556_3da5740ed338" name="TXTL_NTP_RNAP_F" value="1000" constant="true"/>
+            <parameter id="mw9753013f_34a1_4b36_959e_163047b79d24" name="TXTL_NTP_RNAP_R" value="120000000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwb46f6fe6_240d_4b20_a130_4d79435e082c" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwcc85e235_850f_49c4_993b_ed7a29834d65" stoichiometry="1"/>
+          <speciesReference species="mwa1abaec4_a028_468a_83dd_9b06410bb615" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw289f18db_bdf0_4329_a3bd_8c2cbb880e62" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw65434f98_8be3_4ca4_8bc6_3485cec03640 </ci>
+                <ci> mwcc85e235_850f_49c4_993b_ed7a29834d65 </ci>
+                <ci> mwa1abaec4_a028_468a_83dd_9b06410bb615 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw0398e0e5_1c68_40e2_9135_2882c741b55b </ci>
+                <ci> mw289f18db_bdf0_4329_a3bd_8c2cbb880e62 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw65434f98_8be3_4ca4_8bc6_3485cec03640" name="TXTL_NTP_RNAP_F" value="1" constant="true"/>
+            <parameter id="mw0398e0e5_1c68_40e2_9135_2882c741b55b" name="TXTL_NTP_RNAP_R" value="120000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwbb3c6a06_0cd8_4dd5_a2ad_897ae1692fbb" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw00e1225c_9093_4a2f_800b_490b69f71a46" stoichiometry="1"/>
+          <speciesReference species="mwf647df8e_575b_47cf_a794_3b55a6d29079" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw289f18db_bdf0_4329_a3bd_8c2cbb880e62" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw5e644fbe_0a4b_4dc7_9475_6c313ad6870f </ci>
+                <ci> mw00e1225c_9093_4a2f_800b_490b69f71a46 </ci>
+                <ci> mwf647df8e_575b_47cf_a794_3b55a6d29079 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw9806fbc6_bbc6_46c7_8cc8_44df26c5aa13 </ci>
+                <ci> mw289f18db_bdf0_4329_a3bd_8c2cbb880e62 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw5e644fbe_0a4b_4dc7_9475_6c313ad6870f" name="TXTL_NTP_RNAP_F" value="1" constant="true"/>
+            <parameter id="mw9806fbc6_bbc6_46c7_8cc8_44df26c5aa13" name="TXTL_NTP_RNAP_R" value="120000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwd84e5b81_70b4_4b8c_b4a0_8958924f0fd3" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw289f18db_bdf0_4329_a3bd_8c2cbb880e62" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwbf5884bf_d2f0_4af1_b95c_416abe1c97bb" stoichiometry="1"/>
+          <speciesReference species="mw94981671_7083_4440_8e82_63ca06f9d455" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw8aa78b93_7ebb_4b3f_935a_ad8eeab8a1ad </ci>
+              <ci> mw289f18db_bdf0_4329_a3bd_8c2cbb880e62 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw8aa78b93_7ebb_4b3f_935a_ad8eeab8a1ad" name="TXTL_transcription_rate1" value="0.00122950819672131" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwde1214fd_2c37_4a6a_a071_f4999b687f3f" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw01a17d68_e849_4648_9303_7614457aa3ae" stoichiometry="1"/>
+          <speciesReference species="mwf5ed5ed1_b9a2_47a0_b2df_6763250cc3ad" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw04d084c6_3e64_481b_82f2_8dbbd5f7f071" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw485d43b9_3d0a_499d_8b60_3dfb555fb035 </ci>
+                <ci> mw01a17d68_e849_4648_9303_7614457aa3ae </ci>
+                <ci> mwf5ed5ed1_b9a2_47a0_b2df_6763250cc3ad </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwac177e4a_0308_4655_8b94_5eac244c8ba2 </ci>
+                <ci> mw04d084c6_3e64_481b_82f2_8dbbd5f7f071 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw485d43b9_3d0a_499d_8b60_3dfb555fb035" name="TL_AA_F" value="300" constant="true"/>
+            <parameter id="mwac177e4a_0308_4655_8b94_5eac244c8ba2" name="TL_AA_R" value="0.1" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwddb30a43_d03e_4895_a510_f9c980b7f7be" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw04d084c6_3e64_481b_82f2_8dbbd5f7f071" stoichiometry="1"/>
+          <speciesReference species="mwf647df8e_575b_47cf_a794_3b55a6d29079" stoichiometry="2"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw81108bd5_3dc6_4990_8ace_139d7e9bf2d7" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw129c8b09_466d_4fb3_8ca2_f1589c04c24b </ci>
+                <ci> mw04d084c6_3e64_481b_82f2_8dbbd5f7f071 </ci>
+                <apply>
+                  <power/>
+                  <ci> mwf647df8e_575b_47cf_a794_3b55a6d29079 </ci>
+                  <cn type="integer"> 2 </cn>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw68e0d434_884e_4f56_bd6a_bf66af209e10 </ci>
+                <ci> mw81108bd5_3dc6_4990_8ace_139d7e9bf2d7 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw129c8b09_466d_4fb3_8ca2_f1589c04c24b" name="TL_AGTP_F" value="30" constant="true"/>
+            <parameter id="mw68e0d434_884e_4f56_bd6a_bf66af209e10" name="TL_AGTP_R" value="10" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwbdcbfc49_3ae8_460c_a361_24922d0ee44b" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw81108bd5_3dc6_4990_8ace_139d7e9bf2d7" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwb5b249fa_3a1f_4ece_8b1e_5ce0f68b0e2a" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwb6e58f84_e3b0_40d4_a981_8a3a31dc3afa </ci>
+              <ci> mw81108bd5_3dc6_4990_8ace_139d7e9bf2d7 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwb6e58f84_e3b0_40d4_a981_8a3a31dc3afa" name="TXTL_TL_AA_consumption" value="0.03" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwf341be44_a2ce_4ded_95a7_23ee7dfcb534" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw81108bd5_3dc6_4990_8ace_139d7e9bf2d7" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwb5b249fa_3a1f_4ece_8b1e_5ce0f68b0e2a" stoichiometry="1"/>
+          <speciesReference species="mwae7438d6_bdde_41b3_b31a_dd19d0d3e747" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw8a6447a0_5bd9_449d_9080_d34ff50ea5db </ci>
+              <ci> mw81108bd5_3dc6_4990_8ace_139d7e9bf2d7 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw8a6447a0_5bd9_449d_9080_d34ff50ea5db" name="TXTL_TL_rate" value="0.01" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwc39beedd_897c_4839_acfe_5c9c5a0037c5" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwb5b249fa_3a1f_4ece_8b1e_5ce0f68b0e2a" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw94981671_7083_4440_8e82_63ca06f9d455" stoichiometry="1"/>
+          <speciesReference species="mw6f001bb3_24e7_4c91_8082_bada566d4832" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwf896e846_4b26_4022_b4b6_dc9cc8c7a2d8 </ci>
+              <ci> mwb5b249fa_3a1f_4ece_8b1e_5ce0f68b0e2a </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwf896e846_4b26_4022_b4b6_dc9cc8c7a2d8" name="TXTL_RIBOBOUND_TERMINATION_RATE" value="50" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw79c93e98_3bc9_46ff_a23a_dba8c8d75b8d" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw94981671_7083_4440_8e82_63ca06f9d455" stoichiometry="1"/>
+          <speciesReference species="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw5d7f31c9_fcfa_43be_ad67_8fb65cd7fa37" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwd3acf318_ed33_4c29_8a07_563e879fb65d </ci>
+                <ci> mw94981671_7083_4440_8e82_63ca06f9d455 </ci>
+                <ci> mw0ba92b06_a96b_4b93_801c_b589b9715ad4 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwaf25b9c9_b776_4515_b359_3d39dc4184f4 </ci>
+                <ci> mw5d7f31c9_fcfa_43be_ad67_8fb65cd7fa37 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwd3acf318_ed33_4c29_8a07_563e879fb65d" name="TXTL_RNAdeg_F" value="10" constant="true"/>
+            <parameter id="mwaf25b9c9_b776_4515_b359_3d39dc4184f4" name="TXTL_RNAdeg_R" value="2000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw697021d5_884b_42da_ab3d_69e8d1090bd9" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw5d7f31c9_fcfa_43be_ad67_8fb65cd7fa37" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw4e5228d0_fc96_48b8_9bb3_e19dc3761452 </ci>
+              <ci> mw5d7f31c9_fcfa_43be_ad67_8fb65cd7fa37 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw4e5228d0_fc96_48b8_9bb3_e19dc3761452" name="TXTL_RNAdeg_F" value="0.00277777777777778" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw3a97feb0_28c3_43a5_86cf_9be745321f4c" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw01a17d68_e849_4648_9303_7614457aa3ae" stoichiometry="1"/>
+          <speciesReference species="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw9dba7279_e0c9_48e6_ad52_a235ea58f439" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwc1590106_61d4_41d4_b824_aacfcf5757d4 </ci>
+                <ci> mw01a17d68_e849_4648_9303_7614457aa3ae </ci>
+                <ci> mw0ba92b06_a96b_4b93_801c_b589b9715ad4 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwf5139d39_5774_4798_8d53_a738e61d26ce </ci>
+                <ci> mw9dba7279_e0c9_48e6_ad52_a235ea58f439 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwc1590106_61d4_41d4_b824_aacfcf5757d4" name="TXTL_RNAdeg_F" value="10" constant="true"/>
+            <parameter id="mwf5139d39_5774_4798_8d53_a738e61d26ce" name="TXTL_RNAdeg_R" value="2000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw42ab8f2f_f753_4c89_8b5d_02f3047612f4" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw9dba7279_e0c9_48e6_ad52_a235ea58f439" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" stoichiometry="1"/>
+          <speciesReference species="mw6f001bb3_24e7_4c91_8082_bada566d4832" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwa8c57024_2f42_4ffb_bf55_9a0bb501379f </ci>
+              <ci> mw9dba7279_e0c9_48e6_ad52_a235ea58f439 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwa8c57024_2f42_4ffb_bf55_9a0bb501379f" name="TXTL_RNAdeg_F" value="0.00277777777777778" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw0eb45da9_91ae_4986_930f_302b35186eb7" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw81108bd5_3dc6_4990_8ace_139d7e9bf2d7" stoichiometry="1"/>
+          <speciesReference species="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw7b9170d5_423b_4e8f_892e_4d196b1484b5" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw6a733318_b746_4b80_9469_931a08d1afa9 </ci>
+                <ci> mw81108bd5_3dc6_4990_8ace_139d7e9bf2d7 </ci>
+                <ci> mw0ba92b06_a96b_4b93_801c_b589b9715ad4 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mweefb7106_a160_4b83_b7fc_692a6e7a1963 </ci>
+                <ci> mw7b9170d5_423b_4e8f_892e_4d196b1484b5 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw6a733318_b746_4b80_9469_931a08d1afa9" name="TXTL_RNAdeg_F" value="10" constant="true"/>
+            <parameter id="mweefb7106_a160_4b83_b7fc_692a6e7a1963" name="TXTL_RNAdeg_R" value="2000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw961362ff_53d4_4014_a7e9_d9ed54c6ce99" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw7b9170d5_423b_4e8f_892e_4d196b1484b5" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" stoichiometry="1"/>
+          <speciesReference species="mwf5ed5ed1_b9a2_47a0_b2df_6763250cc3ad" stoichiometry="1"/>
+          <speciesReference species="mwf647df8e_575b_47cf_a794_3b55a6d29079" stoichiometry="2"/>
+          <speciesReference species="mw6f001bb3_24e7_4c91_8082_bada566d4832" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwd22dd89a_2b81_4473_a465_4aeeb3a9f06c </ci>
+              <ci> mw7b9170d5_423b_4e8f_892e_4d196b1484b5 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwd22dd89a_2b81_4473_a465_4aeeb3a9f06c" name="TXTL_RNAdeg_F" value="0.00277777777777778" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwd1acecb9_57f4_463a_96f3_6e0a416e44cc" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwb5b249fa_3a1f_4ece_8b1e_5ce0f68b0e2a" stoichiometry="1"/>
+          <speciesReference species="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw77bd724a_07e9_485b_af15_1b91761e8481" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwce0468eb_5a91_4755_9fb0_5315db6e2eb1 </ci>
+                <ci> mwb5b249fa_3a1f_4ece_8b1e_5ce0f68b0e2a </ci>
+                <ci> mw0ba92b06_a96b_4b93_801c_b589b9715ad4 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw1f7c599b_0cf3_4dcc_8f02_35e7e0ec07b0 </ci>
+                <ci> mw77bd724a_07e9_485b_af15_1b91761e8481 </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwce0468eb_5a91_4755_9fb0_5315db6e2eb1" name="TXTL_RNAdeg_F" value="10" constant="true"/>
+            <parameter id="mw1f7c599b_0cf3_4dcc_8f02_35e7e0ec07b0" name="TXTL_RNAdeg_R" value="2000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw30d54971_fe2e_4d6e_912f_cb476cfd3a91" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw77bd724a_07e9_485b_af15_1b91761e8481" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" stoichiometry="1"/>
+          <speciesReference species="mw6f001bb3_24e7_4c91_8082_bada566d4832" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwcca3ad2d_d0f9_4dfb_8a8e_e52c32ee4039 </ci>
+              <ci> mw77bd724a_07e9_485b_af15_1b91761e8481 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwcca3ad2d_d0f9_4dfb_8a8e_e52c32ee4039" name="TXTL_RNAdeg_F" value="0.00277777777777778" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwc1c9891c_f05e_4265_9321_14ce3e828542" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw04d084c6_3e64_481b_82f2_8dbbd5f7f071" stoichiometry="1"/>
+          <speciesReference species="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw387556e3_bc1c_4873_8ad7_810e472e230b" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw4d291a31_c3f1_48f8_82e0_78cfeff2189b </ci>
+                <ci> mw04d084c6_3e64_481b_82f2_8dbbd5f7f071 </ci>
+                <ci> mw0ba92b06_a96b_4b93_801c_b589b9715ad4 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwc66105e1_d1b8_4029_b399_a38104b88341 </ci>
+                <ci> mw387556e3_bc1c_4873_8ad7_810e472e230b </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw4d291a31_c3f1_48f8_82e0_78cfeff2189b" name="TXTL_RNAdeg_F" value="10" constant="true"/>
+            <parameter id="mwc66105e1_d1b8_4029_b399_a38104b88341" name="TXTL_RNAdeg_R" value="2000" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwe184c951_2c83_4013_8d72_ce0477860df6" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mw387556e3_bc1c_4873_8ad7_810e472e230b" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw0ba92b06_a96b_4b93_801c_b589b9715ad4" stoichiometry="1"/>
+          <speciesReference species="mwf5ed5ed1_b9a2_47a0_b2df_6763250cc3ad" stoichiometry="1"/>
+          <speciesReference species="mw6f001bb3_24e7_4c91_8082_bada566d4832" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwcb7d172d_a279_495c_b14a_f081803cea53 </ci>
+              <ci> mw387556e3_bc1c_4873_8ad7_810e472e230b </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwcb7d172d_a279_495c_b14a_f081803cea53" name="TXTL_RNAdeg_F" value="0.00277777777777778" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw4326336c_505d_4ab5_a8b2_de7a1ccbb748" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwf647df8e_575b_47cf_a794_3b55a6d29079" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mw1c60740a_9b26_49db_a02d_f9e424215ab8" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw7362d43e_23e2_4a10_b8fd_20940f881307 </ci>
+              <ci> mwf647df8e_575b_47cf_a794_3b55a6d29079 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+    <listOfEvents>
+      <event id="mw81885064_5ef2_4dbe_8b5a_04901d154811">
+        <trigger>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <leq/>
+              <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+              <cn type="integer"> 5400 </cn>
+            </apply>
+          </math>
+        </trigger>
+        <listOfEventAssignments>
+          <eventAssignment variable="mw7362d43e_23e2_4a10_b8fd_20940f881307">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn type="integer"> 0 </cn>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+      <event id="mw3d93a944_d4dd_42e9_ac7e_a98afcc267e0">
+        <trigger>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <gt/>
+              <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+              <cn type="integer"> 5400 </cn>
+            </apply>
+          </math>
+        </trigger>
+        <listOfEventAssignments>
+          <eventAssignment variable="mw7362d43e_23e2_4a10_b8fd_20940f881307">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn> 0.0002 </cn>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+    </listOfEvents>
+  </model>
+</sbml>

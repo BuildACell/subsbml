@@ -1,0 +1,3041 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="combined_Subsystems__mwaa780036_6cf8_4571_8d74_b3043b255fb8_S1_mwdbb9ef8f_479f_4401_b3c8_e793526a2f6e_S2_mwdbb9ef8f_479f_4401_b3c8_e793526a2f6e_S2_mwdbb9ef8f_479f_4401_b3c8_e793526a2f6e_S2" substanceUnits="substance" timeUnits="second" volumeUnits="volume" areaUnits="area" lengthUnits="metre" extentUnits="substance">
+    <listOfUnitDefinitions>
+      <unitDefinition id="volume">
+        <listOfUnits>
+          <unit kind="litre" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="substance">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="area">
+        <listOfUnits>
+          <unit kind="metre" exponent="2" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment id="cell" name="cell" spatialDimensions="3" size="1" units="volume" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species id="RecBCD_combined" name="RecBCD" compartment="cell" initialAmount="10.0000066666711" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="RNase_combined" name="RNase" compartment="cell" initialAmount="200.000133333422" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="protein_tetR_combined" name="protein tetR" compartment="cell" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="aTc_combined" name="aTc" compartment="cell" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="protein_tetRdimer_combined" name="protein tetRdimer" compartment="cell" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="RNA_utr1__tetR_combined" name="RNA utr1--tetR" compartment="cell" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Ribo_RNA_utr1__tetR_combined" name="Ribo:RNA utr1--tetR" compartment="cell" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="DNA_ptet__utr1__tetR_combined" name="DNA ptet--utr1--tetR" compartment="cell" initialAmount="2.00000133333422" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="RNAP_DNA_ptet__utr1__tetR_combined" name="RNAP:DNA ptet--utr1--tetR" compartment="cell" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="CUTP_AGTP_RNAP_DNA_ptet__utr1__tetR_combined" name="CUTP:AGTP:RNAP:DNA ptet--utr1--tetR" compartment="cell" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="term_RNAP_DNA_ptet__utr1__tetR_combined" name="term_RNAP:DNA ptet--utr1--tetR" compartment="cell" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="AA_2AGTP_Ribo_RNA_utr1__tetR_combined" name="AA:2AGTP:Ribo:RNA utr1--tetR" compartment="cell" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="term_Ribo_RNA_utr1__tetR_combined" name="term_Ribo:RNA utr1--tetR" compartment="cell" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="protein_deGFP_combined" name="protein deGFP" compartment="cell" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="xxprotein_deGFP_combined" name="protein deGFP*" compartment="cell" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="RNA_utr1__deGFP_combined" name="RNA utr1--deGFP" compartment="cell" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Ribo_RNA_utr1__deGFP_combined" name="Ribo:RNA utr1--deGFP" compartment="cell" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="DNA_ptet__utr1__deGFP_combined" name="DNA ptet--utr1--deGFP" compartment="cell" initialAmount="2.00000133333422" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="RNAP_DNA_ptet__utr1__deGFP_combined" name="RNAP:DNA ptet--utr1--deGFP" compartment="cell" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="CUTP_AGTP_RNAP_DNA_ptet__utr1__deGFP_combined" name="CUTP:AGTP:RNAP:DNA ptet--utr1--deGFP" compartment="cell" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="term_RNAP_DNA_ptet__utr1__deGFP_combined" name="term_RNAP:DNA ptet--utr1--deGFP" compartment="cell" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="AA_2AGTP_Ribo_RNA_utr1__deGFP_combined" name="AA:2AGTP:Ribo:RNA utr1--deGFP" compartment="cell" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="term_Ribo_RNA_utr1__deGFP_combined" name="term_Ribo:RNA utr1--deGFP" compartment="cell" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="x_2_aTc_protein_tetRdimer_combined" name="2 aTc:protein tetRdimer" compartment="cell" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="AGTP_RNAP_DNA_ptet__utr1__tetR_combined" name="AGTP:RNAP:DNA ptet--utr1--tetR" compartment="cell" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="CUTP_RNAP_DNA_ptet__utr1__tetR_combined" name="CUTP:RNAP:DNA ptet--utr1--tetR" compartment="cell" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="DNA_ptet__utr1__tetR_protein_tetRdimer_combined" name="DNA ptet--utr1--tetR:protein tetRdimer" compartment="cell" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="AA_Ribo_RNA_utr1__tetR_combined" name="AA:Ribo:RNA utr1--tetR" compartment="cell" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="RNA_utr1__tetR_RNase_combined" name="RNA utr1--tetR:RNase" compartment="cell" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Ribo_RNA_utr1__tetR_RNase_combined" name="Ribo:RNA utr1--tetR:RNase" compartment="cell" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="AA_2AGTP_Ribo_RNA_utr1__tetR_RNase_combined" name="AA:2AGTP:Ribo:RNA utr1--tetR:RNase" compartment="cell" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="term_Ribo_RNA_utr1__tetR_RNase_combined" name="term_Ribo:RNA utr1--tetR:RNase" compartment="cell" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="AA_Ribo_RNA_utr1__tetR_RNase_combined" name="AA:Ribo:RNA utr1--tetR:RNase" compartment="cell" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="AGTP_RNAP_DNA_ptet__utr1__deGFP_combined" name="AGTP:RNAP:DNA ptet--utr1--deGFP" compartment="cell" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="CUTP_RNAP_DNA_ptet__utr1__deGFP_combined" name="CUTP:RNAP:DNA ptet--utr1--deGFP" compartment="cell" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="DNA_ptet__utr1__deGFP_protein_tetRdimer_combined" name="DNA ptet--utr1--deGFP:protein tetRdimer" compartment="cell" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="AA_Ribo_RNA_utr1__deGFP_combined" name="AA:Ribo:RNA utr1--deGFP" compartment="cell" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="RNA_utr1__deGFP_RNase_combined" name="RNA utr1--deGFP:RNase" compartment="cell" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Ribo_RNA_utr1__deGFP_RNase_combined" name="Ribo:RNA utr1--deGFP:RNase" compartment="cell" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="AA_2AGTP_Ribo_RNA_utr1__deGFP_RNase_combined" name="AA:2AGTP:Ribo:RNA utr1--deGFP:RNase" compartment="cell" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="term_Ribo_RNA_utr1__deGFP_RNase_combined" name="term_Ribo:RNA utr1--deGFP:RNase" compartment="cell" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="AA_Ribo_RNA_utr1__deGFP_RNase_combined" name="AA:Ribo:RNA utr1--deGFP:RNase" compartment="cell" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="AGTP_USED_combined" name="AGTP_USED" compartment="cell" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="RNAP_shared" name="RNAP" compartment="cell" initialAmount="100" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Ribo_shared" name="Ribo" compartment="cell" initialAmount="60.0000400000266" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="AGTP_shared" name="AGTP" compartment="cell" initialAmount="6360096.40153886" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="CUTP_shared" name="CUTP" compartment="cell" initialAmount="3816057.84092332" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="AA_shared" name="AA" compartment="cell" initialAmount="63600964.0153886" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter id="mw8cf83496_9f55_4eca_9dc2_b30c8e67d7bd_S1" name="AGTPdeg_F" value="0" constant="false"/>
+      <parameter id="mw5c2bb4d9_3548_456f_a5fe_b970d5bbbf8a_S2" name="AGTPdeg_F" value="0" constant="false"/>
+    </listOfParameters>
+    <listOfReactions>
+      <reaction id="mw261560c9_9435_4f37_9618_76226e0b55e6_S1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="protein_tetRdimer_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="aTc_combined" stoichiometry="2" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="x_2_aTc_protein_tetRdimer_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwfbcf78c0_c44e_47a5_9e6e_5f744d4ba1db </ci>
+                <ci> protein_tetRdimer_combined </ci>
+                <apply>
+                  <power/>
+                  <ci> aTc_combined </ci>
+                  <cn type="integer"> 2 </cn>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw1264d240_fd8d_4982_bbf8_f28fe0bfbac6 </ci>
+                <ci> x_2_aTc_protein_tetRdimer_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwfbcf78c0_c44e_47a5_9e6e_5f744d4ba1db" name="TXTL_INDUCER_TETR_ATC_F" value="1e-05"/>
+            <localParameter id="mw1264d240_fd8d_4982_bbf8_f28fe0bfbac6" name="TXTL_INDUCER_TETR_ATC_R" value="0.1"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw4379ceb8_935a_47a0_866b_797117c19b01_S1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="protein_tetR_combined" stoichiometry="2" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="protein_tetRdimer_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw2e802587_0e89_4aa7_9f9d_22c862430ce2 </ci>
+                <apply>
+                  <power/>
+                  <ci> protein_tetR_combined </ci>
+                  <cn type="integer"> 2 </cn>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwbba0ccdc_7726_46be_b19f_1feb754ebdb2 </ci>
+                <ci> protein_tetRdimer_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw2e802587_0e89_4aa7_9f9d_22c862430ce2" name="kf" value="1"/>
+            <localParameter id="mwbba0ccdc_7726_46be_b19f_1feb754ebdb2" name="kr" value="1"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw01f62f46_208c_4421_9d29_c35407ee9aba_S1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="RNA_utr1__tetR_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="Ribo_shared" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Ribo_RNA_utr1__tetR_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw07ea2936_5015_4dab_acc5_fd7f6526b17b </ci>
+                <ci> RNA_utr1__tetR_combined </ci>
+                <ci> Ribo_shared </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw4f78807b_ae02_448c_bb14_ee5e11a563b3 </ci>
+                <ci> Ribo_RNA_utr1__tetR_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw07ea2936_5015_4dab_acc5_fd7f6526b17b" name="TXTL_UTR_UTR1_F" value="0.2"/>
+            <localParameter id="mw4f78807b_ae02_448c_bb14_ee5e11a563b3" name="TXTL_UTR_UTR1_R" value="4"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwf778efef_ff33_4460_a6a8_43c86b82e63f_S1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="DNA_ptet__utr1__tetR_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="RNAP_shared" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RNAP_DNA_ptet__utr1__tetR_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw6daa7e6f_9556_4e16_bd5d_796a7629e4c2 </ci>
+                <ci> DNA_ptet__utr1__tetR_combined </ci>
+                <ci> RNAP_shared </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwdfe4ee5d_b115_47fd_bcc7_6e33d30de965 </ci>
+                <ci> RNAP_DNA_ptet__utr1__tetR_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw6daa7e6f_9556_4e16_bd5d_796a7629e4c2" name="TXTL_PTET_RNAPbound_F" value="20"/>
+            <localParameter id="mwdfe4ee5d_b115_47fd_bcc7_6e33d30de965" name="TXTL_PTET_RNAPbound_R" value="400"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwc85712ed_78b3_4e88_b982_9a98e8f0b9e3_S1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="CUTP_AGTP_RNAP_DNA_ptet__utr1__tetR_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RNAP_DNA_ptet__utr1__tetR_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw0e595590_8d9b_4129_b041_2d6d03d14310 </ci>
+              <ci> CUTP_AGTP_RNAP_DNA_ptet__utr1__tetR_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw0e595590_8d9b_4129_b041_2d6d03d14310" name="TXTL_NTP_consumption" value="0.748770491803279"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwfacc3108_198d_47d5_a4c4_209d38019ce8_S1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="term_RNAP_DNA_ptet__utr1__tetR_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RNAP_shared" stoichiometry="1" constant="true"/>
+          <speciesReference species="DNA_ptet__utr1__tetR_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwb79e72d2_df4b_4a17_b049_930f181811d8 </ci>
+              <ci> term_RNAP_DNA_ptet__utr1__tetR_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwb79e72d2_df4b_4a17_b049_930f181811d8" name="TXTL_RNAPBOUND_TERMINATION_RATE" value="0.05"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw22f6c31f_b7a2_45d2_bbe2_b7fa4d0ed135_S1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="RNAP_DNA_ptet__utr1__tetR_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="AGTP_shared" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="AGTP_RNAP_DNA_ptet__utr1__tetR_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw1659b57d_89e5_4c3b_ad88_ad9f9b3770a6 </ci>
+                <ci> RNAP_DNA_ptet__utr1__tetR_combined </ci>
+                <ci> AGTP_shared </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw65e56cc1_c01c_4842_8e14_b6b2a8230bfe </ci>
+                <ci> AGTP_RNAP_DNA_ptet__utr1__tetR_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw1659b57d_89e5_4c3b_ad88_ad9f9b3770a6" name="TXTL_NTP_RNAP_F" value="1000"/>
+            <localParameter id="mw65e56cc1_c01c_4842_8e14_b6b2a8230bfe" name="TXTL_NTP_RNAP_R" value="120000000"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwd4422ffd_15bc_476e_a245_2b9defd21926_S1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="RNAP_DNA_ptet__utr1__tetR_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="CUTP_shared" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="CUTP_RNAP_DNA_ptet__utr1__tetR_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwde82a768_c1cb_4de0_8bd6_3f11a5d022a3 </ci>
+                <ci> RNAP_DNA_ptet__utr1__tetR_combined </ci>
+                <ci> CUTP_shared </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw74ed0b26_364d_454f_872e_46e3d3057f5f </ci>
+                <ci> CUTP_RNAP_DNA_ptet__utr1__tetR_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwde82a768_c1cb_4de0_8bd6_3f11a5d022a3" name="TXTL_NTP_RNAP_F" value="1000"/>
+            <localParameter id="mw74ed0b26_364d_454f_872e_46e3d3057f5f" name="TXTL_NTP_RNAP_R" value="120000000"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw7fd8f5e9_8781_4616_910b_2db46169f3ce_S1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="AGTP_RNAP_DNA_ptet__utr1__tetR_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="CUTP_shared" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="CUTP_AGTP_RNAP_DNA_ptet__utr1__tetR_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwf2eaabd2_09a1_4b97_87bb_5acc0feaf4b6 </ci>
+                <ci> AGTP_RNAP_DNA_ptet__utr1__tetR_combined </ci>
+                <ci> CUTP_shared </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw94038a6b_bf6a_459c_a1f4_9d9c0c7b5975 </ci>
+                <ci> CUTP_AGTP_RNAP_DNA_ptet__utr1__tetR_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwf2eaabd2_09a1_4b97_87bb_5acc0feaf4b6" name="TXTL_NTP_RNAP_F" value="1"/>
+            <localParameter id="mw94038a6b_bf6a_459c_a1f4_9d9c0c7b5975" name="TXTL_NTP_RNAP_R" value="120000"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw52ec9b9c_c5ec_47a9_8850_f0d2fd8259d2_S1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="CUTP_RNAP_DNA_ptet__utr1__tetR_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="AGTP_shared" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="CUTP_AGTP_RNAP_DNA_ptet__utr1__tetR_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw7f555612_f80c_4df8_9524_690ac9ffa84f </ci>
+                <ci> CUTP_RNAP_DNA_ptet__utr1__tetR_combined </ci>
+                <ci> AGTP_shared </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw6de63d62_6a84_438f_bc04_ab2a4b4330ed </ci>
+                <ci> CUTP_AGTP_RNAP_DNA_ptet__utr1__tetR_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw7f555612_f80c_4df8_9524_690ac9ffa84f" name="TXTL_NTP_RNAP_F" value="1"/>
+            <localParameter id="mw6de63d62_6a84_438f_bc04_ab2a4b4330ed" name="TXTL_NTP_RNAP_R" value="120000"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw9570edab_f28e_43e9_9fa1_a587f1aea1fb_S1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="CUTP_AGTP_RNAP_DNA_ptet__utr1__tetR_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="term_RNAP_DNA_ptet__utr1__tetR_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="RNA_utr1__tetR_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw16c21fc8_334a_4688_b222_e245fd355251 </ci>
+              <ci> CUTP_AGTP_RNAP_DNA_ptet__utr1__tetR_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw16c21fc8_334a_4688_b222_e245fd355251" name="TXTL_transcription_rate1" value="0.00122950819672131"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwf13844c5_47b9_4824_a257_bac195c63389_S1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="DNA_ptet__utr1__tetR_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="protein_tetRdimer_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="DNA_ptet__utr1__tetR_protein_tetRdimer_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw12651169_8b11_4ad2_8963_88bd9522d81e </ci>
+                <ci> DNA_ptet__utr1__tetR_combined </ci>
+                <ci> protein_tetRdimer_combined </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwec035dc4_c003_46e3_9653_0c75a175ae61 </ci>
+                <ci> DNA_ptet__utr1__tetR_protein_tetRdimer_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw12651169_8b11_4ad2_8963_88bd9522d81e" name="ptet_sequestration_F" value="0.25"/>
+            <localParameter id="mwec035dc4_c003_46e3_9653_0c75a175ae61" name="ptet_sequestration_R" value="0.000111"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwe5276aaa_52a0_4182_8fae_34e3176acd5a_S1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="Ribo_RNA_utr1__tetR_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="AA_shared" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="AA_Ribo_RNA_utr1__tetR_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwab411cd6_2805_4bd7_9cc3_ab45d124658a </ci>
+                <ci> Ribo_RNA_utr1__tetR_combined </ci>
+                <ci> AA_shared </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwf7d3a620_a37a_4fe0_9509_b8f761cb15f9 </ci>
+                <ci> AA_Ribo_RNA_utr1__tetR_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwab411cd6_2805_4bd7_9cc3_ab45d124658a" name="TL_AA_F" value="300"/>
+            <localParameter id="mwf7d3a620_a37a_4fe0_9509_b8f761cb15f9" name="TL_AA_R" value="0.1"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw663a4449_77dc_4e1c_85d5_d8540cf82602_S1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="AA_Ribo_RNA_utr1__tetR_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="AGTP_shared" stoichiometry="2" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="AA_2AGTP_Ribo_RNA_utr1__tetR_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw0fb9ebe3_2bc3_4cfb_8856_c25070702a80 </ci>
+                <ci> AA_Ribo_RNA_utr1__tetR_combined </ci>
+                <apply>
+                  <power/>
+                  <ci> AGTP_shared </ci>
+                  <cn type="integer"> 2 </cn>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwd8ee3a13_ef6b_47ec_96cc_eec78392a57d </ci>
+                <ci> AA_2AGTP_Ribo_RNA_utr1__tetR_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw0fb9ebe3_2bc3_4cfb_8856_c25070702a80" name="TL_AGTP_F" value="30"/>
+            <localParameter id="mwd8ee3a13_ef6b_47ec_96cc_eec78392a57d" name="TL_AGTP_R" value="10"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw6841d216_de98_4a36_becc_10ebf204fdac_S1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="AA_2AGTP_Ribo_RNA_utr1__tetR_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="term_Ribo_RNA_utr1__tetR_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw5e9b553b_0145_41d4_994e_190bab232d4a </ci>
+              <ci> AA_2AGTP_Ribo_RNA_utr1__tetR_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw5e9b553b_0145_41d4_994e_190bab232d4a" name="TXTL_TL_AA_consumption" value="0.03"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw1542a388_1a94_4782_a22d_3686d1916665_S1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="AA_2AGTP_Ribo_RNA_utr1__tetR_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="term_Ribo_RNA_utr1__tetR_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="protein_tetR_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw19ef2c16_9708_478c_8c8e_04ae4d5fe1b7 </ci>
+              <ci> AA_2AGTP_Ribo_RNA_utr1__tetR_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw19ef2c16_9708_478c_8c8e_04ae4d5fe1b7" name="TXTL_TL_rate" value="0.01"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw8d90576f_d934_46f0_9bb1_5286e4e7663c_S1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="term_Ribo_RNA_utr1__tetR_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RNA_utr1__tetR_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="Ribo_shared" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwc1ca715e_3c14_41b1_ae3f_8930833e7718 </ci>
+              <ci> term_Ribo_RNA_utr1__tetR_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwc1ca715e_3c14_41b1_ae3f_8930833e7718" name="TXTL_RIBOBOUND_TERMINATION_RATE" value="50"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwd855a09e_d3d0_4ec6_97ed_33bcc30301d0_S1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="RNA_utr1__tetR_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RNA_utr1__tetR_RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwadf87338_787b_45b0_a88c_44d267b964bd </ci>
+                <ci> RNA_utr1__tetR_combined </ci>
+                <ci> RNase_combined </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw0f1aee13_47c2_4445_8c6f_e815557ee222 </ci>
+                <ci> RNA_utr1__tetR_RNase_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwadf87338_787b_45b0_a88c_44d267b964bd" name="TXTL_RNAdeg_F" value="10"/>
+            <localParameter id="mw0f1aee13_47c2_4445_8c6f_e815557ee222" name="TXTL_RNAdeg_R" value="2000"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw1b944b0a_5e80_4820_91af_54696c0fef10_S1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="RNA_utr1__tetR_RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw8ce8ef14_fd26_4a8b_9394_e770de686ed2 </ci>
+              <ci> RNA_utr1__tetR_RNase_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw8ce8ef14_fd26_4a8b_9394_e770de686ed2" name="TXTL_RNAdeg_F" value="0.00277777777777778"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwc97b54ff_94d5_4d4b_b86d_c1098d17d91c_S1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="Ribo_RNA_utr1__tetR_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Ribo_RNA_utr1__tetR_RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwd810bd13_4514_4acb_bc64_d1fd16b7af1e </ci>
+                <ci> Ribo_RNA_utr1__tetR_combined </ci>
+                <ci> RNase_combined </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw921602d7_8f8e_4180_b86e_29a7747334b4 </ci>
+                <ci> Ribo_RNA_utr1__tetR_RNase_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwd810bd13_4514_4acb_bc64_d1fd16b7af1e" name="TXTL_RNAdeg_F" value="10"/>
+            <localParameter id="mw921602d7_8f8e_4180_b86e_29a7747334b4" name="TXTL_RNAdeg_R" value="2000"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw8f8ae793_3eb1_4543_86be_fd3f46891edf_S1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="Ribo_RNA_utr1__tetR_RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RNase_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="Ribo_shared" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw6da2fb2a_c934_440b_88b5_bf291490ce19 </ci>
+              <ci> Ribo_RNA_utr1__tetR_RNase_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw6da2fb2a_c934_440b_88b5_bf291490ce19" name="TXTL_RNAdeg_F" value="0.00277777777777778"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwa3c80ce8_3f35_4896_851f_f001d31b13b1_S1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="AA_2AGTP_Ribo_RNA_utr1__tetR_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="AA_2AGTP_Ribo_RNA_utr1__tetR_RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw2d38ba59_a43e_489b_af08_324568803d41 </ci>
+                <ci> AA_2AGTP_Ribo_RNA_utr1__tetR_combined </ci>
+                <ci> RNase_combined </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw0505ec84_2883_40ce_94ce_1d8c32454175 </ci>
+                <ci> AA_2AGTP_Ribo_RNA_utr1__tetR_RNase_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw2d38ba59_a43e_489b_af08_324568803d41" name="TXTL_RNAdeg_F" value="10"/>
+            <localParameter id="mw0505ec84_2883_40ce_94ce_1d8c32454175" name="TXTL_RNAdeg_R" value="2000"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwcc627b8e_86a7_4999_9341_4f0cedf8c23a_S1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="AA_2AGTP_Ribo_RNA_utr1__tetR_RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RNase_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="AA_shared" stoichiometry="1" constant="true"/>
+          <speciesReference species="AGTP_shared" stoichiometry="2" constant="true"/>
+          <speciesReference species="Ribo_shared" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw2a18d098_7bda_4f5d_b418_9e16c4a6b607 </ci>
+              <ci> AA_2AGTP_Ribo_RNA_utr1__tetR_RNase_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw2a18d098_7bda_4f5d_b418_9e16c4a6b607" name="TXTL_RNAdeg_F" value="0.00277777777777778"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw1af36775_1f35_45b6_975f_b76651538f69_S1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="term_Ribo_RNA_utr1__tetR_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="term_Ribo_RNA_utr1__tetR_RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw65dd2d92_061e_4d2b_a470_7d28dc3a5198 </ci>
+                <ci> term_Ribo_RNA_utr1__tetR_combined </ci>
+                <ci> RNase_combined </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwc0309b26_1211_4be3_9bad_7e4abbc82b22 </ci>
+                <ci> term_Ribo_RNA_utr1__tetR_RNase_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw65dd2d92_061e_4d2b_a470_7d28dc3a5198" name="TXTL_RNAdeg_F" value="10"/>
+            <localParameter id="mwc0309b26_1211_4be3_9bad_7e4abbc82b22" name="TXTL_RNAdeg_R" value="2000"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw8923a15b_5ca5_4b31_b3fa_71c7a85b40ba_S1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="term_Ribo_RNA_utr1__tetR_RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RNase_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="Ribo_shared" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw5332fbb8_814d_4e9c_bf02_49e38005759d </ci>
+              <ci> term_Ribo_RNA_utr1__tetR_RNase_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw5332fbb8_814d_4e9c_bf02_49e38005759d" name="TXTL_RNAdeg_F" value="0.00277777777777778"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwccc63baa_1053_479b_9ff1_39d327e8333a_S1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="AA_Ribo_RNA_utr1__tetR_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="AA_Ribo_RNA_utr1__tetR_RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw573b0df0_dcc3_4aab_8799_4ca2e978f70f </ci>
+                <ci> AA_Ribo_RNA_utr1__tetR_combined </ci>
+                <ci> RNase_combined </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw1276426a_d54b_4311_b8de_ec9ef4dd1221 </ci>
+                <ci> AA_Ribo_RNA_utr1__tetR_RNase_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw573b0df0_dcc3_4aab_8799_4ca2e978f70f" name="TXTL_RNAdeg_F" value="10"/>
+            <localParameter id="mw1276426a_d54b_4311_b8de_ec9ef4dd1221" name="TXTL_RNAdeg_R" value="2000"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwbab355ff_b4a0_46b1_8cd7_7fe19f6c6237_S1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="AA_Ribo_RNA_utr1__tetR_RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RNase_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="AA_shared" stoichiometry="1" constant="true"/>
+          <speciesReference species="Ribo_shared" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw0fb65539_ef53_440a_9243_6bfdf4a4b2cf </ci>
+              <ci> AA_Ribo_RNA_utr1__tetR_RNase_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw0fb65539_ef53_440a_9243_6bfdf4a4b2cf" name="TXTL_RNAdeg_F" value="0.00277777777777778"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw33c8c753_f1f0_4603_a47d_e608c3f4238c_S1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="protein_deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="xxprotein_deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwcba622b9_f4d7_4903_a329_7b8202f5386b </ci>
+              <ci> protein_deGFP_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwcba622b9_f4d7_4903_a329_7b8202f5386b" name="TXTL_PROT_deGFP_MATURATION" value="0.00231049060186648"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw0a8085cb_a37c_4ec8_b616_a3e137a85859_S1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="RNA_utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="Ribo_shared" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Ribo_RNA_utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw463ad7bd_bda4_44aa_bfaf_d3d645d83671 </ci>
+                <ci> RNA_utr1__deGFP_combined </ci>
+                <ci> Ribo_shared </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwf4d7a40f_ad2d_4b2a_a882_e71d026e3c63 </ci>
+                <ci> Ribo_RNA_utr1__deGFP_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw463ad7bd_bda4_44aa_bfaf_d3d645d83671" name="TXTL_UTR_UTR1_F" value="0.2"/>
+            <localParameter id="mwf4d7a40f_ad2d_4b2a_a882_e71d026e3c63" name="TXTL_UTR_UTR1_R" value="4"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwadcc1921_bcf9_496f_b494_ae735cb96f05_S1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="DNA_ptet__utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="RNAP_shared" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RNAP_DNA_ptet__utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw1546e04c_6238_4db2_9f55_9adab7ad7d76 </ci>
+                <ci> DNA_ptet__utr1__deGFP_combined </ci>
+                <ci> RNAP_shared </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw33c22792_86ca_4514_9b20_035156259797 </ci>
+                <ci> RNAP_DNA_ptet__utr1__deGFP_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw1546e04c_6238_4db2_9f55_9adab7ad7d76" name="TXTL_PTET_RNAPbound_F" value="20"/>
+            <localParameter id="mw33c22792_86ca_4514_9b20_035156259797" name="TXTL_PTET_RNAPbound_R" value="400"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwa7aef5c0_8f0c_48cc_b368_e528103e3618_S1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="CUTP_AGTP_RNAP_DNA_ptet__utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RNAP_DNA_ptet__utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw802811ae_326e_4b36_be3c_589ebb3c057e </ci>
+              <ci> CUTP_AGTP_RNAP_DNA_ptet__utr1__deGFP_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw802811ae_326e_4b36_be3c_589ebb3c057e" name="TXTL_NTP_consumption" value="0.748529411764706"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwf14b01c4_74b3_4280_b757_a500cd789302_S1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="term_RNAP_DNA_ptet__utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RNAP_shared" stoichiometry="1" constant="true"/>
+          <speciesReference species="DNA_ptet__utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwfb769256_c284_4d03_8fd3_8e09cd543bf8 </ci>
+              <ci> term_RNAP_DNA_ptet__utr1__deGFP_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwfb769256_c284_4d03_8fd3_8e09cd543bf8" name="TXTL_RNAPBOUND_TERMINATION_RATE" value="0.05"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw3fcf3d1e_2278_4250_9850_9551806333ad_S1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="RNAP_DNA_ptet__utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="AGTP_shared" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="AGTP_RNAP_DNA_ptet__utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw2ee1dd71_b5cb_48dc_8193_f4ca88675650 </ci>
+                <ci> RNAP_DNA_ptet__utr1__deGFP_combined </ci>
+                <ci> AGTP_shared </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwaad47f1a_b32f_48ae_87ed_0a76f48c3368 </ci>
+                <ci> AGTP_RNAP_DNA_ptet__utr1__deGFP_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw2ee1dd71_b5cb_48dc_8193_f4ca88675650" name="TXTL_NTP_RNAP_F" value="1000"/>
+            <localParameter id="mwaad47f1a_b32f_48ae_87ed_0a76f48c3368" name="TXTL_NTP_RNAP_R" value="120000000"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwc694e1fa_d43b_450d_91ac_d265858ae3ec_S1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="RNAP_DNA_ptet__utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="CUTP_shared" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="CUTP_RNAP_DNA_ptet__utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw584c4e6f_d1ba_4e51_a5d2_b41f26e3d8ac </ci>
+                <ci> RNAP_DNA_ptet__utr1__deGFP_combined </ci>
+                <ci> CUTP_shared </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw7b3ec087_11db_4484_a315_b6775d4840a1 </ci>
+                <ci> CUTP_RNAP_DNA_ptet__utr1__deGFP_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw584c4e6f_d1ba_4e51_a5d2_b41f26e3d8ac" name="TXTL_NTP_RNAP_F" value="1000"/>
+            <localParameter id="mw7b3ec087_11db_4484_a315_b6775d4840a1" name="TXTL_NTP_RNAP_R" value="120000000"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwd9bdfed6_5f4b_4b46_91bb_38f915c2cc6a_S1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="AGTP_RNAP_DNA_ptet__utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="CUTP_shared" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="CUTP_AGTP_RNAP_DNA_ptet__utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwa627ca79_662d_4296_bd3d_17e6815df495 </ci>
+                <ci> AGTP_RNAP_DNA_ptet__utr1__deGFP_combined </ci>
+                <ci> CUTP_shared </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwc28186e0_faac_450c_b185_61d566514d7a </ci>
+                <ci> CUTP_AGTP_RNAP_DNA_ptet__utr1__deGFP_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwa627ca79_662d_4296_bd3d_17e6815df495" name="TXTL_NTP_RNAP_F" value="1"/>
+            <localParameter id="mwc28186e0_faac_450c_b185_61d566514d7a" name="TXTL_NTP_RNAP_R" value="120000"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw38e78944_5fc4_486e_91fc_103472e2e3b2_S1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="CUTP_RNAP_DNA_ptet__utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="AGTP_shared" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="CUTP_AGTP_RNAP_DNA_ptet__utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwd6393783_f373_4a4e_9869_7d3996838741 </ci>
+                <ci> CUTP_RNAP_DNA_ptet__utr1__deGFP_combined </ci>
+                <ci> AGTP_shared </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwce9e84d8_47d5_4af0_8ab5_aa90d145e11b </ci>
+                <ci> CUTP_AGTP_RNAP_DNA_ptet__utr1__deGFP_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwd6393783_f373_4a4e_9869_7d3996838741" name="TXTL_NTP_RNAP_F" value="1"/>
+            <localParameter id="mwce9e84d8_47d5_4af0_8ab5_aa90d145e11b" name="TXTL_NTP_RNAP_R" value="120000"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw87161df6_8d6c_4a3d_9ef9_fb84883d0cb8_S1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="CUTP_AGTP_RNAP_DNA_ptet__utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="term_RNAP_DNA_ptet__utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="RNA_utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw77e9b874_b9b8_4499_81f2_e6bfa2262b4c </ci>
+              <ci> CUTP_AGTP_RNAP_DNA_ptet__utr1__deGFP_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw77e9b874_b9b8_4499_81f2_e6bfa2262b4c" name="TXTL_transcription_rate1" value="0.00147058823529412"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw254fe677_70a8_47b3_8db3_a4d012988ecb_S1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="DNA_ptet__utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="protein_tetRdimer_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="DNA_ptet__utr1__deGFP_protein_tetRdimer_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw30802473_e60f_429c_96a1_6ff5027e3ed0 </ci>
+                <ci> DNA_ptet__utr1__deGFP_combined </ci>
+                <ci> protein_tetRdimer_combined </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw4692f3e0_c9e4_4597_bb27_68dd978032b5 </ci>
+                <ci> DNA_ptet__utr1__deGFP_protein_tetRdimer_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw30802473_e60f_429c_96a1_6ff5027e3ed0" name="ptet_sequestration_F" value="0.25"/>
+            <localParameter id="mw4692f3e0_c9e4_4597_bb27_68dd978032b5" name="ptet_sequestration_R" value="0.000111"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwae863f5a_3c0c_4f88_b343_9978b1435f3d_S1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="Ribo_RNA_utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="AA_shared" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="AA_Ribo_RNA_utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw3ab8e508_5caa_4e8f_a8fb_8d6e13774863 </ci>
+                <ci> Ribo_RNA_utr1__deGFP_combined </ci>
+                <ci> AA_shared </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw3fad7e46_78c7_4775_9a68_d1404e71521a </ci>
+                <ci> AA_Ribo_RNA_utr1__deGFP_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw3ab8e508_5caa_4e8f_a8fb_8d6e13774863" name="TL_AA_F" value="300"/>
+            <localParameter id="mw3fad7e46_78c7_4775_9a68_d1404e71521a" name="TL_AA_R" value="0.1"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw046f3557_355c_4f6e_8047_010690b1c022_S1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="AA_Ribo_RNA_utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="AGTP_shared" stoichiometry="2" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="AA_2AGTP_Ribo_RNA_utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw2341a3d3_10a0_49a9_9988_2d8aef07dbf6 </ci>
+                <ci> AA_Ribo_RNA_utr1__deGFP_combined </ci>
+                <apply>
+                  <power/>
+                  <ci> AGTP_shared </ci>
+                  <cn type="integer"> 2 </cn>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw427c5220_d4e4_4b1f_a54c_1e0c99d94963 </ci>
+                <ci> AA_2AGTP_Ribo_RNA_utr1__deGFP_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw2341a3d3_10a0_49a9_9988_2d8aef07dbf6" name="TL_AGTP_F" value="30"/>
+            <localParameter id="mw427c5220_d4e4_4b1f_a54c_1e0c99d94963" name="TL_AGTP_R" value="10"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw8d6564f3_cb8b_48b6_ae84_116a746321a9_S1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="AA_2AGTP_Ribo_RNA_utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="term_Ribo_RNA_utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw5f0c896f_b92e_4892_b0c1_124f3259d41c </ci>
+              <ci> AA_2AGTP_Ribo_RNA_utr1__deGFP_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw5f0c896f_b92e_4892_b0c1_124f3259d41c" name="TXTL_TL_AA_consumption" value="0.024"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw352c0ac9_7853_45c7_9606_84119b701958_S1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="AA_2AGTP_Ribo_RNA_utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="term_Ribo_RNA_utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="protein_deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw1810d443_738a_497c_a35d_081cb04bd15a </ci>
+              <ci> AA_2AGTP_Ribo_RNA_utr1__deGFP_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw1810d443_738a_497c_a35d_081cb04bd15a" name="TXTL_TL_rate" value="0.012"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw0a346a00_5d8b_48cd_8497_cf9dcc9f78b5_S1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="term_Ribo_RNA_utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RNA_utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="Ribo_shared" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw8dec8e49_d546_4733_9ae8_6a5782885ea5 </ci>
+              <ci> term_Ribo_RNA_utr1__deGFP_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw8dec8e49_d546_4733_9ae8_6a5782885ea5" name="TXTL_RIBOBOUND_TERMINATION_RATE" value="50"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw1d8b5d9a_6616_43d5_92db_d9bd77098727_S1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="RNA_utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RNA_utr1__deGFP_RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw47a9ff17_75c4_468e_8bf6_549aa8cee8dc </ci>
+                <ci> RNA_utr1__deGFP_combined </ci>
+                <ci> RNase_combined </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw06e95c8c_456e_48bf_b812_36ea850afb20 </ci>
+                <ci> RNA_utr1__deGFP_RNase_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw47a9ff17_75c4_468e_8bf6_549aa8cee8dc" name="TXTL_RNAdeg_F" value="10"/>
+            <localParameter id="mw06e95c8c_456e_48bf_b812_36ea850afb20" name="TXTL_RNAdeg_R" value="2000"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwa46df03c_2bd9_4c61_bd50_3c3bfb7b048e_S1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="RNA_utr1__deGFP_RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwa027c0f2_e287_4481_884e_114695ba193c </ci>
+              <ci> RNA_utr1__deGFP_RNase_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwa027c0f2_e287_4481_884e_114695ba193c" name="TXTL_RNAdeg_F" value="0.00277777777777778"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw64f66203_56ca_4c7b_a473_3b59bf36a8f0_S1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="Ribo_RNA_utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Ribo_RNA_utr1__deGFP_RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw34d2f6a4_9017_4f1e_bf2a_59c928e3d28f </ci>
+                <ci> Ribo_RNA_utr1__deGFP_combined </ci>
+                <ci> RNase_combined </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwe6a904f6_6eea_4baa_9396_dfb0f24ffcda </ci>
+                <ci> Ribo_RNA_utr1__deGFP_RNase_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw34d2f6a4_9017_4f1e_bf2a_59c928e3d28f" name="TXTL_RNAdeg_F" value="10"/>
+            <localParameter id="mwe6a904f6_6eea_4baa_9396_dfb0f24ffcda" name="TXTL_RNAdeg_R" value="2000"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwd908b797_43cc_4fe3_afc6_5c2ad0fd6fb7_S1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="Ribo_RNA_utr1__deGFP_RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RNase_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="Ribo_shared" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw1e73135f_c93b_4438_96f0_a01619c94a76 </ci>
+              <ci> Ribo_RNA_utr1__deGFP_RNase_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw1e73135f_c93b_4438_96f0_a01619c94a76" name="TXTL_RNAdeg_F" value="0.00277777777777778"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw45e32f77_600c_4bfa_be6b_61a691ac4825_S1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="AA_2AGTP_Ribo_RNA_utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="AA_2AGTP_Ribo_RNA_utr1__deGFP_RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw901cbf25_1b46_400f_9c2b_86cc4279b7ed </ci>
+                <ci> AA_2AGTP_Ribo_RNA_utr1__deGFP_combined </ci>
+                <ci> RNase_combined </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwa182accc_9614_40a5_8885_bb035e9257e9 </ci>
+                <ci> AA_2AGTP_Ribo_RNA_utr1__deGFP_RNase_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw901cbf25_1b46_400f_9c2b_86cc4279b7ed" name="TXTL_RNAdeg_F" value="10"/>
+            <localParameter id="mwa182accc_9614_40a5_8885_bb035e9257e9" name="TXTL_RNAdeg_R" value="2000"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw96c500a3_466d_4a0c_b1c8_37a4f88a97bf_S1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="AA_2AGTP_Ribo_RNA_utr1__deGFP_RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RNase_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="AA_shared" stoichiometry="1" constant="true"/>
+          <speciesReference species="AGTP_shared" stoichiometry="2" constant="true"/>
+          <speciesReference species="Ribo_shared" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw5a5d1ef4_1c74_4f88_9d4a_52276c834469 </ci>
+              <ci> AA_2AGTP_Ribo_RNA_utr1__deGFP_RNase_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw5a5d1ef4_1c74_4f88_9d4a_52276c834469" name="TXTL_RNAdeg_F" value="0.00277777777777778"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw7b19ed98_b513_4cc4_9cde_68f25750300d_S1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="term_Ribo_RNA_utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="term_Ribo_RNA_utr1__deGFP_RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwe6195609_e1d2_4a90_b079_48e86cd578cd </ci>
+                <ci> term_Ribo_RNA_utr1__deGFP_combined </ci>
+                <ci> RNase_combined </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwa0ab0748_d217_4d7e_80b0_ebc40d34b8d0 </ci>
+                <ci> term_Ribo_RNA_utr1__deGFP_RNase_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwe6195609_e1d2_4a90_b079_48e86cd578cd" name="TXTL_RNAdeg_F" value="10"/>
+            <localParameter id="mwa0ab0748_d217_4d7e_80b0_ebc40d34b8d0" name="TXTL_RNAdeg_R" value="2000"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw933a0de6_03a4_40ee_b046_e9921fa80fdd_S1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="term_Ribo_RNA_utr1__deGFP_RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RNase_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="Ribo_shared" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwd43f67ea_a7a7_4390_8488_b8d862f004e2 </ci>
+              <ci> term_Ribo_RNA_utr1__deGFP_RNase_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwd43f67ea_a7a7_4390_8488_b8d862f004e2" name="TXTL_RNAdeg_F" value="0.00277777777777778"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwa82efff1_b77f_433a_9ac4_2e985626923f_S1" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="AA_Ribo_RNA_utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="AA_Ribo_RNA_utr1__deGFP_RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwcd6c04e4_64f5_42aa_bf6a_25215bd1f6f0 </ci>
+                <ci> AA_Ribo_RNA_utr1__deGFP_combined </ci>
+                <ci> RNase_combined </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw2b8efb74_0ed8_4979_bcdc_6a737a9d910b </ci>
+                <ci> AA_Ribo_RNA_utr1__deGFP_RNase_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwcd6c04e4_64f5_42aa_bf6a_25215bd1f6f0" name="TXTL_RNAdeg_F" value="10"/>
+            <localParameter id="mw2b8efb74_0ed8_4979_bcdc_6a737a9d910b" name="TXTL_RNAdeg_R" value="2000"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw2ef81203_bcca_4f06_9a33_39c6d8daa350_S1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="AA_Ribo_RNA_utr1__deGFP_RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RNase_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="AA_shared" stoichiometry="1" constant="true"/>
+          <speciesReference species="Ribo_shared" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwe80b3f52_01ef_4337_8de5_c21f4bdb5641 </ci>
+              <ci> AA_Ribo_RNA_utr1__deGFP_RNase_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwe80b3f52_01ef_4337_8de5_c21f4bdb5641" name="TXTL_RNAdeg_F" value="0.00277777777777778"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw1b9080f1_fce6_4fd8_94aa_833805b25467_S1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="AGTP_shared" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="AGTP_USED_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw8cf83496_9f55_4eca_9dc2_b30c8e67d7bd_S1 </ci>
+              <ci> AGTP_shared </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw79d8dcb2_e075_4db1_9747_f7b2806512a5_S2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="protein_tetRdimer_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="aTc_combined" stoichiometry="2" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="x_2_aTc_protein_tetRdimer_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwe2d0cfdc_c815_4743_bd9d_ef0adf864d30 </ci>
+                <ci> protein_tetRdimer_combined </ci>
+                <apply>
+                  <power/>
+                  <ci> aTc_combined </ci>
+                  <cn type="integer"> 2 </cn>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw04fb4cef_2549_48b4_8f71_f85c6bb8746d </ci>
+                <ci> x_2_aTc_protein_tetRdimer_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwe2d0cfdc_c815_4743_bd9d_ef0adf864d30" name="TXTL_INDUCER_TETR_ATC_F" value="1e-05"/>
+            <localParameter id="mw04fb4cef_2549_48b4_8f71_f85c6bb8746d" name="TXTL_INDUCER_TETR_ATC_R" value="0.1"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw04fec241_b2ab_4809_8255_316687f8f15a_S2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="protein_tetR_combined" stoichiometry="2" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="protein_tetRdimer_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwe4649ecd_f171_4b06_a0ec_8ebfac1096ec </ci>
+                <apply>
+                  <power/>
+                  <ci> protein_tetR_combined </ci>
+                  <cn type="integer"> 2 </cn>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw0b0f3428_b0b0_44fb_91c8_95ca3c76ca2b </ci>
+                <ci> protein_tetRdimer_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwe4649ecd_f171_4b06_a0ec_8ebfac1096ec" name="kf" value="1"/>
+            <localParameter id="mw0b0f3428_b0b0_44fb_91c8_95ca3c76ca2b" name="kr" value="1"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwcc0895bd_b5ba_4a14_a659_6d6e36df38f1_S2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="RNA_utr1__tetR_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="Ribo_shared" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Ribo_RNA_utr1__tetR_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwaefb33cd_ae77_4fa7_a567_e04377b9dac0 </ci>
+                <ci> RNA_utr1__tetR_combined </ci>
+                <ci> Ribo_shared </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw8639daef_366a_4b77_be91_dea4347799f4 </ci>
+                <ci> Ribo_RNA_utr1__tetR_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwaefb33cd_ae77_4fa7_a567_e04377b9dac0" name="TXTL_UTR_UTR1_F" value="0.2"/>
+            <localParameter id="mw8639daef_366a_4b77_be91_dea4347799f4" name="TXTL_UTR_UTR1_R" value="4"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwb3f0e3af_da8f_4f01_9c10_b76675ba1546_S2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="DNA_ptet__utr1__tetR_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="RNAP_shared" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RNAP_DNA_ptet__utr1__tetR_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwa77dc432_a4d2_4d52_ad0b_95eae213c051 </ci>
+                <ci> DNA_ptet__utr1__tetR_combined </ci>
+                <ci> RNAP_shared </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwfed4ee1e_6704_4d63_8acd_8893a7484e7f </ci>
+                <ci> RNAP_DNA_ptet__utr1__tetR_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwa77dc432_a4d2_4d52_ad0b_95eae213c051" name="TXTL_PTET_RNAPbound_F" value="20"/>
+            <localParameter id="mwfed4ee1e_6704_4d63_8acd_8893a7484e7f" name="TXTL_PTET_RNAPbound_R" value="400"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwf11fa2ad_c8ad_44d1_a04d_5b0a417cd881_S2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="CUTP_AGTP_RNAP_DNA_ptet__utr1__tetR_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RNAP_DNA_ptet__utr1__tetR_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw53ae20b7_4075_4418_a56c_800d5b3c24e7 </ci>
+              <ci> CUTP_AGTP_RNAP_DNA_ptet__utr1__tetR_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw53ae20b7_4075_4418_a56c_800d5b3c24e7" name="TXTL_NTP_consumption" value="0.748770491803279"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw966b06a8_429a_4168_905d_e9b90c80e226_S2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="term_RNAP_DNA_ptet__utr1__tetR_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RNAP_shared" stoichiometry="1" constant="true"/>
+          <speciesReference species="DNA_ptet__utr1__tetR_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw4705463e_5353_4929_9cf5_ca3b7b0cf83d </ci>
+              <ci> term_RNAP_DNA_ptet__utr1__tetR_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw4705463e_5353_4929_9cf5_ca3b7b0cf83d" name="TXTL_RNAPBOUND_TERMINATION_RATE" value="0.05"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwa8036764_9730_4e54_abea_d70e0410a362_S2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="RNAP_DNA_ptet__utr1__tetR_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="AGTP_shared" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="AGTP_RNAP_DNA_ptet__utr1__tetR_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwa0b57eee_7fef_425d_9d9f_10a46128a40c </ci>
+                <ci> RNAP_DNA_ptet__utr1__tetR_combined </ci>
+                <ci> AGTP_shared </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwa3eceb01_e709_4ffd_9d0c_45209fd2513c </ci>
+                <ci> AGTP_RNAP_DNA_ptet__utr1__tetR_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwa0b57eee_7fef_425d_9d9f_10a46128a40c" name="TXTL_NTP_RNAP_F" value="1000"/>
+            <localParameter id="mwa3eceb01_e709_4ffd_9d0c_45209fd2513c" name="TXTL_NTP_RNAP_R" value="120000000"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw1e5411e8_8a6b_422f_a49a_ea52eb66c78a_S2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="RNAP_DNA_ptet__utr1__tetR_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="CUTP_shared" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="CUTP_RNAP_DNA_ptet__utr1__tetR_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwcd6c5667_c702_402b_b315_66d216b508cc </ci>
+                <ci> RNAP_DNA_ptet__utr1__tetR_combined </ci>
+                <ci> CUTP_shared </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwca579ffb_4d0a_420e_9ef7_8b858d7c1f59 </ci>
+                <ci> CUTP_RNAP_DNA_ptet__utr1__tetR_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwcd6c5667_c702_402b_b315_66d216b508cc" name="TXTL_NTP_RNAP_F" value="1000"/>
+            <localParameter id="mwca579ffb_4d0a_420e_9ef7_8b858d7c1f59" name="TXTL_NTP_RNAP_R" value="120000000"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw6f420cdd_d7b1_4c49_87ea_dacf3d627f3f_S2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="AGTP_RNAP_DNA_ptet__utr1__tetR_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="CUTP_shared" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="CUTP_AGTP_RNAP_DNA_ptet__utr1__tetR_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw08e08f4e_8d56_417d_8538_12785b68d04a </ci>
+                <ci> AGTP_RNAP_DNA_ptet__utr1__tetR_combined </ci>
+                <ci> CUTP_shared </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwf8ab7888_5a19_4c4d_8a8f_424ffbdc15d4 </ci>
+                <ci> CUTP_AGTP_RNAP_DNA_ptet__utr1__tetR_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw08e08f4e_8d56_417d_8538_12785b68d04a" name="TXTL_NTP_RNAP_F" value="1"/>
+            <localParameter id="mwf8ab7888_5a19_4c4d_8a8f_424ffbdc15d4" name="TXTL_NTP_RNAP_R" value="120000"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw2c378739_e0a8_4f2f_bd5d_6e1cdf1c4040_S2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="CUTP_RNAP_DNA_ptet__utr1__tetR_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="AGTP_shared" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="CUTP_AGTP_RNAP_DNA_ptet__utr1__tetR_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw0b82248a_384a_470b_8bcf_f833b553ab78 </ci>
+                <ci> CUTP_RNAP_DNA_ptet__utr1__tetR_combined </ci>
+                <ci> AGTP_shared </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw27b7afdd_f6d6_4a2c_882f_4498d8cc8857 </ci>
+                <ci> CUTP_AGTP_RNAP_DNA_ptet__utr1__tetR_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw0b82248a_384a_470b_8bcf_f833b553ab78" name="TXTL_NTP_RNAP_F" value="1"/>
+            <localParameter id="mw27b7afdd_f6d6_4a2c_882f_4498d8cc8857" name="TXTL_NTP_RNAP_R" value="120000"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw7ab55f4f_2343_4497_a092_9eba464a6a9d_S2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="CUTP_AGTP_RNAP_DNA_ptet__utr1__tetR_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="term_RNAP_DNA_ptet__utr1__tetR_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="RNA_utr1__tetR_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwbe128a20_7a6f_4602_9bea_b49d8e254116 </ci>
+              <ci> CUTP_AGTP_RNAP_DNA_ptet__utr1__tetR_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwbe128a20_7a6f_4602_9bea_b49d8e254116" name="TXTL_transcription_rate1" value="0.00122950819672131"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwdfcf0afe_1b13_42cb_bdb6_c018d212ac10_S2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="DNA_ptet__utr1__tetR_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="protein_tetRdimer_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="DNA_ptet__utr1__tetR_protein_tetRdimer_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw72fb427c_55c9_47bb_a928_1c668e46b40b </ci>
+                <ci> DNA_ptet__utr1__tetR_combined </ci>
+                <ci> protein_tetRdimer_combined </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwb20c2b3b_27ae_4a35_98df_4a3af96d20b9 </ci>
+                <ci> DNA_ptet__utr1__tetR_protein_tetRdimer_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw72fb427c_55c9_47bb_a928_1c668e46b40b" name="ptet_sequestration_F" value="0.25"/>
+            <localParameter id="mwb20c2b3b_27ae_4a35_98df_4a3af96d20b9" name="ptet_sequestration_R" value="0.000111"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwd8e9ea2a_103c_4c1c_b0c3_d4010b328d2c_S2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="Ribo_RNA_utr1__tetR_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="AA_shared" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="AA_Ribo_RNA_utr1__tetR_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw6171c4a0_df70_4b88_bbab_c872d24023ce </ci>
+                <ci> Ribo_RNA_utr1__tetR_combined </ci>
+                <ci> AA_shared </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw981fef75_c4fd_4cd1_bf70_f8b35801ec79 </ci>
+                <ci> AA_Ribo_RNA_utr1__tetR_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw6171c4a0_df70_4b88_bbab_c872d24023ce" name="TL_AA_F" value="300"/>
+            <localParameter id="mw981fef75_c4fd_4cd1_bf70_f8b35801ec79" name="TL_AA_R" value="0.1"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwab4dce27_f199_420f_9b02_db0f75bcb3c7_S2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="AA_Ribo_RNA_utr1__tetR_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="AGTP_shared" stoichiometry="2" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="AA_2AGTP_Ribo_RNA_utr1__tetR_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw24a686ba_9fab_428a_9661_a2fbb6090181 </ci>
+                <ci> AA_Ribo_RNA_utr1__tetR_combined </ci>
+                <apply>
+                  <power/>
+                  <ci> AGTP_shared </ci>
+                  <cn type="integer"> 2 </cn>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw8d3f1374_3847_4e94_948b_cd0ea156733f </ci>
+                <ci> AA_2AGTP_Ribo_RNA_utr1__tetR_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw24a686ba_9fab_428a_9661_a2fbb6090181" name="TL_AGTP_F" value="30"/>
+            <localParameter id="mw8d3f1374_3847_4e94_948b_cd0ea156733f" name="TL_AGTP_R" value="10"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw3817aebd_e483_46e8_9fa2_f036d592149f_S2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="AA_2AGTP_Ribo_RNA_utr1__tetR_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="term_Ribo_RNA_utr1__tetR_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw333079b9_5be8_4d0b_abc1_6c0fe653b6bb </ci>
+              <ci> AA_2AGTP_Ribo_RNA_utr1__tetR_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw333079b9_5be8_4d0b_abc1_6c0fe653b6bb" name="TXTL_TL_AA_consumption" value="0.03"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw86f540af_62e6_43b6_9b7c_7387e5f39a6e_S2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="AA_2AGTP_Ribo_RNA_utr1__tetR_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="term_Ribo_RNA_utr1__tetR_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="protein_tetR_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw8c377eec_6fb5_4f6d_aa2a_edb1b1a9436c </ci>
+              <ci> AA_2AGTP_Ribo_RNA_utr1__tetR_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw8c377eec_6fb5_4f6d_aa2a_edb1b1a9436c" name="TXTL_TL_rate" value="0.01"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw4be48152_e8ed_44ae_95ee_85cb9955d4ed_S2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="term_Ribo_RNA_utr1__tetR_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RNA_utr1__tetR_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="Ribo_shared" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw5d30cbae_4ed3_4b00_b439_8c0632d9f173 </ci>
+              <ci> term_Ribo_RNA_utr1__tetR_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw5d30cbae_4ed3_4b00_b439_8c0632d9f173" name="TXTL_RIBOBOUND_TERMINATION_RATE" value="50"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwe2a194b9_a07a_45d2_b723_53d4cdd8e8eb_S2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="RNA_utr1__tetR_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RNA_utr1__tetR_RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwf14e72f8_e363_4489_814b_689e39136e01 </ci>
+                <ci> RNA_utr1__tetR_combined </ci>
+                <ci> RNase_combined </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw43d03f76_0d84_4c58_8cd4_0eb2b3c3b683 </ci>
+                <ci> RNA_utr1__tetR_RNase_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwf14e72f8_e363_4489_814b_689e39136e01" name="TXTL_RNAdeg_F" value="10"/>
+            <localParameter id="mw43d03f76_0d84_4c58_8cd4_0eb2b3c3b683" name="TXTL_RNAdeg_R" value="2000"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwa4cad143_61cd_4e55_a1e2_46a7143d0177_S2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="RNA_utr1__tetR_RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwcdbc1fa0_7036_475d_8693_d14b20e38b12 </ci>
+              <ci> RNA_utr1__tetR_RNase_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwcdbc1fa0_7036_475d_8693_d14b20e38b12" name="TXTL_RNAdeg_F" value="0.00277777777777778"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwb619efce_c55f_4388_8926_9c9a055b3987_S2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="Ribo_RNA_utr1__tetR_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Ribo_RNA_utr1__tetR_RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwf69f116a_b002_42a5_a253_0411bbd2250b </ci>
+                <ci> Ribo_RNA_utr1__tetR_combined </ci>
+                <ci> RNase_combined </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw16950091_dc35_49d6_b6a4_ae4334c01a2e </ci>
+                <ci> Ribo_RNA_utr1__tetR_RNase_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwf69f116a_b002_42a5_a253_0411bbd2250b" name="TXTL_RNAdeg_F" value="10"/>
+            <localParameter id="mw16950091_dc35_49d6_b6a4_ae4334c01a2e" name="TXTL_RNAdeg_R" value="2000"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw25c9d764_07a0_4e65_92d6_7e7291a4b8e8_S2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="Ribo_RNA_utr1__tetR_RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RNase_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="Ribo_shared" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwc5a859fe_aaa8_4e36_8ec6_39ec9bf041f5 </ci>
+              <ci> Ribo_RNA_utr1__tetR_RNase_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwc5a859fe_aaa8_4e36_8ec6_39ec9bf041f5" name="TXTL_RNAdeg_F" value="0.00277777777777778"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwdb80a497_53ad_4b3d_82eb_de6ecb7483c0_S2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="AA_2AGTP_Ribo_RNA_utr1__tetR_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="AA_2AGTP_Ribo_RNA_utr1__tetR_RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw162c2b8f_b22e_4d4f_88b1_f7c881072413 </ci>
+                <ci> AA_2AGTP_Ribo_RNA_utr1__tetR_combined </ci>
+                <ci> RNase_combined </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw6b6c3c1d_2ea1_42b6_9292_a8137aebce3b </ci>
+                <ci> AA_2AGTP_Ribo_RNA_utr1__tetR_RNase_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw162c2b8f_b22e_4d4f_88b1_f7c881072413" name="TXTL_RNAdeg_F" value="10"/>
+            <localParameter id="mw6b6c3c1d_2ea1_42b6_9292_a8137aebce3b" name="TXTL_RNAdeg_R" value="2000"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw039541f5_9a22_4e8c_82f9_029e768f1ef9_S2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="AA_2AGTP_Ribo_RNA_utr1__tetR_RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RNase_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="AA_shared" stoichiometry="1" constant="true"/>
+          <speciesReference species="AGTP_shared" stoichiometry="2" constant="true"/>
+          <speciesReference species="Ribo_shared" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw75e7d254_c951_4b08_9f2b_c4fa3b823529 </ci>
+              <ci> AA_2AGTP_Ribo_RNA_utr1__tetR_RNase_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw75e7d254_c951_4b08_9f2b_c4fa3b823529" name="TXTL_RNAdeg_F" value="0.00277777777777778"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw70fe9eca_4050_4d5a_ae39_cf834d0d224e_S2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="term_Ribo_RNA_utr1__tetR_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="term_Ribo_RNA_utr1__tetR_RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwa7394669_02ee_4bb2_966e_79deeb63b597 </ci>
+                <ci> term_Ribo_RNA_utr1__tetR_combined </ci>
+                <ci> RNase_combined </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwc5274f40_0807_425d_8a89_1259b9853966 </ci>
+                <ci> term_Ribo_RNA_utr1__tetR_RNase_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwa7394669_02ee_4bb2_966e_79deeb63b597" name="TXTL_RNAdeg_F" value="10"/>
+            <localParameter id="mwc5274f40_0807_425d_8a89_1259b9853966" name="TXTL_RNAdeg_R" value="2000"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw717cb6af_4bf2_41ae_b5a1_b4aab5741a3f_S2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="term_Ribo_RNA_utr1__tetR_RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RNase_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="Ribo_shared" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw282ac5c6_c151_4015_960a_716d9a3d6476 </ci>
+              <ci> term_Ribo_RNA_utr1__tetR_RNase_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw282ac5c6_c151_4015_960a_716d9a3d6476" name="TXTL_RNAdeg_F" value="0.00277777777777778"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw50db268e_6acc_4639_a5b6_1c30e51415ed_S2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="AA_Ribo_RNA_utr1__tetR_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="AA_Ribo_RNA_utr1__tetR_RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw7aba66ea_960b_493b_ab04_1b8aeae4389c </ci>
+                <ci> AA_Ribo_RNA_utr1__tetR_combined </ci>
+                <ci> RNase_combined </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwd0c67bac_8dca_4335_a53c_d1f502522cae </ci>
+                <ci> AA_Ribo_RNA_utr1__tetR_RNase_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw7aba66ea_960b_493b_ab04_1b8aeae4389c" name="TXTL_RNAdeg_F" value="10"/>
+            <localParameter id="mwd0c67bac_8dca_4335_a53c_d1f502522cae" name="TXTL_RNAdeg_R" value="2000"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw6d133498_a914_47b0_85db_4eef6ee43479_S2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="AA_Ribo_RNA_utr1__tetR_RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RNase_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="AA_shared" stoichiometry="1" constant="true"/>
+          <speciesReference species="Ribo_shared" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwc275e9f0_9451_4b74_8930_e443a5a27af5 </ci>
+              <ci> AA_Ribo_RNA_utr1__tetR_RNase_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwc275e9f0_9451_4b74_8930_e443a5a27af5" name="TXTL_RNAdeg_F" value="0.00277777777777778"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mweb609a9d_005b_442a_ba00_efbec3c4c10f_S2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="protein_deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="xxprotein_deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw5fc273a9_b998_47f6_9a1b_f9f9960a2ed8 </ci>
+              <ci> protein_deGFP_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw5fc273a9_b998_47f6_9a1b_f9f9960a2ed8" name="TXTL_PROT_deGFP_MATURATION" value="0.00231049060186648"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw933e3d35_3803_4057_8a35_62361f0d6851_S2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="RNA_utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="Ribo_shared" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Ribo_RNA_utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwde315464_70b8_4f57_9e73_c65176403ae6 </ci>
+                <ci> RNA_utr1__deGFP_combined </ci>
+                <ci> Ribo_shared </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwcc3cbe6b_55b2_40f3_9833_7537f49ec39a </ci>
+                <ci> Ribo_RNA_utr1__deGFP_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwde315464_70b8_4f57_9e73_c65176403ae6" name="TXTL_UTR_UTR1_F" value="0.2"/>
+            <localParameter id="mwcc3cbe6b_55b2_40f3_9833_7537f49ec39a" name="TXTL_UTR_UTR1_R" value="4"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw9fc68b79_c7e6_4295_96e3_efe1e96f9cb5_S2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="DNA_ptet__utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="RNAP_shared" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RNAP_DNA_ptet__utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw18c22f2e_3ba3_4045_8916_f54fd4ee1a27 </ci>
+                <ci> DNA_ptet__utr1__deGFP_combined </ci>
+                <ci> RNAP_shared </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw139ef0f4_993a_4560_a5ac_0c0aff7ca9ec </ci>
+                <ci> RNAP_DNA_ptet__utr1__deGFP_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw18c22f2e_3ba3_4045_8916_f54fd4ee1a27" name="TXTL_PTET_RNAPbound_F" value="20"/>
+            <localParameter id="mw139ef0f4_993a_4560_a5ac_0c0aff7ca9ec" name="TXTL_PTET_RNAPbound_R" value="400"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw8f42659f_3b44_4ab0_a563_032509c8e7e3_S2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="CUTP_AGTP_RNAP_DNA_ptet__utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RNAP_DNA_ptet__utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw50a798ec_1c71_4c87_9c25_e94c10da21c6 </ci>
+              <ci> CUTP_AGTP_RNAP_DNA_ptet__utr1__deGFP_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw50a798ec_1c71_4c87_9c25_e94c10da21c6" name="TXTL_NTP_consumption" value="0.748529411764706"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw3f5e39e1_647e_4025_9592_3574f4cdf8b9_S2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="term_RNAP_DNA_ptet__utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RNAP_shared" stoichiometry="1" constant="true"/>
+          <speciesReference species="DNA_ptet__utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwbc5cc01f_fbfe_4397_9503_c437770474ae </ci>
+              <ci> term_RNAP_DNA_ptet__utr1__deGFP_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwbc5cc01f_fbfe_4397_9503_c437770474ae" name="TXTL_RNAPBOUND_TERMINATION_RATE" value="0.05"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwa1a88959_a485_44d5_abd1_e445dc10fa89_S2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="RNAP_DNA_ptet__utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="AGTP_shared" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="AGTP_RNAP_DNA_ptet__utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw51b7f020_11c1_4d43_a4f3_b94de4781148 </ci>
+                <ci> RNAP_DNA_ptet__utr1__deGFP_combined </ci>
+                <ci> AGTP_shared </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw17d61b85_5c9f_43b3_be6f_cdb78e4b9717 </ci>
+                <ci> AGTP_RNAP_DNA_ptet__utr1__deGFP_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw51b7f020_11c1_4d43_a4f3_b94de4781148" name="TXTL_NTP_RNAP_F" value="1000"/>
+            <localParameter id="mw17d61b85_5c9f_43b3_be6f_cdb78e4b9717" name="TXTL_NTP_RNAP_R" value="120000000"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw69e3ac18_1d6c_45cf_b4c3_d3e21b6f5cc0_S2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="RNAP_DNA_ptet__utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="CUTP_shared" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="CUTP_RNAP_DNA_ptet__utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw80e8829e_839d_4eed_b183_1340be9739fb </ci>
+                <ci> RNAP_DNA_ptet__utr1__deGFP_combined </ci>
+                <ci> CUTP_shared </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwa4c327c2_497c_462d_a489_b054f0f3277b </ci>
+                <ci> CUTP_RNAP_DNA_ptet__utr1__deGFP_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw80e8829e_839d_4eed_b183_1340be9739fb" name="TXTL_NTP_RNAP_F" value="1000"/>
+            <localParameter id="mwa4c327c2_497c_462d_a489_b054f0f3277b" name="TXTL_NTP_RNAP_R" value="120000000"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwa1b87b9b_0725_4909_b1b2_0e61d6bed826_S2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="AGTP_RNAP_DNA_ptet__utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="CUTP_shared" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="CUTP_AGTP_RNAP_DNA_ptet__utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwf66cde72_d503_4abd_9f4d_dc426f8a5922 </ci>
+                <ci> AGTP_RNAP_DNA_ptet__utr1__deGFP_combined </ci>
+                <ci> CUTP_shared </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw3321a8fc_37e8_4517_9dd7_6c1b1030963d </ci>
+                <ci> CUTP_AGTP_RNAP_DNA_ptet__utr1__deGFP_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwf66cde72_d503_4abd_9f4d_dc426f8a5922" name="TXTL_NTP_RNAP_F" value="1"/>
+            <localParameter id="mw3321a8fc_37e8_4517_9dd7_6c1b1030963d" name="TXTL_NTP_RNAP_R" value="120000"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw2569ac6d_fdcd_432e_902c_4cf408daa6ef_S2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="CUTP_RNAP_DNA_ptet__utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="AGTP_shared" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="CUTP_AGTP_RNAP_DNA_ptet__utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw857f3450_3244_4065_b34a_9afa7f50768a </ci>
+                <ci> CUTP_RNAP_DNA_ptet__utr1__deGFP_combined </ci>
+                <ci> AGTP_shared </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw6c2ad79d_f08a_4298_90d4_08c6f91c2425 </ci>
+                <ci> CUTP_AGTP_RNAP_DNA_ptet__utr1__deGFP_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw857f3450_3244_4065_b34a_9afa7f50768a" name="TXTL_NTP_RNAP_F" value="1"/>
+            <localParameter id="mw6c2ad79d_f08a_4298_90d4_08c6f91c2425" name="TXTL_NTP_RNAP_R" value="120000"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw26514d1f_d571_40f0_b058_048eae750994_S2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="CUTP_AGTP_RNAP_DNA_ptet__utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="term_RNAP_DNA_ptet__utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="RNA_utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwe9b64d69_e85e_47e2_8182_11df915d9a78 </ci>
+              <ci> CUTP_AGTP_RNAP_DNA_ptet__utr1__deGFP_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwe9b64d69_e85e_47e2_8182_11df915d9a78" name="TXTL_transcription_rate1" value="0.00147058823529412"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw4cf7dc9f_0dfb_476d_8331_59d0efb8874a_S2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="DNA_ptet__utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="protein_tetRdimer_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="DNA_ptet__utr1__deGFP_protein_tetRdimer_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwbb85ed57_2898_4c48_9ab1_4d999901277b </ci>
+                <ci> DNA_ptet__utr1__deGFP_combined </ci>
+                <ci> protein_tetRdimer_combined </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw1f069722_d300_4df5_af49_751edcefd162 </ci>
+                <ci> DNA_ptet__utr1__deGFP_protein_tetRdimer_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwbb85ed57_2898_4c48_9ab1_4d999901277b" name="ptet_sequestration_F" value="0.25"/>
+            <localParameter id="mw1f069722_d300_4df5_af49_751edcefd162" name="ptet_sequestration_R" value="0.000111"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw3d5a07dc_e40f_40af_ba87_0a40619b4220_S2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="Ribo_RNA_utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="AA_shared" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="AA_Ribo_RNA_utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw3b3c617a_46a7_4c86_a77c_4f6fda387299 </ci>
+                <ci> Ribo_RNA_utr1__deGFP_combined </ci>
+                <ci> AA_shared </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwdc1e205c_a402_438a_85db_4c01ff6d198a </ci>
+                <ci> AA_Ribo_RNA_utr1__deGFP_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw3b3c617a_46a7_4c86_a77c_4f6fda387299" name="TL_AA_F" value="300"/>
+            <localParameter id="mwdc1e205c_a402_438a_85db_4c01ff6d198a" name="TL_AA_R" value="0.1"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwf254e794_a573_4233_9066_8ab855ecc3f0_S2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="AA_Ribo_RNA_utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="AGTP_shared" stoichiometry="2" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="AA_2AGTP_Ribo_RNA_utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwf863803e_235c_4213_b54d_31b581c573ac </ci>
+                <ci> AA_Ribo_RNA_utr1__deGFP_combined </ci>
+                <apply>
+                  <power/>
+                  <ci> AGTP_shared </ci>
+                  <cn type="integer"> 2 </cn>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwc6e4b4b9_c419_44df_926c_a4d5e933a40f </ci>
+                <ci> AA_2AGTP_Ribo_RNA_utr1__deGFP_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwf863803e_235c_4213_b54d_31b581c573ac" name="TL_AGTP_F" value="30"/>
+            <localParameter id="mwc6e4b4b9_c419_44df_926c_a4d5e933a40f" name="TL_AGTP_R" value="10"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw4cde338c_0ac4_4b25_be18_203c086ac162_S2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="AA_2AGTP_Ribo_RNA_utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="term_Ribo_RNA_utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwcdd78e3b_97d5_4162_94e9_d41659d6d3f0 </ci>
+              <ci> AA_2AGTP_Ribo_RNA_utr1__deGFP_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwcdd78e3b_97d5_4162_94e9_d41659d6d3f0" name="TXTL_TL_AA_consumption" value="0.024"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwc62c3ab8_28a7_420c_98f8_df28486db563_S2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="AA_2AGTP_Ribo_RNA_utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="term_Ribo_RNA_utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="protein_deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw5e0a63f8_e24a_4b0b_837a_6645325c7b68 </ci>
+              <ci> AA_2AGTP_Ribo_RNA_utr1__deGFP_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw5e0a63f8_e24a_4b0b_837a_6645325c7b68" name="TXTL_TL_rate" value="0.012"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwf82df561_7fae_4b63_bd03_c89e89b762ba_S2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="term_Ribo_RNA_utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RNA_utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="Ribo_shared" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwe9727e77_e85b_431d_9143_a31541f4ce66 </ci>
+              <ci> term_Ribo_RNA_utr1__deGFP_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwe9727e77_e85b_431d_9143_a31541f4ce66" name="TXTL_RIBOBOUND_TERMINATION_RATE" value="50"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwd3eea109_9057_43ec_9c1a_868943fd0b51_S2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="RNA_utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RNA_utr1__deGFP_RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mw798ba049_4e80_404a_94d8_f85465baf355 </ci>
+                <ci> RNA_utr1__deGFP_combined </ci>
+                <ci> RNase_combined </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw9738a290_8612_4be4_973c_e59e9d9c27dc </ci>
+                <ci> RNA_utr1__deGFP_RNase_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw798ba049_4e80_404a_94d8_f85465baf355" name="TXTL_RNAdeg_F" value="10"/>
+            <localParameter id="mw9738a290_8612_4be4_973c_e59e9d9c27dc" name="TXTL_RNAdeg_R" value="2000"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw54b9acd4_df18_4408_9fb3_8cfd8f7080d3_S2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="RNA_utr1__deGFP_RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw6bdee6a3_f3f3_488e_9b78_14328cd66f82 </ci>
+              <ci> RNA_utr1__deGFP_RNase_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw6bdee6a3_f3f3_488e_9b78_14328cd66f82" name="TXTL_RNAdeg_F" value="0.00277777777777778"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwe0536f60_dad8_4b3b_a6da_af2add0cb49e_S2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="Ribo_RNA_utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Ribo_RNA_utr1__deGFP_RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mweb2e7139_86fc_4db3_a370_b841ab80e823 </ci>
+                <ci> Ribo_RNA_utr1__deGFP_combined </ci>
+                <ci> RNase_combined </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw9b1a0991_ff7f_44a1_8d95_ad87d9d14010 </ci>
+                <ci> Ribo_RNA_utr1__deGFP_RNase_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mweb2e7139_86fc_4db3_a370_b841ab80e823" name="TXTL_RNAdeg_F" value="10"/>
+            <localParameter id="mw9b1a0991_ff7f_44a1_8d95_ad87d9d14010" name="TXTL_RNAdeg_R" value="2000"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw686da9b4_436f_4853_8400_e759124c01d2_S2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="Ribo_RNA_utr1__deGFP_RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RNase_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="Ribo_shared" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwbf47edb4_267b_4173_a269_4d40104e5ec9 </ci>
+              <ci> Ribo_RNA_utr1__deGFP_RNase_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwbf47edb4_267b_4173_a269_4d40104e5ec9" name="TXTL_RNAdeg_F" value="0.00277777777777778"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw5c598418_45bf_4c86_b37a_a1e884f1babb_S2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="AA_2AGTP_Ribo_RNA_utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="AA_2AGTP_Ribo_RNA_utr1__deGFP_RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwfe687f8b_2dd5_4c92_baf6_cf44b48ddffa </ci>
+                <ci> AA_2AGTP_Ribo_RNA_utr1__deGFP_combined </ci>
+                <ci> RNase_combined </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwd6700006_2e59_4048_8113_2237f438fc0f </ci>
+                <ci> AA_2AGTP_Ribo_RNA_utr1__deGFP_RNase_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwfe687f8b_2dd5_4c92_baf6_cf44b48ddffa" name="TXTL_RNAdeg_F" value="10"/>
+            <localParameter id="mwd6700006_2e59_4048_8113_2237f438fc0f" name="TXTL_RNAdeg_R" value="2000"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw3e69ecc4_2b4b_4e06_83c8_9460b4fa5e7a_S2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="AA_2AGTP_Ribo_RNA_utr1__deGFP_RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RNase_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="AA_shared" stoichiometry="1" constant="true"/>
+          <speciesReference species="AGTP_shared" stoichiometry="2" constant="true"/>
+          <speciesReference species="Ribo_shared" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwb4f62384_eb42_4557_9a64_ae63fa990f16 </ci>
+              <ci> AA_2AGTP_Ribo_RNA_utr1__deGFP_RNase_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwb4f62384_eb42_4557_9a64_ae63fa990f16" name="TXTL_RNAdeg_F" value="0.00277777777777778"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw41dc1176_f556_482f_8006_486a3b61ef38_S2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="term_Ribo_RNA_utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="term_Ribo_RNA_utr1__deGFP_RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwe62d29a2_5b3d_4b39_844c_2298986ade02 </ci>
+                <ci> term_Ribo_RNA_utr1__deGFP_combined </ci>
+                <ci> RNase_combined </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mwa4865b7e_473f_4a4c_9e1b_04eacf3ae155 </ci>
+                <ci> term_Ribo_RNA_utr1__deGFP_RNase_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwe62d29a2_5b3d_4b39_844c_2298986ade02" name="TXTL_RNAdeg_F" value="10"/>
+            <localParameter id="mwa4865b7e_473f_4a4c_9e1b_04eacf3ae155" name="TXTL_RNAdeg_R" value="2000"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw488453cf_aa4e_41aa_bfe5_87f8d0a118ab_S2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="term_Ribo_RNA_utr1__deGFP_RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RNase_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="Ribo_shared" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw5bfebb24_ef47_4222_b2c8_5718cd575e90 </ci>
+              <ci> term_Ribo_RNA_utr1__deGFP_RNase_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw5bfebb24_ef47_4222_b2c8_5718cd575e90" name="TXTL_RNAdeg_F" value="0.00277777777777778"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwe42ea471_36a2_4c40_a444_864a83b6aba8_S2" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="AA_Ribo_RNA_utr1__deGFP_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="AA_Ribo_RNA_utr1__deGFP_RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> mwd7cd0c5f_c288_4b78_8ea3_da02b4dc9ed7 </ci>
+                <ci> AA_Ribo_RNA_utr1__deGFP_combined </ci>
+                <ci> RNase_combined </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> mw1fc9964e_736b_4049_a346_7f79b924cffc </ci>
+                <ci> AA_Ribo_RNA_utr1__deGFP_RNase_combined </ci>
+              </apply>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mwd7cd0c5f_c288_4b78_8ea3_da02b4dc9ed7" name="TXTL_RNAdeg_F" value="10"/>
+            <localParameter id="mw1fc9964e_736b_4049_a346_7f79b924cffc" name="TXTL_RNAdeg_R" value="2000"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwfb70b1e9_7b65_409a_8fc9_14bb651756a9_S2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="AA_Ribo_RNA_utr1__deGFP_RNase_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="RNase_combined" stoichiometry="1" constant="true"/>
+          <speciesReference species="AA_shared" stoichiometry="1" constant="true"/>
+          <speciesReference species="Ribo_shared" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw3adc3f69_63fe_45a2_b39e_9948b209a14c </ci>
+              <ci> AA_Ribo_RNA_utr1__deGFP_RNase_combined </ci>
+            </apply>
+          </math>
+          <listOfLocalParameters>
+            <localParameter id="mw3adc3f69_63fe_45a2_b39e_9948b209a14c" name="TXTL_RNAdeg_F" value="0.00277777777777778"/>
+          </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw425e1f92_9d3e_4f30_a916_810607a32b67_S2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="AGTP_shared" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="AGTP_USED_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw5c2bb4d9_3548_456f_a5fe_b970d5bbbf8a_S2 </ci>
+              <ci> AGTP_shared </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+    <listOfEvents>
+      <event id="mw0b60f6e7_c2ba_4bc9_b3bc_3d67a2b7362b" useValuesFromTriggerTime="true">
+        <trigger initialValue="true" persistent="true">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <leq/>
+              <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+              <cn type="integer"> 5400 </cn>
+            </apply>
+          </math>
+        </trigger>
+        <listOfEventAssignments>
+          <eventAssignment variable="mw8cf83496_9f55_4eca_9dc2_b30c8e67d7bd_S1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn type="integer"> 0 </cn>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+      <event id="mwce03b386_d9c0_44f2_aae2_df31e91952fc" useValuesFromTriggerTime="true">
+        <trigger initialValue="true" persistent="true">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <gt/>
+              <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+              <cn type="integer"> 5400 </cn>
+            </apply>
+          </math>
+        </trigger>
+        <listOfEventAssignments>
+          <eventAssignment variable="mw8cf83496_9f55_4eca_9dc2_b30c8e67d7bd_S1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn> 0.0002 </cn>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+      <event id="mwf02802e2_3475_4f61_906c_4d4ae464d3ff" useValuesFromTriggerTime="true">
+        <trigger initialValue="true" persistent="true">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <leq/>
+              <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+              <cn type="integer"> 5400 </cn>
+            </apply>
+          </math>
+        </trigger>
+        <listOfEventAssignments>
+          <eventAssignment variable="mw5c2bb4d9_3548_456f_a5fe_b970d5bbbf8a_S2">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn type="integer"> 0 </cn>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+      <event id="mw7bfed961_c668_4553_b429_9d50f645d734" useValuesFromTriggerTime="true">
+        <trigger initialValue="true" persistent="true">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <gt/>
+              <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+              <cn type="integer"> 5400 </cn>
+            </apply>
+          </math>
+        </trigger>
+        <listOfEventAssignments>
+          <eventAssignment variable="mw5c2bb4d9_3548_456f_a5fe_b970d5bbbf8a_S2">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn> 0.0002 </cn>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+    </listOfEvents>
+  </model>
+</sbml>
