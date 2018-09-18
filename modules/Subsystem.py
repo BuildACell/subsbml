@@ -1,9 +1,9 @@
 import libsbml 
 import time
-from modules.SimpleReaction import *
-from modules.SimpleModel import *
-from modules.setIdFromNames import *
-from modules.utilityFunctions import *
+from .SimpleReaction import *
+from .SimpleModel import *
+from .setIdFromNames import *
+from .utilityFunctions import *
 
 class Subsystem(object):
 
