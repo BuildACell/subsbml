@@ -1,8 +1,8 @@
 from libsbml import *
 import warnings
 
-from modules.setIdFromNames import *
-from modules.SimpleReaction import *
+from .setIdFromNames import *
+from .SimpleReaction import *
 
 latestLevel = 3
 latestVersion = 1

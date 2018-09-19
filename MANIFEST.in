@@ -1,0 +1,6 @@
+include examples/*.py
+include tutorials/*.py
+include models/
+include README.md
+include LICENSE
+exclude subsbml.egg-info/*

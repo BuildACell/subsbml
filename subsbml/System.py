@@ -1,5 +1,5 @@
 # Import all required libraries
-from modules.Subsystem import *
+from .Subsystem import *
 
 # The latest level and version of SBML 
 # These are used to convert the models given as input to the latest SBML version

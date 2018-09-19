@@ -1,8 +1,9 @@
 import numpy as np
 from libsbml import *
-from modules.Subsystem import *
-from modules.SimpleModel import *
-from modules.System import *
+
+import subsbml
+
+
 # Create a system. Example - A cell system which acts as a container for 
 # all the different subsystems. Here, cell is an object of the System class.
  

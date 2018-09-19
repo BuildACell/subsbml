@@ -7,7 +7,7 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 from libsbml import *
 
-from modules.SimpleModel import * 
+from .SimpleModel import * 
 
 latestLevel = 3
 latestVersion = 1
