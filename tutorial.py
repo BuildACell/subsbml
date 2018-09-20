@@ -95,7 +95,7 @@ writeSBML(shared_subsystem,'models/DP_IFFL_shared.xml')
 
 print('Creating combined model and writing it to SBML file')
 combined_subsystem = createNewSubsystem()
-combined_model = combined_subsystem.combineSubsystems([DP1, DP2, IFFL], 'volume', True)
+combined_model = combined_subsystem.combineSubsystems([DP1, DP2, IFFL], 'virtual', True)
 
 # (Optional) Write the combined document model to SBML file
 writeSBML(combined_model,'models/DP_IFFL_combined.xml')
