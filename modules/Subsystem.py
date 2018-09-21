@@ -43,6 +43,15 @@ class Subsystem(object):
         self.SBMLDocument = doc
         return self
 
+    def isSetSystem(self):
+        '''
+        Returns True if System is set for this Subsystem, False otherwise
+        '''
+        if self.System == None:
+            return False
+        else:
+            return True
+
     def setSystem(self,systemObj):
         '''
         Sets the systemObject argument as the System for this Subsystem and returns it
@@ -665,7 +674,20 @@ class Subsystem(object):
                                     check(model.getSpecies(id_added_species).setInitialAmount(cumulative_amount/total_size),'setting initial cumulative amount in combineSpecies if case in volume mode')
         else:
             final_species_hash_map = {}
-            total_size = model.getCompartment(0).getSize()
+            flag = 0
+            for subsystem in ListOfSubsystems:
+                if subsystem.isSetSystem():
+                    flag += 1
+            if flag == len(ListOfSubsystems):
+                system_set = True
+            else:
+                system_set = False
+            if system_set:
+                total_size =  ListOfSubsystems[0].getSystem().getSize()
+            else:
+                total_size = 0
+                for subsystem in ListOfSubsystems:
+                    total_size +=  subsystem.getSBMLDocument().getModel().getCompartment(0).getSize()
             for subsystem in ListOfSubsystems:
                 sub_model = subsystem.getSBMLDocument().getModel()
                 if not ListOfResources:
@@ -703,6 +725,8 @@ class Subsystem(object):
                                 # hash map, save them to the final hash map dictionary.
                                 final_species_hash_map[species_name] = [
                                     species_hash_map[species_name]]
+
+ 
             # Removing duplicate species in the same compartment
             for unique_species_name in final_species_hash_map:
                 if len(final_species_hash_map[unique_species_name]) > 1: 
@@ -734,17 +758,19 @@ class Subsystem(object):
                             count = 0
                             cumulative_amount = 0
                             ssys_size = 0
-                            total_size = 0
+                            if not system_set:
+                                total_size = 0
                             for species in comp_dict[species_comp]:
                                 check(model.addSpecies(species),'adding species in shareSpecies else case')
                                 mod = species.getModel()
                                 ssys_size = mod.getElementBySId(species.getCompartment()).getSize()
-                                total_size += ssys_size
+                                if not system_set:
+                                    total_size += ssys_size
                                 #remove duplicates now
                                 cumulative_amount += (species.getInitialAmount()) * ssys_size
                                 spe_id = species.getId()
                                 oldid = spe_id
-                                check(oldid, 'retreiving oldid in combineSpecies else case, volume')
+                                check(oldid, 'retreiving oldid in combineSpecies else case')
                                 newid = trans.getValidIdForName(uni_sp.getId()) + '_shared'
                                 self.renameSId(oldid, newid)
                                 if count >= 1:
@@ -899,7 +925,7 @@ class Subsystem(object):
                                 total_size += ssys_size
                                 cumulative_amount += (species.getInitialAmount()) * ssys_size
                                 oldid = spe_id
-                                check(oldid, 'retreiving oldid in combineSpecies else case, volume')
+                                check(oldid, 'retreiving oldid in combineSpecies else case')
                                 newid = trans.getValidIdForName(uni_sp.getId()) + '_combined'
                                 self.renameSId(oldid, newid)
                                 if count >= 1:

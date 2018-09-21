@@ -130,7 +130,19 @@ class System(object):
         Returns the list of shared resources
         '''
         return self.ListOfSharedResources
-
+    
+    def setListOfSharedResources(self, list):
+        ''' 
+        Set the list of resources to the 
+        self.ListOfSharedResources. Returns the list. 
+        '''
+        for element in list:
+            if type(element) is str: 
+                self.ListOfSharedResources.append(element)
+            else:
+                raise ValueError('List element {0} is not a string'.format(element))
+        return self.ListOfSharedResources
+    
     def appendSharedResources(self, list):
         ''' 
         Append the list of resources to the 
