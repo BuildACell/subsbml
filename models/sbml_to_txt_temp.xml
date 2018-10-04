@@ -1,0 +1,604 @@
+<model>
+
+<reaction text="mw20c9d2b7_2d30_489e_82d1_e71648158436_SS1--mw8581196a_7c77_4da8_879e_f2c6f24b1932_SS1_combined" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mwe60d7d7d_697e_4455_a11e_eac9e72a433e*mw20c9d2b7_2d30_489e_82d1_e71648158436_SS1" />
+</reaction>
+
+<reaction text="mw3df01083_618d_4509_9811_8b63adf5cb42_SS1+mw27aa16fc_b76d_46c2_b301_0456b7e3aace_SS1_combined--mwdad3b651_3698_4347_a3af_13c2fd1cd4eb_SS1" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mw3830ada9_8c1f_4408_8792_b352b9545092*mw27aa16fc_b76d_46c2_b301_0456b7e3aace_SS1_combined*mw3df01083_618d_4509_9811_8b63adf5cb42_SS1 - _mw4b24730a_ba8b_4323_8c9e_c8d793425e60*mwdad3b651_3698_4347_a3af_13c2fd1cd4eb_SS1" />
+</reaction>
+
+<reaction text="mw27bf35db_2b1d_439b_a0c4_81972bf226ef_SS1+mw3c367a17_7386_470c_8c72_954a48def552_SS1_combined--mwb9ed4bd5_8cd9_4f48_9f51_256760be89c7_SS1" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mw48cc8c87_2548_4333_b0d0_129277cd1fb4*mw27bf35db_2b1d_439b_a0c4_81972bf226ef_SS1*mw3c367a17_7386_470c_8c72_954a48def552_SS1_combined - _mw8b9a381a_163f_435c_934b_38e9d22433c5*mwb9ed4bd5_8cd9_4f48_9f51_256760be89c7_SS1" />
+</reaction>
+
+<reaction text="mw9c2e00f3_d345_4af1_918d_b211abb46cda_SS1--mwb9ed4bd5_8cd9_4f48_9f51_256760be89c7_SS1" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mw66da3667_22e0_4c78_82a4_32def7919cd0*mw9c2e00f3_d345_4af1_918d_b211abb46cda_SS1" />
+</reaction>
+
+<reaction text="mw42ea34c3_4490_4d8a_8ee5_dd1c4ac5319c_SS1--mw3c367a17_7386_470c_8c72_954a48def552_SS1_combined+mw27bf35db_2b1d_439b_a0c4_81972bf226ef_SS1" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mwd0042ae4_1646_428b_99de_e8ca18f1d5a2*mw42ea34c3_4490_4d8a_8ee5_dd1c4ac5319c_SS1" />
+</reaction>
+
+<reaction text="mwb9ed4bd5_8cd9_4f48_9f51_256760be89c7_SS1+mw34fb2519_79b1_4f10_8668_6410726988c5_SS1_combined--mw0d097c9c_0e16_42d5_a990_888eb21274ba_SS1" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="-_mw002f98bd_2b9a_40dd_93c4_225856292b8a*mw0d097c9c_0e16_42d5_a990_888eb21274ba_SS1 + _mw490dcf1e_63bd_479e_a995_3f131fb43e97*mw34fb2519_79b1_4f10_8668_6410726988c5_SS1_combined*mwb9ed4bd5_8cd9_4f48_9f51_256760be89c7_SS1" />
+</reaction>
+
+<reaction text="mwb9ed4bd5_8cd9_4f48_9f51_256760be89c7_SS1+mw4f8d0806_0366_43d5_8a2a_a05ee3287512_SS1_combined--mwb668d480_993b_469d_8925_7393c33b0558_SS1" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="-_mw4286f6bc_9ea0_4368_8609_a95ebe1ba7e4*mwb668d480_993b_469d_8925_7393c33b0558_SS1 + _mwec2a5da9_9f9d_42c6_b2de_a4a19dae0dda*mw4f8d0806_0366_43d5_8a2a_a05ee3287512_SS1_combined*mwb9ed4bd5_8cd9_4f48_9f51_256760be89c7_SS1" />
+</reaction>
+
+<reaction text="mw0d097c9c_0e16_42d5_a990_888eb21274ba_SS1+mw4f8d0806_0366_43d5_8a2a_a05ee3287512_SS1_combined--mw9c2e00f3_d345_4af1_918d_b211abb46cda_SS1" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="-_mw4ce1e65c_926e_4d3c_b3e6_396def864bd6*mw9c2e00f3_d345_4af1_918d_b211abb46cda_SS1 + _mwf3f8bee7_7617_49f4_990a_afc7b5485ca7*mw0d097c9c_0e16_42d5_a990_888eb21274ba_SS1*mw4f8d0806_0366_43d5_8a2a_a05ee3287512_SS1_combined" />
+</reaction>
+
+<reaction text="mwb668d480_993b_469d_8925_7393c33b0558_SS1+mw34fb2519_79b1_4f10_8668_6410726988c5_SS1_combined--mw9c2e00f3_d345_4af1_918d_b211abb46cda_SS1" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="-_mw6aa3baca_c087_46d2_bf9e_75440163765a*mw9c2e00f3_d345_4af1_918d_b211abb46cda_SS1 + _mw710fb4f7_6073_42ed_a40d_41d009035891*mw34fb2519_79b1_4f10_8668_6410726988c5_SS1_combined*mwb668d480_993b_469d_8925_7393c33b0558_SS1" />
+</reaction>
+
+<reaction text="mw9c2e00f3_d345_4af1_918d_b211abb46cda_SS1--mw42ea34c3_4490_4d8a_8ee5_dd1c4ac5319c_SS1+mw3df01083_618d_4509_9811_8b63adf5cb42_SS1" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mw2996778c_c27b_4ec7_a7bb_34b2ceda6977*mw9c2e00f3_d345_4af1_918d_b211abb46cda_SS1" />
+</reaction>
+
+<reaction text="mwdad3b651_3698_4347_a3af_13c2fd1cd4eb_SS1+mw715c6bbe_f050_4257_8bc2_159625dc5aa5_SS1_combined--mw722ec4ac_80c5_4501_a092_98560b5118e5_SS1" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="-_mw5ffbf3db_6003_4217_9bd8_796832a8ba27*mw722ec4ac_80c5_4501_a092_98560b5118e5_SS1 + _mwa0cbd407_e863_4341_b66b_060977850e66*mw715c6bbe_f050_4257_8bc2_159625dc5aa5_SS1_combined*mwdad3b651_3698_4347_a3af_13c2fd1cd4eb_SS1" />
+</reaction>
+
+<reaction text="mw722ec4ac_80c5_4501_a092_98560b5118e5_SS1+mw34fb2519_79b1_4f10_8668_6410726988c5_SS1_combined--mwd4771b8c_b1d7_4c13_997f_683e301a502a_SS1" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mw759eca19_9151_4ba3_acf0_89be22ebccd8*mw34fb2519_79b1_4f10_8668_6410726988c5_SS1_combined**2*mw722ec4ac_80c5_4501_a092_98560b5118e5_SS1 - _mw7bf223f7_b7b0_4026_acb1_17191e7ef4e6*mwd4771b8c_b1d7_4c13_997f_683e301a502a_SS1" />
+</reaction>
+
+<reaction text="mwd4771b8c_b1d7_4c13_997f_683e301a502a_SS1--mwecef8e3a_4d8c_4f45_87ff_436093b9076f_SS1" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mwf2243644_7dd8_4cd5_8e7f_523d1ee6c622*mwd4771b8c_b1d7_4c13_997f_683e301a502a_SS1" />
+</reaction>
+
+<reaction text="mwd4771b8c_b1d7_4c13_997f_683e301a502a_SS1--mwecef8e3a_4d8c_4f45_87ff_436093b9076f_SS1+mw20c9d2b7_2d30_489e_82d1_e71648158436_SS1" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mwdbe11a94_d411_4b68_aa97_8f09854129f2*mwd4771b8c_b1d7_4c13_997f_683e301a502a_SS1" />
+</reaction>
+
+<reaction text="mwecef8e3a_4d8c_4f45_87ff_436093b9076f_SS1--mw3df01083_618d_4509_9811_8b63adf5cb42_SS1+mw27aa16fc_b76d_46c2_b301_0456b7e3aace_SS1_combined" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mw0768058d_03e2_4673_8542_1f8cb39d4ec3*mwecef8e3a_4d8c_4f45_87ff_436093b9076f_SS1" />
+</reaction>
+
+<reaction text="mw3df01083_618d_4509_9811_8b63adf5cb42_SS1+mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined--mw773fc4b1_f808_4bf3_85ad_07ce9b454369_SS1" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mw9031e56e_f709_472e_841a_f697866e9019*mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined*mw3df01083_618d_4509_9811_8b63adf5cb42_SS1 - _mwd24cd525_af85_43b1_afc4_c91d2d887a5b*mw773fc4b1_f808_4bf3_85ad_07ce9b454369_SS1" />
+</reaction>
+
+<reaction text="mw773fc4b1_f808_4bf3_85ad_07ce9b454369_SS1--mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mw9008fd58_dae9_4ff7_b526_e14558cae1c3*mw773fc4b1_f808_4bf3_85ad_07ce9b454369_SS1" />
+</reaction>
+
+<reaction text="mwdad3b651_3698_4347_a3af_13c2fd1cd4eb_SS1+mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined--mw3222fc51_b8a6_481b_adcf_8fa66964731e_SS1" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="-_mw0cd5d8d1_dfe6_40ba_8503_81c9e1ea0599*mw3222fc51_b8a6_481b_adcf_8fa66964731e_SS1 + _mw0d51dc68_2890_43f9_bdd4_ac1b1ef92525*mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined*mwdad3b651_3698_4347_a3af_13c2fd1cd4eb_SS1" />
+</reaction>
+
+<reaction text="mw3222fc51_b8a6_481b_adcf_8fa66964731e_SS1--mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined+mw27aa16fc_b76d_46c2_b301_0456b7e3aace_SS1_combined" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mw980fee86_abb7_474c_acba_0aa345a38f0f*mw3222fc51_b8a6_481b_adcf_8fa66964731e_SS1" />
+</reaction>
+
+<reaction text="mwd4771b8c_b1d7_4c13_997f_683e301a502a_SS1+mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined--mwbd8bbca4_ad12_4dd6_80fc_656686d30456_SS1" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mw93741c58_8277_4c4d_ae0b_f66c8b61386d*mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined*mwd4771b8c_b1d7_4c13_997f_683e301a502a_SS1 - _mwccff0caa_1476_405b_b13a_b17603ebf988*mwbd8bbca4_ad12_4dd6_80fc_656686d30456_SS1" />
+</reaction>
+
+<reaction text="mwbd8bbca4_ad12_4dd6_80fc_656686d30456_SS1--mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined+mw715c6bbe_f050_4257_8bc2_159625dc5aa5_SS1_combined+mw34fb2519_79b1_4f10_8668_6410726988c5_SS1_combined+mw27aa16fc_b76d_46c2_b301_0456b7e3aace_SS1_combined" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mw670653d9_4218_4df9_b303_5f293e77f990*mwbd8bbca4_ad12_4dd6_80fc_656686d30456_SS1" />
+</reaction>
+
+<reaction text="mwecef8e3a_4d8c_4f45_87ff_436093b9076f_SS1+mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined--mw5453f37e_770a_422a_ba2f_43c5372ca7be_SS1" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mw880f4368_ff12_4fb4_8274_f28a85086459*mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined*mwecef8e3a_4d8c_4f45_87ff_436093b9076f_SS1 - _mw9c569c82_9bbe_4254_be15_864725548e53*mw5453f37e_770a_422a_ba2f_43c5372ca7be_SS1" />
+</reaction>
+
+<reaction text="mw5453f37e_770a_422a_ba2f_43c5372ca7be_SS1--mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined+mw27aa16fc_b76d_46c2_b301_0456b7e3aace_SS1_combined" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mw31b03405_3b28_47bb_8821_50e7421ede27*mw5453f37e_770a_422a_ba2f_43c5372ca7be_SS1" />
+</reaction>
+
+<reaction text="mw722ec4ac_80c5_4501_a092_98560b5118e5_SS1+mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined--mwe1a34348_ddac_4a4e_be5b_0895f8905865_SS1" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="-_mw1d8f2bbb_07a6_402b_9ffc_d24aac2a1edf*mwe1a34348_ddac_4a4e_be5b_0895f8905865_SS1 + _mwaf2b763e_ef31_46f8_941a_79f8b7912007*mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined*mw722ec4ac_80c5_4501_a092_98560b5118e5_SS1" />
+</reaction>
+
+<reaction text="mwe1a34348_ddac_4a4e_be5b_0895f8905865_SS1--mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined+mw715c6bbe_f050_4257_8bc2_159625dc5aa5_SS1_combined+mw27aa16fc_b76d_46c2_b301_0456b7e3aace_SS1_combined" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mwef614928_eb66_47e0_9448_7e37ca1f9da6*mwe1a34348_ddac_4a4e_be5b_0895f8905865_SS1" />
+</reaction>
+
+<reaction text="mw34fb2519_79b1_4f10_8668_6410726988c5_SS1_combined--mwbbb6129b_1e4f_4f45_96c0_f3b1fbebdb22_SS1_combined" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="0.0002*heaviside(t-5400)*mw34fb2519_79b1_4f10_8668_6410726988c5_SS1_combined" />
+</reaction>
+
+<reaction text="mwc00961a6_47d1_4f5a_9c49_00fb0d02cd8a_SS2+mw28f62bd1_3a2b_45ba_be22_53e2eb1a9509_SS2_combined--mw36dad171_05d7_4907_8d71_c2b3b5e51352_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="-_mw220339f8_94a8_4c76_a9f9_58d5c54662f3*mw36dad171_05d7_4907_8d71_c2b3b5e51352_SS2 + _mwed97bcbd_4d1b_4df8_9cc5_6efe8dc18edf*mw28f62bd1_3a2b_45ba_be22_53e2eb1a9509_SS2_combined*mwc00961a6_47d1_4f5a_9c49_00fb0d02cd8a_SS2" />
+</reaction>
+
+<reaction text="mweb04477f_13a4_4d28_8518_06b1c5bae4de_SS2--mw609aa47a_fc0e_418c_a186_aa3a658fb203_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mw95143b4c_189f_4371_9e49_c9203b9cbcbc*mweb04477f_13a4_4d28_8518_06b1c5bae4de_SS2**2 - _mw957daec6_ebbb_49d5_8167_3766b2a188d2*mw609aa47a_fc0e_418c_a186_aa3a658fb203_SS2" />
+</reaction>
+
+<reaction text="mw609aa47a_fc0e_418c_a186_aa3a658fb203_SS2--mwc00961a6_47d1_4f5a_9c49_00fb0d02cd8a_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="-_mw88e6b301_c19d_4176_a4ab_c796e1855157*mwc00961a6_47d1_4f5a_9c49_00fb0d02cd8a_SS2 + _mwa09a7a9d_81cc_4ec4_bba4_36d8e79b88d8*mw609aa47a_fc0e_418c_a186_aa3a658fb203_SS2**2" />
+</reaction>
+
+<reaction text="mwcbd6bcc3_2c61_4e12_a6f7_e1ac7bc57188_SS2+mw27aa16fc_b76d_46c2_b301_0456b7e3aace_SS1_combined--mw6fb7f787_57b9_494d_a431_121e3ccbcda9_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="-_mwaa2e8186_64eb_4461_8a31_8d0de39dc096*mw6fb7f787_57b9_494d_a431_121e3ccbcda9_SS2 + _mwea067fb0_944c_4ea9_ad77_d6c4637982d5*mw27aa16fc_b76d_46c2_b301_0456b7e3aace_SS1_combined*mwcbd6bcc3_2c61_4e12_a6f7_e1ac7bc57188_SS2" />
+</reaction>
+
+<reaction text="mwdb801a58_028d_43ff_90eb_830d15b4bc7f_SS2+mw3c367a17_7386_470c_8c72_954a48def552_SS1_combined--mwde89bce9_6b96_41b5_ab10_47fdb6f84323_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="-_mw820bf2c5_8b99_479b_81a8_f87bd2e4993c*mwde89bce9_6b96_41b5_ab10_47fdb6f84323_SS2 + _mwd1e6aca1_12f3_4a1c_8a72_af7a96b9813b*mw3c367a17_7386_470c_8c72_954a48def552_SS1_combined*mwdb801a58_028d_43ff_90eb_830d15b4bc7f_SS2" />
+</reaction>
+
+<reaction text="mwb8e6b1d7_6c72_4a9b_a640_24ba06276629_SS2--mwde89bce9_6b96_41b5_ab10_47fdb6f84323_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mw78a7da0a_3e7e_491f_ad91_2ed5d734d5fc*mwb8e6b1d7_6c72_4a9b_a640_24ba06276629_SS2" />
+</reaction>
+
+<reaction text="mw117ae676_633e_4f3a_be8d_eacdbdddfeea_SS2--mw3c367a17_7386_470c_8c72_954a48def552_SS1_combined+mwdb801a58_028d_43ff_90eb_830d15b4bc7f_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mwce5fddb7_71c3_4e98_ac81_ec0a3b001d99*mw117ae676_633e_4f3a_be8d_eacdbdddfeea_SS2" />
+</reaction>
+
+<reaction text="mwde89bce9_6b96_41b5_ab10_47fdb6f84323_SS2+mw34fb2519_79b1_4f10_8668_6410726988c5_SS1_combined--mw4740c413_fa03_405b_a56e_3a2fd6375f6c_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="-_mw2ae82278_adf1_4e1e_bc67_81fd0721e604*mw4740c413_fa03_405b_a56e_3a2fd6375f6c_SS2 + _mw5d32e76c_c3b5_41f5_ab4d_a989739e976b*mw34fb2519_79b1_4f10_8668_6410726988c5_SS1_combined*mwde89bce9_6b96_41b5_ab10_47fdb6f84323_SS2" />
+</reaction>
+
+<reaction text="mwde89bce9_6b96_41b5_ab10_47fdb6f84323_SS2+mw4f8d0806_0366_43d5_8a2a_a05ee3287512_SS1_combined--mwb71129fd_b0dc_41ce_a833_e547a1c07b4f_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="-_mw8ab9985a_3984_4d46_8b30_0e80a32b67f1*mwb71129fd_b0dc_41ce_a833_e547a1c07b4f_SS2 + _mwe97cb484_3f1f_4130_b862_68561e44f9e7*mw4f8d0806_0366_43d5_8a2a_a05ee3287512_SS1_combined*mwde89bce9_6b96_41b5_ab10_47fdb6f84323_SS2" />
+</reaction>
+
+<reaction text="mw4740c413_fa03_405b_a56e_3a2fd6375f6c_SS2+mw4f8d0806_0366_43d5_8a2a_a05ee3287512_SS1_combined--mwb8e6b1d7_6c72_4a9b_a640_24ba06276629_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="-_mw7afd6ea0_151a_485a_951e_95ad1b693ddb*mwb8e6b1d7_6c72_4a9b_a640_24ba06276629_SS2 + _mwdb1afb7b_616f_4514_aa03_8864294581f7*mw4740c413_fa03_405b_a56e_3a2fd6375f6c_SS2*mw4f8d0806_0366_43d5_8a2a_a05ee3287512_SS1_combined" />
+</reaction>
+
+<reaction text="mwb71129fd_b0dc_41ce_a833_e547a1c07b4f_SS2+mw34fb2519_79b1_4f10_8668_6410726988c5_SS1_combined--mwb8e6b1d7_6c72_4a9b_a640_24ba06276629_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="-_mw04494ba4_76c3_4733_9985_94acd310297b*mwb8e6b1d7_6c72_4a9b_a640_24ba06276629_SS2 + _mw324437a8_304c_4428_82a3_e4d0282c46a1*mw34fb2519_79b1_4f10_8668_6410726988c5_SS1_combined*mwb71129fd_b0dc_41ce_a833_e547a1c07b4f_SS2" />
+</reaction>
+
+<reaction text="mwb8e6b1d7_6c72_4a9b_a640_24ba06276629_SS2--mw117ae676_633e_4f3a_be8d_eacdbdddfeea_SS2+mwcbd6bcc3_2c61_4e12_a6f7_e1ac7bc57188_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mw8dbd1384_dfe7_407c_bb2f_4c6a60ece113*mwb8e6b1d7_6c72_4a9b_a640_24ba06276629_SS2" />
+</reaction>
+
+<reaction text="mw6fb7f787_57b9_494d_a431_121e3ccbcda9_SS2+mw715c6bbe_f050_4257_8bc2_159625dc5aa5_SS1_combined--mwf36a5d62_cdc5_4e90_af35_a9fa5ddb33e2_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="-_mw4749d6e8_391a_4fed_9840_574e826d220b*mwf36a5d62_cdc5_4e90_af35_a9fa5ddb33e2_SS2 + _mwa454e0eb_5b9b_4abe_97fb_c8fecd1a5067*mw6fb7f787_57b9_494d_a431_121e3ccbcda9_SS2*mw715c6bbe_f050_4257_8bc2_159625dc5aa5_SS1_combined" />
+</reaction>
+
+<reaction text="mwf36a5d62_cdc5_4e90_af35_a9fa5ddb33e2_SS2+mw34fb2519_79b1_4f10_8668_6410726988c5_SS1_combined--mw969018c5_d898_4ea0_bb80_35de71266464_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mweb0418ba_a652_4601_b6c9_0815d8c7fdd7*mw34fb2519_79b1_4f10_8668_6410726988c5_SS1_combined**2*mwf36a5d62_cdc5_4e90_af35_a9fa5ddb33e2_SS2 - _mwfc57ef0b_083f_47a2_a7fb_bd77e7ea271a*mw969018c5_d898_4ea0_bb80_35de71266464_SS2" />
+</reaction>
+
+<reaction text="mw969018c5_d898_4ea0_bb80_35de71266464_SS2--mw7416e86a_aa61_4745_b4bc_072c5e137891_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mw91ca7fce_56fc_4796_be5f_31f2113d05ff*mw969018c5_d898_4ea0_bb80_35de71266464_SS2" />
+</reaction>
+
+<reaction text="mw969018c5_d898_4ea0_bb80_35de71266464_SS2--mw7416e86a_aa61_4745_b4bc_072c5e137891_SS2+mweb04477f_13a4_4d28_8518_06b1c5bae4de_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mw45c534f2_a178_4fda_9794_bb6a741ee891*mw969018c5_d898_4ea0_bb80_35de71266464_SS2" />
+</reaction>
+
+<reaction text="mw7416e86a_aa61_4745_b4bc_072c5e137891_SS2--mwcbd6bcc3_2c61_4e12_a6f7_e1ac7bc57188_SS2+mw27aa16fc_b76d_46c2_b301_0456b7e3aace_SS1_combined" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mw9e438038_4cdf_47fe_9fd8_8c153f1d0d36*mw7416e86a_aa61_4745_b4bc_072c5e137891_SS2" />
+</reaction>
+
+<reaction text="mwcbd6bcc3_2c61_4e12_a6f7_e1ac7bc57188_SS2+mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined--mwcb7850c8_3801_4d30_9282_42269ca72cc2_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mw5503e10b_b399_401c_85c1_34fcb4a75ef2*mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined*mwcbd6bcc3_2c61_4e12_a6f7_e1ac7bc57188_SS2 - _mwae4a630a_9af9_48e4_934e_06c84da51e82*mwcb7850c8_3801_4d30_9282_42269ca72cc2_SS2" />
+</reaction>
+
+<reaction text="mwcb7850c8_3801_4d30_9282_42269ca72cc2_SS2--mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mwb96a1d2a_b5f8_44f4_b227_80f66fda9cc3*mwcb7850c8_3801_4d30_9282_42269ca72cc2_SS2" />
+</reaction>
+
+<reaction text="mw6fb7f787_57b9_494d_a431_121e3ccbcda9_SS2+mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined--mwf0fa4e98_5b94_43bf_9fd1_16e075a088f9_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="-_mwa7c866b1_be00_4def_b475_9f5439669d26*mwf0fa4e98_5b94_43bf_9fd1_16e075a088f9_SS2 + _mwb6485fb2_9c6d_49a4_8420_c7c4c53a90cc*mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined*mw6fb7f787_57b9_494d_a431_121e3ccbcda9_SS2" />
+</reaction>
+
+<reaction text="mwf0fa4e98_5b94_43bf_9fd1_16e075a088f9_SS2--mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined+mw27aa16fc_b76d_46c2_b301_0456b7e3aace_SS1_combined" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mw415d655e_9891_4a00_843a_4d3ea56c6961*mwf0fa4e98_5b94_43bf_9fd1_16e075a088f9_SS2" />
+</reaction>
+
+<reaction text="mw969018c5_d898_4ea0_bb80_35de71266464_SS2+mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined--mw87bea200_227d_4010_9616_9bee4d30458b_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mw33c60e2e_0342_44e5_9018_5b0afb2d9e37*mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined*mw969018c5_d898_4ea0_bb80_35de71266464_SS2 - _mw743021d4_03be_46d4_8cfe_01c2a98abd72*mw87bea200_227d_4010_9616_9bee4d30458b_SS2" />
+</reaction>
+
+<reaction text="mw87bea200_227d_4010_9616_9bee4d30458b_SS2--mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined+mw715c6bbe_f050_4257_8bc2_159625dc5aa5_SS1_combined+mw34fb2519_79b1_4f10_8668_6410726988c5_SS1_combined+mw27aa16fc_b76d_46c2_b301_0456b7e3aace_SS1_combined" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mw9cee779f_46f7_454d_bdfc_0fdc67ae9dbb*mw87bea200_227d_4010_9616_9bee4d30458b_SS2" />
+</reaction>
+
+<reaction text="mw7416e86a_aa61_4745_b4bc_072c5e137891_SS2+mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined--mwd91c4e55_95af_42a7_ac6d_2c307d96e1fe_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mw5ba0589c_de85_47f9_b4de_6521446eb626*mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined*mw7416e86a_aa61_4745_b4bc_072c5e137891_SS2 - _mwb009fcc9_b90f_4dc5_ab36_f7cb4afaa2a6*mwd91c4e55_95af_42a7_ac6d_2c307d96e1fe_SS2" />
+</reaction>
+
+<reaction text="mwd91c4e55_95af_42a7_ac6d_2c307d96e1fe_SS2--mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined+mw27aa16fc_b76d_46c2_b301_0456b7e3aace_SS1_combined" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mw510ac102_ffdc_417a_aaf0_4e2404610fdf*mwd91c4e55_95af_42a7_ac6d_2c307d96e1fe_SS2" />
+</reaction>
+
+<reaction text="mwf36a5d62_cdc5_4e90_af35_a9fa5ddb33e2_SS2+mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined--mwf056a433_e0f6_461e_bfe3_c2b3c62486ca_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="-_mw36bc145a_0803_475e_952d_f47300281d76*mwf056a433_e0f6_461e_bfe3_c2b3c62486ca_SS2 + _mw98935be7_cc3a_45c9_82a1_60b4de40e60b*mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined*mwf36a5d62_cdc5_4e90_af35_a9fa5ddb33e2_SS2" />
+</reaction>
+
+<reaction text="mwf056a433_e0f6_461e_bfe3_c2b3c62486ca_SS2--mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined+mw715c6bbe_f050_4257_8bc2_159625dc5aa5_SS1_combined+mw27aa16fc_b76d_46c2_b301_0456b7e3aace_SS1_combined" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mw6a9add31_478e_43ac_93dc_7ac72e1b235b*mwf056a433_e0f6_461e_bfe3_c2b3c62486ca_SS2" />
+</reaction>
+
+<reaction text="mw5c94996f_4533_4f46_813f_fb42fa7356f3_SS2--mw6600ba7f_5b6d_4e5d_89a2_4d798f44476d_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mwb58426aa_c779_4bf6_abcb_d9b102a11b01*mw5c94996f_4533_4f46_813f_fb42fa7356f3_SS2" />
+</reaction>
+
+<reaction text="mw6a8ec7cf_9ce3_4f43_a91b_8cf54a67e9cb_SS2+mw27aa16fc_b76d_46c2_b301_0456b7e3aace_SS1_combined--mw11bfe9cd_0d22_4115_b9f7_163fa42fa97b_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mw047616e8_0b14_42e1_aa37_4c17eb01c742*mw27aa16fc_b76d_46c2_b301_0456b7e3aace_SS1_combined*mw6a8ec7cf_9ce3_4f43_a91b_8cf54a67e9cb_SS2 - _mw76a20dcd_87ed_43cb_9023_0c10a44bc081*mw11bfe9cd_0d22_4115_b9f7_163fa42fa97b_SS2" />
+</reaction>
+
+<reaction text="mw0f006cd4_e78e_48c5_b532_eb6e2f3c6121_SS2+mw3c367a17_7386_470c_8c72_954a48def552_SS1_combined--mw55a8259b_29cf_445a_a79e_f0229fbc33d2_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mwa4a57dad_68c2_457b_b8fe_5e44e0f79081*mw0f006cd4_e78e_48c5_b532_eb6e2f3c6121_SS2*mw3c367a17_7386_470c_8c72_954a48def552_SS1_combined - _mwdb5eda20_e9dc_4fa3_b7a8_4bb243cfa316*mw55a8259b_29cf_445a_a79e_f0229fbc33d2_SS2" />
+</reaction>
+
+<reaction text="mw68ff84bd_5ee7_416e_8ada_d4f9bad9d42b_SS2--mw55a8259b_29cf_445a_a79e_f0229fbc33d2_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mw3ea9c4de_2ae2_4c10_bcc0_779417a5a6f4*mw68ff84bd_5ee7_416e_8ada_d4f9bad9d42b_SS2" />
+</reaction>
+
+<reaction text="mwc200e475_c73f_465a_8de3_97b93a64c967_SS2--mw3c367a17_7386_470c_8c72_954a48def552_SS1_combined+mw0f006cd4_e78e_48c5_b532_eb6e2f3c6121_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mw3d1a9380_01d0_445c_a000_7aef19654d03*mwc200e475_c73f_465a_8de3_97b93a64c967_SS2" />
+</reaction>
+
+<reaction text="mw55a8259b_29cf_445a_a79e_f0229fbc33d2_SS2+mw34fb2519_79b1_4f10_8668_6410726988c5_SS1_combined--mwd6c5bf43_5a9f_455e_8341_73d1b30d0264_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mw2954d485_8830_42f7_9567_c5fb232a305e*mw34fb2519_79b1_4f10_8668_6410726988c5_SS1_combined*mw55a8259b_29cf_445a_a79e_f0229fbc33d2_SS2 - _mwe2129027_42be_48a5_b1ac_08a8475a4489*mwd6c5bf43_5a9f_455e_8341_73d1b30d0264_SS2" />
+</reaction>
+
+<reaction text="mw55a8259b_29cf_445a_a79e_f0229fbc33d2_SS2+mw4f8d0806_0366_43d5_8a2a_a05ee3287512_SS1_combined--mw49de218b_1e29_45e1_862c_0dc03a516700_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="-_mw5b6e5883_a3b1_41fd_b446_96fd580cb6fc*mw49de218b_1e29_45e1_862c_0dc03a516700_SS2 + _mw861809d2_2f89_480e_8ac0_a22bd363ee4d*mw4f8d0806_0366_43d5_8a2a_a05ee3287512_SS1_combined*mw55a8259b_29cf_445a_a79e_f0229fbc33d2_SS2" />
+</reaction>
+
+<reaction text="mwd6c5bf43_5a9f_455e_8341_73d1b30d0264_SS2+mw4f8d0806_0366_43d5_8a2a_a05ee3287512_SS1_combined--mw68ff84bd_5ee7_416e_8ada_d4f9bad9d42b_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mw420d2b27_f423_4274_84cb_6cac151f0d41*mw4f8d0806_0366_43d5_8a2a_a05ee3287512_SS1_combined*mwd6c5bf43_5a9f_455e_8341_73d1b30d0264_SS2 - _mwae8d8860_b8ab_4267_b767_361c82045673*mw68ff84bd_5ee7_416e_8ada_d4f9bad9d42b_SS2" />
+</reaction>
+
+<reaction text="mw49de218b_1e29_45e1_862c_0dc03a516700_SS2+mw34fb2519_79b1_4f10_8668_6410726988c5_SS1_combined--mw68ff84bd_5ee7_416e_8ada_d4f9bad9d42b_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="-_mw495d6006_2243_4a1b_8f99_da34ba8620c4*mw68ff84bd_5ee7_416e_8ada_d4f9bad9d42b_SS2 + _mw7f4252d3_360b_4d1c_be74_de2dd056dd30*mw34fb2519_79b1_4f10_8668_6410726988c5_SS1_combined*mw49de218b_1e29_45e1_862c_0dc03a516700_SS2" />
+</reaction>
+
+<reaction text="mw68ff84bd_5ee7_416e_8ada_d4f9bad9d42b_SS2--mwc200e475_c73f_465a_8de3_97b93a64c967_SS2+mw6a8ec7cf_9ce3_4f43_a91b_8cf54a67e9cb_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mw5c4b8017_d12f_4da7_844b_66866761e8a8*mw68ff84bd_5ee7_416e_8ada_d4f9bad9d42b_SS2" />
+</reaction>
+
+<reaction text="mw0f006cd4_e78e_48c5_b532_eb6e2f3c6121_SS2+mwc00961a6_47d1_4f5a_9c49_00fb0d02cd8a_SS2--mw7da17532_fa9d_4ff2_8436_cb08e7696382_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mw1f7cd54c_006a_4336_a29b_b8e165e47ffd*mw0f006cd4_e78e_48c5_b532_eb6e2f3c6121_SS2*mwc00961a6_47d1_4f5a_9c49_00fb0d02cd8a_SS2 - _mw2f5f58cf_40d2_46e1_b838_f65fc5977fe4*mw7da17532_fa9d_4ff2_8436_cb08e7696382_SS2" />
+</reaction>
+
+<reaction text="mw11bfe9cd_0d22_4115_b9f7_163fa42fa97b_SS2+mw715c6bbe_f050_4257_8bc2_159625dc5aa5_SS1_combined--mw6729d170_4447_449b_9e97_0908b0caab6b_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="-_mw5f037ee6_02ab_416b_b171_6a8d50c40d98*mw6729d170_4447_449b_9e97_0908b0caab6b_SS2 + _mw886360ca_3240_4b70_b2ed_71f6a14f6991*mw11bfe9cd_0d22_4115_b9f7_163fa42fa97b_SS2*mw715c6bbe_f050_4257_8bc2_159625dc5aa5_SS1_combined" />
+</reaction>
+
+<reaction text="mw6729d170_4447_449b_9e97_0908b0caab6b_SS2+mw34fb2519_79b1_4f10_8668_6410726988c5_SS1_combined--mw50cebc13_eef8_41ce_9a71_72ef3e078558_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="-_mwc11b606e_316e_4d71_9489_566accdec78f*mw50cebc13_eef8_41ce_9a71_72ef3e078558_SS2 + _mwd0db75ff_7917_4f48_8568_a6e4deaaef49*mw34fb2519_79b1_4f10_8668_6410726988c5_SS1_combined**2*mw6729d170_4447_449b_9e97_0908b0caab6b_SS2" />
+</reaction>
+
+<reaction text="mw50cebc13_eef8_41ce_9a71_72ef3e078558_SS2--mwe03e3eea_a713_4196_a6d8_44a14c926596_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mwda5b89c3_b635_462b_99e8_64dcdb001557*mw50cebc13_eef8_41ce_9a71_72ef3e078558_SS2" />
+</reaction>
+
+<reaction text="mw50cebc13_eef8_41ce_9a71_72ef3e078558_SS2--mwe03e3eea_a713_4196_a6d8_44a14c926596_SS2+mw5c94996f_4533_4f46_813f_fb42fa7356f3_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mw1f06627c_eca4_4a8e_95a3_0507a39254a8*mw50cebc13_eef8_41ce_9a71_72ef3e078558_SS2" />
+</reaction>
+
+<reaction text="mwe03e3eea_a713_4196_a6d8_44a14c926596_SS2--mw6a8ec7cf_9ce3_4f43_a91b_8cf54a67e9cb_SS2+mw27aa16fc_b76d_46c2_b301_0456b7e3aace_SS1_combined" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mw1ce3701e_a468_4bc4_8e8f_9490b0481417*mwe03e3eea_a713_4196_a6d8_44a14c926596_SS2" />
+</reaction>
+
+<reaction text="mw6a8ec7cf_9ce3_4f43_a91b_8cf54a67e9cb_SS2+mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined--mw611fccdf_157e_40db_8702_848bfb75c079_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="-_mw901997be_8666_4eaa_89ce_67dae645b596*mw611fccdf_157e_40db_8702_848bfb75c079_SS2 + _mwb8b2f665_972a_4fa5_b77b_65267d72d771*mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined*mw6a8ec7cf_9ce3_4f43_a91b_8cf54a67e9cb_SS2" />
+</reaction>
+
+<reaction text="mw611fccdf_157e_40db_8702_848bfb75c079_SS2--mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mw9a0d61ce_d19f_491d_8a8b_e7185dd6407b*mw611fccdf_157e_40db_8702_848bfb75c079_SS2" />
+</reaction>
+
+<reaction text="mw11bfe9cd_0d22_4115_b9f7_163fa42fa97b_SS2+mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined--mw7e686ddd_072e_4ab7_8512_92481d978201_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="-_mw8495daea_5d03_48d8_9a63_049bb19938e1*mw7e686ddd_072e_4ab7_8512_92481d978201_SS2 + _mw9095c419_1af6_423f_a17b_f35649e9b8e3*mw11bfe9cd_0d22_4115_b9f7_163fa42fa97b_SS2*mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined" />
+</reaction>
+
+<reaction text="mw7e686ddd_072e_4ab7_8512_92481d978201_SS2--mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined+mw27aa16fc_b76d_46c2_b301_0456b7e3aace_SS1_combined" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mw97572d63_c62e_4bbf_bdc1_2e74c31eaafc*mw7e686ddd_072e_4ab7_8512_92481d978201_SS2" />
+</reaction>
+
+<reaction text="mw50cebc13_eef8_41ce_9a71_72ef3e078558_SS2+mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined--mw88722339_572e_456f_85da_875cfc4e92bc_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="-_mw16c052b6_5d10_4f5b_b210_7e2b014b2b09*mw88722339_572e_456f_85da_875cfc4e92bc_SS2 + _mw93951f7c_0025_4fcb_b7aa_13011fab660e*mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined*mw50cebc13_eef8_41ce_9a71_72ef3e078558_SS2" />
+</reaction>
+
+<reaction text="mw88722339_572e_456f_85da_875cfc4e92bc_SS2--mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined+mw715c6bbe_f050_4257_8bc2_159625dc5aa5_SS1_combined+mw34fb2519_79b1_4f10_8668_6410726988c5_SS1_combined+mw27aa16fc_b76d_46c2_b301_0456b7e3aace_SS1_combined" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mwdb1c589a_02fe_4cbe_8254_348163ce6ad0*mw88722339_572e_456f_85da_875cfc4e92bc_SS2" />
+</reaction>
+
+<reaction text="mwe03e3eea_a713_4196_a6d8_44a14c926596_SS2+mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined--mw6b40acd5_0395_4c2b_a5d8_eae734923797_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="-_mw32cd40a9_406f_4471_8a5c_ccf548642a0b*mw6b40acd5_0395_4c2b_a5d8_eae734923797_SS2 + _mw67ee2769_d071_4e0c_8ae9_890a69369c1c*mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined*mwe03e3eea_a713_4196_a6d8_44a14c926596_SS2" />
+</reaction>
+
+<reaction text="mw6b40acd5_0395_4c2b_a5d8_eae734923797_SS2--mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined+mw27aa16fc_b76d_46c2_b301_0456b7e3aace_SS1_combined" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mwc71a57e2_1da1_46e5_a212_4a2eddb53988*mw6b40acd5_0395_4c2b_a5d8_eae734923797_SS2" />
+</reaction>
+
+<reaction text="mw6729d170_4447_449b_9e97_0908b0caab6b_SS2+mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined--mwa029c0f1_d85f_44ba_a505_84310ebae4b0_SS2" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="-_mw0e13e734_1441_4dd8_8bb2_6c45e689ce89*mwa029c0f1_d85f_44ba_a505_84310ebae4b0_SS2 + _mw6e36b10f_0200_499f_802b_7186ac265e97*mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined*mw6729d170_4447_449b_9e97_0908b0caab6b_SS2" />
+</reaction>
+
+<reaction text="mwa029c0f1_d85f_44ba_a505_84310ebae4b0_SS2--mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined+mw715c6bbe_f050_4257_8bc2_159625dc5aa5_SS1_combined+mw27aa16fc_b76d_46c2_b301_0456b7e3aace_SS1_combined" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_mw47f65815_3810_49b1_98a8_e8576ae26c72*mwa029c0f1_d85f_44ba_a505_84310ebae4b0_SS2" />
+</reaction>
+
+<reaction text="IPTG_SS3_combined+mw8581196a_7c77_4da8_879e_f2c6f24b1932_SS1_combined--xxIPTG_protein_alHL" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="IPTG_SS3_combined*_k1f*mw8581196a_7c77_4da8_879e_f2c6f24b1932_SS1_combined - _k1r*xxIPTG_protein_alHL" />
+</reaction>
+
+<reaction text="xxIPTG_protein_alHL--mw28f62bd1_3a2b_45ba_be22_53e2eb1a9509_SS2_combined+mw8581196a_7c77_4da8_879e_f2c6f24b1932_SS1_combined" after="--">
+    <delay type="none"/>
+    <propensity type="general" rate="_k2f*xxIPTG_protein_alHL" />
+</reaction>
+
+
+<species name="xxIPTG_protein_alHL" value="0.000000000000000000E+00" />
+<species name="mw3c367a17_7386_470c_8c72_954a48def552_SS1_combined" value="1.000000666667110067E+02" />
+<species name="mw27aa16fc_b76d_46c2_b301_0456b7e3aace_SS1_combined" value="3.000002000001330060E+01" />
+<species name="mw8db70522_81fd_468e_bfee_2b7b2106514e_SS1_combined" value="5.000003333335559574E+00" />
+<species name="mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined" value="1.000000666667110067E+02" />
+<species name="mw34fb2519_79b1_4f10_8668_6410726988c5_SS1_combined" value="3.180048200769430026E+06" />
+<species name="mw4f8d0806_0366_43d5_8a2a_a05ee3287512_SS1_combined" value="1.908028920461660018E+06" />
+<species name="mw715c6bbe_f050_4257_8bc2_159625dc5aa5_SS1_combined" value="3.180048200769430026E+07" />
+<species name="mw20c9d2b7_2d30_489e_82d1_e71648158436_SS1" value="0.000000000000000000E+00" />
+<species name="mw8581196a_7c77_4da8_879e_f2c6f24b1932_SS1_combined" value="0.000000000000000000E+00" />
+<species name="mw3df01083_618d_4509_9811_8b63adf5cb42_SS1" value="0.000000000000000000E+00" />
+<species name="mwdad3b651_3698_4347_a3af_13c2fd1cd4eb_SS1" value="0.000000000000000000E+00" />
+<species name="mw27bf35db_2b1d_439b_a0c4_81972bf226ef_SS1" value="1.000000666667109961E+00" />
+<species name="mwb9ed4bd5_8cd9_4f48_9f51_256760be89c7_SS1" value="0.000000000000000000E+00" />
+<species name="mw9c2e00f3_d345_4af1_918d_b211abb46cda_SS1" value="0.000000000000000000E+00" />
+<species name="mw42ea34c3_4490_4d8a_8ee5_dd1c4ac5319c_SS1" value="0.000000000000000000E+00" />
+<species name="mwd4771b8c_b1d7_4c13_997f_683e301a502a_SS1" value="0.000000000000000000E+00" />
+<species name="mwecef8e3a_4d8c_4f45_87ff_436093b9076f_SS1" value="0.000000000000000000E+00" />
+<species name="mw0d097c9c_0e16_42d5_a990_888eb21274ba_SS1" value="0.000000000000000000E+00" />
+<species name="mwb668d480_993b_469d_8925_7393c33b0558_SS1" value="0.000000000000000000E+00" />
+<species name="mw722ec4ac_80c5_4501_a092_98560b5118e5_SS1" value="0.000000000000000000E+00" />
+<species name="mw773fc4b1_f808_4bf3_85ad_07ce9b454369_SS1" value="0.000000000000000000E+00" />
+<species name="mw3222fc51_b8a6_481b_adcf_8fa66964731e_SS1" value="0.000000000000000000E+00" />
+<species name="mwbd8bbca4_ad12_4dd6_80fc_656686d30456_SS1" value="0.000000000000000000E+00" />
+<species name="mw5453f37e_770a_422a_ba2f_43c5372ca7be_SS1" value="0.000000000000000000E+00" />
+<species name="mwe1a34348_ddac_4a4e_be5b_0895f8905865_SS1" value="0.000000000000000000E+00" />
+<species name="mwbbb6129b_1e4f_4f45_96c0_f3b1fbebdb22_SS1_combined" value="0.000000000000000000E+00" />
+<species name="mweb04477f_13a4_4d28_8518_06b1c5bae4de_SS2" value="0.000000000000000000E+00" />
+<species name="mw28f62bd1_3a2b_45ba_be22_53e2eb1a9509_SS2_combined" value="0.000000000000000000E+00" />
+<species name="IPTG_SS3_combined" value="4.000000000000000000E+01" />
+<species name="mw609aa47a_fc0e_418c_a186_aa3a658fb203_SS2" value="0.000000000000000000E+00" />
+<species name="mwc00961a6_47d1_4f5a_9c49_00fb0d02cd8a_SS2" value="0.000000000000000000E+00" />
+<species name="mwcbd6bcc3_2c61_4e12_a6f7_e1ac7bc57188_SS2" value="0.000000000000000000E+00" />
+<species name="mw6fb7f787_57b9_494d_a431_121e3ccbcda9_SS2" value="0.000000000000000000E+00" />
+<species name="mwdb801a58_028d_43ff_90eb_830d15b4bc7f_SS2" value="2.000001333334219922E+01" />
+<species name="mwde89bce9_6b96_41b5_ab10_47fdb6f84323_SS2" value="0.000000000000000000E+00" />
+<species name="mwb8e6b1d7_6c72_4a9b_a640_24ba06276629_SS2" value="0.000000000000000000E+00" />
+<species name="mw117ae676_633e_4f3a_be8d_eacdbdddfeea_SS2" value="0.000000000000000000E+00" />
+<species name="mw969018c5_d898_4ea0_bb80_35de71266464_SS2" value="0.000000000000000000E+00" />
+<species name="mw7416e86a_aa61_4745_b4bc_072c5e137891_SS2" value="0.000000000000000000E+00" />
+<species name="mw5c94996f_4533_4f46_813f_fb42fa7356f3_SS2" value="0.000000000000000000E+00" />
+<species name="mw6600ba7f_5b6d_4e5d_89a2_4d798f44476d_SS2" value="0.000000000000000000E+00" />
+<species name="mw6a8ec7cf_9ce3_4f43_a91b_8cf54a67e9cb_SS2" value="0.000000000000000000E+00" />
+<species name="mw11bfe9cd_0d22_4115_b9f7_163fa42fa97b_SS2" value="0.000000000000000000E+00" />
+<species name="mw0f006cd4_e78e_48c5_b532_eb6e2f3c6121_SS2" value="2.000001333334219922E+01" />
+<species name="mw55a8259b_29cf_445a_a79e_f0229fbc33d2_SS2" value="0.000000000000000000E+00" />
+<species name="mw68ff84bd_5ee7_416e_8ada_d4f9bad9d42b_SS2" value="0.000000000000000000E+00" />
+<species name="mwc200e475_c73f_465a_8de3_97b93a64c967_SS2" value="0.000000000000000000E+00" />
+<species name="mw50cebc13_eef8_41ce_9a71_72ef3e078558_SS2" value="0.000000000000000000E+00" />
+<species name="mwe03e3eea_a713_4196_a6d8_44a14c926596_SS2" value="0.000000000000000000E+00" />
+<species name="mw36dad171_05d7_4907_8d71_c2b3b5e51352_SS2" value="0.000000000000000000E+00" />
+<species name="mw4740c413_fa03_405b_a56e_3a2fd6375f6c_SS2" value="0.000000000000000000E+00" />
+<species name="mwb71129fd_b0dc_41ce_a833_e547a1c07b4f_SS2" value="0.000000000000000000E+00" />
+<species name="mwf36a5d62_cdc5_4e90_af35_a9fa5ddb33e2_SS2" value="0.000000000000000000E+00" />
+<species name="mwcb7850c8_3801_4d30_9282_42269ca72cc2_SS2" value="0.000000000000000000E+00" />
+<species name="mwf0fa4e98_5b94_43bf_9fd1_16e075a088f9_SS2" value="0.000000000000000000E+00" />
+<species name="mw87bea200_227d_4010_9616_9bee4d30458b_SS2" value="0.000000000000000000E+00" />
+<species name="mwd91c4e55_95af_42a7_ac6d_2c307d96e1fe_SS2" value="0.000000000000000000E+00" />
+<species name="mwf056a433_e0f6_461e_bfe3_c2b3c62486ca_SS2" value="0.000000000000000000E+00" />
+<species name="mwd6c5bf43_5a9f_455e_8341_73d1b30d0264_SS2" value="0.000000000000000000E+00" />
+<species name="mw49de218b_1e29_45e1_862c_0dc03a516700_SS2" value="0.000000000000000000E+00" />
+<species name="mw7da17532_fa9d_4ff2_8436_cb08e7696382_SS2" value="0.000000000000000000E+00" />
+<species name="mw6729d170_4447_449b_9e97_0908b0caab6b_SS2" value="0.000000000000000000E+00" />
+<species name="mw611fccdf_157e_40db_8702_848bfb75c079_SS2" value="0.000000000000000000E+00" />
+<species name="mw7e686ddd_072e_4ab7_8512_92481d978201_SS2" value="0.000000000000000000E+00" />
+<species name="mw88722339_572e_456f_85da_875cfc4e92bc_SS2" value="0.000000000000000000E+00" />
+<species name="mw6b40acd5_0395_4c2b_a5d8_eae734923797_SS2" value="0.000000000000000000E+00" />
+<species name="mwa029c0f1_d85f_44ba_a505_84310ebae4b0_SS2" value="0.000000000000000000E+00" />
+
+<parameter name="AGTPdeg_F_combined" value="0.000000000000000000E+00"/>
+<parameter name="k1f" value="1.000000000000000000E+00"/>
+<parameter name="k1r" value="1.000000000000000000E+00"/>
+<parameter name="k2f" value="1.000000000000000000E+00"/>
+<parameter name="mwe60d7d7d_697e_4455_a11e_eac9e72a433e" value="2.310490601866479945E-03"/>
+<parameter name="mw3830ada9_8c1f_4408_8792_b352b9545092" value="2.000000000000000111E-01"/>
+<parameter name="mw4b24730a_ba8b_4323_8c9e_c8d793425e60" value="4.000000000000000000E+00"/>
+<parameter name="mw48cc8c87_2548_4333_b0d0_129277cd1fb4" value="2.000000000000000000E+01"/>
+<parameter name="mw8b9a381a_163f_435c_934b_38e9d22433c5" value="4.000000000000000000E+02"/>
+<parameter name="mw66da3667_22e0_4c78_82a4_32def7919cd0" value="7.485294117647059986E-01"/>
+<parameter name="mwd0042ae4_1646_428b_99de_e8ca18f1d5a2" value="5.000000000000000278E-02"/>
+<parameter name="mw490dcf1e_63bd_479e_a995_3f131fb43e97" value="1.000000000000000000E+03"/>
+<parameter name="mw002f98bd_2b9a_40dd_93c4_225856292b8a" value="1.200000000000000000E+08"/>
+<parameter name="mwec2a5da9_9f9d_42c6_b2de_a4a19dae0dda" value="1.000000000000000000E+03"/>
+<parameter name="mw4286f6bc_9ea0_4368_8609_a95ebe1ba7e4" value="1.200000000000000000E+08"/>
+<parameter name="mwf3f8bee7_7617_49f4_990a_afc7b5485ca7" value="1.000000000000000000E+00"/>
+<parameter name="mw4ce1e65c_926e_4d3c_b3e6_396def864bd6" value="1.200000000000000000E+05"/>
+<parameter name="mw710fb4f7_6073_42ed_a40d_41d009035891" value="1.000000000000000000E+00"/>
+<parameter name="mw6aa3baca_c087_46d2_bf9e_75440163765a" value="1.200000000000000000E+05"/>
+<parameter name="mw2996778c_c27b_4ec7_a7bb_34b2ceda6977" value="1.470588235294120012E-03"/>
+<parameter name="mwa0cbd407_e863_4341_b66b_060977850e66" value="3.000000000000000000E+02"/>
+<parameter name="mw5ffbf3db_6003_4217_9bd8_796832a8ba27" value="1.000000000000000056E-01"/>
+<parameter name="mw759eca19_9151_4ba3_acf0_89be22ebccd8" value="3.000000000000000000E+01"/>
+<parameter name="mw7bf223f7_b7b0_4026_acb1_17191e7ef4e6" value="1.000000000000000000E+01"/>
+<parameter name="mwf2243644_7dd8_4cd5_8e7f_523d1ee6c622" value="2.400000000000000050E-02"/>
+<parameter name="mwdbe11a94_d411_4b68_aa97_8f09854129f2" value="1.200000000000000025E-02"/>
+<parameter name="mw0768058d_03e2_4673_8542_1f8cb39d4ec3" value="5.000000000000000000E+01"/>
+<parameter name="mw9031e56e_f709_472e_841a_f697866e9019" value="1.000000000000000000E+01"/>
+<parameter name="mwd24cd525_af85_43b1_afc4_c91d2d887a5b" value="2.000000000000000000E+03"/>
+<parameter name="mw9008fd58_dae9_4ff7_b526_e14558cae1c3" value="2.777777777777780052E-03"/>
+<parameter name="mw0d51dc68_2890_43f9_bdd4_ac1b1ef92525" value="1.000000000000000000E+01"/>
+<parameter name="mw0cd5d8d1_dfe6_40ba_8503_81c9e1ea0599" value="2.000000000000000000E+03"/>
+<parameter name="mw980fee86_abb7_474c_acba_0aa345a38f0f" value="2.777777777777780052E-03"/>
+<parameter name="mw93741c58_8277_4c4d_ae0b_f66c8b61386d" value="1.000000000000000000E+01"/>
+<parameter name="mwccff0caa_1476_405b_b13a_b17603ebf988" value="2.000000000000000000E+03"/>
+<parameter name="mw670653d9_4218_4df9_b303_5f293e77f990" value="2.777777777777780052E-03"/>
+<parameter name="mw880f4368_ff12_4fb4_8274_f28a85086459" value="1.000000000000000000E+01"/>
+<parameter name="mw9c569c82_9bbe_4254_be15_864725548e53" value="2.000000000000000000E+03"/>
+<parameter name="mw31b03405_3b28_47bb_8821_50e7421ede27" value="2.777777777777780052E-03"/>
+<parameter name="mwaf2b763e_ef31_46f8_941a_79f8b7912007" value="1.000000000000000000E+01"/>
+<parameter name="mw1d8f2bbb_07a6_402b_9ffc_d24aac2a1edf" value="2.000000000000000000E+03"/>
+<parameter name="mwef614928_eb66_47e0_9448_7e37ca1f9da6" value="2.777777777777780052E-03"/>
+<parameter name="mwed97bcbd_4d1b_4df8_9cc5_6efe8dc18edf" value="1.000000000000000056E-01"/>
+<parameter name="mw220339f8_94a8_4c76_a9f9_58d5c54662f3" value="1.000000000000000021E-02"/>
+<parameter name="mw95143b4c_189f_4371_9e49_c9203b9cbcbc" value="1.100000000000000089E+00"/>
+<parameter name="mw957daec6_ebbb_49d5_8167_3766b2a188d2" value="1.000000000000000000E+00"/>
+<parameter name="mwa09a7a9d_81cc_4ec4_bba4_36d8e79b88d8" value="2.000000000000000000E+00"/>
+<parameter name="mw88e6b301_c19d_4176_a4ab_c796e1855157" value="2.500000000000000000E+02"/>
+<parameter name="mwea067fb0_944c_4ea9_ad77_d6c4637982d5" value="2.000000000000000111E-01"/>
+<parameter name="mwaa2e8186_64eb_4461_8a31_8d0de39dc096" value="4.000000000000000000E+00"/>
+<parameter name="mwd1e6aca1_12f3_4a1c_8a72_af7a96b9813b" value="2.000000000000000000E+01"/>
+<parameter name="mw820bf2c5_8b99_479b_81a8_f87bd2e4993c" value="4.000000000000000000E+02"/>
+<parameter name="mw78a7da0a_3e7e_491f_ad91_2ed5d734d5fc" value="7.487704918032790369E-01"/>
+<parameter name="mwce5fddb7_71c3_4e98_ac81_ec0a3b001d99" value="5.000000000000000278E-02"/>
+<parameter name="mw5d32e76c_c3b5_41f5_ab4d_a989739e976b" value="1.000000000000000000E+03"/>
+<parameter name="mw2ae82278_adf1_4e1e_bc67_81fd0721e604" value="1.200000000000000000E+08"/>
+<parameter name="mwe97cb484_3f1f_4130_b862_68561e44f9e7" value="1.000000000000000000E+03"/>
+<parameter name="mw8ab9985a_3984_4d46_8b30_0e80a32b67f1" value="1.200000000000000000E+08"/>
+<parameter name="mwdb1afb7b_616f_4514_aa03_8864294581f7" value="1.000000000000000000E+00"/>
+<parameter name="mw7afd6ea0_151a_485a_951e_95ad1b693ddb" value="1.200000000000000000E+05"/>
+<parameter name="mw324437a8_304c_4428_82a3_e4d0282c46a1" value="1.000000000000000000E+00"/>
+<parameter name="mw04494ba4_76c3_4733_9985_94acd310297b" value="1.200000000000000000E+05"/>
+<parameter name="mw8dbd1384_dfe7_407c_bb2f_4c6a60ece113" value="1.229508196721310065E-03"/>
+<parameter name="mwa454e0eb_5b9b_4abe_97fb_c8fecd1a5067" value="3.000000000000000000E+02"/>
+<parameter name="mw4749d6e8_391a_4fed_9840_574e826d220b" value="1.000000000000000056E-01"/>
+<parameter name="mweb0418ba_a652_4601_b6c9_0815d8c7fdd7" value="3.000000000000000000E+01"/>
+<parameter name="mwfc57ef0b_083f_47a2_a7fb_bd77e7ea271a" value="1.000000000000000000E+01"/>
+<parameter name="mw91ca7fce_56fc_4796_be5f_31f2113d05ff" value="2.999999999999999889E-02"/>
+<parameter name="mw45c534f2_a178_4fda_9794_bb6a741ee891" value="1.000000000000000021E-02"/>
+<parameter name="mw9e438038_4cdf_47fe_9fd8_8c153f1d0d36" value="5.000000000000000000E+01"/>
+<parameter name="mw5503e10b_b399_401c_85c1_34fcb4a75ef2" value="1.000000000000000000E+01"/>
+<parameter name="mwae4a630a_9af9_48e4_934e_06c84da51e82" value="2.000000000000000000E+03"/>
+<parameter name="mwb96a1d2a_b5f8_44f4_b227_80f66fda9cc3" value="2.777777777777780052E-03"/>
+<parameter name="mwb6485fb2_9c6d_49a4_8420_c7c4c53a90cc" value="1.000000000000000000E+01"/>
+<parameter name="mwa7c866b1_be00_4def_b475_9f5439669d26" value="2.000000000000000000E+03"/>
+<parameter name="mw415d655e_9891_4a00_843a_4d3ea56c6961" value="2.777777777777780052E-03"/>
+<parameter name="mw33c60e2e_0342_44e5_9018_5b0afb2d9e37" value="1.000000000000000000E+01"/>
+<parameter name="mw743021d4_03be_46d4_8cfe_01c2a98abd72" value="2.000000000000000000E+03"/>
+<parameter name="mw9cee779f_46f7_454d_bdfc_0fdc67ae9dbb" value="2.777777777777780052E-03"/>
+<parameter name="mw5ba0589c_de85_47f9_b4de_6521446eb626" value="1.000000000000000000E+01"/>
+<parameter name="mwb009fcc9_b90f_4dc5_ab36_f7cb4afaa2a6" value="2.000000000000000000E+03"/>
+<parameter name="mw510ac102_ffdc_417a_aaf0_4e2404610fdf" value="2.777777777777780052E-03"/>
+<parameter name="mw98935be7_cc3a_45c9_82a1_60b4de40e60b" value="1.000000000000000000E+01"/>
+<parameter name="mw36bc145a_0803_475e_952d_f47300281d76" value="2.000000000000000000E+03"/>
+<parameter name="mw6a9add31_478e_43ac_93dc_7ac72e1b235b" value="2.777777777777780052E-03"/>
+<parameter name="mwb58426aa_c779_4bf6_abcb_d9b102a11b01" value="2.310490601866479945E-03"/>
+<parameter name="mw047616e8_0b14_42e1_aa37_4c17eb01c742" value="2.000000000000000111E-01"/>
+<parameter name="mw76a20dcd_87ed_43cb_9023_0c10a44bc081" value="4.000000000000000000E+00"/>
+<parameter name="mwa4a57dad_68c2_457b_b8fe_5e44e0f79081" value="2.000000000000000000E+01"/>
+<parameter name="mwdb5eda20_e9dc_4fa3_b7a8_4bb243cfa316" value="4.000000000000000000E+02"/>
+<parameter name="mw3ea9c4de_2ae2_4c10_bcc0_779417a5a6f4" value="7.485294117647059986E-01"/>
+<parameter name="mw3d1a9380_01d0_445c_a000_7aef19654d03" value="5.000000000000000278E-02"/>
+<parameter name="mw2954d485_8830_42f7_9567_c5fb232a305e" value="1.000000000000000000E+03"/>
+<parameter name="mwe2129027_42be_48a5_b1ac_08a8475a4489" value="1.200000000000000000E+08"/>
+<parameter name="mw861809d2_2f89_480e_8ac0_a22bd363ee4d" value="1.000000000000000000E+03"/>
+<parameter name="mw5b6e5883_a3b1_41fd_b446_96fd580cb6fc" value="1.200000000000000000E+08"/>
+<parameter name="mw420d2b27_f423_4274_84cb_6cac151f0d41" value="1.000000000000000000E+00"/>
+<parameter name="mwae8d8860_b8ab_4267_b767_361c82045673" value="1.200000000000000000E+05"/>
+<parameter name="mw7f4252d3_360b_4d1c_be74_de2dd056dd30" value="1.000000000000000000E+00"/>
+<parameter name="mw495d6006_2243_4a1b_8f99_da34ba8620c4" value="1.200000000000000000E+05"/>
+<parameter name="mw5c4b8017_d12f_4da7_844b_66866761e8a8" value="1.470588235294120012E-03"/>
+<parameter name="mw1f7cd54c_006a_4336_a29b_b8e165e47ffd" value="1.500000000000000000E+02"/>
+<parameter name="mw2f5f58cf_40d2_46e1_b838_f65fc5977fe4" value="1.000000000000000056E-01"/>
+<parameter name="mw886360ca_3240_4b70_b2ed_71f6a14f6991" value="3.000000000000000000E+02"/>
+<parameter name="mw5f037ee6_02ab_416b_b171_6a8d50c40d98" value="1.000000000000000056E-01"/>
+<parameter name="mwd0db75ff_7917_4f48_8568_a6e4deaaef49" value="3.000000000000000000E+01"/>
+<parameter name="mwc11b606e_316e_4d71_9489_566accdec78f" value="1.000000000000000000E+01"/>
+<parameter name="mwda5b89c3_b635_462b_99e8_64dcdb001557" value="2.400000000000000050E-02"/>
+<parameter name="mw1f06627c_eca4_4a8e_95a3_0507a39254a8" value="1.200000000000000025E-02"/>
+<parameter name="mw1ce3701e_a468_4bc4_8e8f_9490b0481417" value="5.000000000000000000E+01"/>
+<parameter name="mwb8b2f665_972a_4fa5_b77b_65267d72d771" value="1.000000000000000000E+01"/>
+<parameter name="mw901997be_8666_4eaa_89ce_67dae645b596" value="2.000000000000000000E+03"/>
+<parameter name="mw9a0d61ce_d19f_491d_8a8b_e7185dd6407b" value="2.777777777777780052E-03"/>
+<parameter name="mw9095c419_1af6_423f_a17b_f35649e9b8e3" value="1.000000000000000000E+01"/>
+<parameter name="mw8495daea_5d03_48d8_9a63_049bb19938e1" value="2.000000000000000000E+03"/>
+<parameter name="mw97572d63_c62e_4bbf_bdc1_2e74c31eaafc" value="2.777777777777780052E-03"/>
+<parameter name="mw93951f7c_0025_4fcb_b7aa_13011fab660e" value="1.000000000000000000E+01"/>
+<parameter name="mw16c052b6_5d10_4f5b_b210_7e2b014b2b09" value="2.000000000000000000E+03"/>
+<parameter name="mwdb1c589a_02fe_4cbe_8254_348163ce6ad0" value="2.777777777777780052E-03"/>
+<parameter name="mw67ee2769_d071_4e0c_8ae9_890a69369c1c" value="1.000000000000000000E+01"/>
+<parameter name="mw32cd40a9_406f_4471_8a5c_ccf548642a0b" value="2.000000000000000000E+03"/>
+<parameter name="mwc71a57e2_1da1_46e5_a212_4a2eddb53988" value="2.777777777777780052E-03"/>
+<parameter name="mw6e36b10f_0200_499f_802b_7186ac265e97" value="1.000000000000000000E+01"/>
+<parameter name="mw0e13e734_1441_4dd8_8bb2_6c45e689ce89" value="2.000000000000000000E+03"/>
+<parameter name="mw47f65815_3810_49b1_98a8_e8576ae26c72" value="2.777777777777780052E-03"/>
+
+</model>

@@ -345,8 +345,8 @@ class System(object):
         internal_subsystems = self.ListOfInternalSubsystems
         external_subsystems = self.ListOfExternalSubsystems
         membranes = self.ListOfMembraneSubsystems
-        system_sbml.combineSubsystems([internal_subsystems, external_subsystems, membranes],mode)
-        return system_sbml.getSBMLDocument()
+        system_sbml.combineSubsystems([internal_subsystems, external_subsystems, membranes], mode)
+        return system_sbml.getSBMLDocument(), system_sbml
 
 
 def createNewSubsystem(level = latestLevel, version = latestVersion):
