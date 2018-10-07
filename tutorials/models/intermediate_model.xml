@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="fastModel" substanceUnits="count" timeUnits="second" extentUnits="mole">
+    <listOfUnitDefinitions>
+      <unitDefinition id="per_second">
+        <listOfUnits>
+          <unit kind="second" exponent="-1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="count">
+        <listOfUnits>
+          <unit kind="dimensionless" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment id="cell" name="cell" size="1" units="litre" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species id="inp_IFFL_1" name="inp_IFFL" compartment="cell" initialAmount="50" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="DA_IFFL_1" name="DA_IFFL" compartment="cell" initialAmount="50" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="C1_IFFL_1" name="C1_IFFL" compartment="cell" initialAmount="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter id="k1f_1" name="k1f" value="1" units="per_second" constant="false"/>
+      <parameter id="k1r_1" name="k1r" value="1" units="per_second" constant="false"/>
+      <parameter id="k2f_1" name="k2f" value="1" units="per_second" constant="false"/>
+      <parameter id="k3f_1" name="k3f" value="1" units="per_second" constant="false"/>
+      <parameter id="k4f_1" name="k4f" value="1" units="per_second" constant="false"/>
+      <parameter id="k5f_1" name="k5f" value="1" units="per_second" constant="false"/>
+      <parameter id="k6f_1" name="k6f" value="1" units="per_second" constant="false"/>
+      <parameter id="k6r_1" name="k6r" value="1" units="per_second" constant="false"/>
+      <parameter id="k7f_1" name="k7f" value="1" units="per_second" constant="false"/>
+      <parameter id="k8f_1" name="k8f" value="1" units="per_second" constant="false"/>
+      <parameter id="k9f_1" name="k9f" value="1" units="per_second" constant="false"/>
+      <parameter id="k10f_1" name="k10f" value="1" units="per_second" constant="false"/>
+      <parameter id="k11f_1" name="k11f" value="1" units="per_second" constant="false"/>
+      <parameter id="k11r_1" name="k11r" value="1" units="per_second" constant="false"/>
+      <parameter id="k12f_1" name="k12f" value="1" units="per_second" constant="false"/>
+      <parameter id="k12r_1" name="k12r" value="1" units="per_second" constant="false"/>
+      <parameter id="k13f_1" name="k13f" value="1" units="per_second" constant="false"/>
+      <parameter id="k13r_1" name="k13r" value="1" units="per_second" constant="false"/>
+      <parameter id="k14f_1" name="k14f" value="1" units="per_second" constant="false"/>
+      <parameter id="k14r_1" name="k14r" value="1" units="per_second" constant="false"/>
+      <parameter id="k15f_1" name="k15f" value="1" units="per_second" constant="false"/>
+      <parameter id="k16f_1" name="k16f" value="1" units="per_second" constant="false"/>
+      <parameter id="k17f_1" name="k17f" value="1" units="per_second" constant="false"/>
+      <parameter id="k18f_1" name="k18f" value="1" units="per_second" constant="false"/>
+    </listOfParameters>
+    <listOfReactions>
+      <reaction id="r1_1" reversible="true" fast="true">
+        <listOfReactants>
+          <speciesReference species="inp_IFFL_1" stoichiometry="1" constant="false"/>
+          <speciesReference species="DA_IFFL_1" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="C1_IFFL_1" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> k1f_1 </ci>
+                <ci> inp_IFFL_1 </ci>
+                <ci> DA_IFFL_1 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> k1r_1 </ci>
+                <ci> C1_IFFL_1 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

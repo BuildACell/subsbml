@@ -1,5 +1,9 @@
-# Import all required libraries
-from .Subsystem import *
+# Import all required library
+
+import warnings 
+from .Subsystem import Subsystem 
+
+from .utilityFunctions import getFromXML, check, createSbmlDoc 
 
 # The latest level and version of SBML 
 # These are used to convert the models given as input to the latest SBML version
@@ -196,6 +200,9 @@ class System(object):
         name = self.getSystemName()
         sbmlDoc = getFromXML(filename)
         model = sbmlDoc.getModel()
+        check(model,'retreiving model in createSubsystem')
+        if model == None:
+            raise SyntaxError('Model object not created')
         subsystem = Subsystem(sbmlDoc)
         subsystem.setSystem(self)
         if subsystem.getSBMLDocument().getLevel() != latestLevel or subsystem.getSBMLDocument().getVersion() != latestVersion:

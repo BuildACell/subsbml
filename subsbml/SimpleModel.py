@@ -1,8 +1,10 @@
-from libsbml import *
 import warnings
 
-from .setIdFromNames import *
-from .SimpleReaction import *
+import libsbml
+
+from .setIdFromNames import SetIdFromNames
+from .SimpleReaction import SimpleReaction
+from .utilityFunctions import check
 
 latestLevel = 3
 latestVersion = 1
@@ -271,7 +273,7 @@ class SimpleModel(object):
         check(model,'retreived model object')
         constr = model.createConstraint()
         check(constr, 'creating a new constraint inside the model')
-        astMath = parseL3Formula(formulaString)
+        astMath = libsbml.parseL3Formula(formulaString)
         check(constr.setMath(astMath), 'setting math to the constraint')
         check(constr.setMessage(msg, True), 'setting the message to the constraint')
         if name != '':
@@ -299,24 +301,24 @@ class SimpleModel(object):
         check(eTrig,'creating trigger inside the event')
         check(eTrig.setPersistent(trigger_persistent), 'setting persistent value to the trigger')
         check(eTrig.setInitialValue(trigger_initialValue), 'setting initial value to the trigger')
-        trig_math = parseL3Formula(trigger_formula)
+        trig_math = libsbml.parseL3Formula(trigger_formula)
         check(eTrig.setMath(trig_math), 'setting math to the trigger')
 
         eA = e.createEventAssignment()
         check(eA, 'creating event assignment inside the event')
         check(eA.setVariable(variable_id), 'setting variable in the event assignment')
-        asmt_math = parseL3Formula(assignment_formula)
+        asmt_math = libsbml.parseL3Formula(assignment_formula)
         check(eA.setMath(asmt_math), 'setting math to the event assignment')
 
         if delay_formula != '':
             eDel = e.createDelay()
             check(eDel, 'creating a new delay inside the event')
-            del_math = parseL3Formula(delay_formula)
+            del_math = libsbml.parseL3Formula(delay_formula)
             check(eDel.setMath(del_math), 'setting the math to the delay')
         if priority_formula != '':
             eP = e.createPriority()
             check(eP, 'creating a new priority inside the event')
-            prio_math = parseL3Formula(priority_formula)
+            prio_math = libsbml.parseL3Formula(priority_formula)
             check(eP.setMath(prio_math), 'setting the math to the priority')
         e.setUseValuesFromTriggerTime(useValuesFromTriggerTime)
         return e
@@ -332,7 +334,7 @@ class SimpleModel(object):
         init_asmt = model.createInitialAssignment()
         check(init_asmt,'creating new initial assignment inside the model')
         check(init_asmt.setSymbol(symbol),'setting the symbol to the initial assignment')
-        initAsmt_math = parseL3Formula(initialAssignment_formula)
+        initAsmt_math = libsbml.parseL3Formula(initialAssignment_formula)
         check(init_asmt.setMath(initAsmt_math),'setting math to the initial assignment')
         return 
 
@@ -392,7 +394,7 @@ class SimpleModel(object):
         check(func_def.setId(id), 'setting the id of the function definition')
         if name != '' :
             check(func_def.setName(name), 'setting the name of the function definition')
-        func_math = parseL3Formula(functionDefinition_formula)
+        func_math = libsbml.parseL3Formula(functionDefinition_formula)
         check(func_def.setMath(func_math), 'setting the math for the function definition')
         return 
 

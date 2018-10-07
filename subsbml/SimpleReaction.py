@@ -1,8 +1,11 @@
-from libsbml import *
+import libsbml
 import re
+
+from .utilityFunctions import check
 
 latestLevel = 3
 latestVersion = 1
+
 class SimpleReaction(object):
     '''
     SimpleReaction class can be used to create reactions in a Model in a simple manner.
@@ -195,62 +198,7 @@ class SimpleReaction(object):
         '''
         if type(formulaString) is not str:
             raise ValueError('The formulaString argument must be a string in the appropriate format')
-        math_ast = parseL3Formula(formulaString)
+        math_ast = libsbml.parseL3Formula(formulaString)
         check(math_ast, 'create AST for rate expression')
         return math_ast
 
-def check(value, message):
-    """If 'value' is None, prints an error message constructed using
-    'message' and then exits with status code 1.  If 'value' is an integer,
-    it assumes it is a libSBML return status code.  If the code value is
-    LIBSBML_OPERATION_SUCCESS, returns without further action; if it is not,
-    prints an error message constructed using 'message' along with text from
-    libSBML explaining the meaning of the code, and exits with status code 1.
-    """
-    if value == None:
-            raise SystemExit(
-                'LibSBML returned a null value trying to ' + message + '.')
-    elif type(value) is int:
-        if value == LIBSBML_OPERATION_SUCCESS:
-            return
-        else:
-            err_msg = 'Error encountered trying to ' + message + '.' \
-                + 'LibSBML returned error code ' + str(value) + ': "' \
-                + OperationReturnValue_toString(value).strip() + '"'
-            raise SystemExit(err_msg)
-    else:
-        return
-
-   
-def createNewModel(modelId, timeUnits, extentUnits, substanceUnits):
-    '''
-    Creates a new libSBML Model object and return a SimpleModel class object 
-    with the given attributes. 
-    '''
-    doc = createSbmlDoc()
-    model = doc.createModel()
-    if model == None:
-        print('Unable to create Model object.')
-        sys.exit(1)
-    status = model.setId(modelId)
-    if status != LIBSBML_OPERATION_SUCCESS:
-        print('Unable to set identifier on the Model object')
-        sys.exit(1)
-    check(model.setTimeUnits(timeUnits), 'set model-wide time units')
-    check(model.setExtentUnits(extentUnits), 'set model units of extent')
-    check(model.setSubstanceUnits(substanceUnits),
-            'set model substance units')
-    # simpleModel = SimpleModel(model)
-    return model 
-
-def createSbmlDoc(newLevel = latestLevel, newVersion = latestVersion):
-    ''' 
-    Creates a new SBMLDocument ojbect of the given (both optional arguments) newLevel and newVersion
-    Returns the created SBMLDocument
-    '''
-    try:
-        sbmlDoc = SBMLDocument(newLevel, newVersion)
-    except ValueError:
-        print('Could not create SBMLDocument object')
-        sys.exit(1)
-    return sbmlDoc

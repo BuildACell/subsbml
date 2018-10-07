@@ -119,16 +119,16 @@ class SetIdFromNames(libsbml.IdentifierTransformer):
 #  # 
 #  # Returns a list of all ids from the given list of elements
 #  # 
-# def getAllIds(allElements):
-#     result = []
-#     if (allElements == None or allElements.getSize() == 0):
-#         return result 
+def getAllIds(allElements):
+    result = []
+    if (allElements == None or allElements.getSize() == 0):
+        return result 
  
-#     for i in range (0, allElements.getSize()):
-#         current = allElements.get(i) 
-#         if (current.isSetId() and current.getTypeCode() != libsbml.SBML_LOCAL_PARAMETER):
-#             result.append(current.getId()) 
-#     return result 
+    for i in range (0, allElements.getSize()):
+        current = allElements.get(i) 
+        if (current.isSetId() and current.getTypeCode() != libsbml.SBML_LOCAL_PARAMETER):
+            result.append(current.getId()) 
+    return result 
  
  
  

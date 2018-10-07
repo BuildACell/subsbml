@@ -1,9 +1,17 @@
-import libsbml 
 import time
-from .SimpleReaction import *
-from .SimpleModel import *
-from .setIdFromNames import *
-from .utilityFunctions import *
+import warnings
+import numpy as np
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+import sys
+
+import libsbml 
+import bioscrape
+
+from .SimpleModel import SimpleModel
+from .SimpleReaction import SimpleReaction
+from .setIdFromNames import SetIdFromNames
+from .utilityFunctions import check, getFromXML
 
 class Subsystem(object):
 
@@ -27,7 +35,7 @@ class Subsystem(object):
         check(SBMLDocument,'checking SBMLDocument object')
         self.SBMLDocument = SBMLDocument
         self.System = System
-        
+
     def getSBMLDocument(self):
         '''
         Returns the SBMLDocument object of the Subsystem
@@ -104,7 +112,7 @@ class Subsystem(object):
             warnings.warn('The current SBMLDocument level and version are the same as the new level and version given')
             return
 
-        config = ConversionProperties()
+        config = libsbml.ConversionProperties()
         if config != None:
             config.addOption('setLevelAndVersion')
         else:
@@ -112,7 +120,7 @@ class Subsystem(object):
         # Now, need to set the target level and version (to which to convert the document)
         # Use the setTargetNamespaces() object of the ConversionsProperties as follows.
         # First, need to create a new SBMLNamespaces object with the desired (target) level and version
-        sbmlns = SBMLNamespaces(newLevel,newVersion)
+        sbmlns = libsbml.SBMLNamespaces(newLevel,newVersion)
         check(sbmlns, 'creating new sbml namespaces')
         # check(config.setTargetNamespaces(sbmlns),'setting target namespaces')
         config.setTargetNamespaces(sbmlns)
@@ -207,6 +215,56 @@ class Subsystem(object):
             current = allElements.get(i)
             current.renameSIdRefs(oldSId, newSId)
         return document 
+    
+    def getSpeciesByName(self, name):
+        ''' 
+        Returns a list of species in the Model with the given name
+        '''
+        if type(name) is not str:
+            raise ValueError('The arguments are not of expected type.') 
+        model = self.getSBMLDocument().getModel()
+        check(model,'retreived model object')
+        species_found =[]
+        for species in model.getListOfSpecies():
+            if species.getName() == name:
+                species_found.append(species)
+        if len(species_found) == 1:
+            return species_found[0] 
+        elif not species_found:
+            raise ValueError('The species ' + name + ' not found.')
+        else:
+            warnings.warn('Multiple species with name ' + name + ' found. Returning a list')
+            return species_found
+    
+ 
+    def getParameterByName(self, name):
+        ''' 
+        Returns a list of Parameters in the Model with the given name
+        '''
+        if type(name) is not str:
+            raise ValueError('The arguments are not of expected type.') 
+        model = self.getSBMLDocument().getModel()
+        check(model,'retreived model object')
+        parameter_found =[]
+        # Going through all local parameters
+        for reaction in model.getListOfReactions():
+            for local_param in reaction.getKineticLaw().getListOfLocalParameters():
+                if local_param.getName() == name:
+                    parameter_found.append(local_param)
+ 
+        # Going through all global parameters
+        for parameter in model.getListOfParameters():
+            if parameter.getName() == name:
+                parameter_found.append(parameter)
+
+        if len(parameter_found) == 1:
+            return parameter_found[0] 
+        elif not parameter_found:
+            raise ValueError('The parameter ' + name + ' not found.')
+        else:
+            warnings.warn('Multiple parameter with name ' + name + ' found. Returning a list')
+            return parameter_found
+ 
 
     def getAllIds(self):
         """ 
@@ -306,7 +364,7 @@ class Subsystem(object):
             print('Unable to create Model object.')
             sys.exit(1)
         status = model.setId(modelId)
-        if status != LIBSBML_OPERATION_SUCCESS:
+        if status != libsbml.LIBSBML_OPERATION_SUCCESS:
             print('Unable to set identifier on the Model object')
             sys.exit(1)
         check(model.setTimeUnits(timeUnits), 'set model-wide time units')
@@ -1433,32 +1491,7 @@ class Subsystem(object):
                                 warnings.warn('Removing all duplicates of the function_definition {0} in the combined model. Check other attributes to ensure consistency.'.format(func_def_str))
                     self.renameSId(uni_func_def.getId(), trans.getValidIdForName(uni_func_def.getId()+'_combined'))
         return self.getSBMLDocument()
-    
-    
-    def getSpeciesByName(self, name):
-        ''' 
-        Returns a list of species in the Subsystem with the given name
-        '''
-        if type(name) is not str:
-            raise ValueError('The arguments are not of expected type.') 
-        model = self.getSBMLDocument().getModel()
-        check(model,'retreived model object')
-        species_found =[]
-        for species in model.getListOfSpecies():
-            if species.isSetName():
-                if species.getName() == name:
-                    species_found.append(species)
-            else:
-                warnings.warn('Species {0} does not have a name attribute, it will not be included in the list returned in this getSpeciesByName call.'.format(species.getId()))
-        if len(species_found) == 1:
-            return species_found[0] 
-        elif not species_found:
-            raise ValueError('The species ' + name + ' not found.')
-        else:
-            warnings.warn('Multiple species with name ' + name + ' found. Returning a list')
-            return species_found
-    
-    
+   
     def getCompartmentsByName(self, name):
         ''' 
         Returns a list of compartments in the Subsystem with the given name
@@ -1568,11 +1601,6 @@ class Subsystem(object):
                                     check(sp.setInitialAmount(am),'setting initial amount in setSpeciesAmount list of species case with compartment')
             else:
                 raise ValueError('inputSpecies argument must be a string or a list of strings')
-
-
-
-
-
 
     def getFastReactions(self):
         '''
@@ -1783,7 +1811,7 @@ class Subsystem(object):
         Returns the data for all species and bioscrape model object which can be used to find out species indexes.
         '''
         filename = 'models/temp_simulate.xml'
-        writeSBML(self.getSBMLDocument(), filename) 
+        libsbml.writeSBML(self.getSBMLDocument(), filename) 
         m = bioscrape.types.read_model_from_sbml(filename)
         s = bioscrape.simulator.ModelCSimInterface(m)
         s.py_prep_deterministic_simulation()
@@ -1797,7 +1825,7 @@ class Subsystem(object):
         To plot a Subsystem model using bioscrape.
         '''
         filename = 'models/temp_plot.xml'
-        writeSBML(self.getSBMLDocument(), filename) 
+        libsbml.writeSBML(self.getSBMLDocument(), filename) 
         plotSbmlWithBioscrape(filename, timepoints[0], timepoints, ListOfSpeciesToPlot, xlabel, ylabel, sizeOfXLabels, sizeOfYLabels)
     
     def simulateVariableInputsBioscrape(self, ListOfInputs, ListOfListOfAmounts, ListOfSpeciesToPlot, timepoints, mode = 'continue', xlabel = 'Time', ylabel = 'Concentration (AU)', sizeOfXLabels = 14, sizeOfYLabels = 14):
@@ -1902,3 +1930,91 @@ class Subsystem(object):
         plt.show()
         return final_result, total_time
 
+def plotSbmlWithBioscrape(ListOfFiles, initialTime, timepoints, ListOfListOfSpeciesToPlot, xlabel = 'Time', ylabel = 'Concentration (AU)', sizeOfXLabels = 14, sizeOfYLabels = 14):
+    ''' 
+    Plots the amounts of ListOfSpeciesToPlot in the given SBML files 
+    starting at initialTime and for the timepoints given. 
+    The other arguments for axes labels and sizes are optional.
+    If a list of files is given, then corresponding list of list of species is 
+    used to plot the corresponding list of species for each SBML model. 
+    The same initialTime, timepoints and other arguments are used for all SBML files 
+    '''
+    mpl.rc('axes', prop_cycle=(mpl.cycler('color', ['r', 'k', 'b','g','y','m','c']) ))
+    mpl.rc('xtick', labelsize=sizeOfXLabels) 
+    mpl.rc('ytick', labelsize=sizeOfYLabels)
+    if type(ListOfFiles) is str:
+        filename = ListOfFiles
+        ListOfSpeciesToPlot = ListOfListOfSpeciesToPlot[:]
+        doc = getFromXML(filename)
+        model = doc.getModel()
+        mod_obj = Subsystem(model.getSBMLDocument())
+        m = bioscrape.types.read_model_from_sbml(filename)
+        s = bioscrape.simulator.ModelCSimInterface(m)
+        s.py_prep_deterministic_simulation()
+        s.py_set_initial_time(initialTime)
+        species_ind = []
+        SpeciesToPlot = ListOfSpeciesToPlot[:]
+        for i in range(len(ListOfSpeciesToPlot)):
+            species_name = ListOfSpeciesToPlot[i]
+            species = mod_obj.getSpeciesByName(species_name)
+            if type(species) is list:
+                print('WARNING -- There are multiple species with the name ' + species_name + ' in plot function. Suffixed species will be plotted ')
+                for species_i in species:
+                    species_ind.append(m.get_species_index(species_i.getId()))
+                key_ind = ListOfSpeciesToPlot.index(species_name)
+                insert_new = []
+                for j in range(len(species)-1):
+                    insert_new.append(species_name + str(j+1))
+                SpeciesToPlot[key_ind+1:key_ind+1] = insert_new 
+            else:
+                species_ind.append(m.get_species_index(species.getId()))
+        sim = bioscrape.simulator.DeterministicSimulator()
+        result = sim.py_simulate(s, timepoints)
+        plt.xlabel(xlabel)
+        plt.ylabel(ylabel)
+        for i in range(len(species_ind)):
+            plt.plot(timepoints, result.py_get_result()[:, species_ind[i]])
+        plt.legend(SpeciesToPlot)
+        plt.show()
+        return
+
+    # If a list of files is given
+    
+    species_ind = []
+    speciesLegend = []
+    for i in range(len(ListOfFiles)):
+        filename = ListOfFiles[i]
+        ListOfSpeciesToPlot = ListOfListOfSpeciesToPlot[i]
+        doc = getFromXML(filename)
+        model = doc.getModel()
+        mod_obj = SimpleModel(model)
+        m = bioscrape.types.read_model_from_sbml(filename)
+        s = bioscrape.simulator.ModelCSimInterface(m)
+        s.py_prep_deterministic_simulation()
+        s.py_set_initial_time(initialTime)
+        SpeciesToPlot = ListOfSpeciesToPlot[:]
+        for i in range(len(ListOfSpeciesToPlot)):
+            species_name = ListOfSpeciesToPlot[i]
+            speciesLegend.append(species_name)
+            species = mod_obj.getSpeciesByName(species_name)
+            if type(species) is list:
+                warnings.warn('There are multiple species with the name ' + species_name + ' in plot function. Suffixed species will be plotted ')
+                for species_i in species:
+                    species_ind.append(m.get_species_index(species_i.getId()))
+                key_ind = ListOfSpeciesToPlot.index(species_name)
+                insert_new = []
+                for i in range(len(species)-1):
+                    insert_new.append(species_name + str(i+1))
+                    speciesLegend.append(species_name + str(i+1))
+                SpeciesToPlot[key_ind+1:key_ind+1] = insert_new 
+            else:
+                species_ind.append(m.get_species_index(species.getId()))
+        sim = bioscrape.simulator.DeterministicSimulator()
+        result = sim.py_simulate(s, timepoints)
+        for i in range(len(species_ind)):
+            plt.plot(timepoints, result.py_get_result()[:, species_ind[i]])
+        species_ind = []
+    plt.legend(speciesLegend) # add the extra species to this list
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
+    plt.show()
