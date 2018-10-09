@@ -1859,9 +1859,12 @@ class Subsystem(object):
         writeSBML(self.getSBMLDocument(), filename) 
         plotSbmlWithBioscrape(filename, timepoints[0], timepoints, ListOfSpeciesToPlot, xlabel, ylabel, sizeOfXLabels, sizeOfYLabels)
     
-    def simulateVariableInputsBioscrape(self, ListOfInputs, ListOfListOfAmounts, ListOfSpeciesToPlot, timepoints, mode = 'continue', xlabel = 'Time', ylabel = 'Concentration (AU)', sizeOfXLabels = 14, sizeOfYLabels = 14):
+    def simulateVariableInputsBioscrape(self, ListOfInputs, ListOfListOfAmounts, ListOfSpeciesToPlot, timepoints, mode = 'continue', compartment = '', plotShow  = True, xlabel = 'Time', ylabel = 'Concentration (AU)', sizeOfXLabels = 14, sizeOfYLabels = 14):
         ''''
         Simulates the Subsystem model with the input species amounts varying 
+        Mode : continue - Continues simulation from the simulation data of the previous simulation of the variable value 
+        Mode : reset - Resets the data for each simulation before starting a new one with next variable value
+        Compartment name : (Optional) Specify the compartment name of the input species 
         Uses bioscrape to simulate and plots the result
         Returns data, time vectors post simulation
         '''
@@ -1871,6 +1874,9 @@ class Subsystem(object):
         species_list = []
         final_result = {}
         total_time = {}
+        if type(ListOfSpeciesToPlot) is str:
+            ListOfSpeciesToPlot = [ListOfSpeciesToPlot]
+
         SpeciesToPlot = ListOfSpeciesToPlot[:]
         for species_name in ListOfSpeciesToPlot:
             species = simpleModel.getSpeciesByName(species_name)
@@ -1901,7 +1907,11 @@ class Subsystem(object):
             else:
                 raise ValueError('The input species argument should either be a list or a string')
 
-            species_inp = simpleModel.getSpeciesByName(input)
+            if compartment != '':
+                species_inp = simpleModel.getSpeciesByName(input, compartment)
+            else:
+                species_inp = simpleModel.getSpeciesByName(input)
+
             if type(species_inp) is list:
                 raise ValueError('Multiple input species found in the model for the input name given.')
             for amount in ListOfListOfAmounts:
@@ -1949,15 +1959,21 @@ class Subsystem(object):
                 if mode == 'continue':
                     for species in model.getListOfSpecies():
                         species.setInitialAmount(data[:,m.get_species_index(species.getId())][-1])
-
+        finalData = []
+        finalTime = []
         for species_id in species_list:
-            plt.plot(total_time[species_id], final_result[species_id])
+            for i,j in zip(final_result[species_id], total_time[species_id]):
+                finalData.append(i)
+                finalTime.append(j)
+            if plotShow:
+                plt.plot(total_time[species_id], final_result[species_id])
 
-        plt.legend(SpeciesToPlot)
-        mpl.rc('xtick', labelsize= sizeOfXLabels) 
-        mpl.rc('ytick', labelsize=sizeOfYLabels)
-        plt.xlabel(xlabel)
-        plt.ylabel(ylabel)
-        plt.show()
-        return final_result, total_time
+        if plotShow:
+            plt.legend(SpeciesToPlot)
+            mpl.rc('xtick', labelsize= sizeOfXLabels) 
+            mpl.rc('ytick', labelsize=sizeOfYLabels)
+            plt.xlabel(xlabel)
+            plt.ylabel(ylabel)
+            plt.show()
+        return finalData, finalTime 
 

@@ -397,9 +397,10 @@ class SimpleModel(object):
         return 
 
   
-    def getSpeciesByName(self, name):
+    def getSpeciesByName(self, name, compartment = ''):
         ''' 
         Returns a list of species in the Model with the given name
+        compartment : (Optional) argument to specify the compartment name in which to look for the species.
         '''
         if type(name) is not str:
             raise ValueError('The arguments are not of expected type.') 
@@ -408,7 +409,14 @@ class SimpleModel(object):
         species_found =[]
         for species in model.getListOfSpecies():
             if species.getName() == name:
-                species_found.append(species)
+                if compartment != '':
+                    if model.getElementBySId(species.getCompartment()).getName() == compartment:
+                        species_found.append(species)
+                    else:
+                        continue
+                else:
+                    species_found.append(species)
+
         if len(species_found) == 1:
             return species_found[0] 
         elif not species_found:
