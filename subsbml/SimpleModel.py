@@ -233,19 +233,20 @@ class SimpleModel(object):
         return list_p_obj
 
 
-    def createNewReaction(self, rId, rStr, rRate, rFast = False, isConstant = False):
+    def createSimpleReaction(self, rId, rStr, rRate, isConstant = False):
         ''' 
         Creates a new Reaction object inside the 
         Model with the given attributes and returns a pointer to the libSBML Reaction object created
         '''
-        if type(rId) is not str or type(rStr) is not str or type(rRate) is not str or type(rFast) is not bool or type(isConstant) is not bool:
-            raise ValueError('The arguments are not of expected type. rId, rStr, rRate must be strings of appropriate valid format and rFast, isConstant must be boolean type')
+        if type(rId) is not str or type(rStr) is not str or type(rRate) is not str or type(isConstant) is not bool:
+            raise ValueError('The arguments are not of expected type. rId, rStr, rRate must be strings of appropriate valid format, isConstant must be boolean type')
         model = self.getModel()
         check(model,'retreived model object')
         r_obj = model.createReaction()
         check(r_obj, 'created r_obj reaction')
         check(r_obj.setId(rId), 'set r_obj ID')
-        check(r_obj.setFast(rFast), 'set r_obj Fast')
+        # Obsolete in SBML L3V2
+        # check(r_obj.setFast(rFast), 'set r_obj Fast')
         newRxn = SimpleReaction(r_obj)
         reactantList, reactant_stoichList, productList, product_stoichList = newRxn.parseReactionString(rStr)
         for reactant, stoich in zip(reactantList, reactant_stoichList):
@@ -399,9 +400,10 @@ class SimpleModel(object):
         return 
 
   
-    def getSpeciesByName(self, name):
+    def getSpeciesByName(self, name, compartment = ''):
         ''' 
         Returns a list of species in the Model with the given name
+        compartment : (Optional) argument to specify the compartment name in which to look for the species.
         '''
         if type(name) is not str:
             raise ValueError('The arguments are not of expected type.') 
@@ -410,7 +412,14 @@ class SimpleModel(object):
         species_found =[]
         for species in model.getListOfSpecies():
             if species.getName() == name:
-                species_found.append(species)
+                if compartment != '':
+                    if model.getElementBySId(species.getCompartment()).getName() == compartment:
+                        species_found.append(species)
+                    else:
+                        continue
+                else:
+                    species_found.append(species)
+
         if len(species_found) == 1:
             return species_found[0] 
         elif not species_found:

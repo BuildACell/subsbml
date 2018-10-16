@@ -83,7 +83,7 @@
       </constraint>
     </listOfConstraints>
     <listOfReactions>
-      <reaction id="r1" reversible="true" fast="false">
+      <reaction id="r1" reversible="true">
         <listOfReactants>
           <speciesReference species="inP" stoichiometry="1" constant="false"/>
           <speciesReference species="X" stoichiometry="1" constant="false"/>
@@ -110,7 +110,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="r2" reversible="false" fast="false">
+      <reaction id="r2" reversible="false">
         <listOfReactants>
           <speciesReference species="inP_X" stoichiometry="1" constant="false"/>
         </listOfReactants>
@@ -128,7 +128,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="r3" reversible="true" fast="false">
+      <reaction id="r3" reversible="true">
         <listOfReactants>
           <speciesReference species="E" stoichiometry="1" constant="false"/>
           <speciesReference species="X_P" stoichiometry="1" constant="false"/>
@@ -155,7 +155,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="r4" reversible="false" fast="false">
+      <reaction id="r4" reversible="false">
         <listOfReactants>
           <speciesReference species="E_X_P" stoichiometry="1" constant="false"/>
         </listOfReactants>
@@ -173,7 +173,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="r5" reversible="true" fast="false">
+      <reaction id="r5" reversible="true">
         <listOfReactants>
           <speciesReference species="inP" stoichiometry="1" constant="false"/>
           <speciesReference species="X_P" stoichiometry="1" constant="false"/>
@@ -200,7 +200,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="r6" reversible="false" fast="false">
+      <reaction id="r6" reversible="false">
         <listOfReactants>
           <speciesReference species="inP_X_P" stoichiometry="1" constant="false"/>
         </listOfReactants>
@@ -218,7 +218,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="r7" reversible="true" fast="false">
+      <reaction id="r7" reversible="true">
         <listOfReactants>
           <speciesReference species="E" stoichiometry="1" constant="false"/>
           <speciesReference species="X_P_P" stoichiometry="1" constant="false"/>
@@ -245,7 +245,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="r8" reversible="false" fast="false">
+      <reaction id="r8" reversible="false">
         <listOfReactants>
           <speciesReference species="E_X_P_P" stoichiometry="1" constant="false"/>
         </listOfReactants>

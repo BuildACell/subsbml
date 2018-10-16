@@ -5,6 +5,7 @@ from .Subsystem import Subsystem
 
 from .utilityFunctions import getFromXML, check, createSbmlDoc 
 
+
 # The latest level and version of SBML 
 # These are used to convert the models given as input to the latest SBML version
 latestLevel = 3
@@ -134,7 +135,19 @@ class System(object):
         Returns the list of shared resources
         '''
         return self.ListOfSharedResources
-
+    
+    def setListOfSharedResources(self, list):
+        ''' 
+        Set the list of resources to the 
+        self.ListOfSharedResources. Returns the list. 
+        '''
+        for element in list:
+            if type(element) is str: 
+                self.ListOfSharedResources.append(element)
+            else:
+                raise ValueError('List element {0} is not a string'.format(element))
+        return self.ListOfSharedResources
+    
     def appendSharedResources(self, list):
         ''' 
         Append the list of resources to the 
@@ -206,7 +219,7 @@ class System(object):
         subsystem = Subsystem(sbmlDoc)
         subsystem.setSystem(self)
         if subsystem.getSBMLDocument().getLevel() != latestLevel or subsystem.getSBMLDocument().getVersion() != latestVersion:
-            warnings.warn('Subsystem SBML model is not the latest. Converting to SBML level 3, version 1')
+            warnings.warn('Subsystem SBML model is not the latest. Converting to latest SBML level and version')
             subsystem.convertSubsystemLevelAndVersion(latestLevel,latestVersion)
         subsystem.suffixAllElementIds(subsystemName)
         if model.getNumCompartments() == 0:
@@ -340,8 +353,8 @@ class System(object):
         internal_subsystems = self.ListOfInternalSubsystems
         external_subsystems = self.ListOfExternalSubsystems
         membranes = self.ListOfMembraneSubsystems
-        system_sbml.combineSubsystems([internal_subsystems, external_subsystems, membranes],mode)
-        return system_sbml.getSBMLDocument()
+        system_sbml.combineSubsystems([internal_subsystems, external_subsystems, membranes], mode)
+        return system_sbml.getSBMLDocument(), system_sbml
 
 
 def createNewSubsystem(level = latestLevel, version = latestVersion):

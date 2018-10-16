@@ -67,20 +67,21 @@ class SimpleReaction(object):
         self.Reaction.setReversible(bool_rev)
         return self.Reaction
     
-    def getFast(self):
-        '''
-        Return value of fast attribute of the Reaction 
-        '''
-        return self.Reaction.getFast()
+    # Fast attribute is now obsolete in SBML L3V2
+    # def getFast(self):
+    #     '''
+    #     Return value of fast attribute of the Reaction 
+    #     '''
+    #     return self.Reaction.getFast()
     
-    def setFast(self, bool_fast):
-        '''
-        Set fast attribute of the Reaction and return the updated libSBML Reaction object
-        '''
-        if type(bool_fast) is not bool:
-            raise ValueError('The argument should be boolean')
-        self.Reaction.setFast(bool_fast)
-        return self.Reaction
+    # def setFast(self, bool_fast):
+    #     '''
+    #     Set fast attribute of the Reaction and return the updated libSBML Reaction object
+    #     '''
+    #     if type(bool_fast) is not bool:
+    #         raise ValueError('The argument should be boolean')
+    #     self.Reaction.setFast(bool_fast)
+    #     return self.Reaction
 
     def parseReactionString(self, rStr):
         '''

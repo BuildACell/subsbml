@@ -1,3 +1,4 @@
+# Import packaged available with Python
 import time
 import warnings
 import numpy as np
@@ -5,9 +6,17 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import sys
 
-import libsbml 
-import bioscrape
+# Import dependencies
+try:
+    import libsbml 
+except:
+    warnings.warn('Package not installed : libsbml. The package depends on Python libsbml, install it before using this package.')
+try:
+    import bioscrape
+except:
+    warnings.warn('Package not installed : bioscrape, simulation options with bioscrape will not work.')
 
+# Import subsbml methods
 from .SimpleModel import SimpleModel
 from .SimpleReaction import SimpleReaction
 from .setIdFromNames import SetIdFromNames
@@ -50,6 +59,15 @@ class Subsystem(object):
         check(doc,'retreiving SBMLDocument object in self.setSBMLDocument')
         self.SBMLDocument = doc
         return self
+
+    def isSetSystem(self):
+        '''
+        Returns True if System is set for this Subsystem, False otherwise
+        '''
+        if self.System == None:
+            return False
+        else:
+            return True
 
     def setSystem(self,systemObj):
         '''
@@ -126,7 +144,9 @@ class Subsystem(object):
         config.setTargetNamespaces(sbmlns)
         # Use the SBMLDocument.convert(ConversionsProperties) syntax to convert
         check(document.convert(config),'converting document level and version')
-        if newLevel == 3 and newVersion == 1:
+        if newLevel == 3 and newVersion == 2:
+            conv_status = document.checkL3v2Compatibility()
+        elif newLevel == 3 and newVersion == 1:
             conv_status = document.checkL3v1Compatibility()
         elif newLevel == 2 and newVersion == 4:
             conv_status = document.checkL2v3Compatibility()
@@ -538,16 +558,16 @@ class Subsystem(object):
             sys = ListOfSubsystems[0].getSystem()
             ListOfResources = sys.getListOfSharedResources()
             total_size = sys.getSize()
+            # Get the sharedSubsystem object to combine the species in ListOfSharedResources before combining all other species
+            self.shareSubsystems(ListOfSubsystems, ListOfResources, mode, True)
         else:
             ListOfResources = []
             warnings.warn('Not all of the Subsystems being combined are in the same Compartment')
             total_size = 0
             for subsystem in ListOfSubsystems:
                 total_size += subsystem.getSBMLDocument().getModel().getCompartment(0).getSize()
+            self.shareSubsystems(ListOfSubsystems, [], mode, True)
 
-        if not flag:
-            # Get the sharedSubsystem object to combine the species in ListOfSharedResources before combining all other species
-            self.shareSubsystems(ListOfSubsystems, ListOfResources, mode, True)
         model = self.getSBMLDocument().getModel()
         check(model,'retreiving model in combineSubsystems')
         mod_id = ''
@@ -644,20 +664,23 @@ class Subsystem(object):
     def shareSpecies(self, ListOfSubsystems, ListOfResources, mode, combineCall = False):
         model = self.getSBMLDocument().getModel()
         if ListOfSubsystems == []:
-            if not ListOfResources:
+            if not ListOfResources and not combineCall:
                 for species in model.getListOfSpecies():
-                    check(model.addSpecies(species), 'adding species in shareSpecies if case when listofresources is empty')
+                    model.addSpecies(species)
+                    # check(model.addSpecies(species), 'adding species in shareSpecies if case when listofresources is empty')
             else:
                 final_species_hash_map = {}
                 for compartment in model.getListOfCompartments():
                     species_hash_map = {}
                     for species in model.getListOfSpecies():
+                        mod = species.getModel()
+                        comp = mod.getElementBySId(species.getCompartment())
                         if species_hash_map.get(species.getId()):
                             raise ValueError('Multiple species with same identifier found. This is an invalid SBML.')
-                        if species.isSetName() and species.getCompartment() == compartment.getId() and species.getName() in ListOfResources:
+                        if species.isSetName() and comp.getName() == compartment.getName() and species.getName() in ListOfResources:
                             species_hash_map[species.getId()] = species.getName()
-                        # elif species.isSetName():
-                        #     check(model.addSpecies(species), 'adding species that are not in ListOfResources in shareSpecies if case')
+                        # elif species.isSetName() and species.getName() not in ListOfResources:
+                            # check(model.addSpecies(species), 'adding species that are not in ListOfResources in shareSpecies if case')
                         elif not species.isSetName():
                             warnings.warn('Species {0} does not have a name attribute. It might be duplicated.'.format(species.getId()))
                             continue
@@ -684,7 +707,9 @@ class Subsystem(object):
                             if species.getBoundaryCondition() != uni_sp.getBoundaryCondition():
                                 warnings.warn('Species with same name have different boundary condition attribute. They will not be combined. For {0} species id.'.format(species.getId()))
                                 break
-                            species_comp = species.getCompartment()
+                            mod = species.getModel()
+                            compartment = mod.getElementBySId(species.getCompartment())
+                            species_comp = compartment.getName()
                             if comp_dict.get(species_comp):
                                 comp_dict[species_comp].append(species)
                             else:
@@ -700,6 +725,7 @@ class Subsystem(object):
                                 ssys_size = 0
                                 cumulative_amount = 0
                                 for species in comp_dict[species_comp]:
+                                    # check(model.addSpecies(species),'adding species in shareSpecies if case')
                                     #remove duplicates
                                     spe_id = species.getId()
                                     mod = species.getModel()
@@ -719,7 +745,20 @@ class Subsystem(object):
                                     check(model.getSpecies(id_added_species).setInitialAmount(cumulative_amount/total_size),'setting initial cumulative amount in combineSpecies if case in volume mode')
         else:
             final_species_hash_map = {}
-            total_size = model.getCompartment(0).getSize()
+            flag = 0
+            for subsystem in ListOfSubsystems:
+                if subsystem.isSetSystem():
+                    flag += 1
+            if flag == len(ListOfSubsystems):
+                system_set = True
+            else:
+                system_set = False
+            if system_set:
+                total_size =  ListOfSubsystems[0].getSystem().getSize()
+            else:
+                total_size = 0
+                for subsystem in ListOfSubsystems:
+                    total_size +=  subsystem.getSBMLDocument().getModel().getCompartment(0).getSize()
             for subsystem in ListOfSubsystems:
                 sub_model = subsystem.getSBMLDocument().getModel()
                 if not ListOfResources:
@@ -727,24 +766,24 @@ class Subsystem(object):
                         ssys_size = sub_model.getElementBySId(species.getCompartment()).getSize()
                         cumulative_amount = (species.getInitialAmount())*ssys_size
                         check(model.addSpecies(species), 'adding species to the model when ListOfResources is empty in else case of shareSpecies')
-                    if mode == 'volume':
-                        check(species.setInitialAmount(cumulative_amount/total_size), 'setting initial amount to cumulative amount in else case of shareSpecies, ListOfResources is empty')
+                        if mode == 'volume':
+                            check(species.setInitialAmount(cumulative_amount/total_size), 'setting initial amount to cumulative amount in else case of shareSpecies, ListOfResources is empty')
                 else:
                     for compartment in sub_model.getListOfCompartments():
                         # Finding duplicate species by name and compartment
                         species_hash_map = {}
                         for species in sub_model.getListOfSpecies():
+                            comp = sub_model.getElementBySId(species.getCompartment())
                             if not species.isSetName():
                                 warnings.warn('Species {0} does not have a name attribute. It may be duplicated.'.format(species.getId()))
                                 continue
-                            elif species.getName() in ListOfResources and species.getCompartment() == compartment.getId():
+                            elif species.getName() in ListOfResources and comp.getName() == compartment.getName():
                                 # Maintain the dictionary for all species in the input subsystems by their name
                                 species_hash_map[species.getName()] = species
                             else:
-                                check(model.addSpecies(species), 'adding species not shared in shareSpecies else case')
+                                model.addSpecies(species)
                                 if mode == 'volume' and not combineCall:
-                                    mod = species.getModel()
-                                    cumulative_amount = (species.getInitialAmount()) * (mod.getElementBySId(species.getCompartment()).getSize())
+                                    cumulative_amount = (species.getInitialAmount()) * (comp.getSize())
                                     check(species.setInitialAmount(cumulative_amount/total_size), 'setting initial amount to species not shared in shareSpecies in volume mode, in else case')
                         for species_name in species_hash_map:
                             if final_species_hash_map.get(species_name):
@@ -757,6 +796,8 @@ class Subsystem(object):
                                 # hash map, save them to the final hash map dictionary.
                                 final_species_hash_map[species_name] = [
                                     species_hash_map[species_name]]
+
+ 
             # Removing duplicate species in the same compartment
             for unique_species_name in final_species_hash_map:
                 if len(final_species_hash_map[unique_species_name]) > 1: 
@@ -773,7 +814,9 @@ class Subsystem(object):
                         if species.getBoundaryCondition() != uni_sp.getBoundaryCondition():
                             warnings.warn('Species with same name have different boundary condition attribute. They will not be combined. For {0} species id.'.format(species.getId()))
                             break
-                        species_comp = species.getCompartment()
+                        mod = species.getModel()
+                        comp = mod.getElementBySId(species.getCompartment()) 
+                        species_comp = comp.getName()
                         if comp_dict.get(species_comp):
                             comp_dict[species_comp].append(species)
                         else:
@@ -786,17 +829,19 @@ class Subsystem(object):
                             count = 0
                             cumulative_amount = 0
                             ssys_size = 0
-                            total_size = 0
+                            if not system_set:
+                                total_size = 0
                             for species in comp_dict[species_comp]:
                                 check(model.addSpecies(species),'adding species in shareSpecies else case')
                                 mod = species.getModel()
                                 ssys_size = mod.getElementBySId(species.getCompartment()).getSize()
-                                total_size += ssys_size
+                                if not system_set:
+                                    total_size += ssys_size
                                 #remove duplicates now
                                 cumulative_amount += (species.getInitialAmount()) * ssys_size
                                 spe_id = species.getId()
                                 oldid = spe_id
-                                check(oldid, 'retreiving oldid in combineSpecies else case, volume')
+                                check(oldid, 'retreiving oldid in combineSpecies else case')
                                 newid = trans.getValidIdForName(uni_sp.getId()) + '_shared'
                                 self.renameSId(oldid, newid)
                                 if count >= 1:
@@ -817,9 +862,11 @@ class Subsystem(object):
             for compartment in model.getListOfCompartments():
                 species_hash_map = {}
                 for species in model.getListOfSpecies():
+                    mod = species.getModel()
+                    comp = mod.getElementBySId(species.getCompartment())
                     if species_hash_map.get(species.getId()):
                         raise ValueError('Multiple species with same identifier found. This is an invalid SBML.')
-                    if species.isSetName() and species.getCompartment() == compartment.getId() and species.getName() not in ListOfResources:
+                    if species.isSetName() and comp.getName() == compartment.getName() and species.getName() not in ListOfResources:
                         species_hash_map[species.getId()] = species.getName()
                     elif not species.isSetName():
                         warnings.warn('Species {0} does not have a name attribute. It might be duplicated.'.format(species.getId()))
@@ -836,6 +883,8 @@ class Subsystem(object):
                     uni_sp = model.getElementBySId(final_species_hash_map[unique_species_str][0])
                     for species_id in final_species_hash_map[unique_species_str]:
                         species = model.getElementBySId(species_id)
+                        mod = species.getModel()
+                        comp = mod.getElementBySId(species.getCompartment())
                         check(species,'retreiving species by id in combineSubsystem virtual')
                         if species.isSetUnits():
                             if species.getUnits() != uni_sp.getUnits():
@@ -847,7 +896,7 @@ class Subsystem(object):
                         if species.getBoundaryCondition() != uni_sp.getBoundaryCondition():
                             warnings.warn('Species with same name have different boundary condition attribute. They will not be combined. For {0} species id.'.format(species.getId()))
                             break
-                        species_comp = species.getCompartment()
+                        species_comp = comp.getName()
                         if comp_dict.get(species_comp):
                             comp_dict[species_comp].append(species)
                         else:
@@ -863,6 +912,7 @@ class Subsystem(object):
                             total_size = 0
                             cumulative_amount = 0
                             for species in comp_dict[species_comp]:
+                                # check(model.addSpecies(species),'adding species in combineSpecies if case')
                                 #remove duplicates
                                 spe_id = species.getId()
                                 mod = species.getModel()
@@ -876,12 +926,25 @@ class Subsystem(object):
                                 if count >= 1 :
                                     check(model.removeSpecies(newid), 'removing duplicate species in combineSpecies if case')
                                     warnings.warn('Removing duplicates of species {0} in the same compartment'.format(newid))
-                                else:
                                     id_added_species = newid
                                 count += 1
                             if mode == 'volume':
                                 check(model.getSpecies(id_added_species).setInitialAmount(cumulative_amount/total_size),'setting initial cumulative amount in combineSpecies if case in volume mode')
         else:
+            flag = 0
+            for subsystem in ListOfSubsystems:
+                if subsystem.isSetSystem():
+                    flag += 1
+            if flag == len(ListOfSubsystems):
+                system_set = True
+            else:
+                system_set = False
+            if system_set:
+                total_size =  ListOfSubsystems[0].getSystem().getSize()
+            else:
+                total_size = 0
+                for subsystem in ListOfSubsystems:
+                    total_size +=  subsystem.getSBMLDocument().getModel().getCompartment(0).getSize()
             final_species_hash_map = {}
             for subsystem in ListOfSubsystems:
                 sub_model = subsystem.getSBMLDocument().getModel()
@@ -889,12 +952,18 @@ class Subsystem(object):
                     # Finding duplicate species by name and compartment
                     species_hash_map = {}
                     for species in sub_model.getListOfSpecies():
+                        comp = sub_model.getElementBySId(species.getCompartment())
                         if not species.isSetName():
                             warnings.warn('Species {0} does not have a name attribute. It may be duplicated.'.format(species.getId()))
                             continue
-                        elif species.getCompartment() == compartment.getId() and species.getName() not in ListOfResources:
+                        elif comp.getName() == compartment.getName() and species.getName() not in ListOfResources:
                             # Maintain the dictionary for all species in the input subsystems by their name
                             species_hash_map[species.getName()] = species
+                        else:
+                            model.addSpecies(species)
+                            if mode =='volume':
+                                cumulative_amount = (species.getInitialAmount()) * (comp.getSize())
+                                check(species.setInitialAmount(cumulative_amount/total_size), 'setting initial amount to species in volume mode, combinespecies if case')
                     for species_name in species_hash_map:
                         if final_species_hash_map.get(species_name):
                             #If the final hash map already has that species then append to
@@ -912,6 +981,8 @@ class Subsystem(object):
                     comp_dict = {}
                     uni_sp = final_species_hash_map[unique_species_name][0]
                     for species in final_species_hash_map[unique_species_name]:
+                        mod = species.getModel()
+                        comp = mod.getElementBySId(species.getCompartment())
                         if species.isSetUnits():
                             if species.getUnits() != uni_sp.getUnits():
                                 warnings.warn('Species with same name have different units. They will not be combined. For {0} species id.'.format(species.getId()))
@@ -922,11 +993,12 @@ class Subsystem(object):
                         if species.getBoundaryCondition() != uni_sp.getBoundaryCondition():
                             warnings.warn('Species with same name have different boundary condition attribute. They will not be combined. For {0} species id.'.format(species.getId()))
                             break
-                        species_comp = species.getCompartment()
+                        species_comp = comp.getName()
                         if comp_dict.get(species_comp):
                             comp_dict[species_comp].append(species)
                         else:
                             comp_dict[species_comp] = [species]
+
                     for species_comp in comp_dict:
                         if len(comp_dict[species_comp]) > 1:
                             allids = self.getAllIds()
@@ -935,38 +1007,35 @@ class Subsystem(object):
                             count = 0
                             cumulative_amount = 0
                             ssys_size = 0 
-                            total_size = 0
                             for species in comp_dict[species_comp]:
+                                model.addSpecies(species)
                                 #remove duplicates now
                                 spe_id = species.getId()
                                 mod = species.getModel()
-                                print(ssys_size)
-                                print(total_size)
-                                print(cumulative_amount)
                                 ssys_size = mod.getElementBySId(species.getCompartment()).getSize()
-                                total_size += ssys_size
+                                if not system_set:
+                                    total_size += ssys_size
                                 cumulative_amount += (species.getInitialAmount()) * ssys_size
                                 oldid = spe_id
-                                check(oldid, 'retreiving oldid in combineSpecies else case, volume')
+                                check(oldid, 'retreiving oldid in combineSpecies else case')
                                 newid = trans.getValidIdForName(uni_sp.getId()) + '_combined'
                                 self.renameSId(oldid, newid)
                                 if count >= 1:
                                     check(model.removeSpecies(newid),'removing duplicate species')
+                                    # model.removeSpecies(newid)
                                     warnings.warn('Removing duplicate species {0} in the same compartment'.format(newid))
                                 else:
                                     id_added_species = newid
                                 count += 1
-                            print(ssys_size)
-                            print(total_size)
-                            print(cumulative_amount)
                             if mode == 'volume':
                                 check(model.getSpecies(id_added_species).setInitialAmount(cumulative_amount/total_size),'setting initial amount to cumulative in volume mode in combineSpecies else case')
-                # else:
-                #     # add cumulative amount for volume mode here (only needs to be done when combining inside a system)
-                #     for species in final_species_hash_map[unique_species_name]:
-                #         if mode == 'volume':
-                #             cumulative_amount = (species.getInitialAmount()) * (species.getModel().getCompartment(0).getSize())
-                #             check(species.setInitialAmount(cumulative_amount/total_size), 'setting amount to species in combineSpecies, volume mode, else case, species that are not combined')
+                else:
+                    # add cumulative amount for volume mode here (only needs to be done when combining inside a system)
+                    for species in final_species_hash_map[unique_species_name]:
+                        model.addSpecies(species)
+                        if mode == 'volume':
+                            cumulative_amount = (species.getInitialAmount()) * (species.getModel().getCompartment(0).getSize())
+                            check(species.setInitialAmount(cumulative_amount/total_size), 'setting amount to species in combineSpecies, volume mode, else case, species that are not combined')
         return self.getSBMLDocument()
 
     def combineParameters(self, ListOfSubsystems):
@@ -1602,32 +1671,33 @@ class Subsystem(object):
             else:
                 raise ValueError('inputSpecies argument must be a string or a list of strings')
 
-    def getFastReactions(self):
-        '''
-        Returns the reactions in the Subsystem with the attribute fast set as True
-        '''
-        allReactions = self.getSBMLDocument().getModel().getListOfReactions()
-        fastReactions = []
-        for reaction in allReactions:
-            if reaction.isSetFast():
-                if reaction.getFast() == True:
-                    fastReactions.append(reaction)
-        return fastReactions
+    # Fast attribute in reactions is now obsolete in SBML L3V2
+    # def getFastReactions(self):
+    #     '''
+    #     Returns the reactions in the Subsystem with the attribute fast set as True
+    #     '''
+    #     allReactions = self.getSBMLDocument().getModel().getListOfReactions()
+    #     fastReactions = []
+    #     for reaction in allReactions:
+    #         if reaction.isSetFast():
+    #             if reaction.getFast() == True:
+    #                 fastReactions.append(reaction)
+    #     return fastReactions
     
-    def setFastReactions(self, indexList):
-        ''' 
-        The indexList is used to set the corresponding reactions as fast
-        by setting their fast attribute to True. For example, 
-        indexList = [0 5], sets the 1st and 4th reaction in the Subsystem model as fast
-        Returns the updated SBMLDocument of this Subsystem
-        '''
-        model = self.getSBMLDocument().getModel()
-        if type(indexList) is int:
-            model.getReaction(indexList).setFast(True)
-            return
-        for index in indexList:
-            model.getReaction(index-1).setFast(True)
-        return self.getSBMLDocument()
+    # def setFastReactions(self, indexList):
+    #     ''' 
+    #     The indexList is used to set the corresponding reactions as fast
+    #     by setting their fast attribute to True. For example, 
+    #     indexList = [0 5], sets the 1st and 4th reaction in the Subsystem model as fast
+    #     Returns the updated SBMLDocument of this Subsystem
+    #     '''
+    #     model = self.getSBMLDocument().getModel()
+    #     if type(indexList) is int:
+    #         model.getReaction(indexList).setFast(True)
+    #         return
+    #     for index in indexList:
+    #         model.getReaction(index-1).setFast(True)
+    #     return self.getSBMLDocument()
         
 
     def getReversibleReactions(self):
@@ -1727,88 +1797,91 @@ class Subsystem(object):
         return newSubsystem
 
 
-    def modelReduce(self, timepoints):
-        ''' 
-        Reduces the model by removing the reactions which are set as fast
-        in the Subsystem model. The timepoints are used to simulate the
-        fast reactions for these timepoints. The steady state values of 
-        the involved species in the fast reactions are used in the
-        reduced model as their initial value. 
-        Returns the Subsystem object with the reduced model obtained.
-        '''
-        reducedSubsystem = self.getSystem().createNewSubsystem()
-        model_orig = self.getSBMLDocument().getModel()
-        reducedSubsystem.getSBMLDocument().setModel(model_orig)
-        mod = reducedSubsystem.getSBMLDocument().getModel()
+    # Fast attribute in Reactions is now obsolete in SBML L3V2. This function depends on it so is now commented out.
+    # def modelReduce(self, timepoints):
+    #     ''' 
+    #     Reduces the model by removing the reactions which are set as fast
+    #     in the Subsystem model. The timepoints are used to simulate the
+    #     fast reactions for these timepoints. The steady state values of 
+    #     the involved species in the fast reactions are used in the
+    #     reduced model as their initial value. 
+    #     Returns the Subsystem object with the reduced model obtained.
+    #     NOTE : Need bioscrape package installed for simulations.  
+    #     '''
+    #     reducedSubsystem = self.getSystem().createNewSubsystem()
+    #     model_orig = self.getSBMLDocument().getModel()
+    #     reducedSubsystem.getSBMLDocument().setModel(model_orig)
+    #     mod = reducedSubsystem.getSBMLDocument().getModel()
 
-        fastRxns = self.getFastReactions()
-        fastSubsystem = self.getSystem().createNewSubsystem()
-        fastModel = fastSubsystem.createNewModel('fastModel', mod.getTimeUnits(), mod.getExtentUnits(), mod.getSubstanceUnits() )
-        # adding all global (model level) components of the model
-        # to the fastModel, except reactions and species
-        if mod.getNumCompartmentTypes() != 0:
-            for each_compartmentType in mod.getListOfCompartmentType():
-                fastModel.addCompartment(each_compartmentType)
-        if mod.getNumConstraints() != 0:
-            for each_constraint in mod.getListOfConstraints():
-                fastModel.addConstraint(each_constraint)
-        if mod.getNumInitialAssignments() != 0:
-            for each_initialAssignment in mod.getListOfInitialAssignments():
-                fastModel.addInitialAssignment(each_initialAssignment)
-        if mod.getNumFunctionDefinitions() != 0:
-            for each_functionDefinition in mod.getListOfFunctionDefinitions():
-                fastModel.addFunctionDefinition(each_functionDefinition)
-        if mod.getNumRules() != 0:
-            for each_rule in mod.getListOfRules():
-                fastModel.addRule(each_rule)
-        if mod.getNumEvents() != 0:
-            for each_event in mod.getListOfEvents():
-                fastModel.addEvent(each_event)
-        if mod.getNumCompartments() != 0:
-            for each_compartment in mod.getListOfCompartments():
-                fastModel.addCompartment(each_compartment)
-        if mod.getNumParameters() != 0:
-            for each_parameter in mod.getListOfParameters():
-                fastModel.addParameter(each_parameter)
-        if mod.getNumUnitDefinitions() != 0:
-            for each_unit in mod.getListOfUnitDefinitions():
-                fastModel.addUnitDefinition(each_unit)
-        fastModel.setAreaUnits(mod.getAreaUnits())
-        fastModel.setExtentUnits(mod.getExtentUnits())
-        fastModel.setLengthUnits(mod.getLengthUnits())
-        fastModel.setSubstanceUnits(mod.getSubstanceUnits())
-        fastModel.setTimeUnits(mod.getTimeUnits())
-        fastModel.setVolumeUnits(mod.getVolumeUnits())
+    #     fastRxns = self.getFastReactions()
+    #     fastSubsystem = self.getSystem().createNewSubsystem()
+    #     fastModel = fastSubsystem.createNewModel('fastModel', mod.getTimeUnits(), mod.getExtentUnits(), mod.getSubstanceUnits() )
+    #     # adding all global (model level) components of the model
+    #     # to the fastModel, except reactions and species
+    #     if mod.getNumCompartmentTypes() != 0:
+    #         for each_compartmentType in mod.getListOfCompartmentType():
+    #             fastModel.addCompartment(each_compartmentType)
+    #     if mod.getNumConstraints() != 0:
+    #         for each_constraint in mod.getListOfConstraints():
+    #             fastModel.addConstraint(each_constraint)
+    #     if mod.getNumInitialAssignments() != 0:
+    #         for each_initialAssignment in mod.getListOfInitialAssignments():
+    #             fastModel.addInitialAssignment(each_initialAssignment)
+    #     if mod.getNumFunctionDefinitions() != 0:
+    #         for each_functionDefinition in mod.getListOfFunctionDefinitions():
+    #             fastModel.addFunctionDefinition(each_functionDefinition)
+    #     if mod.getNumRules() != 0:
+    #         for each_rule in mod.getListOfRules():
+    #             fastModel.addRule(each_rule)
+    #     if mod.getNumEvents() != 0:
+    #         for each_event in mod.getListOfEvents():
+    #             fastModel.addEvent(each_event)
+    #     if mod.getNumCompartments() != 0:
+    #         for each_compartment in mod.getListOfCompartments():
+    #             fastModel.addCompartment(each_compartment)
+    #     if mod.getNumParameters() != 0:
+    #         for each_parameter in mod.getListOfParameters():
+    #             fastModel.addParameter(each_parameter)
+    #     if mod.getNumUnitDefinitions() != 0:
+    #         for each_unit in mod.getListOfUnitDefinitions():
+    #             fastModel.addUnitDefinition(each_unit)
+    #     fastModel.setAreaUnits(mod.getAreaUnits())
+    #     fastModel.setExtentUnits(mod.getExtentUnits())
+    #     fastModel.setLengthUnits(mod.getLengthUnits())
+    #     fastModel.setSubstanceUnits(mod.getSubstanceUnits())
+    #     fastModel.setTimeUnits(mod.getTimeUnits())
+    #     fastModel.setVolumeUnits(mod.getVolumeUnits())
 
-       # adding the reactions that are fast and the species used in them to 
-        # the fast model
-        for rxn in fastRxns:
-            fastModel.addReaction(rxn)
-            mod.removeReaction(rxn.getId())
-            for reactant_ref in rxn.getListOfReactants():
-                fastModel.addSpecies(mod.getElementBySId(reactant_ref.getSpecies()))
-            for product_ref in rxn.getListOfProducts():
-                fastModel.addSpecies(mod.getElementBySId(product_ref.getSpecies()))
+    #    # adding the reactions that are fast and the species used in them to 
+    #     # the fast model
+    #     for rxn in fastRxns:
+    #         fastModel.addReaction(rxn)
+    #         mod.removeReaction(rxn.getId())
+    #         for reactant_ref in rxn.getListOfReactants():
+    #             fastModel.addSpecies(mod.getElementBySId(reactant_ref.getSpecies()))
+    #         for product_ref in rxn.getListOfProducts():
+    #             fastModel.addSpecies(mod.getElementBySId(product_ref.getSpecies()))
         
-        # get equilibrium values for species in fast reactions
-        # writeSBML(fastSubsystem.getSBMLDocument(), 'models/intermediate_model.xml')
-        print('###### Simulating the fast reactions in the model...All other species and parameters will be marked useless')
-        time.sleep(2)
-        data, m = fastSubsystem.simulateSbmlWithBioscrape(0,timepoints)
-        allSpecies = fastModel.getListOfSpecies()
-        for i in range(len(allSpecies)):
-            species = mod.getElementBySId(allSpecies.get(i).getId())
-            newAmount = data[:,m.get_species_index(species.getId())][-1]
-            if newAmount > 0:
-                species.setInitialAmount(newAmount)
-            else:
-                species.setInitialAmount(0)
-        return reducedSubsystem
+    #     # get equilibrium values for species in fast reactions
+    #     # writeSBML(fastSubsystem.getSBMLDocument(), 'models/intermediate_model.xml')
+    #     print('###### Simulating the fast reactions in the model...All other species and parameters will be marked useless')
+    #     time.sleep(2)
+    #     data, m = fastSubsystem.simulateSbmlWithBioscrape(0,timepoints)
+    #     allSpecies = fastModel.getListOfSpecies()
+    #     for i in range(len(allSpecies)):
+    #         species = mod.getElementBySId(allSpecies.get(i).getId())
+    #         newAmount = data[:,m.get_species_index(species.getId())][-1]
+    #         if newAmount > 0:
+    #             species.setInitialAmount(newAmount)
+    #         else:
+    #             species.setInitialAmount(0)
+    #     return reducedSubsystem
 
     def simulateBioscrape(self, initialTime, timepoints):
         ''' 
         To simulate a Subsystem without generating the plot. 
         Returns the data for all species and bioscrape model object which can be used to find out species indexes.
+        NOTE : Needs bioscrape package installed to simulate. 
         '''
         filename = 'models/temp_simulate.xml'
         libsbml.writeSBML(self.getSBMLDocument(), filename) 
@@ -1823,41 +1896,66 @@ class Subsystem(object):
     def plotBioscrape(self, ListOfSpeciesToPlot, timepoints, xlabel = 'Time', ylabel = 'Concentration (AU)', sizeOfXLabels = 14, sizeOfYLabels = 14):
         ''' 
         To plot a Subsystem model using bioscrape.
+        NOTE : Needs bioscrape package installed to plot the Subsystem
         '''
         filename = 'models/temp_plot.xml'
         libsbml.writeSBML(self.getSBMLDocument(), filename) 
         plotSbmlWithBioscrape(filename, timepoints[0], timepoints, ListOfSpeciesToPlot, xlabel, ylabel, sizeOfXLabels, sizeOfYLabels)
     
-    def simulateVariableInputsBioscrape(self, ListOfInputs, ListOfListOfAmounts, ListOfSpeciesToPlot, timepoints, mode = 'continue', xlabel = 'Time', ylabel = 'Concentration (AU)', sizeOfXLabels = 14, sizeOfYLabels = 14):
+    def simulateVariableInputsBioscrape(self, ListOfInputs, ListOfListOfAmounts, ListOfSpeciesToPlot, timepoints, mode = 'reset', compartmentInput = '', compartmentSpecies = '', plotShow  = True, xlabel = 'Time', ylabel = 'Concentration (AU)', lineWidth = 2, sizeOfXLabels = 16, sizeOfYLabels = 16, legendFontSize = 14):
         ''''
         Simulates the Subsystem model with the input species amounts varying 
+        Mode : continue - Continues simulation from the simulation data of the previous simulation of the variable value 
+        Mode : reset - Resets the data for each simulation before starting a new one with next variable value
+        Compartment name : (Optional) Specify the compartment name of the input species 
         Uses bioscrape to simulate and plots the result
         Returns data, time vectors post simulation
+        NOTE : Needs bioscrape package installed to simulate.
         '''
-        mpl.rc('axes', prop_cycle=(mpl.cycler('color', ['r', 'k', 'b','g','y','m','c']) ))
         model = self.getSBMLDocument().getModel()
         simpleModel = SimpleModel(model)
         species_list = []
         final_result = {}
         total_time = {}
+        if type(ListOfSpeciesToPlot) is str:
+            ListOfSpeciesToPlot = [ListOfSpeciesToPlot]
+
         SpeciesToPlot = ListOfSpeciesToPlot[:]
         for species_name in ListOfSpeciesToPlot:
             species = simpleModel.getSpeciesByName(species_name)
             if type(species) is list:
                 warnings.warn('There are multiple species with the name ' + species_name + 'Suffixed species will be plotted ')
                 for species_i in species:
-                    species_list.append(species_i.getId())
+                    if compartmentSpecies != '' and model.getElementBySId(species_i.getCompartment()).getName() != compartmentSpecies:
+                       continue 
+                    elif compartmentSpecies != '' and model.getElementBySId(species_i.getCompartment()).getName() == compartmentSpecies:
+                        species_list.append(species_i.getId())
+                    else:
+                        species_list.append(species_i.getId())
                     final_result[species_i.getId()] = []
-                    total_time[species_i.getId()] = []
+                    if mode == 'continue':
+                        total_time[species_i.getId()] = []
+                    else:
+                        total_time = []
+                        total_time = timepoints
                 key_ind = ListOfSpeciesToPlot.index(species_name)
                 insert_new = []
                 for j in range(len(species)-1):
                     insert_new.append(species_name + str(j+1))
                 SpeciesToPlot[key_ind+1:key_ind+1] = insert_new 
             else:
-                species_list.append(species.getId())
+                if compartmentSpecies != '' and model.getElementBySId(species.getCompartment()).getName() != compartmentSpecies:
+                    continue
+                elif compartmentSpecies != '' and model.getElementBySId(species.getCompartment()).getName() == compartmentSpecies:
+                    species_list.append(species.getId())
+                else:
+                    species_list.append(species.getId())
                 final_result[species.getId()] = []
-                total_time[species.getId()] = []
+                if mode == 'continue':
+                    total_time[species.getId()] = []
+                else:
+                    total_time = []
+                    total_time = timepoints
         initialTime = timepoints[0]
         t_end = timepoints[-1]
         points = len(timepoints)
@@ -1870,7 +1968,11 @@ class Subsystem(object):
             else:
                 raise ValueError('The input species argument should either be a list or a string')
 
-            species_inp = simpleModel.getSpeciesByName(input)
+            if compartmentInput != '':
+                species_inp = simpleModel.getSpeciesByName(input, compartmentInput)
+            else:
+                species_inp = simpleModel.getSpeciesByName(input)
+
             if type(species_inp) is list:
                 raise ValueError('Multiple input species found in the model for the input name given.')
             for amount in ListOfListOfAmounts:
@@ -1886,7 +1988,8 @@ class Subsystem(object):
                     sp_data = data[:,m.get_species_index(species_id)]
                     t = time[-1]
                     final_result[species_id].extend(sp_data)
-                    total_time[species_id].extend(time)
+                    if mode == 'continue':
+                        total_time[species_id].extend(time)
                 if mode == 'continue':
                     for species in model.getListOfSpecies():
                         species.setInitialAmount(data[:,m.get_species_index(species.getId())][-1])
@@ -1913,24 +2016,53 @@ class Subsystem(object):
                     sp_data = data[:,m.get_species_index(species_id)]
                     t = time[-1]
                     final_result[species_id].extend(sp_data)
-                    total_time[species_id].extend(time)
+                    if mode == 'continue':
+                        total_time[species_id].extend(time)
 
                 if mode == 'continue':
                     for species in model.getListOfSpecies():
                         species.setInitialAmount(data[:,m.get_species_index(species.getId())][-1])
 
-        for species_id in species_list:
-            plt.plot(total_time[species_id], final_result[species_id])
+        pl = []
+        for s in range(len(species_list)):
+            finalData = []
+            finalTime = []
+            species_id = species_list[s]
+            species = model.getSpecies(species_id)
+            species_name = species.getName()
+            if mode == 'continue':
+                for i,j in zip(final_result[species_id], total_time[species_id]):
+                    finalData.append(i)
+                    finalTime.append(j)
+            else:
+                for i in final_result[species_id]:
+                    finalData.append(i)
+                finalTime = total_time
 
-        plt.legend(SpeciesToPlot)
-        mpl.rc('xtick', labelsize= sizeOfXLabels) 
-        mpl.rc('ytick', labelsize=sizeOfYLabels)
-        plt.xlabel(xlabel)
-        plt.ylabel(ylabel)
-        plt.show()
-        return final_result, total_time
+            if plotShow:
+                for i in range(len(ListOfListOfAmounts)):
+                    if mode == 'continue':
+                        legend_str = species_name + ' for ' + str(ListOfListOfAmounts[i]) + ' ' + ylabel +  ' of ' + str(ListOfInputs)
+                        p1, = plt.plot(finalTime, finalData, label = legend_str, linewidth = lineWidth)
+                        # p1, = plt.plot(total_time[species_id], final_result[species_id], label = legend_str, linewidth = lineWidth)
+                        pl.append(p1)
+                    else:
+                        t0 = i*len(finalTime)
+                        tn = (i+1)*len(finalTime)
+                        legend_str = species_name + ' for ' + str(ListOfListOfAmounts[i]) + ' ' + ylabel + ' of ' + str(ListOfInputs)
+                        p1, = plt.plot(finalTime, finalData[t0:tn], label = legend_str, linewidth = lineWidth)
+                        pl.append(p1)
 
-def plotSbmlWithBioscrape(ListOfFiles, initialTime, timepoints, ListOfListOfSpeciesToPlot, xlabel = 'Time', ylabel = 'Concentration (AU)', sizeOfXLabels = 14, sizeOfYLabels = 14):
+        if plotShow:
+            plt.legend(prop = {'size':legendFontSize})
+            mpl.rc('xtick', labelsize= sizeOfXLabels) 
+            mpl.rc('ytick', labelsize=sizeOfYLabels)
+            plt.xlabel(xlabel)
+            plt.ylabel(ylabel)
+            plt.show()
+        return finalData, finalTime, plt
+
+def plotSbmlWithBioscrape(ListOfFiles, initialTime, timepoints, ListOfListOfSpeciesToPlot, compartmentSpecies = '', xlabel = 'Time', ylabel = 'Concentration (AU)', lineWidth = 2, sizeOfXLabels = 14, sizeOfYLabels = 14):
     ''' 
     Plots the amounts of ListOfSpeciesToPlot in the given SBML files 
     starting at initialTime and for the timepoints given. 
@@ -1938,8 +2070,8 @@ def plotSbmlWithBioscrape(ListOfFiles, initialTime, timepoints, ListOfListOfSpec
     If a list of files is given, then corresponding list of list of species is 
     used to plot the corresponding list of species for each SBML model. 
     The same initialTime, timepoints and other arguments are used for all SBML files 
+    NOTE : Needs bioscrape package installed to simulate SBML model.
     '''
-    mpl.rc('axes', prop_cycle=(mpl.cycler('color', ['r', 'k', 'b','g','y','m','c']) ))
     mpl.rc('xtick', labelsize=sizeOfXLabels) 
     mpl.rc('ytick', labelsize=sizeOfYLabels)
     if type(ListOfFiles) is str:
@@ -1958,22 +2090,33 @@ def plotSbmlWithBioscrape(ListOfFiles, initialTime, timepoints, ListOfListOfSpec
             species_name = ListOfSpeciesToPlot[i]
             species = mod_obj.getSpeciesByName(species_name)
             if type(species) is list:
-                print('WARNING -- There are multiple species with the name ' + species_name + ' in plot function. Suffixed species will be plotted ')
+                warnings.warn('There are multiple species with the name ' + species_name + ' in plot function. Suffixed species will be plotted ')
                 for species_i in species:
-                    species_ind.append(m.get_species_index(species_i.getId()))
+                    if compartmentSpecies != '' and model.getElementBySId(species_i.getCompartment()).getName() != compartmentSpecies:
+                        continue
+                    elif compartmentSpecies != '' and model.getElementBySId(species_i.getCompartment()).getName() == compartmentSpecies:
+                        species_ind.append(m.get_species_index(species_i.getId()))
+                    else:
+                        species_ind.append(m.get_species_index(species_i.getId()))
                 key_ind = ListOfSpeciesToPlot.index(species_name)
                 insert_new = []
                 for j in range(len(species)-1):
                     insert_new.append(species_name + str(j+1))
                 SpeciesToPlot[key_ind+1:key_ind+1] = insert_new 
             else:
-                species_ind.append(m.get_species_index(species.getId()))
+                if compartmentSpecies != '' and model.getElementBySId(species.getCompartment()).getName() != compartmentSpecies:
+                    continue
+                elif compartmentSpecies != '' and model.getElementBySId(species.getCompartment()).getName() == compartmentSpecies:
+                    species_ind.append(m.get_species_index(species.getId()))
+                else:
+                    species_ind.append(m.get_species_index(species.getId()))
+ 
         sim = bioscrape.simulator.DeterministicSimulator()
         result = sim.py_simulate(s, timepoints)
         plt.xlabel(xlabel)
         plt.ylabel(ylabel)
         for i in range(len(species_ind)):
-            plt.plot(timepoints, result.py_get_result()[:, species_ind[i]])
+            plt.plot(timepoints, result.py_get_result()[:, species_ind[i]], linewidth = lineWidth)
         plt.legend(SpeciesToPlot)
         plt.show()
         return
@@ -2000,7 +2143,13 @@ def plotSbmlWithBioscrape(ListOfFiles, initialTime, timepoints, ListOfListOfSpec
             if type(species) is list:
                 warnings.warn('There are multiple species with the name ' + species_name + ' in plot function. Suffixed species will be plotted ')
                 for species_i in species:
-                    species_ind.append(m.get_species_index(species_i.getId()))
+                    if compartmentSpecies != '' and model.getElementBySId(species_i.getCompartment()).getName() != compartmentSpecies:
+                        continue
+                    elif compartmentSpecies != '' and model.getElementBySId(species_i.getCompartment()).getName() == compartmentSpecies:
+                        species_ind.append(m.get_species_index(species_i.getId()))
+                    else:
+                        species_ind.append(m.get_species_index(species_i.getId()))
+
                 key_ind = ListOfSpeciesToPlot.index(species_name)
                 insert_new = []
                 for i in range(len(species)-1):
@@ -2008,11 +2157,17 @@ def plotSbmlWithBioscrape(ListOfFiles, initialTime, timepoints, ListOfListOfSpec
                     speciesLegend.append(species_name + str(i+1))
                 SpeciesToPlot[key_ind+1:key_ind+1] = insert_new 
             else:
-                species_ind.append(m.get_species_index(species.getId()))
+                if compartmentSpecies != '' and model.getElementBySId(species.getCompartment()).getName() != compartmentSpecies:
+                    continue
+                elif compartmentSpecies != '' and model.getElementBySId(species.getCompartment()).getName() == compartmentSpecies:
+                    species_ind.append(m.get_species_index(species.getId()))
+                else:
+                    species_ind.append(m.get_species_index(species.getId()))
+ 
         sim = bioscrape.simulator.DeterministicSimulator()
         result = sim.py_simulate(s, timepoints)
         for i in range(len(species_ind)):
-            plt.plot(timepoints, result.py_get_result()[:, species_ind[i]])
+            plt.plot(timepoints, result.py_get_result()[:, species_ind[i]], linewidth = lineWidth)
         species_ind = []
     plt.legend(speciesLegend) # add the extra species to this list
     plt.xlabel(xlabel)
