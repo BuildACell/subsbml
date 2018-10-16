@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<sbml xmlns="http://www.sbml.org/sbml/level3/version2/core" level="3" version="2">
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
   <model id="combined_subsystems__mwcb8c8bc7_2610_4b53_8bd8_1f0766ab430e_SS1_mwed3bf097_6c24_4aff_814a_4781890e4ead_SS2_IPTG_reservoir_SS3_IPTG_membrane" substanceUnits="substance" timeUnits="second" extentUnits="mole">
     <listOfUnitDefinitions>
       <unitDefinition id="volume">
@@ -104,7 +104,7 @@
       <parameter id="k2f" name="k2f" value="1" units="per_second" constant="false"/>
     </listOfParameters>
     <listOfReactions>
-      <reaction id="mwdd72ac09_0203_423a_a52d_0f5873e2fabd_SS1" reversible="false">
+      <reaction id="mwdd72ac09_0203_423a_a52d_0f5873e2fabd_SS1" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="mw20c9d2b7_2d30_489e_82d1_e71648158436_SS1" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -124,7 +124,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mwd7ab1eef_1416_40d7_a256_da7b194a4b64_SS1" reversible="true">
+      <reaction id="mwd7ab1eef_1416_40d7_a256_da7b194a4b64_SS1" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mw3df01083_618d_4509_9811_8b63adf5cb42_SS1" stoichiometry="1" constant="true"/>
           <speciesReference species="mw27aa16fc_b76d_46c2_b301_0456b7e3aace_SS1_combined" stoichiometry="1" constant="true"/>
@@ -155,7 +155,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw32c43fdc_054d_44c4_944e_c7628d4180f7_SS1" reversible="true">
+      <reaction id="mw32c43fdc_054d_44c4_944e_c7628d4180f7_SS1" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mw27bf35db_2b1d_439b_a0c4_81972bf226ef_SS1" stoichiometry="1" constant="true"/>
           <speciesReference species="mw3c367a17_7386_470c_8c72_954a48def552_SS1_combined" stoichiometry="1" constant="true"/>
@@ -186,7 +186,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mwb85b8fb2_3c0b_4472_aaef_b45b3f328d17_SS1" reversible="false">
+      <reaction id="mwb85b8fb2_3c0b_4472_aaef_b45b3f328d17_SS1" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="mw9c2e00f3_d345_4af1_918d_b211abb46cda_SS1" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -206,7 +206,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw4c3c07d8_d9c7_4a98_901d_a1b666222614_SS1" reversible="false">
+      <reaction id="mw4c3c07d8_d9c7_4a98_901d_a1b666222614_SS1" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="mw42ea34c3_4490_4d8a_8ee5_dd1c4ac5319c_SS1" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -227,7 +227,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mwb80aa33f_0e67_4823_8723_f9c93b9cfacd_SS1" reversible="true">
+      <reaction id="mwb80aa33f_0e67_4823_8723_f9c93b9cfacd_SS1" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mwb9ed4bd5_8cd9_4f48_9f51_256760be89c7_SS1" stoichiometry="1" constant="true"/>
           <speciesReference species="mw34fb2519_79b1_4f10_8668_6410726988c5_SS1_combined" stoichiometry="1" constant="true"/>
@@ -258,7 +258,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mwb0019472_5c22_4b20_9ba8_5b184acbdc4b_SS1" reversible="true">
+      <reaction id="mwb0019472_5c22_4b20_9ba8_5b184acbdc4b_SS1" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mwb9ed4bd5_8cd9_4f48_9f51_256760be89c7_SS1" stoichiometry="1" constant="true"/>
           <speciesReference species="mw4f8d0806_0366_43d5_8a2a_a05ee3287512_SS1_combined" stoichiometry="1" constant="true"/>
@@ -289,7 +289,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw483b2885_4e32_40d4_ae03_ecc24729a62d_SS1" reversible="true">
+      <reaction id="mw483b2885_4e32_40d4_ae03_ecc24729a62d_SS1" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mw0d097c9c_0e16_42d5_a990_888eb21274ba_SS1" stoichiometry="1" constant="true"/>
           <speciesReference species="mw4f8d0806_0366_43d5_8a2a_a05ee3287512_SS1_combined" stoichiometry="1" constant="true"/>
@@ -320,7 +320,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mwc743b64f_a6a6_493c_8445_a454771ea4b8_SS1" reversible="true">
+      <reaction id="mwc743b64f_a6a6_493c_8445_a454771ea4b8_SS1" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mwb668d480_993b_469d_8925_7393c33b0558_SS1" stoichiometry="1" constant="true"/>
           <speciesReference species="mw34fb2519_79b1_4f10_8668_6410726988c5_SS1_combined" stoichiometry="1" constant="true"/>
@@ -351,7 +351,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw7df5af94_e685_46a1_beee_1ac0a9c4a9b7_SS1" reversible="false">
+      <reaction id="mw7df5af94_e685_46a1_beee_1ac0a9c4a9b7_SS1" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="mw9c2e00f3_d345_4af1_918d_b211abb46cda_SS1" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -372,7 +372,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw7ee44b56_392b_44bf_9f64_65be6c0343c2_SS1" reversible="true">
+      <reaction id="mw7ee44b56_392b_44bf_9f64_65be6c0343c2_SS1" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mwdad3b651_3698_4347_a3af_13c2fd1cd4eb_SS1" stoichiometry="1" constant="true"/>
           <speciesReference species="mw715c6bbe_f050_4257_8bc2_159625dc5aa5_SS1_combined" stoichiometry="1" constant="true"/>
@@ -403,7 +403,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mwcba69707_7d63_4853_bdc3_d04b7d068da7_SS1" reversible="true">
+      <reaction id="mwcba69707_7d63_4853_bdc3_d04b7d068da7_SS1" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mw722ec4ac_80c5_4501_a092_98560b5118e5_SS1" stoichiometry="1" constant="true"/>
           <speciesReference species="mw34fb2519_79b1_4f10_8668_6410726988c5_SS1_combined" stoichiometry="2" constant="true"/>
@@ -438,7 +438,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw8025e3c3_09ab_48c9_8537_6e61bcd29c5f_SS1" reversible="false">
+      <reaction id="mw8025e3c3_09ab_48c9_8537_6e61bcd29c5f_SS1" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="mwd4771b8c_b1d7_4c13_997f_683e301a502a_SS1" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -458,7 +458,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw5c15d96d_0b86_4a69_bb1d_6b7934ef3298_SS1" reversible="false">
+      <reaction id="mw5c15d96d_0b86_4a69_bb1d_6b7934ef3298_SS1" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="mwd4771b8c_b1d7_4c13_997f_683e301a502a_SS1" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -479,7 +479,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mwd88172cc_70fa_4226_a3b4_de8ced26a0bb_SS1" reversible="false">
+      <reaction id="mwd88172cc_70fa_4226_a3b4_de8ced26a0bb_SS1" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="mwecef8e3a_4d8c_4f45_87ff_436093b9076f_SS1" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -500,7 +500,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw7d29a1c1_af88_4806_a677_0ff5ed99d36d_SS1" reversible="true">
+      <reaction id="mw7d29a1c1_af88_4806_a677_0ff5ed99d36d_SS1" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mw3df01083_618d_4509_9811_8b63adf5cb42_SS1" stoichiometry="1" constant="true"/>
           <speciesReference species="mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined" stoichiometry="1" constant="true"/>
@@ -531,7 +531,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mwc34d382a_d7ec_4899_9d7c_b16f4e2c4783_SS1" reversible="false">
+      <reaction id="mwc34d382a_d7ec_4899_9d7c_b16f4e2c4783_SS1" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="mw773fc4b1_f808_4bf3_85ad_07ce9b454369_SS1" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -551,7 +551,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw808ed454_cf22_4658_8b50_9e7938af39f6_SS1" reversible="true">
+      <reaction id="mw808ed454_cf22_4658_8b50_9e7938af39f6_SS1" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mwdad3b651_3698_4347_a3af_13c2fd1cd4eb_SS1" stoichiometry="1" constant="true"/>
           <speciesReference species="mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined" stoichiometry="1" constant="true"/>
@@ -582,7 +582,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw61fc5e2b_a2f0_48e0_932d_d8cae7c04c26_SS1" reversible="false">
+      <reaction id="mw61fc5e2b_a2f0_48e0_932d_d8cae7c04c26_SS1" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="mw3222fc51_b8a6_481b_adcf_8fa66964731e_SS1" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -603,7 +603,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mwd9e27d2b_0794_4f96_b217_610230786396_SS1" reversible="true">
+      <reaction id="mwd9e27d2b_0794_4f96_b217_610230786396_SS1" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mwd4771b8c_b1d7_4c13_997f_683e301a502a_SS1" stoichiometry="1" constant="true"/>
           <speciesReference species="mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined" stoichiometry="1" constant="true"/>
@@ -634,7 +634,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mwe9e8bed5_b0c6_4b78_88d2_06babe473757_SS1" reversible="false">
+      <reaction id="mwe9e8bed5_b0c6_4b78_88d2_06babe473757_SS1" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="mwbd8bbca4_ad12_4dd6_80fc_656686d30456_SS1" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -657,7 +657,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw9c8debee_f20e_46af_adcb_7bf420e4dea2_SS1" reversible="true">
+      <reaction id="mw9c8debee_f20e_46af_adcb_7bf420e4dea2_SS1" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mwecef8e3a_4d8c_4f45_87ff_436093b9076f_SS1" stoichiometry="1" constant="true"/>
           <speciesReference species="mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined" stoichiometry="1" constant="true"/>
@@ -688,7 +688,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw436881db_622f_457d_9adc_4d50e00496e9_SS1" reversible="false">
+      <reaction id="mw436881db_622f_457d_9adc_4d50e00496e9_SS1" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="mw5453f37e_770a_422a_ba2f_43c5372ca7be_SS1" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -709,7 +709,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw3270dad3_c7a3_4305_ad64_dca872557e9c_SS1" reversible="true">
+      <reaction id="mw3270dad3_c7a3_4305_ad64_dca872557e9c_SS1" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mw722ec4ac_80c5_4501_a092_98560b5118e5_SS1" stoichiometry="1" constant="true"/>
           <speciesReference species="mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined" stoichiometry="1" constant="true"/>
@@ -740,7 +740,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mwc77fda0b_ed7c_4043_b4e8_7db21fa3ea74_SS1" reversible="false">
+      <reaction id="mwc77fda0b_ed7c_4043_b4e8_7db21fa3ea74_SS1" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="mwe1a34348_ddac_4a4e_be5b_0895f8905865_SS1" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -762,7 +762,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mwdf2c0f1e_af7c_4b62_9d47_6cc4f9f42a01_SS1_combined" reversible="false">
+      <reaction id="mwdf2c0f1e_af7c_4b62_9d47_6cc4f9f42a01_SS1_combined" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="mw34fb2519_79b1_4f10_8668_6410726988c5_SS1_combined" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -779,7 +779,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="mwff1cec63_4a3e_4cb5_8e16_57bef83e3ddf_SS2" reversible="true">
+      <reaction id="mwff1cec63_4a3e_4cb5_8e16_57bef83e3ddf_SS2" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mwc00961a6_47d1_4f5a_9c49_00fb0d02cd8a_SS2" stoichiometry="1" constant="true"/>
           <speciesReference species="mw28f62bd1_3a2b_45ba_be22_53e2eb1a9509_SS2_combined" stoichiometry="1" constant="true"/>
@@ -810,7 +810,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mwcd3b81cf_3a79_46e8_8b86_b4ff4ce2eebe_SS2" reversible="true">
+      <reaction id="mwcd3b81cf_3a79_46e8_8b86_b4ff4ce2eebe_SS2" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mweb04477f_13a4_4d28_8518_06b1c5bae4de_SS2" stoichiometry="2" constant="true"/>
         </listOfReactants>
@@ -843,7 +843,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw3701a3c9_013e_4850_a56f_d955ac7b1af5_SS2" reversible="true">
+      <reaction id="mw3701a3c9_013e_4850_a56f_d955ac7b1af5_SS2" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mw609aa47a_fc0e_418c_a186_aa3a658fb203_SS2" stoichiometry="2" constant="true"/>
         </listOfReactants>
@@ -876,7 +876,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw39391935_db59_4854_a7f3_d007a3c800e9_SS2" reversible="true">
+      <reaction id="mw39391935_db59_4854_a7f3_d007a3c800e9_SS2" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mwcbd6bcc3_2c61_4e12_a6f7_e1ac7bc57188_SS2" stoichiometry="1" constant="true"/>
           <speciesReference species="mw27aa16fc_b76d_46c2_b301_0456b7e3aace_SS1_combined" stoichiometry="1" constant="true"/>
@@ -907,7 +907,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mwa1f4ef50_1840_44c6_b67d_a4e5a1a3c6fd_SS2" reversible="true">
+      <reaction id="mwa1f4ef50_1840_44c6_b67d_a4e5a1a3c6fd_SS2" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mwdb801a58_028d_43ff_90eb_830d15b4bc7f_SS2" stoichiometry="1" constant="true"/>
           <speciesReference species="mw3c367a17_7386_470c_8c72_954a48def552_SS1_combined" stoichiometry="1" constant="true"/>
@@ -938,7 +938,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw4a66ddbd_47a7_43ce_af40_6e87913f3535_SS2" reversible="false">
+      <reaction id="mw4a66ddbd_47a7_43ce_af40_6e87913f3535_SS2" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="mwb8e6b1d7_6c72_4a9b_a640_24ba06276629_SS2" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -958,7 +958,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mwfdef4d20_4109_463d_b082_b17425eea08c_SS2" reversible="false">
+      <reaction id="mwfdef4d20_4109_463d_b082_b17425eea08c_SS2" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="mw117ae676_633e_4f3a_be8d_eacdbdddfeea_SS2" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -979,7 +979,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw1f48fbad_07b8_4e1d_bbe5_fd536dbd34bb_SS2" reversible="true">
+      <reaction id="mw1f48fbad_07b8_4e1d_bbe5_fd536dbd34bb_SS2" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mwde89bce9_6b96_41b5_ab10_47fdb6f84323_SS2" stoichiometry="1" constant="true"/>
           <speciesReference species="mw34fb2519_79b1_4f10_8668_6410726988c5_SS1_combined" stoichiometry="1" constant="true"/>
@@ -1010,7 +1010,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mwd1f72a45_72cd_40ec_960f_1239c4292778_SS2" reversible="true">
+      <reaction id="mwd1f72a45_72cd_40ec_960f_1239c4292778_SS2" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mwde89bce9_6b96_41b5_ab10_47fdb6f84323_SS2" stoichiometry="1" constant="true"/>
           <speciesReference species="mw4f8d0806_0366_43d5_8a2a_a05ee3287512_SS1_combined" stoichiometry="1" constant="true"/>
@@ -1041,7 +1041,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw4c9145df_8b24_4aaa_a454_8036c6007b39_SS2" reversible="true">
+      <reaction id="mw4c9145df_8b24_4aaa_a454_8036c6007b39_SS2" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mw4740c413_fa03_405b_a56e_3a2fd6375f6c_SS2" stoichiometry="1" constant="true"/>
           <speciesReference species="mw4f8d0806_0366_43d5_8a2a_a05ee3287512_SS1_combined" stoichiometry="1" constant="true"/>
@@ -1072,7 +1072,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mwaa070dd1_2fdb_4813_8e3e_0e4755cfbdd6_SS2" reversible="true">
+      <reaction id="mwaa070dd1_2fdb_4813_8e3e_0e4755cfbdd6_SS2" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mwb71129fd_b0dc_41ce_a833_e547a1c07b4f_SS2" stoichiometry="1" constant="true"/>
           <speciesReference species="mw34fb2519_79b1_4f10_8668_6410726988c5_SS1_combined" stoichiometry="1" constant="true"/>
@@ -1103,7 +1103,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mwa28f59ba_7f2e_49a2_979b_4a26d5a45d5f_SS2" reversible="false">
+      <reaction id="mwa28f59ba_7f2e_49a2_979b_4a26d5a45d5f_SS2" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="mwb8e6b1d7_6c72_4a9b_a640_24ba06276629_SS2" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -1124,7 +1124,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw84c3bc07_76f7_4c44_a07f_2bc8abfa4bc2_SS2" reversible="true">
+      <reaction id="mw84c3bc07_76f7_4c44_a07f_2bc8abfa4bc2_SS2" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mw6fb7f787_57b9_494d_a431_121e3ccbcda9_SS2" stoichiometry="1" constant="true"/>
           <speciesReference species="mw715c6bbe_f050_4257_8bc2_159625dc5aa5_SS1_combined" stoichiometry="1" constant="true"/>
@@ -1155,7 +1155,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw93caaec5_11f1_4f31_ab8f_aff6bbb0d5dc_SS2" reversible="true">
+      <reaction id="mw93caaec5_11f1_4f31_ab8f_aff6bbb0d5dc_SS2" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mwf36a5d62_cdc5_4e90_af35_a9fa5ddb33e2_SS2" stoichiometry="1" constant="true"/>
           <speciesReference species="mw34fb2519_79b1_4f10_8668_6410726988c5_SS1_combined" stoichiometry="2" constant="true"/>
@@ -1190,7 +1190,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw97df6501_7bfc_4165_945f_baf68c2be0e8_SS2" reversible="false">
+      <reaction id="mw97df6501_7bfc_4165_945f_baf68c2be0e8_SS2" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="mw969018c5_d898_4ea0_bb80_35de71266464_SS2" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -1210,7 +1210,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mwab45a163_e2fe_4937_b582_ccdec790dcb5_SS2" reversible="false">
+      <reaction id="mwab45a163_e2fe_4937_b582_ccdec790dcb5_SS2" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="mw969018c5_d898_4ea0_bb80_35de71266464_SS2" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -1231,7 +1231,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mwe75db1d4_7d1f_4ac9_94fb_4ec0ae693fcf_SS2" reversible="false">
+      <reaction id="mwe75db1d4_7d1f_4ac9_94fb_4ec0ae693fcf_SS2" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="mw7416e86a_aa61_4745_b4bc_072c5e137891_SS2" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -1252,7 +1252,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mwe24cd258_a7e7_40f5_833d_c3d41e0ef046_SS2" reversible="true">
+      <reaction id="mwe24cd258_a7e7_40f5_833d_c3d41e0ef046_SS2" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mwcbd6bcc3_2c61_4e12_a6f7_e1ac7bc57188_SS2" stoichiometry="1" constant="true"/>
           <speciesReference species="mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined" stoichiometry="1" constant="true"/>
@@ -1283,7 +1283,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw6f4a87f4_3466_4884_b88c_642b912e202f_SS2" reversible="false">
+      <reaction id="mw6f4a87f4_3466_4884_b88c_642b912e202f_SS2" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="mwcb7850c8_3801_4d30_9282_42269ca72cc2_SS2" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -1303,7 +1303,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw4db04782_491a_4679_8196_cafbc55b9f95_SS2" reversible="true">
+      <reaction id="mw4db04782_491a_4679_8196_cafbc55b9f95_SS2" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mw6fb7f787_57b9_494d_a431_121e3ccbcda9_SS2" stoichiometry="1" constant="true"/>
           <speciesReference species="mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined" stoichiometry="1" constant="true"/>
@@ -1334,7 +1334,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mwff98d8db_9eb8_4b79_8b38_e7e04bbc7217_SS2" reversible="false">
+      <reaction id="mwff98d8db_9eb8_4b79_8b38_e7e04bbc7217_SS2" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="mwf0fa4e98_5b94_43bf_9fd1_16e075a088f9_SS2" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -1355,7 +1355,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw3d049690_08fa_4d0a_ba4c_0a9b22df2891_SS2" reversible="true">
+      <reaction id="mw3d049690_08fa_4d0a_ba4c_0a9b22df2891_SS2" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mw969018c5_d898_4ea0_bb80_35de71266464_SS2" stoichiometry="1" constant="true"/>
           <speciesReference species="mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined" stoichiometry="1" constant="true"/>
@@ -1386,7 +1386,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mwecbf84a6_a947_4d45_ab03_ff2e84d9393e_SS2" reversible="false">
+      <reaction id="mwecbf84a6_a947_4d45_ab03_ff2e84d9393e_SS2" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="mw87bea200_227d_4010_9616_9bee4d30458b_SS2" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -1409,7 +1409,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mwbd81f83f_4a97_4d53_b31d_ece9ad1375d6_SS2" reversible="true">
+      <reaction id="mwbd81f83f_4a97_4d53_b31d_ece9ad1375d6_SS2" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mw7416e86a_aa61_4745_b4bc_072c5e137891_SS2" stoichiometry="1" constant="true"/>
           <speciesReference species="mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined" stoichiometry="1" constant="true"/>
@@ -1440,7 +1440,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw26898fb3_ee4b_481d_a532_0cbdbd5fc17d_SS2" reversible="false">
+      <reaction id="mw26898fb3_ee4b_481d_a532_0cbdbd5fc17d_SS2" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="mwd91c4e55_95af_42a7_ac6d_2c307d96e1fe_SS2" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -1461,7 +1461,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mwdba62f7f_eedb_4972_bd0f_2056dfa80482_SS2" reversible="true">
+      <reaction id="mwdba62f7f_eedb_4972_bd0f_2056dfa80482_SS2" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mwf36a5d62_cdc5_4e90_af35_a9fa5ddb33e2_SS2" stoichiometry="1" constant="true"/>
           <speciesReference species="mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined" stoichiometry="1" constant="true"/>
@@ -1492,7 +1492,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mwe4c90670_b834_4436_a2a3_a0cade5efa4f_SS2" reversible="false">
+      <reaction id="mwe4c90670_b834_4436_a2a3_a0cade5efa4f_SS2" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="mwf056a433_e0f6_461e_bfe3_c2b3c62486ca_SS2" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -1514,7 +1514,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw96c464c0_18c2_4178_82dd_e41acc33fb34_SS2" reversible="false">
+      <reaction id="mw96c464c0_18c2_4178_82dd_e41acc33fb34_SS2" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="mw5c94996f_4533_4f46_813f_fb42fa7356f3_SS2" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -1534,7 +1534,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw662fff41_e987_4afc_a587_e68c159d727c_SS2" reversible="true">
+      <reaction id="mw662fff41_e987_4afc_a587_e68c159d727c_SS2" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mw6a8ec7cf_9ce3_4f43_a91b_8cf54a67e9cb_SS2" stoichiometry="1" constant="true"/>
           <speciesReference species="mw27aa16fc_b76d_46c2_b301_0456b7e3aace_SS1_combined" stoichiometry="1" constant="true"/>
@@ -1565,7 +1565,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw63c8c74c_e420_4859_bc9d_f3cd3b410fed_SS2" reversible="true">
+      <reaction id="mw63c8c74c_e420_4859_bc9d_f3cd3b410fed_SS2" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mw0f006cd4_e78e_48c5_b532_eb6e2f3c6121_SS2" stoichiometry="1" constant="true"/>
           <speciesReference species="mw3c367a17_7386_470c_8c72_954a48def552_SS1_combined" stoichiometry="1" constant="true"/>
@@ -1596,7 +1596,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw2db33076_5d6d_4b30_8fc6_4a0e38c7f22c_SS2" reversible="false">
+      <reaction id="mw2db33076_5d6d_4b30_8fc6_4a0e38c7f22c_SS2" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="mw68ff84bd_5ee7_416e_8ada_d4f9bad9d42b_SS2" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -1616,7 +1616,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw9fa51c7f_e24a_43d0_a99c_9a123f64c696_SS2" reversible="false">
+      <reaction id="mw9fa51c7f_e24a_43d0_a99c_9a123f64c696_SS2" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="mwc200e475_c73f_465a_8de3_97b93a64c967_SS2" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -1637,7 +1637,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw8486db3d_08d8_4c71_a449_c98a2309d0c0_SS2" reversible="true">
+      <reaction id="mw8486db3d_08d8_4c71_a449_c98a2309d0c0_SS2" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mw55a8259b_29cf_445a_a79e_f0229fbc33d2_SS2" stoichiometry="1" constant="true"/>
           <speciesReference species="mw34fb2519_79b1_4f10_8668_6410726988c5_SS1_combined" stoichiometry="1" constant="true"/>
@@ -1668,7 +1668,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mwfab17263_0776_4af5_82cc_4b5f841b645f_SS2" reversible="true">
+      <reaction id="mwfab17263_0776_4af5_82cc_4b5f841b645f_SS2" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mw55a8259b_29cf_445a_a79e_f0229fbc33d2_SS2" stoichiometry="1" constant="true"/>
           <speciesReference species="mw4f8d0806_0366_43d5_8a2a_a05ee3287512_SS1_combined" stoichiometry="1" constant="true"/>
@@ -1699,7 +1699,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw7ad9678a_3fe9_40fc_843b_1f49e071adf1_SS2" reversible="true">
+      <reaction id="mw7ad9678a_3fe9_40fc_843b_1f49e071adf1_SS2" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mwd6c5bf43_5a9f_455e_8341_73d1b30d0264_SS2" stoichiometry="1" constant="true"/>
           <speciesReference species="mw4f8d0806_0366_43d5_8a2a_a05ee3287512_SS1_combined" stoichiometry="1" constant="true"/>
@@ -1730,7 +1730,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw6a52a681_b8b0_446c_a757_b22fbc312241_SS2" reversible="true">
+      <reaction id="mw6a52a681_b8b0_446c_a757_b22fbc312241_SS2" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mw49de218b_1e29_45e1_862c_0dc03a516700_SS2" stoichiometry="1" constant="true"/>
           <speciesReference species="mw34fb2519_79b1_4f10_8668_6410726988c5_SS1_combined" stoichiometry="1" constant="true"/>
@@ -1761,7 +1761,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw3d0ed74a_6798_4c0b_969d_48ad2e8c8e02_SS2" reversible="false">
+      <reaction id="mw3d0ed74a_6798_4c0b_969d_48ad2e8c8e02_SS2" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="mw68ff84bd_5ee7_416e_8ada_d4f9bad9d42b_SS2" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -1782,7 +1782,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mwd2561193_1367_4f4f_b059_18f9b02de6a1_SS2" reversible="true">
+      <reaction id="mwd2561193_1367_4f4f_b059_18f9b02de6a1_SS2" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mw0f006cd4_e78e_48c5_b532_eb6e2f3c6121_SS2" stoichiometry="1" constant="true"/>
           <speciesReference species="mwc00961a6_47d1_4f5a_9c49_00fb0d02cd8a_SS2" stoichiometry="1" constant="true"/>
@@ -1813,7 +1813,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw9b7e5a40_78d9_4ae0_8175_8c704b3e5e15_SS2" reversible="true">
+      <reaction id="mw9b7e5a40_78d9_4ae0_8175_8c704b3e5e15_SS2" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mw11bfe9cd_0d22_4115_b9f7_163fa42fa97b_SS2" stoichiometry="1" constant="true"/>
           <speciesReference species="mw715c6bbe_f050_4257_8bc2_159625dc5aa5_SS1_combined" stoichiometry="1" constant="true"/>
@@ -1844,7 +1844,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw886cdd23_9cc1_4a2c_988e_4e7847ce9edb_SS2" reversible="true">
+      <reaction id="mw886cdd23_9cc1_4a2c_988e_4e7847ce9edb_SS2" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mw6729d170_4447_449b_9e97_0908b0caab6b_SS2" stoichiometry="1" constant="true"/>
           <speciesReference species="mw34fb2519_79b1_4f10_8668_6410726988c5_SS1_combined" stoichiometry="2" constant="true"/>
@@ -1879,7 +1879,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw7d42552a_2eb5_4d3e_9a91_c978c2293ae0_SS2" reversible="false">
+      <reaction id="mw7d42552a_2eb5_4d3e_9a91_c978c2293ae0_SS2" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="mw50cebc13_eef8_41ce_9a71_72ef3e078558_SS2" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -1899,7 +1899,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw5c80f96c_3d4b_4e22_876a_054655c1bf29_SS2" reversible="false">
+      <reaction id="mw5c80f96c_3d4b_4e22_876a_054655c1bf29_SS2" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="mw50cebc13_eef8_41ce_9a71_72ef3e078558_SS2" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -1920,7 +1920,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw4f5fe0af_785d_49d5_b933_2f5c065fce88_SS2" reversible="false">
+      <reaction id="mw4f5fe0af_785d_49d5_b933_2f5c065fce88_SS2" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="mwe03e3eea_a713_4196_a6d8_44a14c926596_SS2" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -1941,7 +1941,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw02c6a3ac_95fe_4064_9ee1_8d2ea4e0fb42_SS2" reversible="true">
+      <reaction id="mw02c6a3ac_95fe_4064_9ee1_8d2ea4e0fb42_SS2" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mw6a8ec7cf_9ce3_4f43_a91b_8cf54a67e9cb_SS2" stoichiometry="1" constant="true"/>
           <speciesReference species="mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined" stoichiometry="1" constant="true"/>
@@ -1972,7 +1972,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mwb06ed782_368d_4da8_84b0_d1f9a6cfabfd_SS2" reversible="false">
+      <reaction id="mwb06ed782_368d_4da8_84b0_d1f9a6cfabfd_SS2" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="mw611fccdf_157e_40db_8702_848bfb75c079_SS2" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -1992,7 +1992,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw61e9151f_eb11_4ec4_89ee_3abff528e7a3_SS2" reversible="true">
+      <reaction id="mw61e9151f_eb11_4ec4_89ee_3abff528e7a3_SS2" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mw11bfe9cd_0d22_4115_b9f7_163fa42fa97b_SS2" stoichiometry="1" constant="true"/>
           <speciesReference species="mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined" stoichiometry="1" constant="true"/>
@@ -2023,7 +2023,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw672e4b6a_34a1_4d9f_8b84_dc9d39af0453_SS2" reversible="false">
+      <reaction id="mw672e4b6a_34a1_4d9f_8b84_dc9d39af0453_SS2" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="mw7e686ddd_072e_4ab7_8512_92481d978201_SS2" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -2044,7 +2044,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mwa1246a57_cc2a_492f_a329_0d7575269aac_SS2" reversible="true">
+      <reaction id="mwa1246a57_cc2a_492f_a329_0d7575269aac_SS2" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mw50cebc13_eef8_41ce_9a71_72ef3e078558_SS2" stoichiometry="1" constant="true"/>
           <speciesReference species="mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined" stoichiometry="1" constant="true"/>
@@ -2075,7 +2075,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mwb7a568a8_418c_4172_aae2_974d59a9300a_SS2" reversible="false">
+      <reaction id="mwb7a568a8_418c_4172_aae2_974d59a9300a_SS2" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="mw88722339_572e_456f_85da_875cfc4e92bc_SS2" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -2098,7 +2098,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mwee1494a3_9573_4d5d_89b8_02246c41395c_SS2" reversible="true">
+      <reaction id="mwee1494a3_9573_4d5d_89b8_02246c41395c_SS2" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mwe03e3eea_a713_4196_a6d8_44a14c926596_SS2" stoichiometry="1" constant="true"/>
           <speciesReference species="mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined" stoichiometry="1" constant="true"/>
@@ -2129,7 +2129,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mw3f39d269_c02c_4365_a0ab_dc7a7c17d03b_SS2" reversible="false">
+      <reaction id="mw3f39d269_c02c_4365_a0ab_dc7a7c17d03b_SS2" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="mw6b40acd5_0395_4c2b_a5d8_eae734923797_SS2" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -2150,7 +2150,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mwc81c8682_5085_488d_b949_d8b342a4bd66_SS2" reversible="true">
+      <reaction id="mwc81c8682_5085_488d_b949_d8b342a4bd66_SS2" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="mw6729d170_4447_449b_9e97_0908b0caab6b_SS2" stoichiometry="1" constant="true"/>
           <speciesReference species="mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_combined" stoichiometry="1" constant="true"/>
@@ -2181,7 +2181,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mwe07c9a9d_6c42_4bf2_b230_0d74190adf43_SS2" reversible="false">
+      <reaction id="mwe07c9a9d_6c42_4bf2_b230_0d74190adf43_SS2" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="mwa029c0f1_d85f_44ba_a505_84310ebae4b0_SS2" stoichiometry="1" constant="true"/>
         </listOfReactants>
@@ -2203,7 +2203,7 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="r1" reversible="true">
+      <reaction id="r1" reversible="true" fast="false">
         <listOfReactants>
           <speciesReference species="IPTG_SS3_combined" stoichiometry="1" constant="false"/>
           <speciesReference species="mw8581196a_7c77_4da8_879e_f2c6f24b1932_SS1_combined" stoichiometry="1" constant="false"/>
@@ -2230,7 +2230,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="r2" reversible="false">
+      <reaction id="r2" reversible="false" fast="false">
         <listOfReactants>
           <speciesReference species="xxIPTG_protein_alHL" stoichiometry="1" constant="false"/>
         </listOfReactants>

@@ -144,12 +144,12 @@ class Subsystem(object):
         config.setTargetNamespaces(sbmlns)
         # Use the SBMLDocument.convert(ConversionsProperties) syntax to convert
         check(document.convert(config),'converting document level and version')
-        if newLevel == 3 and newVersion == 2:
-            conv_status = document.checkL3v2Compatibility()
-        elif newLevel == 3 and newVersion == 1:
+        if newLevel == 3 and newVersion == 1:
             conv_status = document.checkL3v1Compatibility()
+        elif newLevel == 2 and newVersion == 5:
+            conv_status = document.checkL2v5Compatibility()
         elif newLevel == 2 and newVersion == 4:
-            conv_status = document.checkL2v3Compatibility()
+            conv_status = document.checkL2v4Compatibility()
         elif newLevel == 2 and newVersion == 3:
             conv_status = document.checkL2v3Compatibility()
         elif newLevel == 2 and newVersion == 2:
@@ -505,6 +505,7 @@ class Subsystem(object):
                 total_size += mod.getCompartment(0).getSize()
         elif not combineCall: 
             total_size = self.getSystem().getSize()
+            mod_id = ListOfSubsystems[0].getSystem().getSystemName()
         else:
             total_size = ListOfSubsystems[0].getSystem().getSize()
 
@@ -514,7 +515,7 @@ class Subsystem(object):
         self.shareSpecies(ListOfSubsystems, ListOfSharedResources, mode, combineCall)
         check(model.getCompartment(0).setSize(total_size), 'setting compartment size in model')
         # Updating model id
-        check(model.setId('shared_subsystems_' + mod_id),'setting new model id for shared model')
+        check(model.setId('shared_model_of_' + mod_id),'setting new model id for shared model')
         return self.getSBMLDocument()
 
     def shareSubsystem(self, ListOfSharedResources, mode = 'virtual', combineCall = False):

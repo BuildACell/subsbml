@@ -29,7 +29,7 @@
       <parameter id="k2f" name="k2f" value="1" units="per_second" constant="false"/>
     </listOfParameters>
     <listOfReactions>
-      <reaction id="r1" reversible="true" fast="false">
+      <reaction id="r1" reversible="true">
         <listOfReactants>
           <speciesReference species="IPTG" stoichiometry="1" constant="false"/>
           <speciesReference species="xxprotein_alHL" stoichiometry="1" constant="false"/>
@@ -56,7 +56,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="r2" reversible="false" fast="false">
+      <reaction id="r2" reversible="false">
         <listOfReactants>
           <speciesReference species="xxIPTG_protein_alHL" stoichiometry="1" constant="false"/>
         </listOfReactants>
