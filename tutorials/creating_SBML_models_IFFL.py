@@ -3,7 +3,7 @@ from subsbml import *
 # Create a System object to hold the Subsystem
 cell = System('cell')
 
-IFFL = cell.createNewSubsystem(3,1)
+IFFL = cell.createNewSubsystem()
 
 # Create a Model object inside the Subsystem object 
 # Usage - self.createNewModel(modelID, modelTimeUnits, modelExtentUnits, modelSubstanceUnits)

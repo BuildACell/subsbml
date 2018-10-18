@@ -9,7 +9,7 @@ from .utilityFunctions import getFromXML, check, createSbmlDoc
 # The latest level and version of SBML 
 # These are used to convert the models given as input to the latest SBML version
 latestLevel = 3
-latestVersion = 1
+latestVersion = 2
 
 class System(object):
     '''
@@ -220,6 +220,8 @@ class System(object):
         subsystem.setSystem(self)
         if subsystem.getSBMLDocument().getLevel() != latestLevel or subsystem.getSBMLDocument().getVersion() != latestVersion:
             warnings.warn('Subsystem SBML model is not the latest. Converting to latest SBML level and version')
+            print(subsystem.getSBMLDocument().getVersion())
+            print(subsystem.getSBMLDocument().getModel().getId())
             subsystem.convertSubsystemLevelAndVersion(latestLevel,latestVersion)
         subsystem.suffixAllElementIds(subsystemName)
         if model.getNumCompartments() == 0:

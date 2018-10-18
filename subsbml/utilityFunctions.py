@@ -9,7 +9,7 @@ import libsbml
 import bioscrape
 
 latestLevel = 3
-latestVersion = 1
+latestVersion = 2
 
 def check(value, message):
     """If 'value' is None, prints an error message constructed using

@@ -516,6 +516,10 @@ class Subsystem(object):
         check(model.getCompartment(0).setSize(total_size), 'setting compartment size in model')
         # Updating model id
         check(model.setId('shared_model_of_' + mod_id),'setting new model id for shared model')
+        for rxn in self.getSBMLDocument().getModel().getListOfReactions():
+
+            self.getSBMLDocument().getModel().addReaction(rxn)
+
         return self.getSBMLDocument()
 
     def shareSubsystem(self, ListOfSharedResources, mode = 'virtual', combineCall = False):

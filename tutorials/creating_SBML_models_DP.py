@@ -6,7 +6,7 @@ from subsbml import *
 cell = System('cell')
 
 # Create a new SBML Document to hold the subsystem model
-DP = cell.createNewSubsystem(3,1)
+DP = cell.createNewSubsystem()
 
 # Create a new model inside the document
 model = DP.createNewModel('DP','second','mole','count')

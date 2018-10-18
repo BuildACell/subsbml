@@ -76,7 +76,6 @@ IFFL = cell.createSubsystem('models/IFFL.xml','IFFL')
 # object (inside the same system object) which has the resources sharing modeled.
 print('Creating shared model and writing to SBML file')
 shared_model = cell.setSharedResources('virtual')
-
 # (Optional) Write the shared document model to SBML file
 libsbml.writeSBML(shared_model,'models/DP_IFFL_shared.xml')
 
