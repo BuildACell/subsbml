@@ -669,10 +669,19 @@ class Subsystem(object):
     def shareSpecies(self, ListOfSubsystems, ListOfResources, mode, combineCall = False):
         model = self.getSBMLDocument().getModel()
         if ListOfSubsystems == []:
+            if self.isSetSystem():
+                total_size =  self.getSystem().getSize()
+            else:
+                total_size =  model.getCompartment(0).getSize()
+ 
             if not ListOfResources and not combineCall:
                 for species in model.getListOfSpecies():
                     model.addSpecies(species)
                     # check(model.addSpecies(species), 'adding species in shareSpecies if case when listofresources is empty')
+                    if mode == 'volume':
+                        comp_size = model.getElementBySId(species.getCompartment()).getSize()
+                        amount = species.getInitialAmount()*comp_size
+                        check(species.setInitialAmount(amount/total_size),'setting initial cumulative amount in shareSpecies if case in volume mode, species not shared')
             else:
                 final_species_hash_map = {}
                 for compartment in model.getListOfCompartments():
@@ -684,8 +693,13 @@ class Subsystem(object):
                             raise ValueError('Multiple species with same identifier found. This is an invalid SBML.')
                         if species.isSetName() and comp.getName() == compartment.getName() and species.getName() in ListOfResources:
                             species_hash_map[species.getId()] = species.getName()
-                        # elif species.isSetName() and species.getName() not in ListOfResources:
+                        elif species.isSetName() and species.getName() not in ListOfResources:
                             # check(model.addSpecies(species), 'adding species that are not in ListOfResources in shareSpecies if case')
+                            # Need to modify the species amounts when in volume mode
+                            if mode == 'volume':
+                                comp_size = model.getElementBySId(species.getCompartment()).getSize()
+                                amount = species.getInitialAmount()*comp_size
+                                check(species.setInitialAmount(amount/total_size),'setting initial cumulative amount in shareSpecies if case in volume mode, species not shared')
                         elif not species.isSetName():
                             warnings.warn('Species {0} does not have a name attribute. It might be duplicated.'.format(species.getId()))
                             continue
@@ -764,6 +778,7 @@ class Subsystem(object):
                 total_size = 0
                 for subsystem in ListOfSubsystems:
                     total_size +=  subsystem.getSBMLDocument().getModel().getCompartment(0).getSize()
+
             for subsystem in ListOfSubsystems:
                 sub_model = subsystem.getSBMLDocument().getModel()
                 if not ListOfResources:
@@ -789,6 +804,8 @@ class Subsystem(object):
                                 model.addSpecies(species)
                                 if mode == 'volume' and not combineCall:
                                     cumulative_amount = (species.getInitialAmount()) * (comp.getSize())
+                                    print(cumulative_amount)
+                                    print(total_size)
                                     check(species.setInitialAmount(cumulative_amount/total_size), 'setting initial amount to species not shared in shareSpecies in volume mode, in else case')
                         for species_name in species_hash_map:
                             if final_species_hash_map.get(species_name):

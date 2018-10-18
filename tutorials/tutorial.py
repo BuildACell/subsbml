@@ -75,7 +75,7 @@ IFFL = cell.createSubsystem('models/IFFL.xml','IFFL')
 # Usage - system_obj.setSharedResources(), returns a new SBMLDocument object of the Subsystem
 # object (inside the same system object) which has the resources sharing modeled.
 print('Creating shared model and writing to SBML file')
-shared_model = cell.setSharedResources('virtual')
+shared_model = cell.setSharedResources('volume')
 # (Optional) Write the shared document model to SBML file
 libsbml.writeSBML(shared_model,'models/DP_IFFL_shared.xml')
 
@@ -127,8 +127,8 @@ print('Tutorial successfully finished. Shared/combined/connected SBML models hav
 # ListOfSpeciesToPlot, xLabel, yLabel, xAxisSize, yAxisSize)
 
 timepoints = np.linspace(0,50,1000)
-# plotSbmlWithBioscrape('models/DP_IFFL_shared.xml',0,
-plotSbmlWithBioscrape('models/DP_IFFL_combined.xml',0,
+plotSbmlWithBioscrape('models/DP_IFFL_shared.xml',0,
+# plotSbmlWithBioscrape('models/DP_IFFL_combined.xml',0,
 # plotSbmlWithBioscrape('models/DP_IFFL_connected.xml',0,
 timepoints,['inP','pA_IFFL','pB_IFFL','out_IFFL'],'','Time',
 # timepoints,['inP','X:P:P','X:P:P_DP2','out_IFFL'],'Time',
