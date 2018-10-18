@@ -131,24 +131,24 @@
 </reaction>
 
 
-<species name="X_DP1_1_combined" value="2.222222222222220012E+01" />
+<species name="X_DP1_1_combined" value="3.333333333333330017E+01" />
 <species name="inP_X_DP1_1_combined" value="0.000000000000000000E+00" />
-<species name="E_DP1_1_combined" value="2.222222222222220012E+01" />
+<species name="E_DP1_1_combined" value="3.333333333333330017E+01" />
 <species name="E_X_P_DP1_1_combined" value="0.000000000000000000E+00" />
 <species name="inP_X_P_DP1_1_combined" value="0.000000000000000000E+00" />
 <species name="X_P_P_DP1_1_combined" value="0.000000000000000000E+00" />
 <species name="E_X_P_P_DP1_1_combined" value="0.000000000000000000E+00" />
-<species name="inp_IFFL_IFFL" value="1.666666666666669983E+01" />
-<species name="DA_IFFL_IFFL" value="1.666666666666669983E+01" />
+<species name="inp_IFFL_IFFL" value="5.000000000000000000E+01" />
+<species name="DA_IFFL_IFFL" value="5.000000000000000000E+01" />
 <species name="C1_IFFL_IFFL" value="0.000000000000000000E+00" />
 <species name="mA_IFFL_IFFL" value="0.000000000000000000E+00" />
 <species name="pA_IFFL_IFFL" value="0.000000000000000000E+00" />
 <species name="C2_IFFL_IFFL" value="0.000000000000000000E+00" />
-<species name="DB_IFFL_IFFL" value="1.666666666666669983E+01" />
+<species name="DB_IFFL_IFFL" value="5.000000000000000000E+01" />
 <species name="mB_IFFL_IFFL" value="0.000000000000000000E+00" />
 <species name="pB_IFFL_IFFL" value="0.000000000000000000E+00" />
 <species name="C3_IFFL_IFFL" value="0.000000000000000000E+00" />
-<species name="DC_IFFL_IFFL" value="1.666666666666669983E+01" />
+<species name="DC_IFFL_IFFL" value="5.000000000000000000E+01" />
 <species name="C4_IFFL_IFFL" value="0.000000000000000000E+00" />
 <species name="C5_IFFL_IFFL" value="0.000000000000000000E+00" />
 <species name="C6_IFFL_IFFL" value="0.000000000000000000E+00" />
