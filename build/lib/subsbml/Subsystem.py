@@ -981,7 +981,8 @@ class Subsystem(object):
                             # Maintain the dictionary for all species in the input subsystems by their name
                             species_hash_map[species.getName()] = species
                         else:
-                            # model.addSpecies(species)
+                            spe = SimpleModel(model).getSpeciesByName(species.getName())
+                            model.addSpecies(spe.getId())
                             if mode =='volume' and species.getName() not in ListOfResources:
                                 cumulative_amount = (species.getInitialAmount()) * (comp.getSize())
                                 check(species.setInitialAmount(cumulative_amount/total_size), 'setting initial amount to species in volume mode, combinespecies if case')

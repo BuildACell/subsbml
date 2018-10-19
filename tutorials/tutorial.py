@@ -74,11 +74,17 @@ IFFL = cell.createSubsystem('models/IFFL.xml','IFFL')
 # Set the list of shared resources to the cell using its member function. Example 1-A
 # Usage - system_obj.setSharedResources(), returns a new SBMLDocument object of the Subsystem
 # object (inside the same system object) which has the resources sharing modeled.
-print('Creating shared model and writing to SBML file')
+print('**** Creating shared model and writing to SBML file')
 shared_model = cell.setSharedResources('volume')
 # (Optional) Write the shared document model to SBML file
 libsbml.writeSBML(shared_model,'models/DP_IFFL_shared.xml')
 
+shared_model = cell.setSharedResources('volume')
+libsbml.writeSBML(shared_model,'models/DP_IFFL_shared.xml')
+shared_model = cell.setSharedResources('volume')
+libsbml.writeSBML(shared_model,'models/DP_IFFL_shared.xml')
+shared_model = cell.setSharedResources('volume')
+libsbml.writeSBML(shared_model,'models/DP_IFFL_shared.xml')
 # The combineSubsystems member function implements Example 1-B.
 # Usage - subsystem_object.combineSubsystems(ListOfSubsystems, combineAllWithSameNames)
 # The subsystem_object is a new subsystem object which calls combineSubsystems
@@ -87,13 +93,22 @@ libsbml.writeSBML(shared_model,'models/DP_IFFL_shared.xml')
 # The second argument is Boolean which is True if all species with same 
 # names need to be merged and False otherwise. 
 
-print('Creating combined model and writing it to SBML file')
+print('**** Creating combined model and writing it to SBML file')
 combined_subsystem = createNewSubsystem()
 combined_model = combined_subsystem.combineSubsystems([DP1, DP2, IFFL], 'volume', True)
 
 # (Optional) Write the combined document model to SBML file
 libsbml.writeSBML(combined_model,'models/DP_IFFL_combined.xml')
 
+combined_model = combined_subsystem.combineSubsystems([DP1, DP2, IFFL], 'volume', True)
+libsbml.writeSBML(combined_model,'models/DP_IFFL_combinedvol.xml')
+
+combined_model = combined_subsystem.combineSubsystems([DP1, DP2, IFFL], 'volume', True)
+libsbml.writeSBML(combined_model,'models/DP_IFFL_combinedvol.xml')
+combined_model = combined_subsystem.combineSubsystems([DP1, DP2, IFFL], 'volume', True)
+libsbml.writeSBML(combined_model,'models/DP_IFFL_combinedvol.xml')
+combined_model = combined_subsystem.combineSubsystems([DP1, DP2, IFFL], 'virtual', True)
+libsbml.writeSBML(combined_model,'models/DP_IFFL_combined.xml')
 # Now, for Example 1-C, the user needs to specify 
 # the map of the interaction modeling that is desired. This map uses species names.
 # User specifies how the systems interact by defining the following map
@@ -108,9 +123,9 @@ connection_logic['X:P:P_DP2'] = 'pB_IFFL'
 # Call connectInteraction function for the final subsystem object
 # to connect various subsystems.
 # Usage - subsystem_object.self.connectSubsystems(ListOfSubsystems, connectionMap, mode, combineAllWithSameNames, amount)
-print('Creating connected model and writing  to SBML file')
+print('**** Creating connected model and writing  to SBML file')
 connected_subsystem = createNewSubsystem()
-connected_subsystem.connectSubsystems([DP1, DP2, IFFL], connection_logic, 'virtual', True, 'constant', [37,37])
+connected_subsystem.connectSubsystems([DP1, DP2, IFFL], connection_logic, 'volume', True, 'constant', [37,37])
 
 # (Optional Utility Function) Set a new amount of a Species
 # Usage - setSpeciesAmount(self, species, amount)
@@ -120,7 +135,7 @@ connected_subsystem.setSpeciesAmount('inp_IFFL',0)
 # Write the connected document returned above to a SBML file
 libsbml.writeSBML(connected_subsystem.getSBMLDocument(),'models/DP_IFFL_connected.xml')
 
-print('Tutorial successfully finished. Shared/combined/connected SBML models have been created and written to file. Use bioscrape options to simulate.')
+print('**** Tutorial successfully finished. Shared/combined/connected SBML models have been created and written to file. Use bioscrape options to simulate.')
 
 ### Simulate using bioscrape (Optional - Uncomment to use the following)
 # Usage - plotSbmlWithBioscrape(filename, initialTime, timepoints, 
