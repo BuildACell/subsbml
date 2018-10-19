@@ -385,7 +385,8 @@ def createSubsystem(filename, subsystemName = ''):
     if subsystem.getSBMLDocument().getLevel() != latestLevel or subsystem.getSBMLDocument().getVersion() != latestVersion:
         warnings.warn('Subsystem SBML model is not the latest. Converting to the latest SBML level and version')
         subsystem.convertSubsystemLevelAndVersion(latestLevel,latestVersion)
-    subsystem.suffixAllElementIds(subsystemName)
+    if subsystemName != '':
+        subsystem.suffixAllElementIds(subsystemName)
     if model.getNumCompartments() == 0:
         warnings.warn('No compartments in the Subsystem model, the System compartment will be used. Compartment Size will be set to zero for this Subsystem.')
     elif model.getNumCompartments() > 1:

@@ -1,10 +1,10 @@
 from subsbml import *
 
-alHL = createSubsystem('models/alHL.xml','SS1')
-GFP = createSubsystem('models/GFP.xml', 'SS2')
+alHL = createSubsystem('models/alHL.xml')
+GFP = createSubsystem('models/GFP.xml')
 membrane = createSubsystem('models/IPTG_membrane.xml')
 
-external = createSubsystem('models/IPTG_reservoir.xml','SS3')
+external = createSubsystem('models/IPTG_reservoir.xml')
 
 cell = System('cell')
 

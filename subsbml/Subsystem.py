@@ -130,34 +130,45 @@ class Subsystem(object):
             warnings.warn('The current SBMLDocument level and version are the same as the new level and version given')
             return
 
-        config = libsbml.ConversionProperties()
-        if config != None:
-            config.addOption('setLevelAndVersion')
-        else:
-            raise ValueError('Failed to call ConversionProperties')
-        # Now, need to set the target level and version (to which to convert the document)
+        check(document.setLevelAndVersion(newLevel,newVersion), 'converting SBMLDocument to new level and version')
+        # To check errors, uncomment:
+        # if document.getNumErrors():
+        #     print(document.printErrors())
+        #     raise ValueError('Invalid SBMLDocument error.')
+        # else:
+        #     return self.getSBMLDocument()
+
+
+        # Obsolete:
+        # config = libsbml.ConversionProperties()
+        # if config != None:
+        #     config.addOption('setLevelAndVersion')
+        # else:
+        #     raise ValueError('Failed to call ConversionProperties')
+        # # Now, need to set the target level and version (to which to convert the document)
         # Use the setTargetNamespaces() object of the ConversionsProperties as follows.
         # First, need to create a new SBMLNamespaces object with the desired (target) level and version
-        sbmlns = libsbml.SBMLNamespaces(newLevel,newVersion)
-        check(sbmlns, 'creating new sbml namespaces')
+        # sbmlns = libsbml.SBMLNamespaces(newLevel,newVersion)
+        # check(sbmlns, 'creating new sbml namespaces')
         # check(config.setTargetNamespaces(sbmlns),'setting target namespaces')
-        config.setTargetNamespaces(sbmlns)
+        # config.setTargetNamespaces(sbmlns)
         # Use the SBMLDocument.convert(ConversionsProperties) syntax to convert
-        check(document.convert(config),'converting document level and version')
-        if newLevel == 3 and newVersion == 1:
-            conv_status = document.checkL3v1Compatibility()
-        elif newLevel == 2 and newVersion == 5:
-            conv_status = document.checkL2v5Compatibility()
-        elif newLevel == 2 and newVersion == 4:
-            conv_status = document.checkL2v4Compatibility()
-        elif newLevel == 2 and newVersion == 3:
-            conv_status = document.checkL2v3Compatibility()
-        elif newLevel == 2 and newVersion == 2:
-            conv_status = document.checkL2v2Compatibility()
-        elif newLevel == 2 and newVersion == 1:
-            conv_status = document.checkL2v1Compatibility()
-        if conv_status != 0:
-            raise ValueError('SBML Level/Version conversion failed')
+        # check(document.convert(config),'converting document level and version')
+        # if newLevel == 3 and newVersion == 1:
+        #     conv_status = document.checkL3v1Compatibility()
+        # elif newLevel == 2 and newVersion == 5:
+        #     conv_status = document.checkL2v5Compatibility()
+        # elif newLevel == 2 and newVersion == 4:
+        #     conv_status = document.checkL2v4Compatibility()
+        # elif newLevel == 2 and newVersion == 3:
+        #     conv_status = document.checkL2v3Compatibility()
+        # elif newLevel == 2 and newVersion == 2:
+        #     conv_status = document.checkL2v2Compatibility()
+        # elif newLevel == 2 and newVersion == 1:
+        #     conv_status = document.checkL2v1Compatibility()
+        # if conv_status != 0:
+        #     raise ValueError('SBML Level/Version conversion failed')
+
         return self.getSBMLDocument()
 
     def renameSId(self, oldSId, newSId, debug = False): 
@@ -302,7 +313,7 @@ class Subsystem(object):
                 result.append(current.getId()) 
         return result     
     
-    def suffixAllElementIds(self, name):
+    def suffixAllElementIds(self, name, suffixNames = False):
         '''
         All elements identifiers in the
         SBMLDocument of this Subsystem are suffixed with name.
@@ -320,12 +331,13 @@ class Subsystem(object):
                     self.renameSId(oldid, oldid + '_' + name)
 
         ## Use if want to suffix all Name arguments too
-        # elements = document.getListOfAllElements()
-        # for element in elements:
-        #     if element.isSetName():
-        #         oldname = element.getName()
-        #         newname = oldname + '_' + name
-        #         element.setName(newname)
+        if suffixNames:
+            elements = document.getListOfAllElements()
+            for element in elements:
+                if element.isSetName():
+                    oldname = element.getName()
+                    newname = oldname + '_' + name
+                    element.setName(newname)
 
         return document
 
