@@ -1,123 +1,93 @@
 <model>
 
-<reaction text="inP_DP1_shared+X_DP1--inP_X_DP1" after="--">
+<reaction text="inP_DP1_1_shared+X_DP1_1_combined--inP_X_DP1_1_combined" after="--">
     <delay type="none"/>
-    <propensity type="general" rate="X_DP1*_k1f_DP1*inP_DP1_shared - _k1r_DP1*inP_X_DP1" />
+    <propensity type="general" rate="X_DP1_1_combined*_k1f_combined*inP_DP1_1_shared - _k1r_combined*inP_X_DP1_1_combined" />
 </reaction>
 
-<reaction text="inP_X_DP1--inP_DP1_shared+X_P_DP1_shared" after="--">
+<reaction text="inP_X_DP1_1_combined--inP_DP1_1_shared+X_P_DP1_1_shared" after="--">
     <delay type="none"/>
-    <propensity type="general" rate="_k2f_DP1*inP_X_DP1" />
+    <propensity type="general" rate="_k2f_combined*inP_X_DP1_1_combined" />
 </reaction>
 
-<reaction text="E_DP1+X_P_DP1_shared--E_X_P_DP1" after="--">
+<reaction text="E_DP1_1_combined+X_P_DP1_1_shared--E_X_P_DP1_1_combined" after="--">
     <delay type="none"/>
-    <propensity type="general" rate="E_DP1*X_P_DP1_shared*_k3f_DP1 - E_X_P_DP1*_k3r_DP1" />
+    <propensity type="general" rate="E_DP1_1_combined*X_P_DP1_1_shared*_k3f_combined - E_X_P_DP1_1_combined*_k3r_combined" />
 </reaction>
 
-<reaction text="E_X_P_DP1--E_DP1+X_DP1" after="--">
+<reaction text="E_X_P_DP1_1_combined--E_DP1_1_combined+X_DP1_1_combined" after="--">
     <delay type="none"/>
-    <propensity type="general" rate="E_X_P_DP1*_k4f_DP1" />
+    <propensity type="general" rate="E_X_P_DP1_1_combined*_k4f_combined" />
 </reaction>
 
-<reaction text="inP_DP1_shared+X_P_DP1_shared--inP_X_P_DP1" after="--">
+<reaction text="inP_DP1_1_shared+X_P_DP1_1_shared--inP_X_P_DP1_1_combined" after="--">
     <delay type="none"/>
-    <propensity type="general" rate="X_P_DP1_shared*_k5f_DP1*inP_DP1_shared - _k5r_DP1*inP_X_P_DP1" />
+    <propensity type="general" rate="X_P_DP1_1_shared*_k5f_combined*inP_DP1_1_shared - _k5r_combined*inP_X_P_DP1_1_combined" />
 </reaction>
 
-<reaction text="inP_X_P_DP1--X_P_P_DP1+inP_DP1_shared" after="--">
+<reaction text="inP_X_P_DP1_1_combined--X_P_P_connected_with_pA_IFFL+inP_DP1_1_shared" after="--">
     <delay type="none"/>
-    <propensity type="general" rate="_k6f_DP1*inP_X_P_DP1" />
+    <propensity type="general" rate="_k6f_combined*inP_X_P_DP1_1_combined" />
 </reaction>
 
-<reaction text="E_DP1+X_P_P_DP1--E_X_P_P_DP1" after="--">
+<reaction text="E_DP1_1_combined+X_P_P_connected_with_pA_IFFL--E_X_P_P_DP1_1_combined" after="--">
     <delay type="none"/>
-    <propensity type="general" rate="E_DP1*X_P_P_DP1*_k7f_DP1 - E_X_P_P_DP1*_k7r_DP1" />
+    <propensity type="general" rate="E_DP1_1_combined*X_P_P_connected_with_pA_IFFL*_k7f_combined - E_X_P_P_DP1_1_combined*_k7r_combined" />
 </reaction>
 
-<reaction text="E_X_P_P_DP1--X_P_DP1_shared+E_DP1" after="--">
+<reaction text="E_X_P_P_DP1_1_combined--X_P_DP1_1_shared+E_DP1_1_combined" after="--">
     <delay type="none"/>
-    <propensity type="general" rate="E_X_P_P_DP1*_k8f_DP1" />
+    <propensity type="general" rate="E_X_P_P_DP1_1_combined*_k8f_combined" />
 </reaction>
 
-<reaction text="inP_DP1_shared+X_DP2--inP_X_DP2" after="--">
+<reaction text="inP_X_P_DP1_1_combined--X_P_P_DP2_1_connected_with_pB_IFFL+inP_DP1_1_shared" after="--">
     <delay type="none"/>
-    <propensity type="general" rate="X_DP2*_k1f_DP2*inP_DP1_shared - _k1r_DP2*inP_X_DP2" />
+    <propensity type="general" rate="_k6f_combined*inP_X_P_DP1_1_combined" />
 </reaction>
 
-<reaction text="inP_X_DP2--inP_DP1_shared+X_P_DP1_shared" after="--">
+<reaction text="E_DP1_1_combined+X_P_P_DP2_1_connected_with_pB_IFFL--E_X_P_P_DP1_1_combined" after="--">
     <delay type="none"/>
-    <propensity type="general" rate="_k2f_DP2*inP_X_DP2" />
-</reaction>
-
-<reaction text="E_DP2+X_P_DP1_shared--E_X_P_DP2" after="--">
-    <delay type="none"/>
-    <propensity type="general" rate="E_DP2*X_P_DP1_shared*_k3f_DP2 - E_X_P_DP2*_k3r_DP2" />
-</reaction>
-
-<reaction text="E_X_P_DP2--E_DP2+X_DP2" after="--">
-    <delay type="none"/>
-    <propensity type="general" rate="E_X_P_DP2*_k4f_DP2" />
-</reaction>
-
-<reaction text="inP_DP1_shared+X_P_DP1_shared--inP_X_P_DP2" after="--">
-    <delay type="none"/>
-    <propensity type="general" rate="X_P_DP1_shared*_k5f_DP2*inP_DP1_shared - _k5r_DP2*inP_X_P_DP2" />
-</reaction>
-
-<reaction text="inP_X_P_DP2--X_P_P_DP2+inP_DP1_shared" after="--">
-    <delay type="none"/>
-    <propensity type="general" rate="_k6f_DP2*inP_X_P_DP2" />
-</reaction>
-
-<reaction text="E_DP2+X_P_P_DP2--E_X_P_P_DP2" after="--">
-    <delay type="none"/>
-    <propensity type="general" rate="E_DP2*X_P_P_DP2*_k7f_DP2 - E_X_P_P_DP2*_k7r_DP2" />
-</reaction>
-
-<reaction text="E_X_P_P_DP2--X_P_DP1_shared+E_DP2" after="--">
-    <delay type="none"/>
-    <propensity type="general" rate="E_X_P_P_DP2*_k8f_DP2" />
+    <propensity type="general" rate="E_DP1_1_combined*X_P_P_DP2_1_connected_with_pB_IFFL*_k7f_combined - E_X_P_P_DP1_1_combined*_k7r_combined" />
 </reaction>
 
 <reaction text="inp_IFFL_IFFL+DA_IFFL_IFFL--C1_IFFL_IFFL" after="--">
     <delay type="none"/>
-    <propensity type="general" rate="-C1_IFFL_IFFL*_k1r_IFFL + DA_IFFL_IFFL*_k1f_IFFL*inp_IFFL_IFFL" />
+    <propensity type="general" rate="-C1_IFFL_IFFL*_k1r_combined + DA_IFFL_IFFL*_k1f_combined*inp_IFFL_IFFL" />
 </reaction>
 
 <reaction text="C1_IFFL_IFFL--C1_IFFL_IFFL+mA_IFFL_IFFL" after="--">
     <delay type="none"/>
-    <propensity type="general" rate="C1_IFFL_IFFL*_k2f_IFFL" />
+    <propensity type="general" rate="C1_IFFL_IFFL*_k2f_combined" />
 </reaction>
 
-<reaction text="mA_IFFL_IFFL--mA_IFFL_IFFL+pA_IFFL_IFFL" after="--">
+<reaction text="mA_IFFL_IFFL--mA_IFFL_IFFL+X_P_P_connected_with_pA_IFFL" after="--">
     <delay type="none"/>
-    <propensity type="general" rate="_k3f_IFFL*mA_IFFL_IFFL" />
+    <propensity type="general" rate="_k3f_combined*mA_IFFL_IFFL" />
 </reaction>
 
 <reaction text="mA_IFFL_IFFL--" after="--">
     <delay type="none"/>
-    <propensity type="general" rate="_k4f_IFFL*mA_IFFL_IFFL" />
+    <propensity type="general" rate="_k4f_combined*mA_IFFL_IFFL" />
 </reaction>
 
-<reaction text="pA_IFFL_IFFL--" after="--">
+<reaction text="X_P_P_connected_with_pA_IFFL--" after="--">
     <delay type="none"/>
-    <propensity type="general" rate="_k5f_IFFL*pA_IFFL_IFFL" />
+    <propensity type="general" rate="X_P_P_connected_with_pA_IFFL*_k5f_combined" />
 </reaction>
 
-<reaction text="pA_IFFL_IFFL+DB_IFFL_IFFL--C2_IFFL_IFFL" after="--">
+<reaction text="X_P_P_connected_with_pA_IFFL+DB_IFFL_IFFL--C2_IFFL_IFFL" after="--">
     <delay type="none"/>
-    <propensity type="general" rate="-C2_IFFL_IFFL*_k6r_IFFL + DB_IFFL_IFFL*_k6f_IFFL*pA_IFFL_IFFL" />
+    <propensity type="general" rate="-C2_IFFL_IFFL*_k6r_IFFL + DB_IFFL_IFFL*X_P_P_connected_with_pA_IFFL*_k6f_combined" />
 </reaction>
 
 <reaction text="C2_IFFL_IFFL--C2_IFFL_IFFL+mB_IFFL_IFFL" after="--">
     <delay type="none"/>
-    <propensity type="general" rate="C2_IFFL_IFFL*_k7f_IFFL" />
+    <propensity type="general" rate="C2_IFFL_IFFL*_k7f_combined" />
 </reaction>
 
-<reaction text="mB_IFFL_IFFL--mB_IFFL_IFFL+pB_IFFL_IFFL" after="--">
+<reaction text="mB_IFFL_IFFL--mB_IFFL_IFFL+X_P_P_DP2_1_connected_with_pB_IFFL" after="--">
     <delay type="none"/>
-    <propensity type="general" rate="_k8f_IFFL*mB_IFFL_IFFL" />
+    <propensity type="general" rate="_k8f_combined*mB_IFFL_IFFL" />
 </reaction>
 
 <reaction text="mB_IFFL_IFFL--" after="--">
@@ -125,29 +95,29 @@
     <propensity type="general" rate="_k9f_IFFL*mB_IFFL_IFFL" />
 </reaction>
 
-<reaction text="pB_IFFL_IFFL--" after="--">
+<reaction text="X_P_P_DP2_1_connected_with_pB_IFFL--" after="--">
     <delay type="none"/>
-    <propensity type="general" rate="_k10f_IFFL*pB_IFFL_IFFL" />
+    <propensity type="general" rate="X_P_P_DP2_1_connected_with_pB_IFFL*_k10f_IFFL" />
 </reaction>
 
-<reaction text="pB_IFFL_IFFL+DC_IFFL_IFFL--C3_IFFL_IFFL" after="--">
+<reaction text="X_P_P_DP2_1_connected_with_pB_IFFL+DC_IFFL_IFFL--C3_IFFL_IFFL" after="--">
     <delay type="none"/>
-    <propensity type="general" rate="-C3_IFFL_IFFL*_k11r_IFFL + DC_IFFL_IFFL*_k11f_IFFL*pB_IFFL_IFFL" />
+    <propensity type="general" rate="-C3_IFFL_IFFL*_k11r_IFFL + DC_IFFL_IFFL*X_P_P_DP2_1_connected_with_pB_IFFL*_k11f_IFFL" />
 </reaction>
 
-<reaction text="pA_IFFL_IFFL+DC_IFFL_IFFL--C4_IFFL_IFFL" after="--">
+<reaction text="X_P_P_connected_with_pA_IFFL+DC_IFFL_IFFL--C4_IFFL_IFFL" after="--">
     <delay type="none"/>
-    <propensity type="general" rate="-C4_IFFL_IFFL*_k12r_IFFL + DC_IFFL_IFFL*_k12f_IFFL*pA_IFFL_IFFL" />
+    <propensity type="general" rate="-C4_IFFL_IFFL*_k12r_IFFL + DC_IFFL_IFFL*X_P_P_connected_with_pA_IFFL*_k12f_IFFL" />
 </reaction>
 
-<reaction text="pA_IFFL_IFFL+C3_IFFL_IFFL--C5_IFFL_IFFL" after="--">
+<reaction text="X_P_P_connected_with_pA_IFFL+C3_IFFL_IFFL--C5_IFFL_IFFL" after="--">
     <delay type="none"/>
-    <propensity type="general" rate="C3_IFFL_IFFL*_k13f_IFFL*pA_IFFL_IFFL - C5_IFFL_IFFL*_k13r_IFFL" />
+    <propensity type="general" rate="C3_IFFL_IFFL*X_P_P_connected_with_pA_IFFL*_k13f_IFFL - C5_IFFL_IFFL*_k13r_IFFL" />
 </reaction>
 
-<reaction text="pB_IFFL_IFFL+C4_IFFL_IFFL--C6_IFFL_IFFL" after="--">
+<reaction text="X_P_P_DP2_1_connected_with_pB_IFFL+C4_IFFL_IFFL--C6_IFFL_IFFL" after="--">
     <delay type="none"/>
-    <propensity type="general" rate="C4_IFFL_IFFL*_k14f_IFFL*pB_IFFL_IFFL - C6_IFFL_IFFL*_k14r_IFFL" />
+    <propensity type="general" rate="C4_IFFL_IFFL*X_P_P_DP2_1_connected_with_pB_IFFL*_k14f_IFFL - C6_IFFL_IFFL*_k14r_IFFL" />
 </reaction>
 
 <reaction text="C4_IFFL_IFFL--C4_IFFL_IFFL+mC_IFFL_IFFL" after="--">
@@ -171,29 +141,23 @@
 </reaction>
 
 
-<species name="X_DP1" value="1.666666666666669983E+01" />
-<species name="inP_X_DP1" value="0.000000000000000000E+00" />
-<species name="E_DP1" value="1.666666666666669983E+01" />
-<species name="E_X_P_DP1" value="0.000000000000000000E+00" />
-<species name="inP_X_P_DP1" value="0.000000000000000000E+00" />
-<species name="X_P_P_DP1" value="0.000000000000000000E+00" />
-<species name="E_X_P_P_DP1" value="0.000000000000000000E+00" />
-<species name="X_DP2" value="1.666666666666669983E+01" />
-<species name="inP_X_DP2" value="0.000000000000000000E+00" />
-<species name="E_DP2" value="1.666666666666669983E+01" />
-<species name="E_X_P_DP2" value="0.000000000000000000E+00" />
-<species name="inP_X_P_DP2" value="0.000000000000000000E+00" />
-<species name="X_P_P_DP2" value="0.000000000000000000E+00" />
-<species name="E_X_P_P_DP2" value="0.000000000000000000E+00" />
-<species name="inp_IFFL_IFFL" value="1.666666666666669983E+01" />
+<species name="inP_DP1_1_shared" value="3.333333333333330017E+01" />
+<species name="X_DP1_1_combined" value="3.333333333333330017E+01" />
+<species name="inP_X_DP1_1_combined" value="0.000000000000000000E+00" />
+<species name="X_P_DP1_1_shared" value="0.000000000000000000E+00" />
+<species name="E_DP1_1_combined" value="3.333333333333330017E+01" />
+<species name="E_X_P_DP1_1_combined" value="0.000000000000000000E+00" />
+<species name="inP_X_P_DP1_1_combined" value="0.000000000000000000E+00" />
+<species name="E_X_P_P_DP1_1_combined" value="0.000000000000000000E+00" />
+<species name="inp_IFFL_IFFL" value="0.000000000000000000E+00" />
 <species name="DA_IFFL_IFFL" value="1.666666666666669983E+01" />
 <species name="C1_IFFL_IFFL" value="0.000000000000000000E+00" />
 <species name="mA_IFFL_IFFL" value="0.000000000000000000E+00" />
-<species name="pA_IFFL_IFFL" value="0.000000000000000000E+00" />
+<species name="X_P_P_connected_with_pA_IFFL" value="3.700000000000000000E+01" />
 <species name="C2_IFFL_IFFL" value="0.000000000000000000E+00" />
 <species name="DB_IFFL_IFFL" value="1.666666666666669983E+01" />
 <species name="mB_IFFL_IFFL" value="0.000000000000000000E+00" />
-<species name="pB_IFFL_IFFL" value="0.000000000000000000E+00" />
+<species name="X_P_P_DP2_1_connected_with_pB_IFFL" value="3.700000000000000000E+01" />
 <species name="C3_IFFL_IFFL" value="0.000000000000000000E+00" />
 <species name="DC_IFFL_IFFL" value="1.666666666666669983E+01" />
 <species name="C4_IFFL_IFFL" value="0.000000000000000000E+00" />
@@ -201,43 +165,20 @@
 <species name="C6_IFFL_IFFL" value="0.000000000000000000E+00" />
 <species name="mC_IFFL_IFFL" value="0.000000000000000000E+00" />
 <species name="out_IFFL_IFFL" value="0.000000000000000000E+00" />
-<species name="inP_DP1_shared" value="3.333333333333330017E+01" />
-<species name="X_P_DP1_shared" value="0.000000000000000000E+00" />
 
-<parameter name="k1f_DP1" value="1.000000000000000000E+00"/>
-<parameter name="k1r_DP1" value="1.000000000000000000E+00"/>
-<parameter name="k2f_DP1" value="1.000000000000000000E+00"/>
-<parameter name="k3f_DP1" value="1.000000000000000000E+00"/>
-<parameter name="k3r_DP1" value="1.000000000000000000E+00"/>
-<parameter name="k4f_DP1" value="1.000000000000000000E+00"/>
-<parameter name="k5f_DP1" value="1.000000000000000000E+00"/>
-<parameter name="k5r_DP1" value="1.000000000000000000E+00"/>
-<parameter name="k6f_DP1" value="1.000000000000000000E+00"/>
-<parameter name="k7f_DP1" value="1.000000000000000000E+00"/>
-<parameter name="k7r_DP1" value="1.000000000000000000E+00"/>
-<parameter name="k8f_DP1" value="1.000000000000000000E+00"/>
-<parameter name="k1f_DP2" value="1.000000000000000000E+00"/>
-<parameter name="k1r_DP2" value="1.000000000000000000E+00"/>
-<parameter name="k2f_DP2" value="1.000000000000000000E+00"/>
-<parameter name="k3f_DP2" value="1.000000000000000000E+00"/>
-<parameter name="k3r_DP2" value="1.000000000000000000E+00"/>
-<parameter name="k4f_DP2" value="1.000000000000000000E+00"/>
-<parameter name="k5f_DP2" value="1.000000000000000000E+00"/>
-<parameter name="k5r_DP2" value="1.000000000000000000E+00"/>
-<parameter name="k6f_DP2" value="1.000000000000000000E+00"/>
-<parameter name="k7f_DP2" value="1.000000000000000000E+00"/>
-<parameter name="k7r_DP2" value="1.000000000000000000E+00"/>
-<parameter name="k8f_DP2" value="1.000000000000000000E+00"/>
-<parameter name="k1f_IFFL" value="1.000000000000000000E+00"/>
-<parameter name="k1r_IFFL" value="1.000000000000000000E+00"/>
-<parameter name="k2f_IFFL" value="1.000000000000000000E+00"/>
-<parameter name="k3f_IFFL" value="1.000000000000000000E+00"/>
-<parameter name="k4f_IFFL" value="1.000000000000000000E+00"/>
-<parameter name="k5f_IFFL" value="1.000000000000000000E+00"/>
-<parameter name="k6f_IFFL" value="1.000000000000000000E+00"/>
+<parameter name="k3r_combined" value="1.000000000000000000E+00"/>
+<parameter name="k5r_combined" value="1.000000000000000000E+00"/>
+<parameter name="k7r_combined" value="1.000000000000000000E+00"/>
+<parameter name="k1f_combined" value="1.000000000000000000E+00"/>
+<parameter name="k1r_combined" value="1.000000000000000000E+00"/>
+<parameter name="k2f_combined" value="1.000000000000000000E+00"/>
+<parameter name="k3f_combined" value="1.000000000000000000E+00"/>
+<parameter name="k4f_combined" value="1.000000000000000000E+00"/>
+<parameter name="k5f_combined" value="1.000000000000000000E+00"/>
+<parameter name="k6f_combined" value="1.000000000000000000E+00"/>
 <parameter name="k6r_IFFL" value="1.000000000000000000E+00"/>
-<parameter name="k7f_IFFL" value="1.000000000000000000E+00"/>
-<parameter name="k8f_IFFL" value="1.000000000000000000E+00"/>
+<parameter name="k7f_combined" value="1.000000000000000000E+00"/>
+<parameter name="k8f_combined" value="1.000000000000000000E+00"/>
 <parameter name="k9f_IFFL" value="1.000000000000000000E+00"/>
 <parameter name="k10f_IFFL" value="1.000000000000000000E+00"/>
 <parameter name="k11f_IFFL" value="1.000000000000000000E+00"/>

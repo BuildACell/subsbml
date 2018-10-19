@@ -79,12 +79,6 @@ shared_model = cell.setSharedResources('volume')
 # (Optional) Write the shared document model to SBML file
 libsbml.writeSBML(shared_model,'models/DP_IFFL_shared.xml')
 
-shared_model = cell.setSharedResources('volume')
-libsbml.writeSBML(shared_model,'models/DP_IFFL_shared.xml')
-shared_model = cell.setSharedResources('volume')
-libsbml.writeSBML(shared_model,'models/DP_IFFL_shared.xml')
-shared_model = cell.setSharedResources('volume')
-libsbml.writeSBML(shared_model,'models/DP_IFFL_shared.xml')
 # The combineSubsystems member function implements Example 1-B.
 # Usage - subsystem_object.combineSubsystems(ListOfSubsystems, combineAllWithSameNames)
 # The subsystem_object is a new subsystem object which calls combineSubsystems
@@ -95,20 +89,11 @@ libsbml.writeSBML(shared_model,'models/DP_IFFL_shared.xml')
 
 print('**** Creating combined model and writing it to SBML file')
 combined_subsystem = createNewSubsystem()
-combined_model = combined_subsystem.combineSubsystems([DP1, DP2, IFFL], 'volume', True)
+combined_model = combined_subsystem.combineSubsystems([DP1, DP2, IFFL], 'virtual', True)
 
 # (Optional) Write the combined document model to SBML file
 libsbml.writeSBML(combined_model,'models/DP_IFFL_combined.xml')
 
-combined_model = combined_subsystem.combineSubsystems([DP1, DP2, IFFL], 'volume', True)
-libsbml.writeSBML(combined_model,'models/DP_IFFL_combinedvol.xml')
-
-combined_model = combined_subsystem.combineSubsystems([DP1, DP2, IFFL], 'volume', True)
-libsbml.writeSBML(combined_model,'models/DP_IFFL_combinedvol.xml')
-combined_model = combined_subsystem.combineSubsystems([DP1, DP2, IFFL], 'volume', True)
-libsbml.writeSBML(combined_model,'models/DP_IFFL_combinedvol.xml')
-combined_model = combined_subsystem.combineSubsystems([DP1, DP2, IFFL], 'virtual', True)
-libsbml.writeSBML(combined_model,'models/DP_IFFL_combined.xml')
 # Now, for Example 1-C, the user needs to specify 
 # the map of the interaction modeling that is desired. This map uses species names.
 # User specifies how the systems interact by defining the following map
@@ -142,9 +127,9 @@ print('**** Tutorial successfully finished. Shared/combined/connected SBML model
 # ListOfSpeciesToPlot, xLabel, yLabel, xAxisSize, yAxisSize)
 
 timepoints = np.linspace(0,50,1000)
-plotSbmlWithBioscrape('models/DP_IFFL_shared.xml',0,
+# plotSbmlWithBioscrape('models/DP_IFFL_shared.xml',0,
 # plotSbmlWithBioscrape('models/DP_IFFL_combined.xml',0,
-# plotSbmlWithBioscrape('models/DP_IFFL_connected.xml',0,
-timepoints,['inP','pA_IFFL','pB_IFFL','out_IFFL'],'','Time',
-# timepoints,['inP','X:P:P','X:P:P_DP2','out_IFFL'],'Time',
+plotSbmlWithBioscrape('models/DP_IFFL_connected.xml',0,
+# timepoints,['inP','pA_IFFL','pB_IFFL','out_IFFL'],'','Time',
+timepoints,['inP','X:P:P','X:P:P_DP2','out_IFFL'],'','Time',
 'Input and Output Species',3,14,14)

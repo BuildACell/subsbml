@@ -453,32 +453,30 @@ class Subsystem(object):
             model.setVolumeUnits(mod.getVolumeUnits())
         return self.getSBMLDocument()
    
-    def shareSubsystems(self, ListOfSubsystems, ListOfSharedResources, mode = 'virtual', combineCall = False):
+    def shareSubsystems(self, ListOfSubsystems, ListOfSharedResources, mode = 'virtual'):
         '''
         Merges the ListOfSubsystems together along with all the Species. 
         The Species in ListOfSharedResources are combined together 
         and so are shared by all Subsystems among the ListOfSubsystems.
         Returns the combined SBMLDocument object of this Subsystem which stores the combined model
-        The combineCall is an optional argument for internal use in the code.  
         '''
-        if not combineCall:
-            # Flatten out the ListOfSubsystems argument 
-            ListOfListOfSubsystems = []
-            if type(ListOfSubsystems) is not list:
-                if type(ListOfSubsystems) is not Subsystem:
-                    raise ValueError('ListOfSubsystems argument must be a Subsystem object or list of Subsystem object')
-                ListOfSubsystems = [ListOfSubsystems]
-            for subsystem in ListOfSubsystems:
-                if type(subsystem) is list:
-                    for sub in subsystem:
-                        ListOfListOfSubsystems.append(sub)
-                elif type(subsystem) is Subsystem:
-                    ListOfListOfSubsystems.append(subsystem)
-                else:
-                    raise ValueError('All elements of ListOfSubsystems argument must be Subsystem objects')
-        
-            ListOfSubsystems = []
-            ListOfSubsystems = ListOfListOfSubsystems
+        # Flatten out the ListOfSubsystems argument 
+        ListOfListOfSubsystems = []
+        if type(ListOfSubsystems) is not list:
+            if type(ListOfSubsystems) is not Subsystem:
+                raise ValueError('ListOfSubsystems argument must be a Subsystem object or list of Subsystem object')
+            ListOfSubsystems = [ListOfSubsystems]
+        for subsystem in ListOfSubsystems:
+            if type(subsystem) is list:
+                for sub in subsystem:
+                    ListOfListOfSubsystems.append(sub)
+            elif type(subsystem) is Subsystem:
+                ListOfListOfSubsystems.append(subsystem)
+            else:
+                raise ValueError('All elements of ListOfSubsystems argument must be Subsystem objects')
+    
+        ListOfSubsystems = []
+        ListOfSubsystems = ListOfListOfSubsystems
         flag = 0
         for subsystem in ListOfSubsystems:
             if subsystem.getSystem() == None:
@@ -493,10 +491,6 @@ class Subsystem(object):
         model = self.getSBMLDocument().getModel()
         check(model,'retreiving model in shareSubsystems')
         mod_id = ''
-        # combineCall is used to check whether the subsystems are being combined (coming from combineSubsystems(...))
-        # or not. This changes the compartment size. For shared - the size is set as the total size of the System inside which the Subsystems are present.
-        # whereas for a combineSubsystems call, the total size of the combined model is equal to the sum of the sizes of the compartments in the subsystems that are being combined.
- 
         total_size = 0
         if flag:
             warnings.warn('Not all of the Subsystems being shared are in the same Compartment')
@@ -504,23 +498,21 @@ class Subsystem(object):
                 mod = subsystem.getSBMLDocument().getModel()
                 mod_id += mod.getId()
                 total_size += mod.getCompartment(0).getSize()
-        elif not combineCall: 
+        else: 
             total_size = self.getSystem().getSize()
             mod_id = ListOfSubsystems[0].getSystem().getSystemName()
-        else:
-            total_size = ListOfSubsystems[0].getSystem().getSize()
 
         check(model.getCompartment(0).setSize(total_size), 'setting compartment size in model')
         for subsystem in ListOfSubsystems:
-            subsystem.shareSubsystem(ListOfSharedResources, mode, combineCall)
-        self.shareSpecies(ListOfSubsystems, ListOfSharedResources, mode, combineCall)
+            subsystem.shareSubsystem(ListOfSharedResources, mode)
+        self.shareSpecies(ListOfSubsystems, ListOfSharedResources, mode)
         # check(model.getCompartment(0).setSize(total_size), 'setting compartment size in model')
         # Updating model id
         check(model.setId('shared_model_of_' + mod_id),'setting new model id for shared model')
         return self.getSBMLDocument()
 
-    def shareSubsystem(self, ListOfSharedResources, mode = 'virtual', combineCall = False):
-        self.shareSpecies([], ListOfSharedResources, mode, combineCall)        
+    def shareSubsystem(self, ListOfSharedResources, mode = 'virtual'):
+        self.shareSpecies([], ListOfSharedResources, mode)
         return self.getSBMLDocument()
 
     def combineSubsystems(self, ListOfSubsystems, mode = 'virtual', combineNames = True):
@@ -560,16 +552,14 @@ class Subsystem(object):
             sys = ListOfSubsystems[0].getSystem()
             ListOfResources = sys.getListOfSharedResources()
             total_size = sys.getSize()
-            # Get the sharedSubsystem object to combine the species in ListOfSharedResources before combining all other species
-            self.shareSubsystems(ListOfSubsystems, ListOfResources, mode, combineCall = True)
         else:
             ListOfResources = []
             warnings.warn('Not all of the Subsystems being combined are in the same Compartment')
             total_size = 0
             for subsystem in ListOfSubsystems:
                 total_size += subsystem.getSBMLDocument().getModel().getCompartment(0).getSize()
-            self.shareSubsystems(ListOfSubsystems, [], mode, combineCall = True)
 
+        self.mergeSubsystemModels(ListOfSubsystems)
         model = self.getSBMLDocument().getModel()
         check(model,'retreiving model in combineSubsystems')
         mod_id = ''
@@ -580,6 +570,8 @@ class Subsystem(object):
         for subsystem in ListOfSubsystems:
             sub_model = subsystem.getSBMLDocument().getModel()
             check(sub_model,'retreiving subsystem model in combineSubsystems')
+            for species in sub_model.getListOfSpecies():
+                model.addSpecies(species)
             mod_id += '_' + sub_model.getId()
             subsystem.combineSubsystem(ListOfResources, mode)
         if combineNames == True:
@@ -663,7 +655,7 @@ class Subsystem(object):
         check(model.setId('connected_subsystems_' + model.getId()),'setting new model id for shared model')
         return self.getSBMLDocument()
 
-    def shareSpecies(self, ListOfSubsystems, ListOfResources, mode, combineCall = False):
+    def shareSpecies(self, ListOfSubsystems, ListOfResources, mode):
         model = self.getSBMLDocument().getModel()
         if ListOfSubsystems == []:
             if self.isSetSystem():
@@ -671,7 +663,7 @@ class Subsystem(object):
             else:
                 total_size =  model.getCompartment(0).getSize()
  
-            if not ListOfResources and not combineCall:
+            if not ListOfResources:
                 for species in model.getListOfSpecies():
                     model.addSpecies(species)
                     # check(model.addSpecies(species), 'adding species in shareSpecies if case when listofresources is empty')
@@ -688,15 +680,8 @@ class Subsystem(object):
                         comp = mod.getElementBySId(species.getCompartment())
                         if species_hash_map.get(species.getId()):
                             raise ValueError('Multiple species with same identifier found. This is an invalid SBML.')
-                        if species.isSetName() and comp.getName() == compartment.getName() and species.getName() in ListOfResources and not combineCall:
+                        if species.isSetName() and comp.getName() == compartment.getName() and species.getName() in ListOfResources:
                             species_hash_map[species.getId()] = species.getName()
-                        # elif species.isSetName() and species.getName() not in ListOfResources:
-                            # check(model.addSpecies(species), 'adding species that are not in ListOfResources in shareSpecies if case')
-                            # Need to modify the species amounts when in volume mode
-                            # if mode == 'volume' and not combineCall:
-                            #     comp_size = model.getElementBySId(species.getCompartment()).getSize()
-                            #     amount = species.getInitialAmount()*comp_size
-                            #     check(species.setInitialAmount(amount/total_size),'setting initial cumulative amount in shareSpecies if case in volume mode, species not shared')
                         elif not species.isSetName():
                             warnings.warn('Species {0} does not have a name attribute. It might be duplicated.'.format(species.getId()))
                             continue
@@ -757,7 +742,6 @@ class Subsystem(object):
                                         warnings.warn('Removing duplicates of species {0} in the same compartment'.format(newid))
                                         id_added_species = newid
                                     count += 1
-                                # if mode == 'volume' and not combineCall:
                                 if mode == 'volume':
                                     check(model.getSpecies(id_added_species).setInitialAmount(cumulative_amount/total_size),'setting initial cumulative amount in combineSpecies if case in volume mode')
         else:
@@ -780,14 +764,13 @@ class Subsystem(object):
             for subsystem in ListOfSubsystems:
                 sub_model = subsystem.getSBMLDocument().getModel()
                 if not ListOfResources:
-                    if not combineCall:
-                        for species in sub_model.getListOfSpecies():
-                            check(model.addSpecies(species), 'adding species to the model when ListOfResources is empty in else case of shareSpecies')
-                            if mode == 'volume':
-                                ssys_size = sub_model.getElementBySId(species.getCompartment()).getSize()
-                                cumulative_amount = (species.getInitialAmount())*ssys_size
-                                spe = model.getSpecies(species.getId())
-                                check(spe.setInitialAmount(cumulative_amount/total_size), 'setting initial amount to cumulative amount in else case of shareSpecies, ListOfResources is empty')
+                    for species in sub_model.getListOfSpecies():
+                        check(model.addSpecies(species), 'adding species to the model when ListOfResources is empty in else case of shareSpecies')
+                        if mode == 'volume':
+                            ssys_size = sub_model.getElementBySId(species.getCompartment()).getSize()
+                            cumulative_amount = (species.getInitialAmount())*ssys_size
+                            spe = model.getSpecies(species.getId())
+                            check(spe.setInitialAmount(cumulative_amount/total_size), 'setting initial amount to cumulative amount in else case of shareSpecies, ListOfResources is empty')
                 else:
                     for compartment in sub_model.getListOfCompartments():
                         # Finding duplicate species by name and compartment
@@ -797,12 +780,12 @@ class Subsystem(object):
                             if not species.isSetName():
                                 warnings.warn('Species {0} does not have a name attribute. It may be duplicated.'.format(species.getId()))
                                 continue
-                            elif species.getName() in ListOfResources and comp.getName() == compartment.getName() and not combineCall:
+                            elif species.getName() in ListOfResources and comp.getName() == compartment.getName():
                                 # Maintain the dictionary for all species in the input subsystems by their name
                                 species_hash_map[species.getName()] = species
                             else:
                                 model.addSpecies(species)
-                                if mode == 'volume' and not combineCall:
+                                if mode == 'volume':
                                     cumulative_amount = (species.getInitialAmount()) * (comp.getSize())
                                     spe = model.getSpecies(species.getId())
                                     check(spe.setInitialAmount(cumulative_amount/total_size), 'setting initial amount to species not shared in shareSpecies in volume mode, in else case')
@@ -879,15 +862,19 @@ class Subsystem(object):
     def combineSpecies(self, ListOfSubsystems, ListOfResources, mode):
         model = self.getSBMLDocument().getModel()
         if ListOfSubsystems == []:
+            if self.isSetSystem():
+                total_size =  self.getSystem().getSize()
+            else:
+                total_size =  model.getCompartment(0).getSize()
+
             final_species_hash_map = {}
             for compartment in model.getListOfCompartments():
                 species_hash_map = {}
                 for species in model.getListOfSpecies():
-                    mod = species.getModel()
-                    comp = mod.getElementBySId(species.getCompartment())
+                    comp = model.getElementBySId(species.getCompartment())
                     if species_hash_map.get(species.getId()):
                         raise ValueError('Multiple species with same identifier found. This is an invalid SBML.')
-                    if species.isSetName() and comp.getName() == compartment.getName() and species.getName() not in ListOfResources:
+                    if species.isSetName() and comp.getName() == compartment.getName():
                         species_hash_map[species.getId()] = species.getName()
                     elif not species.isSetName():
                         warnings.warn('Species {0} does not have a name attribute. It might be duplicated.'.format(species.getId()))
@@ -933,16 +920,19 @@ class Subsystem(object):
                             total_size = 0
                             cumulative_amount = 0
                             for species in comp_dict[species_comp]:
-                                # check(model.addSpecies(species),'adding species in combineSpecies if case')
-                                #remove duplicates
                                 spe_id = species.getId()
+                                #remove duplicates
                                 mod = species.getModel()
                                 ssys_size = mod.getElementBySId(species.getCompartment()).getSize()
                                 total_size += ssys_size 
                                 cumulative_amount += species.getInitialAmount() * ssys_size
                                 oldid = spe_id
                                 check(oldid, 'retreiving oldid in combineSpecies if case')
-                                newid = trans.getValidIdForName(uni_sp.getId()) + '_combined'
+                                if species.getName() in ListOfResources:
+                                    newid = trans.getValidIdForName(uni_sp.getId()) + '_shared'
+                                else:
+                                    newid = trans.getValidIdForName(uni_sp.getId()) + '_combined'
+
                                 self.renameSId(oldid, newid)
                                 if count >= 1 :
                                     check(model.removeSpecies(newid), 'removing duplicate species in combineSpecies if case')
@@ -951,7 +941,9 @@ class Subsystem(object):
                                 count += 1
                             if mode == 'volume':
                                 check(model.getSpecies(id_added_species).setInitialAmount(cumulative_amount/total_size),'setting initial cumulative amount in combineSpecies if case in volume mode')
+
         else:
+            final_species_hash_map = {}
             flag = 0
             for subsystem in ListOfSubsystems:
                 if subsystem.isSetSystem():
@@ -966,7 +958,7 @@ class Subsystem(object):
                 total_size = 0
                 for subsystem in ListOfSubsystems:
                     total_size +=  subsystem.getSBMLDocument().getModel().getCompartment(0).getSize()
-            final_species_hash_map = {}
+
             for subsystem in ListOfSubsystems:
                 sub_model = subsystem.getSBMLDocument().getModel()
                 for compartment in sub_model.getListOfCompartments():
@@ -977,12 +969,12 @@ class Subsystem(object):
                         if not species.isSetName():
                             warnings.warn('Species {0} does not have a name attribute. It may be duplicated.'.format(species.getId()))
                             continue
-                        elif comp.getName() == compartment.getName() and species.getName() not in ListOfResources:
+                        elif comp.getName() == compartment.getName():
                             # Maintain the dictionary for all species in the input subsystems by their name
                             species_hash_map[species.getName()] = species
                         else:
                             # model.addSpecies(species)
-                            if mode =='volume' and species.getName() not in ListOfResources:
+                            if mode =='volume': 
                                 cumulative_amount = (species.getInitialAmount()) * (comp.getSize())
                                 check(species.setInitialAmount(cumulative_amount/total_size), 'setting initial amount to species in volume mode, combinespecies if case')
                     for species_name in species_hash_map:
@@ -1039,7 +1031,10 @@ class Subsystem(object):
                                 cumulative_amount += (species.getInitialAmount()) * ssys_size
                                 oldid = spe_id
                                 check(oldid, 'retreiving oldid in combineSpecies else case')
-                                newid = trans.getValidIdForName(uni_sp.getId()) + '_combined'
+                                if species.getName() in ListOfResources:
+                                    newid = trans.getValidIdForName(uni_sp.getId()) + '_shared'
+                                else:
+                                    newid = trans.getValidIdForName(uni_sp.getId()) + '_combined'
                                 self.renameSId(oldid, newid)
                                 if count >= 1:
                                     check(model.removeSpecies(newid),'removing duplicate species')
@@ -1049,13 +1044,13 @@ class Subsystem(object):
                                 count += 1
                             if mode == 'volume':
                                 check(model.getSpecies(id_added_species).setInitialAmount(cumulative_amount/total_size),'setting initial amount to cumulative in volume mode in combineSpecies else case')
-                # else:
-                #     # add cumulative amount for volume mode here (only needs to be done when combining inside a system)
-                #     for species in final_species_hash_map[unique_species_name]:
-                #         model.addSpecies(species)
-                #         if mode == 'volume':
-                #             cumulative_amount = (species.getInitialAmount()) * (species.getModel().getCompartment(0).getSize())
-                #             check(species.setInitialAmount(cumulative_amount/total_size), 'setting amount to species in combineSpecies, volume mode, else case, species that are not combined')
+                else:
+                    # add cumulative amount for volume mode here (only needs to be done when combining inside a system)
+                    for species in final_species_hash_map[unique_species_name]:
+                        if mode == 'volume' and system_set:
+                            spe = model.getSpecies(species.getId())
+                            cumulative_amount = (species.getInitialAmount()) * (species.getModel().getCompartment(0).getSize())
+                            check(spe.setInitialAmount(cumulative_amount/total_size), 'setting amount to species in combineSpecies, volume mode, else case, species that are not combined')
         return self.getSBMLDocument()
 
     def combineParameters(self, ListOfSubsystems):
