@@ -96,7 +96,7 @@ class SimpleModel(object):
 
         return unitdef
 
-    def createNewCompartment(self, cId, cName, cSize, cUnits, cConstant = True):
+    def createNewCompartment(self, cId, cName, cSize, cUnits, cConstant = True, spatialDim = 3):
         '''
         Creates a new Compartment in the Model and returns a pointer to the new libSBML object created
         '''
@@ -113,6 +113,7 @@ class SimpleModel(object):
         check(comp_obj.setSize(cSize), 'set comp_obj size')
         check(comp_obj.setUnits(cUnits), 'set comp_obj units')
         check(comp_obj.setConstant(cConstant), 'set comp_obj constant')
+        check(comp_obj.setSpatialDimensions(spatialDim), 'set comp_obj spatial dimension')
         return comp_obj
 
     def createNewSpecies(self, ListOfSpecies, sComp, ListOfAmounts, sConstant, sSubstance, sBoundary = False, sHasOnlySubstance = False):
@@ -244,17 +245,25 @@ class SimpleModel(object):
         check(model,'retreived model object')
         r_obj = model.createReaction()
         check(r_obj, 'created r_obj reaction')
+        check(r_obj.setName(rId), 'set r_obj name')
+        ids = self.getAllIds()
+        trans = SetIdFromNames(ids)
+        rId = trans.getValidIdForName(rId)
         check(r_obj.setId(rId), 'set r_obj ID')
         # Obsolete in SBML L3V2
         # check(r_obj.setFast(rFast), 'set r_obj Fast')
         newRxn = SimpleReaction(r_obj)
         reactantList, reactant_stoichList, productList, product_stoichList = newRxn.parseReactionString(rStr)
         for reactant, stoich in zip(reactantList, reactant_stoichList):
+            if reactant == '':
+                continue
             reactant_sp = self.getSpeciesByName(reactant)
             if type(reactant_sp) is list:
                 raise ValueError('Multiple species found with the same name.')
             newRxn.createNewReactant(reactant_sp.getId(), isConstant, stoich)
         for product, stoich in zip(productList, product_stoichList):
+            if product == '':
+                continue
             product_sp = self.getSpeciesByName(product)
             if type(product_sp) is list:
                 raise ValueError('Multiple species found with the same name.')

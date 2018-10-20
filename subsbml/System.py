@@ -1,9 +1,14 @@
 # Import all required library
 
 import warnings 
-from .Subsystem import Subsystem 
+try:
+    import libsbml
+except:
+    warnings.warn('Package not installed : libsbml. The package depends on Python libsbml, install it before using this package.')
 
-from .utilityFunctions import getFromXML, check, createSbmlDoc 
+from .Subsystem import Subsystem 
+from .SimpleModel import SimpleModel 
+from .utilityFunctions import getFromXML, check, createSbmlDoc, createNewModel 
 
 
 # The latest level and version of SBML 
@@ -359,46 +364,6 @@ class System(object):
         return system_sbml.getSBMLDocument(), system_sbml
 
 
-def createNewSubsystem(level = latestLevel, version = latestVersion):
-    '''
-    Creates a new empty Subsystem object with a SBMLDocument 
-    of given level and version.
-    Returns the Subsystem object
-    '''
-    if type(level) is not int or type(version) is not int:
-        raise ValueError('The optional arguments for level and version must be integers')
-    newDocument = createSbmlDoc(level,version)
-    subsystem = Subsystem(newDocument)
-    return subsystem
-
-def createSubsystem(filename, subsystemName = ''):
-    ''' 
-    Creates a new Subsystem object inside the System
-    with the SubsystemName suffixed to all elements of the given SBML filename
-    Returns the created Subsystem object.
-    '''
-    # 1. Read the SBML model
-    # 2. Create an object of the Subsystem class with the SBMLDocument read in Step 1
-    sbmlDoc = getFromXML(filename)
-    model = sbmlDoc.getModel()
-    subsystem = Subsystem(sbmlDoc)
-    if subsystem.getSBMLDocument().getLevel() != latestLevel or subsystem.getSBMLDocument().getVersion() != latestVersion:
-        warnings.warn('Subsystem SBML model is not the latest. Converting to the latest SBML level and version')
-        subsystem.convertSubsystemLevelAndVersion(latestLevel,latestVersion)
-    if subsystemName != '':
-        subsystem.suffixAllElementIds(subsystemName)
-    if model.getNumCompartments() == 0:
-        warnings.warn('No compartments in the Subsystem model, the System compartment will be used. Compartment Size will be set to zero for this Subsystem.')
-    elif model.getNumCompartments() > 1:
-        print('The subsystem from ' + filename + ' has multiple compartments')
-        warnings.warn('More than 1 compartments found in the Subsystem model. Check resulting models for consistency.')
-
-    if not model.getCompartment(0).isSetSize():
-        warnings.warn('Compartment Size attribute is not set. Setting to one.')
-        model.getCompartment(0).setSize(1)
-
-    return subsystem 
-
 def combineSystems(ListOfSystems, mode = 'virtual'):
     '''
     Returns a combined model (SBMLDocument object) of different Systems by combining - 
@@ -436,3 +401,59 @@ def combineSystems(ListOfSystems, mode = 'virtual'):
             subsystem_list_final.append(subsystem)
     newSS.combineSubsystems(subsystem_list_final, mode)
     return newSS.getSBMLDocument()
+
+
+
+def createNewSubsystem(level = latestLevel, version = latestVersion):
+    '''
+    Creates a new empty Subsystem object with a SBMLDocument 
+    of given level and version.
+    Returns the Subsystem object
+    '''
+    if type(level) is not int or type(version) is not int:
+        raise ValueError('The optional arguments for level and version must be integers')
+    newDocument = createSbmlDoc(level,version)
+    subsystem = Subsystem(newDocument)
+    return subsystem
+
+def createBasicSubsystem(id, level = latestLevel, version = latestVersion, size = 1e-6):
+    '''
+    Creates a basic Subsystem object with an SBML model with the most standard settings.
+    The model is created with the latest SBML level and version, and gives the id attribute to it given in the first argument.
+    '''
+    model, document = createNewModel(modelId = id + '_model', timeUnits = 'second', extentUnits = 'mole',substanceUnits = 'mole', lengthUnits = 'metre', areaUnits = '', volumeUnits = 'litre')
+    check(model,'created a new model in createBasicSubsystem')
+    simpleModel = SimpleModel(model)
+    # Creating a derived unit for the area and setting it to the model
+    simpleModel.createNewUnitDefinition('square_metre',libsbml.UNIT_KIND_METRE, exponent = 2)
+    check(model.setAreaUnits('square_metre'), 'setting area units to the model')
+    simpleModel.createNewCompartment(cId = id, cName = id, cSize = size, cUnits = 'litre', cConstant = True, spatialDim = 3)
+    return Subsystem(document)
+
+def createSubsystem(filename, subsystemName = ''):
+    ''' 
+    Creates a new Subsystem object inside the System
+    with the SubsystemName suffixed to all elements of the given SBML filename
+    Returns the created Subsystem object.
+    '''
+    # 1. Read the SBML model
+    # 2. Create an object of the Subsystem class with the SBMLDocument read in Step 1
+    sbmlDoc = getFromXML(filename)
+    model = sbmlDoc.getModel()
+    subsystem = Subsystem(sbmlDoc)
+    if subsystem.getSBMLDocument().getLevel() != latestLevel or subsystem.getSBMLDocument().getVersion() != latestVersion:
+        warnings.warn('Subsystem SBML model is not the latest. Converting to the latest SBML level and version')
+        subsystem.convertSubsystemLevelAndVersion(latestLevel,latestVersion)
+    if subsystemName != '':
+        subsystem.suffixAllElementIds(subsystemName)
+    if model.getNumCompartments() == 0:
+        warnings.warn('No compartments in the Subsystem model, the System compartment will be used. Compartment Size will be set to zero for this Subsystem.')
+    elif model.getNumCompartments() > 1:
+        print('The subsystem from ' + filename + ' has multiple compartments')
+        warnings.warn('More than 1 compartments found in the Subsystem model. Check resulting models for consistency.')
+
+    if not model.getCompartment(0).isSetSize():
+        warnings.warn('Compartment Size attribute is not set. Setting to one.')
+        model.getCompartment(0).setSize(1)
+
+    return subsystem 

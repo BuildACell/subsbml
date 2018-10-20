@@ -4,9 +4,17 @@ import sys
 import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
-import libsbml
+import warnings
 
-import bioscrape
+try:
+    import libsbml 
+except:
+    warnings.warn('Package not installed : libsbml. The package depends on Python libsbml, install it before using this package.')
+
+try:
+    import bioscrape
+except:
+    warnings.warn('Package not installed : bioscrape, simulation options with bioscrape will not work.')
 
 latestLevel = 3
 latestVersion = 2
@@ -34,9 +42,9 @@ def check(value, message):
         return
 
    
-def createNewModel(modelId, timeUnits, extentUnits, substanceUnits):
+def createNewModel(modelId, timeUnits, extentUnits, substanceUnits, lengthUnits = '', areaUnits = '' , volumeUnits = ''):
     '''
-    Creates a new libSBML Model object and return a SimpleModel class object 
+    Creates a new libSBML Model object and return a libSBML model class object 
     with the given attributes. 
     '''
     doc = createSbmlDoc()
@@ -52,8 +60,10 @@ def createNewModel(modelId, timeUnits, extentUnits, substanceUnits):
     check(model.setExtentUnits(extentUnits), 'set model units of extent')
     check(model.setSubstanceUnits(substanceUnits),
             'set model substance units')
-    # simpleModel = SimpleModel(model)
-    return model 
+    check(model.setLengthUnits(lengthUnits), 'set length units')
+    check(model.setAreaUnits(areaUnits), 'set area units')
+    check(model.setVolumeUnits(volumeUnits), 'set model units of volume')
+    return model, doc 
 
 def createSbmlDoc(newLevel = latestLevel, newVersion = latestVersion):
     ''' 
@@ -75,3 +85,5 @@ def getFromXML(filename):
     doc = reader.readSBML(filename)
     check(doc, 'reading from SBML file')
     return doc
+
+
