@@ -117,33 +117,26 @@ class SimpleReaction(object):
         reactant_stoichList = []
         reactantList = []
         for reactant in reactants:
-            stoich = re.findall(r'\d+',reactant)
-            if len(stoich) > 1:
-                raise ValueError('Reaction string syntax not correct')
-            if stoich == []:
-                stoich_int = 1
-                reactant_stoichList.append(stoich_int)
-                reactantList.append(reactant)
+            findInt = re.match(r'\d+',reactant)
+            if findInt == None:
+                stoich = 1
             else:
-                stoich_int = int(stoich[0])
-                reactant_stoichList.append(stoich_int)
-                reactantList.append(reactant.replace(stoich[0],''))
+                stoich = int(findInt.group())
+                reactant = reactant.replace(str(stoich), '')
+            reactant_stoichList.append(stoich)
+            reactantList.append(reactant)
 
         product_stoichList = []
         productList = []
         for product in products:
-            stoich = re.findall(r'\d+',product)
-            if len(stoich) > 1:
-                raise ValueError('Reaction string syntax not correct')
-            if stoich == []:
-                stoich_int = 1
-                product_stoichList.append(stoich_int)
-                productList.append(product)
+            findInt = re.match(r'\d+', product)
+            if findInt == None: 
+                stoich = 1
             else:
-                stoich_int = int(stoich[0])
-                product_stoichList.append(stoich_int)
-                productList.append(product.replace(stoich[0],''))
-
+                stoich = int(findInt.group())
+                product = product.replace(str(stoich),'')
+            product_stoichList.append(stoich)
+            productList.append(product)
         return reactantList, reactant_stoichList, productList, product_stoichList
 
 
