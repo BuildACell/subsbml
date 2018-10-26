@@ -18,10 +18,8 @@ simpleModel.createNewSpecies( 'IPTG','internal',0,False,'substance')
 simpleModel.createNewSpecies( 'protein alHL*','internal',0,False,'substance')
 simpleModel.createNewSpecies( 'IPTG:protein alHL*','internal',0,False,'substance')
 
-simpleModel.createNewParameter( 'k1f',1,False,'per_second')
-simpleModel.createNewParameter( 'k1r',1,False,'per_second')
-
-simpleModel.createNewParameter( 'k2f',1,False,'per_second')
+simpleModel.createNewParameter( 'kb',2,False,'per_second')
+simpleModel.createNewParameter( 'kd',1,False,'per_second')
 
 r1 = SimpleReaction(model.createReaction())
 r1.setId('r1')
@@ -29,16 +27,16 @@ r1.setReversible(True)
 r1.createNewReactant('IPTG',False,1)
 r1.createNewReactant('xxprotein_alHL', False, 1)
 r1.createNewProduct('xxIPTG_protein_alHL', False, 1)
-math_r1 = r1.createMath('k1f * IPTG * xxprotein_alHL - k1r * xxIPTG_protein_alHL')
+math_r1 = r1.createMath('kb * IPTG * xxprotein_alHL - kd * xxIPTG_protein_alHL')
 r1.createRate(math_r1)
 
 r2 = SimpleReaction(model.createReaction())
 r2.setId('r2')
-r2.setReversible(False)
+r2.setReversible(True)
 r2.createNewReactant('xxIPTG_protein_alHL',False,1)
 r2.createNewProduct('IPTG_1',False,1)
 r2.createNewProduct('xxprotein_alHL',False,1)
-math_r2 = r2.createMath('k2f * xxIPTG_protein_alHL')
+math_r2 = r2.createMath('kd * xxIPTG_protein_alHL - kb * IPTG_1 * xxprotein_alHL')
 r2.createRate(math_r2)
 
 

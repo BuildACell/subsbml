@@ -1929,7 +1929,7 @@ class Subsystem(object):
         libsbml.writeSBML(self.getSBMLDocument(), filename) 
         plotSbmlWithBioscrape(filename, timepoints[0], timepoints, ListOfSpeciesToPlot, xlabel, ylabel, sizeOfXLabels, sizeOfYLabels)
     
-    def simulateVariableInputsBioscrape(self, ListOfInputs, ListOfListOfAmounts, ListOfSpeciesToPlot, timepoints, mode = 'reset', compartmentInput = '', compartmentSpecies = '', plotShow  = True, xlabel = 'Time', ylabel = 'Concentration (AU)', lineWidth = 2, sizeOfXLabels = 16, sizeOfYLabels = 16, legendFontSize = 14):
+    def simulateVariableInputsBioscrape(self, ListOfInputs, ListOfListOfAmounts, ListOfSpeciesToPlot, timepoints, mode = 'reset', compartmentInput = '', compartmentSpecies = '', plotShow  = 'single', xlabel = 'Time', ylabel = 'Concentration (AU)', lineWidth = 2, sizeOfXLabels = 16, sizeOfYLabels = 16, legendFontSize = 14):
         ''''
         Simulates the Subsystem model with the input species amounts varying 
         Mode : continue - Continues simulation from the simulation data of the previous simulation of the variable value 
@@ -1948,14 +1948,21 @@ class Subsystem(object):
             ListOfSpeciesToPlot = [ListOfSpeciesToPlot]
 
         SpeciesToPlot = ListOfSpeciesToPlot[:]
-        for species_name in ListOfSpeciesToPlot:
+        for i in range(len(ListOfSpeciesToPlot)):
+            species_name = ListOfSpeciesToPlot[i]
             species = simpleModel.getSpeciesByName(species_name)
+            if type(compartmentSpecies) is list:
+                compartment = compartmentSpecies[i]
+            elif type(compartmentSpecies) is str and compartmentSpecies != '':
+                compartment = compartmentSpecies
+            else:
+                compartment = ''
             if type(species) is list:
                 warnings.warn('There are multiple species with the name ' + species_name + 'Suffixed species will be plotted ')
                 for species_i in species:
-                    if compartmentSpecies != '' and model.getElementBySId(species_i.getCompartment()).getName() != compartmentSpecies:
+                    if model.getElementBySId(species_i.getCompartment()).getName() != compartment:
                        continue 
-                    elif compartmentSpecies != '' and model.getElementBySId(species_i.getCompartment()).getName() == compartmentSpecies:
+                    elif model.getElementBySId(species_i.getCompartment()).getName() == compartment:
                         species_list.append(species_i.getId())
                     else:
                         species_list.append(species_i.getId())
@@ -1971,9 +1978,9 @@ class Subsystem(object):
                     insert_new.append(species_name + str(j+1))
                 SpeciesToPlot[key_ind+1:key_ind+1] = insert_new 
             else:
-                if compartmentSpecies != '' and model.getElementBySId(species.getCompartment()).getName() != compartmentSpecies:
+                if model.getElementBySId(species.getCompartment()).getName() != compartment:
                     continue
-                elif compartmentSpecies != '' and model.getElementBySId(species.getCompartment()).getName() == compartmentSpecies:
+                elif model.getElementBySId(species.getCompartment()).getName() == compartment:
                     species_list.append(species.getId())
                 else:
                     species_list.append(species.getId())
@@ -2021,19 +2028,28 @@ class Subsystem(object):
                     for species in model.getListOfSpecies():
                         species.setInitialAmount(data[:,m.get_species_index(species.getId())][-1])
 
-        else:
+        elif type(ListOfInputs) is list:
             t = initialTime
             ListOfSpecies = []
+            for i in range(len(ListOfListOfAmounts)):
+                if (type(ListOfListOfAmounts[i]) is not list):
+                    raise ValueError('For multiple inputs, all items of ListOfListOfAmounts argument should be list type')
+            if type(compartmentInput) is list:
+                if len(ListOfInputs) != len(compartmentInput):
+                    raise ValueError('The length of compartmentInput argument when it is a list must be equal to the length of ListOfInputs argument')
             for i in range(len(ListOfInputs)):
                 input = ListOfInputs[i]
-                species_inp = simpleModel.getSpeciesByName(input)
+                if compartmentInput != '':
+                    compartment = compartmentInput[i]
+                    species_inp = simpleModel.getSpeciesByName(input, compartment)
+                else:
+                    species_inp = simpleModel.getSpeciesByName(input)
                 if type(species_inp) is list:
                     raise ValueError('Multiple input species found in the model.')
                 ListOfSpecies.append(species_inp)
-            for i in range(len(ListOfListOfAmounts)):
-                if (type(ListOfListOfAmounts[i]) is not list) or (len(ListOfListOfAmounts[i]) != len(ListOfInputs)) :
-                    raise ValueError('For multiple inputs, all items of ListOfListOfAmounts attribute should be lists of length same as the number of inputs')
             for j in range(len(ListOfListOfAmounts)):
+                if len(ListOfListOfAmounts[j]) != len(ListOfInputs):
+                    raise ValueError('For multiple inputs, the length of each item in ListOfListOfAmounts must be same as the length of ListOfInputs')
                 for amount, species in zip(ListOfListOfAmounts[j], ListOfSpecies):
                 # Start simulating and create data
                     check(species.setInitialAmount(amount), 'setting initial amount to input species')
@@ -2049,6 +2065,8 @@ class Subsystem(object):
                 if mode == 'continue':
                     for species in model.getListOfSpecies():
                         species.setInitialAmount(data[:,m.get_species_index(species.getId())][-1])
+        else:
+            raise SyntaxError('ListOfInputs argument must be a list of strings or a string')
 
         pl = []
         for s in range(len(species_list)):
@@ -2066,7 +2084,7 @@ class Subsystem(object):
                     finalData.append(i)
                 finalTime = total_time
 
-            if plotShow:
+            if plotShow == 'single':
                 for i in range(len(ListOfListOfAmounts)):
                     if mode == 'continue':
                         legend_str = species_name + ' for ' + str(ListOfListOfAmounts[i]) + ' ' + ylabel +  ' of ' + str(ListOfInputs)
@@ -2079,6 +2097,23 @@ class Subsystem(object):
                         legend_str = species_name + ' for ' + str(ListOfListOfAmounts[i]) + ' ' + ylabel + ' of ' + str(ListOfInputs)
                         p1, = plt.plot(finalTime, finalData[t0:tn], label = legend_str, linewidth = lineWidth)
                         pl.append(p1)
+            elif plotShow == 'matrix':
+                for i in range(len(ListOfListOfAmounts)):
+                    if mode == 'continue':
+                        legend_str = species_name + ' for ' + str(ListOfListOfAmounts[i]) + ' ' + ylabel +  ' of ' + str(ListOfInputs)
+                        p1, = plt.plot(finalTime, finalData, label = legend_str, linewidth = lineWidth)
+                        plt.subplot(np.ceil(len(ListOfListOfAmounts)/3),3,i+1)
+                        # p1, = plt.plot(total_time[species_id], final_result[species_id], label = legend_str, linewidth = lineWidth)
+                        pl.append(p1)
+                    else:
+                        t0 = i*len(finalTime)
+                        tn = (i+1)*len(finalTime)
+                        legend_str = species_name + ' for ' + str(ListOfListOfAmounts[i]) + ' ' + ylabel + ' of ' + str(ListOfInputs)
+                        p1, = plt.plot(finalTime, finalData[t0:tn], label = legend_str, linewidth = lineWidth)
+                        plt.subplot(np.ceil(len(ListOfListOfAmounts)/3),3,i+1)
+                        pl.append(p1)
+
+
 
         if plotShow:
             plt.legend(prop = {'size':legendFontSize})
