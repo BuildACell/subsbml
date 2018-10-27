@@ -1,11 +1,7 @@
-import numpy as np
-from libsbml import *
-from modules.Subsystem import *
-from modules.SimpleModel import *
-from modules.System import *
+from subsbml import * 
+
 # Create a system. Example - A cell system which acts as a container for 
-# all the different subsystems. Here, cell is an object of the System class.
- 
+# all the different subsystems. Here, cell is an object of the System class
 cell = System('cell')
 
 # The ListOfSharedResources is a list to name all the species that are shared
@@ -55,7 +51,6 @@ DP1 = cell.createSubsystem('models/DP.xml','DP1')
 # Using the steps shown above, we create two other subsystems - DP2 and IFFL
 
 DP2 = cell.createSubsystem('models/DP.xml','DP2')
-
 # newCompartment = ['cell_new']
 # DP2.setSubsystemCompartments(newCompartment)
 # writeSBML(DP2.getSBMLDocument(),'models/DP2.xml')
@@ -79,11 +74,10 @@ IFFL = cell.createSubsystem('models/IFFL.xml','IFFL')
 # Set the list of shared resources to the cell using its member function. Example 1-A
 # Usage - system_obj.setSharedResources(), returns a new SBMLDocument object of the Subsystem
 # object (inside the same system object) which has the resources sharing modeled.
-print('Creating shared model and writing to SBML file')
-shared_subsystem = cell.setSharedResources('virtual')
-
+print('**** Creating shared model and writing to SBML file')
+shared_model = cell.setSharedResources('volume')
 # (Optional) Write the shared document model to SBML file
-writeSBML(shared_subsystem,'models/DP_IFFL_shared.xml')
+libsbml.writeSBML(shared_model,'models/DP_IFFL_shared.xml')
 
 # The combineSubsystems member function implements Example 1-B.
 # Usage - subsystem_object.combineSubsystems(ListOfSubsystems, combineAllWithSameNames)
@@ -93,12 +87,12 @@ writeSBML(shared_subsystem,'models/DP_IFFL_shared.xml')
 # The second argument is Boolean which is True if all species with same 
 # names need to be merged and False otherwise. 
 
-print('Creating combined model and writing it to SBML file')
+print('**** Creating combined model and writing it to SBML file')
 combined_subsystem = createNewSubsystem()
-combined_model = combined_subsystem.combineSubsystems([DP1, DP2, IFFL], 'volume', True)
+combined_model = combined_subsystem.combineSubsystems([DP1, DP2, IFFL], 'virtual', True)
 
 # (Optional) Write the combined document model to SBML file
-writeSBML(combined_model,'models/DP_IFFL_combined.xml')
+libsbml.writeSBML(combined_model,'models/DP_IFFL_combined.xml')
 
 # Now, for Example 1-C, the user needs to specify 
 # the map of the interaction modeling that is desired. This map uses species names.
@@ -114,26 +108,28 @@ connection_logic['X:P:P_DP2'] = 'pB_IFFL'
 # Call connectInteraction function for the final subsystem object
 # to connect various subsystems.
 # Usage - subsystem_object.self.connectSubsystems(ListOfSubsystems, connectionMap, mode, combineAllWithSameNames, amount)
-print('Creating connected model and writing  to SBML file')
+print('**** Creating connected model and writing  to SBML file')
 connected_subsystem = createNewSubsystem()
-connected_subsystem.connectSubsystems([DP1, DP2, IFFL], connection_logic, 'virtual', True, 'constant', [37,37])
+connected_subsystem.connectSubsystems([DP1, DP2, IFFL], connection_logic, 'volume', True, 'constant', [37,37])
 
 # (Optional Utility Function) Set a new amount of a Species
 # Usage - setSpeciesAmount(self, species, amount)
 # Looks for the species and sets its amount
 connected_subsystem.setSpeciesAmount('inp_IFFL',0)
 
-# (Optional) Write the connected document returned above to a SBML file
-writeSBML(connected_subsystem.getSBMLDocument(),'models/DP_IFFL_connected.xml')
+# Write the connected document returned above to a SBML file
+libsbml.writeSBML(connected_subsystem.getSBMLDocument(),'models/DP_IFFL_connected.xml')
 
-# Simulate using bioscrape
-# timepoints = np.linspace(0,50,1000)
+print('**** Tutorial successfully finished. Shared/combined/connected SBML models have been created and written to file. Use bioscrape options to simulate.')
+
+### Simulate using bioscrape (Optional - Uncomment to use the following)
 # Usage - plotSbmlWithBioscrape(filename, initialTime, timepoints, 
 # ListOfSpeciesToPlot, xLabel, yLabel, xAxisSize, yAxisSize)
 
+timepoints = np.linspace(0,50,1000)
 # plotSbmlWithBioscrape('models/DP_IFFL_shared.xml',0,
 # plotSbmlWithBioscrape('models/DP_IFFL_combined.xml',0,
-# plotSbmlWithBioscrape('models/DP_IFFL_connected.xml',0,
-# timepoints,['inP','pA_IFFL','pB_IFFL','out_IFFL'],'Time',
-# timepoints,['inP','X:P:P','X:P:P_DP2','out_IFFL'],'Time',
-# 'Input and Output Species',14,14)
+plotSbmlWithBioscrape('models/DP_IFFL_connected.xml',0,
+# timepoints,['inP','pA_IFFL','pB_IFFL','out_IFFL'],'','Time',
+timepoints,['inP','X:P:P','X:P:P_DP2','out_IFFL'],'','Time',
+'Input and Output Species',3,14,14)

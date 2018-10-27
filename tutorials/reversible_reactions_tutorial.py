@@ -1,5 +1,4 @@
-from modules.System import *
-from modules.Subsystem import *
+from subsbml import *
 
 # Create a System object to place the Subsystems in
 cell = System('cell')
@@ -19,7 +18,7 @@ reversible_rxns = DP2.getReversibleReactions()
 
 # Create the new parameters in the Subsystem model that will be introduced
 # (if any) on changing the rate formula
-model_obj = SimpleModel(DP2.getSubsystemDoc().getModel())
+model_obj = SimpleModel(DP2.getSBMLDocument().getModel())
 model_obj.createNewParameter('k2r',1,True,'per_second')
 model_obj.createNewParameter('k2f',1,True,'per_second')
 
@@ -43,6 +42,8 @@ for rxn in reversible_rxns:
     print(rxn.getId())
 
 # Write the new Subsystem to SBML file
-writeSBML(DP2_new.getSubsystemDoc(), 'models/reversibleSetDP2.xml')
-timepoints = np.linspace(0,1000,1000)
-plotSbmlWithBioscrape('models/reversibleSetDP2.xml', 0, timepoints, ['inP','X:P:P'])
+libsbml.writeSBML(DP2_new.getSBMLDocument(), 'models/reversibleSetDP2.xml')
+
+# Use optional package bioscrape to simulate - Uncomment to use.
+# timepoints = np.linspace(0,1000,1000)
+# plotSbmlWithBioscrape('models/reversibleSetDP2.xml', 0, timepoints, ['inP','X:P:P'])
