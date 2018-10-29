@@ -1929,7 +1929,10 @@ class Subsystem(object):
         libsbml.writeSBML(self.getSBMLDocument(), filename) 
         plotSbmlWithBioscrape(filename, timepoints[0], timepoints, ListOfSpeciesToPlot, xlabel, ylabel, sizeOfXLabels, sizeOfYLabels)
     
-    def simulateVariableInputsBioscrape(self, ListOfInputs, ListOfListOfAmounts, ListOfSpeciesToPlot, timepoints, mode = 'reset', compartmentInput = '', compartmentSpecies = '', plotShow  = 'single', xlabel = 'Time', ylabel = 'Concentration (AU)', lineWidth = 2, sizeOfXLabels = 16, sizeOfYLabels = 16, legendFontSize = 14):
+    # def simulateVariableInputsBioscrape(self, ListOfInputs, ListOfListOfAmounts, ListOfSpeciesToPlot, timepoints, mode = 'reset', compartmentInput = '', compartmentSpecies = '',
+        # plotShow  = 'single', xlabel = 'Time', ylabel = 'Concentration (AU)', title = '', lineWidth = 2, sizeOfXLabels = 16, sizeOfYLabels = 16, legendFontSize = 14):
+    def simulateVariableInputsBioscrape(self, ListOfInputs, ListOfListOfAmounts, ListOfSpeciesToPlot, timepoints, **kwargs):
+
         ''''
         Simulates the Subsystem model with the input species amounts varying 
         Mode : continue - Continues simulation from the simulation data of the previous simulation of the variable value 
@@ -1939,6 +1942,43 @@ class Subsystem(object):
         Returns data, time vectors post simulation
         NOTE : Needs bioscrape package installed to simulate.
         '''
+        # Default values
+        mode = 'reset'
+        compartmentInput = ''
+        compartmentSpecies = ''
+        plotShow = 'single'
+        compartmentSpecies = ''
+        xlabel = 'Time'
+        ylabel = 'Concentration'
+        title = 'Varying ' + str(ListOfInputs) + ' over ' + str(ListOfListOfAmounts) + ' and plotting ' + str(ListOfSpeciesToPlot)
+        lineWidth = 2
+        sizeOfXLabels = 16
+        sizeOfYLabels = 16
+        legendFontSize = 12
+
+        for key, value in kwargs.items():
+            if key == 'mode':
+                mode = value
+            if key == 'compartmentInput':
+                compartmentInput = value
+            if key == 'compartmentSpecies':
+                compartmentSpecies = value
+            if key == 'plotShow':
+                plotShow = value
+            if key == 'xlabel':
+                xlabel = value
+            if key == 'ylabel':
+                ylabel = value
+            if key == 'title':
+                title = value
+            if key == 'lineWidth':
+                lineWidth = value
+            if key == 'sizeOfXLabels':
+                sizeOfXLabels = value
+            if key == 'sizeOfYLabels':
+                sizeOfYLabels = value
+            if key == 'legendFontSize':
+                legendFontSize = value
         model = self.getSBMLDocument().getModel()
         simpleModel = SimpleModel(model)
         species_list = []
@@ -1946,7 +1986,6 @@ class Subsystem(object):
         total_time = {}
         if type(ListOfSpeciesToPlot) is str:
             ListOfSpeciesToPlot = [ListOfSpeciesToPlot]
-
         SpeciesToPlot = ListOfSpeciesToPlot[:]
         for i in range(len(ListOfSpeciesToPlot)):
             species_name = ListOfSpeciesToPlot[i]
@@ -1960,9 +1999,9 @@ class Subsystem(object):
             if type(species) is list:
                 warnings.warn('There are multiple species with the name ' + species_name + 'Suffixed species will be plotted ')
                 for species_i in species:
-                    if model.getElementBySId(species_i.getCompartment()).getName() != compartment:
+                    if model.getElementBySId(species_i.getCompartment()).getName() != compartment and compartment != '':
                        continue 
-                    elif model.getElementBySId(species_i.getCompartment()).getName() == compartment:
+                    elif model.getElementBySId(species_i.getCompartment()).getName() == compartment and compartment != '':
                         species_list.append(species_i.getId())
                     else:
                         species_list.append(species_i.getId())
@@ -1970,7 +2009,6 @@ class Subsystem(object):
                     if mode == 'continue':
                         total_time[species_i.getId()] = []
                     else:
-                        total_time = []
                         total_time = timepoints
                 key_ind = ListOfSpeciesToPlot.index(species_name)
                 insert_new = []
@@ -1978,9 +2016,9 @@ class Subsystem(object):
                     insert_new.append(species_name + str(j+1))
                 SpeciesToPlot[key_ind+1:key_ind+1] = insert_new 
             else:
-                if model.getElementBySId(species.getCompartment()).getName() != compartment:
+                if model.getElementBySId(species.getCompartment()).getName() != compartment and compartment != '':
                     continue
-                elif model.getElementBySId(species.getCompartment()).getName() == compartment:
+                elif model.getElementBySId(species.getCompartment()).getName() == compartment and compartment != '':
                     species_list.append(species.getId())
                 else:
                     species_list.append(species.getId())
@@ -1988,7 +2026,6 @@ class Subsystem(object):
                 if mode == 'continue':
                     total_time[species.getId()] = []
                 else:
-                    total_time = []
                     total_time = timepoints
         initialTime = timepoints[0]
         t_end = timepoints[-1]
@@ -2006,7 +2043,6 @@ class Subsystem(object):
                 species_inp = simpleModel.getSpeciesByName(input, compartmentInput)
             else:
                 species_inp = simpleModel.getSpeciesByName(input)
-
             if type(species_inp) is list:
                 raise ValueError('Multiple input species found in the model for the input name given.')
             for amount in ListOfListOfAmounts:
@@ -2099,28 +2135,36 @@ class Subsystem(object):
                         pl.append(p1)
             elif plotShow == 'matrix':
                 for i in range(len(ListOfListOfAmounts)):
+                    plt.subplot(np.ceil(len(ListOfListOfAmounts)/3),3,i+1)
                     if mode == 'continue':
                         legend_str = species_name + ' for ' + str(ListOfListOfAmounts[i]) + ' ' + ylabel +  ' of ' + str(ListOfInputs)
                         p1, = plt.plot(finalTime, finalData, label = legend_str, linewidth = lineWidth)
-                        plt.subplot(np.ceil(len(ListOfListOfAmounts)/3),3,i+1)
-                        # p1, = plt.plot(total_time[species_id], final_result[species_id], label = legend_str, linewidth = lineWidth)
-                        pl.append(p1)
+                        plt.legend(prop = {'size':legendFontSize})
+                        mpl.rc('xtick', labelsize= sizeOfXLabels) 
+                        mpl.rc('ytick', labelsize = sizeOfYLabels)
+                        plt.xlabel(xlabel)
+                        plt.ylabel(ylabel)
+                        plt.title(title)
                     else:
                         t0 = i*len(finalTime)
                         tn = (i+1)*len(finalTime)
-                        legend_str = species_name + ' for ' + str(ListOfListOfAmounts[i]) + ' ' + ylabel + ' of ' + str(ListOfInputs)
+                        legend_str = species_name + ' for \n ' + str(ListOfListOfAmounts[i]) + ' ' + ylabel + ' of \n ' + str(ListOfInputs)
                         p1, = plt.plot(finalTime, finalData[t0:tn], label = legend_str, linewidth = lineWidth)
-                        plt.subplot(np.ceil(len(ListOfListOfAmounts)/3),3,i+1)
-                        pl.append(p1)
-
-
-
-        if plotShow:
+                        plt.legend(prop = {'size':legendFontSize})
+                        mpl.rc('xtick', labelsize= sizeOfXLabels) 
+                        mpl.rc('ytick', labelsize = sizeOfYLabels)
+                        plt.xlabel(xlabel)
+                        plt.ylabel(ylabel)
+                        plt.title(title)
+                plt.subplot_tool()
+                plt.show()
+        if plotShow == 'single':
             plt.legend(prop = {'size':legendFontSize})
             mpl.rc('xtick', labelsize= sizeOfXLabels) 
             mpl.rc('ytick', labelsize=sizeOfYLabels)
             plt.xlabel(xlabel)
             plt.ylabel(ylabel)
+            plt.title(title)
             plt.show()
         return finalData, finalTime, plt
 
