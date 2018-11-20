@@ -1619,30 +1619,30 @@ class Subsystem(object):
         '''
         if comp_name == '':
             if type(inputSpecies) is list:
-                for inp_sp in inputSpecies:
+                for inp_sp,amt in zip(inputSpecies,amount):
                     if type(inp_sp) is not str:
                         raise ValueError('All items of inputSpecies must be strings.')
                     sp = self.getSpeciesByName(inp_sp)
                     if type(sp) is list:
                         for s_i in sp:
-                            if type(amount) is not float and type(amount) is not int:
+                            if not isinstance(amt, (float,int)):
                                 raise ValueError('The amount should be either a float or an int')
-                            check(s_i.setInitialAmount(amount),'setting initial amount to 0 in connectSubsystem')
+                            check(s_i.setInitialAmount(amt),'setting initial amount to 0 in connectSubsystem')
                     else:
-                        if type(amount) is not float and type(amount) is not int:
+                        if not isinstance(amt, (float,int)):
                             raise ValueError('The amount should be either a float or an int')
-                        check(sp.setInitialAmount(amount),'setting initial amount')
+                        check(sp.setInitialAmount(amt),'setting initial amount')
             else:
                 if type(inputSpecies) is not str:
                     raise ValueError('inputSpecies argument must be a string or a list of strings.')
                 sp = self.getSpeciesByName(inputSpecies)
                 if type(sp) is list:
                     for s_i in sp:
-                        if type(amount) is not float and type(amount) is not int:
+                        if not isinstance(amt, (float,int)):
                             raise ValueError('The amount should be either a float or an int')
                         check(s_i.setInitialAmount(amount),'setting initial amount')
                 else:
-                    if type(amount) is not float and type(amount) is not int:
+                    if not isinstance(amt, (float,int)):
                         raise ValueError('The amount should be either a float or an int')
                     check(sp.setInitialAmount(amount),'setting initial amount')
         else:
@@ -1903,6 +1903,30 @@ class Subsystem(object):
     #         else:
     #             species.setInitialAmount(0)
     #     return reducedSubsystem
+    def simulateRoadRunner(self, initialTime, timepoints):
+        ''' 
+        To simulate a Subsystem without generating the plot. 
+        Returns the data for all species which can be used to find out species indexes.
+        NOTE : Needs RoadRunner package installed to simulate. 
+        '''
+        filename = 'models/temp.xml'
+        libsbml.writeSBML(self.getSBMLDocument(), filename) 
+        m = bioscrape.types.read_model_from_sbml(filename)
+        s = bioscrape.simulator.ModelCSimInterface(m)
+        s.py_prep_deterministic_simulation()
+        s.py_set_initial_time(initialTime)
+        sim = bioscrape.simulator.DeterministicSimulator()
+        result = sim.py_simulate(s, timepoints)
+        return result.py_get_result(), m
+
+    def plotRoadRunner(self, ListOfSpeciesToPlot, timepoints, xlabel = 'Time', ylabel = 'Concentration (AU)', sizeOfXLabels = 14, sizeOfYLabels = 14):
+        ''' 
+        To plot a Subsystem model using RoadRunner.
+        NOTE : Needs RoadRunner package installed to plot the Subsystem
+        '''
+        filename = 'models/temp.xml'
+        libsbml.writeSBML(self.getSBMLDocument(), filename) 
+        plotRoadRunner(filename, timepoints[0], timepoints, ListOfSpeciesToPlot, xlabel, ylabel, sizeOfXLabels, sizeOfYLabels)
 
     def simulateBioscrape(self, initialTime, timepoints):
         ''' 
@@ -1910,7 +1934,7 @@ class Subsystem(object):
         Returns the data for all species and bioscrape model object which can be used to find out species indexes.
         NOTE : Needs bioscrape package installed to simulate. 
         '''
-        filename = 'models/temp_simulate.xml'
+        filename = 'models/temp.xml'
         libsbml.writeSBML(self.getSBMLDocument(), filename) 
         m = bioscrape.types.read_model_from_sbml(filename)
         s = bioscrape.simulator.ModelCSimInterface(m)
@@ -1925,13 +1949,13 @@ class Subsystem(object):
         To plot a Subsystem model using bioscrape.
         NOTE : Needs bioscrape package installed to plot the Subsystem
         '''
-        filename = 'models/temp_plot.xml'
+        filename = 'models/temp.xml'
         libsbml.writeSBML(self.getSBMLDocument(), filename) 
         plotSbmlWithBioscrape(filename, timepoints[0], timepoints, ListOfSpeciesToPlot, xlabel, ylabel, sizeOfXLabels, sizeOfYLabels)
     
     # def simulateVariableInputsBioscrape(self, ListOfInputs, ListOfListOfAmounts, ListOfSpeciesToPlot, timepoints, mode = 'reset', compartmentInput = '', compartmentSpecies = '',
         # plotShow  = 'single', xlabel = 'Time', ylabel = 'Concentration (AU)', title = '', lineWidth = 2, sizeOfXLabels = 16, sizeOfYLabels = 16, legendFontSize = 14):
-    def simulateVariableInputsBioscrape(self, ListOfInputs, ListOfListOfAmounts, ListOfSpeciesToPlot, timepoints, **kwargs):
+    def simulateVariableInputs(self,  ListOfInputs, ListOfListOfAmounts, ListOfSpeciesToPlot, timepoints, **kwargs):
 
         ''''
         Simulates the Subsystem model with the input species amounts varying 
@@ -1943,6 +1967,7 @@ class Subsystem(object):
         NOTE : Needs bioscrape package installed to simulate.
         '''
         # Default values
+        Simulator = 'roadrunner'
         mode = 'reset'
         compartmentInput = ''
         compartmentSpecies = ''
@@ -1979,6 +2004,9 @@ class Subsystem(object):
                 sizeOfYLabels = value
             if key == 'legendFontSize':
                 legendFontSize = value
+            if key == 'Simulator':
+                Simulator = value
+
         model = self.getSBMLDocument().getModel()
         simpleModel = SimpleModel(model)
         species_list = []
