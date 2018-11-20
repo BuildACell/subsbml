@@ -43,8 +43,8 @@ class SimpleModel(object):
         Creates a new UnitDefinition inside the 
         Model with the given attributes and returns a pointer to the new libSBML object created
         '''
-        if type(uid) is not str or type(scale) is not int or type(multiplier) is not int:
-            raise ValueError('The arguments are not of expected type. uid must be a string of valid SId format and all others must be integers')
+        if type(uid) is not str:
+            raise ValueError('The arguments are not of expected type. uid must be a string of valid SId format')
 
         model = self.getModel()
         check(model,'retreiving libSBML model object')
