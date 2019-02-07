@@ -167,7 +167,10 @@ class SimpleModel(object):
             check(s_obj.setId(sId), 'set s_obj ID')
             check(s_obj.setName(sName), 'set s_obj name')
             check(s_obj.setCompartment(sComp), 'set s_obj compartment')
-            check(s_obj.setInitialAmount(sInitial), 'set s_obj initial amount')
+            if sHasOnlySubstance:
+                check(s_obj.setInitialAmount(sInitial), 'set s_obj initial amount')
+            else:
+                check(s_obj.setInitialConcentration(sInitial), 'set s_obj initial amount')
             check(s_obj.setConstant(sConstant), 'set s_obj constant')
             check(s_obj.setBoundaryCondition(sBoundary),
                 'set boundary s_obj condition false')

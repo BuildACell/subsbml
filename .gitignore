@@ -1,0 +1,7 @@
+.ipynb_checkpoints
+subsbml.egg-info/
+build/
+dist/
+examples/.ipynb_checkpoints/
+__pycache__/
+*.pyc
