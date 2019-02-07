@@ -1,7 +1,5 @@
 import numpy as np
-from libsbml import *
-from modules.Subsystem import *
-from modules.System import *
+from subsbml import *
 
 cell = System('cell')
 
@@ -21,41 +19,40 @@ plas_par = simpleModel.getParameterByName(plas_leaky_param)
 check(plux_par.setValue(0), 'setting leaky parameter zero')
 check(plas_par.setValue(0), 'setting leaky parameter zero')
 
-connected = createNewSubsystem(3,1)
-# connected.connectSubsystems([AnB_ss, Input], connection_logic, 'virtual', True)
-connected.connectSubsystems([AnB_ss, Input], connection_logic, 'virtual', True)
-writeSBML(connected.getSBMLDocument(), 'models/AnBconnected.xml')
+connected = createNewSubsystem()
+doc = connected.connectSubsystems([AnB_ss, Input], connection_logic, 'virtual', True)
+libsbml.writeSBML(doc, 'models/AnBconnected00.xml')
 # Simulate 00 case
 timepoints = np.linspace(0,14*60*60,2000)
-# plotSbmlWithBioscrape('models/AnBconnected.xml',0,timepoints,['protein tetRdimer', 'protein deGFP*', 'protein lasR', 'protein luxR'])
+connected.plotBioscrape(['protein tetRdimer', 'protein deGFP*', 'protein lasR', 'protein luxR'], timepoints)
 
 simpleModel = SimpleModel(connected.getSBMLDocument().getModel())
-oc6 = simpleModel.getSpeciesByName('OC6HSL')
-oc12 = simpleModel.getSpeciesByName('OC12HSL')
+oc6 = simpleModel.getSpeciesByName('inputA')
+oc12 = simpleModel.getSpeciesByName('inputB')
 
 oc6.setInitialAmount(0)
 oc12.setInitialAmount(500)
 
-writeSBML(connected.getSBMLDocument(), 'models/AnBconnected01.xml')
+libsbml.writeSBML(doc, 'models/AnBconnected01.xml')
 # Simulate 01 case
 timepoints = np.linspace(0,14*60*60,2000)
-# plotSbmlWithBioscrape('models/AnBconnected01.xml',0,timepoints,['protein tetRdimer', 'protein deGFP*', 'protein lasR', 'protein luxR'])
+connected.plotBioscrape(['protein tetRdimer', 'protein deGFP*', 'protein lasR', 'protein luxR'], timepoints)
 
 oc6.setInitialAmount(500)
 oc12.setInitialAmount(0)
 
-writeSBML(connected.getSBMLDocument(), 'models/AnBconnected10.xml')
+libsbml.writeSBML(doc, 'models/AnBconnected10.xml')
 # Simulate 10 case
 timepoints = np.linspace(0,14*60*60,500)
-# plotSbmlWithBioscrape('models/AnBconnected10.xml',0,timepoints,['protein tetRdimer', 'protein deGFP*', 'protein lasR', 'protein luxR'])
+connected.plotBioscrape(['protein tetRdimer', 'protein deGFP*', 'protein lasR', 'protein luxR'], timepoints)
 
 oc6.setInitialAmount(500)
 oc12.setInitialAmount(500)
 
 
-writeSBML(connected.getSBMLDocument(), 'models/AnBconnected11.xml')
+libsbml.writeSBML(doc, 'models/AnBconnected11.xml')
 # Simulate 11 case
 timepoints = np.linspace(0,14*60*60,100)
-plotSbmlWithBioscrape('models/AnBconnected11.xml',0,timepoints,['protein tetRdimer', 'protein deGFP*', 'protein lasR', 'protein luxR'])
+connected.plotBioscrape(['protein tetRdimer', 'protein deGFP*', 'protein lasR', 'protein luxR'],timepoints)
 
-
+print('Successfully completed simulations. GFP expression should only be high for the 10 case (the third plot that was displayed)')

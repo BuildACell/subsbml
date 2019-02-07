@@ -14,34 +14,34 @@
       </unitDefinition>
     </listOfUnitDefinitions>
     <listOfCompartments>
-      <compartment id="cell_combined" name="cell" size="3" units="litre" constant="true"/>
+      <compartment id="cell_combined" name="cell" spatialDimensions="3" size="3" units="litre" constant="true"/>
     </listOfCompartments>
     <listOfSpecies>
-      <species id="inP_DP1_1_shared" name="inP" compartment="cell_combined" initialAmount="50" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
-      <species id="X_DP1_1_combined" name="X" compartment="cell_combined" initialAmount="50" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="inP_X_DP1_1_combined" name="inP:X" compartment="cell_combined" initialAmount="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="X_P_DP1_1_shared" name="X:P" compartment="cell_combined" initialAmount="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="E_DP1_1_combined" name="E" compartment="cell_combined" initialAmount="50" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="E_X_P_DP1_1_combined" name="E:X:P" compartment="cell_combined" initialAmount="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="inP_X_P_DP1_1_combined" name="inP:X:P" compartment="cell_combined" initialAmount="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="X_P_P_DP1_1_combined" name="X:P:P" compartment="cell_combined" initialAmount="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="E_X_P_P_DP1_1_combined" name="E:X:P:P" compartment="cell_combined" initialAmount="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="inp_IFFL_IFFL" name="inp_IFFL" compartment="cell_combined" initialAmount="50" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="DA_IFFL_IFFL" name="DA_IFFL" compartment="cell_combined" initialAmount="50" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="C1_IFFL_IFFL" name="C1_IFFL" compartment="cell_combined" initialAmount="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="mA_IFFL_IFFL" name="mA_IFFL" compartment="cell_combined" initialAmount="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="pA_IFFL_IFFL" name="pA_IFFL" compartment="cell_combined" initialAmount="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="C2_IFFL_IFFL" name="C2_IFFL" compartment="cell_combined" initialAmount="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="DB_IFFL_IFFL" name="DB_IFFL" compartment="cell_combined" initialAmount="50" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="mB_IFFL_IFFL" name="mB_IFFL" compartment="cell_combined" initialAmount="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="pB_IFFL_IFFL" name="pB_IFFL" compartment="cell_combined" initialAmount="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="C3_IFFL_IFFL" name="C3_IFFL" compartment="cell_combined" initialAmount="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="DC_IFFL_IFFL" name="DC_IFFL" compartment="cell_combined" initialAmount="50" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="C4_IFFL_IFFL" name="C4_IFFL" compartment="cell_combined" initialAmount="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="C5_IFFL_IFFL" name="C5_IFFL" compartment="cell_combined" initialAmount="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="C6_IFFL_IFFL" name="C6_IFFL" compartment="cell_combined" initialAmount="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="mC_IFFL_IFFL" name="mC_IFFL" compartment="cell_combined" initialAmount="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="out_IFFL_IFFL" name="out_IFFL" compartment="cell_combined" initialAmount="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="inP_DP1_1_shared" name="inP" compartment="cell_combined" initialConcentration="50" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species id="X_DP1_1_combined" name="X" compartment="cell_combined" initialConcentration="50" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="inP_X_DP1_1_combined" name="inP:X" compartment="cell_combined" initialConcentration="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="X_P_DP1_1_shared" name="X:P" compartment="cell_combined" initialConcentration="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="E_DP1_1_combined" name="E" compartment="cell_combined" initialConcentration="50" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="E_X_P_DP1_1_combined" name="E:X:P" compartment="cell_combined" initialConcentration="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="inP_X_P_DP1_1_combined" name="inP:X:P" compartment="cell_combined" initialConcentration="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="X_P_P_DP1_1_combined" name="X:P:P" compartment="cell_combined" initialConcentration="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="E_X_P_P_DP1_1_combined" name="E:X:P:P" compartment="cell_combined" initialConcentration="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="inp_IFFL_IFFL" name="inp_IFFL" compartment="cell_combined" initialConcentration="50" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="DA_IFFL_IFFL" name="DA_IFFL" compartment="cell_combined" initialConcentration="50" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="C1_IFFL_IFFL" name="C1_IFFL" compartment="cell_combined" initialConcentration="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mA_IFFL_IFFL" name="mA_IFFL" compartment="cell_combined" initialConcentration="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="pA_IFFL_IFFL" name="pA_IFFL" compartment="cell_combined" initialConcentration="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="C2_IFFL_IFFL" name="C2_IFFL" compartment="cell_combined" initialConcentration="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="DB_IFFL_IFFL" name="DB_IFFL" compartment="cell_combined" initialConcentration="50" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mB_IFFL_IFFL" name="mB_IFFL" compartment="cell_combined" initialConcentration="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="pB_IFFL_IFFL" name="pB_IFFL" compartment="cell_combined" initialConcentration="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="C3_IFFL_IFFL" name="C3_IFFL" compartment="cell_combined" initialConcentration="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="DC_IFFL_IFFL" name="DC_IFFL" compartment="cell_combined" initialConcentration="50" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="C4_IFFL_IFFL" name="C4_IFFL" compartment="cell_combined" initialConcentration="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="C5_IFFL_IFFL" name="C5_IFFL" compartment="cell_combined" initialConcentration="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="C6_IFFL_IFFL" name="C6_IFFL" compartment="cell_combined" initialConcentration="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mC_IFFL_IFFL" name="mC_IFFL" compartment="cell_combined" initialConcentration="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="out_IFFL_IFFL" name="out_IFFL" compartment="cell_combined" initialConcentration="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
     </listOfSpecies>
     <listOfParameters>
       <parameter id="k3r_combined" name="k3r" value="1" units="per_second" constant="false"/>
@@ -73,7 +73,7 @@
       <parameter id="k18f_IFFL" name="k18f" value="1" units="per_second" constant="false"/>
     </listOfParameters>
     <listOfReactions>
-      <reaction id="r1_DP1_combined" reversible="true">
+      <reaction id="r1_DP1_combined" name="r1" reversible="true">
         <listOfReactants>
           <speciesReference species="inP_DP1_1_shared" stoichiometry="1" constant="false"/>
           <speciesReference species="X_DP1_1_combined" stoichiometry="1" constant="false"/>
@@ -118,7 +118,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="r3_DP1_combined" reversible="true">
+      <reaction id="r3_DP1_combined" name="r3" reversible="true">
         <listOfReactants>
           <speciesReference species="E_DP1_1_combined" stoichiometry="1" constant="false"/>
           <speciesReference species="X_P_DP1_1_shared" stoichiometry="1" constant="false"/>
@@ -145,7 +145,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="r4_DP1_combined" reversible="false">
+      <reaction id="r4_DP1_combined" name="r4" reversible="false">
         <listOfReactants>
           <speciesReference species="E_X_P_DP1_1_combined" stoichiometry="1" constant="false"/>
         </listOfReactants>
@@ -163,7 +163,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="r5_DP1_combined" reversible="true">
+      <reaction id="r5_DP1_combined" name="r5" reversible="true">
         <listOfReactants>
           <speciesReference species="inP_DP1_1_shared" stoichiometry="1" constant="false"/>
           <speciesReference species="X_P_DP1_1_shared" stoichiometry="1" constant="false"/>
@@ -190,7 +190,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="r6_DP1_combined" reversible="false">
+      <reaction id="r6_DP1_combined" name="r6" reversible="false">
         <listOfReactants>
           <speciesReference species="inP_X_P_DP1_1_combined" stoichiometry="1" constant="false"/>
         </listOfReactants>
@@ -208,7 +208,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="r7_DP1_combined" reversible="true">
+      <reaction id="r7_DP1_combined" name="r7" reversible="true">
         <listOfReactants>
           <speciesReference species="E_DP1_1_combined" stoichiometry="1" constant="false"/>
           <speciesReference species="X_P_P_DP1_1_combined" stoichiometry="1" constant="false"/>
@@ -235,7 +235,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="r8_DP1_combined" reversible="false">
+      <reaction id="r8_DP1_combined" name="r8" reversible="false">
         <listOfReactants>
           <speciesReference species="E_X_P_P_DP1_1_combined" stoichiometry="1" constant="false"/>
         </listOfReactants>

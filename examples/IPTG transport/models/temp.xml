@@ -95,7 +95,7 @@
       <species id="mw28f62bd1_3a2b_45ba_be22_53e2eb1a9509_1_combined" name="IPTG" compartment="cell_internal_combined" initialConcentration="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
       <species id="mw8581196a_7c77_4da8_879e_f2c6f24b1932_1_combined" name="protein alHL*" compartment="cell_internal_combined" initialConcentration="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
       <species id="xxIPTG_protein_alHL" name="IPTG:protein alHL*" compartment="cell_internal_combined" initialConcentration="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="IPTG_1_combined" name="IPTG" compartment="cell_external_combined" initialAmount="500" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="IPTG_1_combined" name="IPTG" compartment="cell_external_combined" initialAmount="100" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
     </listOfSpecies>
     <listOfParameters>
       <parameter id="AGTPdeg_F_combined" name="AGTPdeg_F" value="0" constant="false"/>

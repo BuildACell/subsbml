@@ -133,7 +133,7 @@ class Subsystem(object):
         check(document.setLevelAndVersion(newLevel,newVersion), 'converting SBMLDocument to new level and version')
         # To check errors, uncomment:
         # if document.getNumErrors():
-        #     print(document.printErrors())
+        #     print(' The SBML document has errors {0}'.format(document.printErrors()))
         #     raise ValueError('Invalid SBMLDocument error.')
         # else:
         #     return self.getSBMLDocument()
@@ -499,8 +499,7 @@ class Subsystem(object):
                 raise ValueError('All objects in ListOfSubsystems input argument list must be Subsystem objects')
  
         # Merge all other components first and then add species 
-        self.mergeSubsystemModels(ListOfSubsystems)
-        model = self.getSBMLDocument().getModel()
+        model = self.mergeSubsystemModels(ListOfSubsystems).getModel()
         check(model,'retreiving model in shareSubsystems')
         mod_id = ''
         total_size = 0
@@ -570,9 +569,7 @@ class Subsystem(object):
             total_size = 0
             for subsystem in ListOfSubsystems:
                 total_size += subsystem.getSBMLDocument().getModel().getCompartment(0).getSize()
-
-        self.mergeSubsystemModels(ListOfSubsystems)
-        model = self.getSBMLDocument().getModel()
+        model = self.mergeSubsystemModels(ListOfSubsystems).getModel()
         check(model,'retreiving model in combineSubsystems')
         mod_id = ''
  
@@ -1824,7 +1821,6 @@ class Subsystem(object):
         return newSubsystem
 
 
-<<<<<<< HEAD:subsbml/Subsystem.py
     # Fast attribute in Reactions is now obsolete in SBML L3V2. This function depends on it so is now commented out.
     # def modelReduce(self, timepoints):
     #     ''' 
@@ -1924,169 +1920,11 @@ class Subsystem(object):
         ''' 
         To plot a Subsystem model using RoadRunner.
         NOTE : Needs RoadRunner package installed to plot the Subsystem
+        TODO : Not Implemented
         '''
         filename = 'models/temp.xml'
         libsbml.writeSBML(self.getSBMLDocument(), filename) 
-        plotRoadRunner(filename, timepoints[0], timepoints, ListOfSpeciesToPlot, xlabel, ylabel, sizeOfXLabels, sizeOfYLabels)
-||||||| merged common ancestors
-    def modelReduce(self, timepoints):
-        ''' 
-        Reduces the model by removing the reactions which are set as fast
-        in the Subsystem model. The timepoints are used to simulate the
-        fast reactions for these timepoints. The steady state values of 
-        the involved species in the fast reactions are used in the
-        reduced model as their initial value. 
-        Returns the Subsystem object with the reduced model obtained.
-        '''
-        reducedSubsystem = self.getSystem().createNewSubsystem()
-        model_orig = self.getSBMLDocument().getModel()
-        reducedSubsystem.getSBMLDocument().setModel(model_orig)
-        mod = reducedSubsystem.getSBMLDocument().getModel()
-
-        fastRxns = self.getFastReactions()
-        fastSubsystem = self.getSystem().createNewSubsystem()
-        fastModel = fastSubsystem.createNewModel('fastModel', mod.getTimeUnits(), mod.getExtentUnits(), mod.getSubstanceUnits() )
-        # adding all global (model level) components of the model
-        # to the fastModel, except reactions and species
-        if mod.getNumCompartmentTypes() != 0:
-            for each_compartmentType in mod.getListOfCompartmentType():
-                fastModel.addCompartment(each_compartmentType)
-        if mod.getNumConstraints() != 0:
-            for each_constraint in mod.getListOfConstraints():
-                fastModel.addConstraint(each_constraint)
-        if mod.getNumInitialAssignments() != 0:
-            for each_initialAssignment in mod.getListOfInitialAssignments():
-                fastModel.addInitialAssignment(each_initialAssignment)
-        if mod.getNumFunctionDefinitions() != 0:
-            for each_functionDefinition in mod.getListOfFunctionDefinitions():
-                fastModel.addFunctionDefinition(each_functionDefinition)
-        if mod.getNumRules() != 0:
-            for each_rule in mod.getListOfRules():
-                fastModel.addRule(each_rule)
-        if mod.getNumEvents() != 0:
-            for each_event in mod.getListOfEvents():
-                fastModel.addEvent(each_event)
-        if mod.getNumCompartments() != 0:
-            for each_compartment in mod.getListOfCompartments():
-                fastModel.addCompartment(each_compartment)
-        if mod.getNumParameters() != 0:
-            for each_parameter in mod.getListOfParameters():
-                fastModel.addParameter(each_parameter)
-        if mod.getNumUnitDefinitions() != 0:
-            for each_unit in mod.getListOfUnitDefinitions():
-                fastModel.addUnitDefinition(each_unit)
-        fastModel.setAreaUnits(mod.getAreaUnits())
-        fastModel.setExtentUnits(mod.getExtentUnits())
-        fastModel.setLengthUnits(mod.getLengthUnits())
-        fastModel.setSubstanceUnits(mod.getSubstanceUnits())
-        fastModel.setTimeUnits(mod.getTimeUnits())
-        fastModel.setVolumeUnits(mod.getVolumeUnits())
-
-       # adding the reactions that are fast and the species used in them to 
-        # the fast model
-        for rxn in fastRxns:
-            fastModel.addReaction(rxn)
-            mod.removeReaction(rxn.getId())
-            for reactant_ref in rxn.getListOfReactants():
-                fastModel.addSpecies(mod.getElementBySId(reactant_ref.getSpecies()))
-            for product_ref in rxn.getListOfProducts():
-                fastModel.addSpecies(mod.getElementBySId(product_ref.getSpecies()))
-        
-        # get equilibrium values for species in fast reactions
-        # writeSBML(fastSubsystem.getSBMLDocument(), 'models/intermediate_model.xml')
-        print('###### Simulating the fast reactions in the model...All other species and parameters will be marked useless')
-        time.sleep(2)
-        data, m = fastSubsystem.simulateSbmlWithBioscrape(0,timepoints)
-        allSpecies = fastModel.getListOfSpecies()
-        for i in range(len(allSpecies)):
-            species = mod.getElementBySId(allSpecies.get(i).getId())
-            newAmount = data[:,m.get_species_index(species.getId())][-1]
-            if newAmount > 0:
-                species.setInitialAmount(newAmount)
-            else:
-                species.setInitialAmount(0)
-        return reducedSubsystem
-=======
-    # Fast attribute in Reactions is now obsolete in SBML L3V2. This function depends on it so is now commented out.
-    # def modelReduce(self, timepoints):
-    #     ''' 
-    #     Reduces the model by removing the reactions which are set as fast
-    #     in the Subsystem model. The timepoints are used to simulate the
-    #     fast reactions for these timepoints. The steady state values of 
-    #     the involved species in the fast reactions are used in the
-    #     reduced model as their initial value. 
-    #     Returns the Subsystem object with the reduced model obtained.
-    #     NOTE : Need bioscrape package installed for simulations.  
-    #     '''
-    #     reducedSubsystem = self.getSystem().createNewSubsystem()
-    #     model_orig = self.getSBMLDocument().getModel()
-    #     reducedSubsystem.getSBMLDocument().setModel(model_orig)
-    #     mod = reducedSubsystem.getSBMLDocument().getModel()
-
-    #     fastRxns = self.getFastReactions()
-    #     fastSubsystem = self.getSystem().createNewSubsystem()
-    #     fastModel = fastSubsystem.createNewModel('fastModel', mod.getTimeUnits(), mod.getExtentUnits(), mod.getSubstanceUnits() )
-    #     # adding all global (model level) components of the model
-    #     # to the fastModel, except reactions and species
-    #     if mod.getNumCompartmentTypes() != 0:
-    #         for each_compartmentType in mod.getListOfCompartmentType():
-    #             fastModel.addCompartment(each_compartmentType)
-    #     if mod.getNumConstraints() != 0:
-    #         for each_constraint in mod.getListOfConstraints():
-    #             fastModel.addConstraint(each_constraint)
-    #     if mod.getNumInitialAssignments() != 0:
-    #         for each_initialAssignment in mod.getListOfInitialAssignments():
-    #             fastModel.addInitialAssignment(each_initialAssignment)
-    #     if mod.getNumFunctionDefinitions() != 0:
-    #         for each_functionDefinition in mod.getListOfFunctionDefinitions():
-    #             fastModel.addFunctionDefinition(each_functionDefinition)
-    #     if mod.getNumRules() != 0:
-    #         for each_rule in mod.getListOfRules():
-    #             fastModel.addRule(each_rule)
-    #     if mod.getNumEvents() != 0:
-    #         for each_event in mod.getListOfEvents():
-    #             fastModel.addEvent(each_event)
-    #     if mod.getNumCompartments() != 0:
-    #         for each_compartment in mod.getListOfCompartments():
-    #             fastModel.addCompartment(each_compartment)
-    #     if mod.getNumParameters() != 0:
-    #         for each_parameter in mod.getListOfParameters():
-    #             fastModel.addParameter(each_parameter)
-    #     if mod.getNumUnitDefinitions() != 0:
-    #         for each_unit in mod.getListOfUnitDefinitions():
-    #             fastModel.addUnitDefinition(each_unit)
-    #     fastModel.setAreaUnits(mod.getAreaUnits())
-    #     fastModel.setExtentUnits(mod.getExtentUnits())
-    #     fastModel.setLengthUnits(mod.getLengthUnits())
-    #     fastModel.setSubstanceUnits(mod.getSubstanceUnits())
-    #     fastModel.setTimeUnits(mod.getTimeUnits())
-    #     fastModel.setVolumeUnits(mod.getVolumeUnits())
-
-    #    # adding the reactions that are fast and the species used in them to 
-    #     # the fast model
-    #     for rxn in fastRxns:
-    #         fastModel.addReaction(rxn)
-    #         mod.removeReaction(rxn.getId())
-    #         for reactant_ref in rxn.getListOfReactants():
-    #             fastModel.addSpecies(mod.getElementBySId(reactant_ref.getSpecies()))
-    #         for product_ref in rxn.getListOfProducts():
-    #             fastModel.addSpecies(mod.getElementBySId(product_ref.getSpecies()))
-        
-    #     # get equilibrium values for species in fast reactions
-    #     # writeSBML(fastSubsystem.getSBMLDocument(), 'models/intermediate_model.xml')
-    #     print('###### Simulating the fast reactions in the model...All other species and parameters will be marked useless')
-    #     time.sleep(2)
-    #     data, m = fastSubsystem.simulateSbmlWithBioscrape(0,timepoints)
-    #     allSpecies = fastModel.getListOfSpecies()
-    #     for i in range(len(allSpecies)):
-    #         species = mod.getElementBySId(allSpecies.get(i).getId())
-    #         newAmount = data[:,m.get_species_index(species.getId())][-1]
-    #         if newAmount > 0:
-    #             species.setInitialAmount(newAmount)
-    #         else:
-    #             species.setInitialAmount(0)
-    #     return reducedSubsystem
->>>>>>> 9eb45918691ab2422a75ffe6141f35cef71bae4d:subsbml/Subsystem.py
+        # plotRoadRunner(filename, timepoints[0], timepoints, ListOfSpeciesToPlot, xlabel, ylabel, sizeOfXLabels, sizeOfYLabels)
 
     def simulateBioscrape(self, initialTime, timepoints):
         ''' 
@@ -2094,16 +1932,8 @@ class Subsystem(object):
         Returns the data for all species and bioscrape model object which can be used to find out species indexes.
         NOTE : Needs bioscrape package installed to simulate. 
         '''
-<<<<<<< HEAD:subsbml/Subsystem.py
         filename = 'models/temp.xml'
         libsbml.writeSBML(self.getSBMLDocument(), filename) 
-||||||| merged common ancestors
-        filename = 'models/temp_simulate.xml'
-        writeSBML(self.getSBMLDocument(), filename) 
-=======
-        filename = 'models/temp_simulate.xml'
-        libsbml.writeSBML(self.getSBMLDocument(), filename) 
->>>>>>> 9eb45918691ab2422a75ffe6141f35cef71bae4d:subsbml/Subsystem.py
         m = bioscrape.types.read_model_from_sbml(filename)
         s = bioscrape.simulator.ModelCSimInterface(m)
         s.py_prep_deterministic_simulation()
@@ -2117,28 +1947,14 @@ class Subsystem(object):
         To plot a Subsystem model using bioscrape.
         NOTE : Needs bioscrape package installed to plot the Subsystem
         '''
-<<<<<<< HEAD:subsbml/Subsystem.py
         filename = 'models/temp.xml'
         libsbml.writeSBML(self.getSBMLDocument(), filename) 
-||||||| merged common ancestors
-        filename = 'models/temp_plot.xml'
-        writeSBML(self.getSBMLDocument(), filename) 
-=======
-        filename = 'models/temp_plot.xml'
-        libsbml.writeSBML(self.getSBMLDocument(), filename) 
->>>>>>> 9eb45918691ab2422a75ffe6141f35cef71bae4d:subsbml/Subsystem.py
-        plotSbmlWithBioscrape(filename, timepoints[0], timepoints, ListOfSpeciesToPlot, xlabel, ylabel, sizeOfXLabels, sizeOfYLabels)
+        plotSbmlWithBioscrape(filename, timepoints[0], timepoints, ListOfSpeciesToPlot, xlabel = xlabel, ylabel = ylabel, sizeOfXLabels = sizeOfXLabels, sizeOfYLabels = sizeOfYLabels)
     
-<<<<<<< HEAD:subsbml/Subsystem.py
     # def simulateVariableInputsBioscrape(self, ListOfInputs, ListOfListOfAmounts, ListOfSpeciesToPlot, timepoints, mode = 'reset', compartmentInput = '', compartmentSpecies = '',
         # plotShow  = 'single', xlabel = 'Time', ylabel = 'Concentration (AU)', title = '', lineWidth = 2, sizeOfXLabels = 16, sizeOfYLabels = 16, legendFontSize = 14):
     def simulateVariableInputs(self,  ListOfInputs, ListOfListOfAmounts, ListOfSpeciesToPlot, timepoints, **kwargs):
 
-||||||| merged common ancestors
-    def simulateVariableInputsBioscrape(self, ListOfInputs, ListOfListOfAmounts, ListOfSpeciesToPlot, timepoints, mode = 'continue', xlabel = 'Time', ylabel = 'Concentration (AU)', sizeOfXLabels = 14, sizeOfYLabels = 14):
-=======
-    def simulateVariableInputsBioscrape(self, ListOfInputs, ListOfListOfAmounts, ListOfSpeciesToPlot, timepoints, mode = 'reset', compartmentInput = '', compartmentSpecies = '', plotShow  = True, xlabel = 'Time', ylabel = 'Concentration (AU)', lineWidth = 2, sizeOfXLabels = 16, sizeOfYLabels = 16, legendFontSize = 14):
->>>>>>> 9eb45918691ab2422a75ffe6141f35cef71bae4d:subsbml/Subsystem.py
         ''''
         Simulates the Subsystem model with the input species amounts varying 
         Mode : continue - Continues simulation from the simulation data of the previous simulation of the variable value 
@@ -2148,7 +1964,6 @@ class Subsystem(object):
         Returns data, time vectors post simulation
         NOTE : Needs bioscrape package installed to simulate.
         '''
-<<<<<<< HEAD:subsbml/Subsystem.py
         # Default values
         Simulator = 'roadrunner'
         mode = 'reset'
@@ -2190,24 +2005,13 @@ class Subsystem(object):
             if key == 'Simulator':
                 Simulator = value
 
-||||||| merged common ancestors
-        mpl.rc('axes', prop_cycle=(mpl.cycler('color', ['r', 'k', 'b','g','y','m','c']) ))
-=======
->>>>>>> 9eb45918691ab2422a75ffe6141f35cef71bae4d:subsbml/Subsystem.py
         model = self.getSBMLDocument().getModel()
         simpleModel = SimpleModel(model)
         species_list = []
         final_result = {}
         total_time = {}
-<<<<<<< HEAD:subsbml/Subsystem.py
         if type(ListOfSpeciesToPlot) is str:
             ListOfSpeciesToPlot = [ListOfSpeciesToPlot]
-||||||| merged common ancestors
-=======
-        if type(ListOfSpeciesToPlot) is str:
-            ListOfSpeciesToPlot = [ListOfSpeciesToPlot]
-
->>>>>>> 9eb45918691ab2422a75ffe6141f35cef71bae4d:subsbml/Subsystem.py
         SpeciesToPlot = ListOfSpeciesToPlot[:]
         for i in range(len(ListOfSpeciesToPlot)):
             species_name = ListOfSpeciesToPlot[i]
@@ -2221,76 +2025,34 @@ class Subsystem(object):
             if type(species) is list:
                 warnings.warn('There are multiple species with the name ' + species_name + 'Suffixed species will be plotted ')
                 for species_i in species:
-<<<<<<< HEAD:subsbml/Subsystem.py
                     if model.getElementBySId(species_i.getCompartment()).getName() != compartment and compartment != '':
                        continue 
                     elif model.getElementBySId(species_i.getCompartment()).getName() == compartment and compartment != '':
                         species_list.append(species_i.getId())
                     else:
                         species_list.append(species_i.getId())
-||||||| merged common ancestors
-                    species_list.append(species_i.getId())
-=======
-                    if compartmentSpecies != '' and model.getElementBySId(species_i.getCompartment()).getName() != compartmentSpecies:
-                       continue 
-                    elif compartmentSpecies != '' and model.getElementBySId(species_i.getCompartment()).getName() == compartmentSpecies:
-                        species_list.append(species_i.getId())
-                    else:
-                        species_list.append(species_i.getId())
->>>>>>> 9eb45918691ab2422a75ffe6141f35cef71bae4d:subsbml/Subsystem.py
                     final_result[species_i.getId()] = []
-<<<<<<< HEAD:subsbml/Subsystem.py
                     if mode == 'continue':
                         total_time[species_i.getId()] = []
                     else:
                         total_time = timepoints
-||||||| merged common ancestors
-                    total_time[species_i.getId()] = []
-=======
-                    if mode == 'continue':
-                        total_time[species_i.getId()] = []
-                    else:
-                        total_time = []
-                        total_time = timepoints
->>>>>>> 9eb45918691ab2422a75ffe6141f35cef71bae4d:subsbml/Subsystem.py
                 key_ind = ListOfSpeciesToPlot.index(species_name)
                 insert_new = []
                 for j in range(len(species)-1):
                     insert_new.append(species_name + str(j+1))
                 SpeciesToPlot[key_ind+1:key_ind+1] = insert_new 
             else:
-<<<<<<< HEAD:subsbml/Subsystem.py
                 if model.getElementBySId(species.getCompartment()).getName() != compartment and compartment != '':
                     continue
                 elif model.getElementBySId(species.getCompartment()).getName() == compartment and compartment != '':
                     species_list.append(species.getId())
                 else:
                     species_list.append(species.getId())
-||||||| merged common ancestors
-                species_list.append(species.getId())
-=======
-                if compartmentSpecies != '' and model.getElementBySId(species.getCompartment()).getName() != compartmentSpecies:
-                    continue
-                elif compartmentSpecies != '' and model.getElementBySId(species.getCompartment()).getName() == compartmentSpecies:
-                    species_list.append(species.getId())
-                else:
-                    species_list.append(species.getId())
->>>>>>> 9eb45918691ab2422a75ffe6141f35cef71bae4d:subsbml/Subsystem.py
                 final_result[species.getId()] = []
-<<<<<<< HEAD:subsbml/Subsystem.py
                 if mode == 'continue':
                     total_time[species.getId()] = []
                 else:
                     total_time = timepoints
-||||||| merged common ancestors
-                total_time[species.getId()] = []
-=======
-                if mode == 'continue':
-                    total_time[species.getId()] = []
-                else:
-                    total_time = []
-                    total_time = timepoints
->>>>>>> 9eb45918691ab2422a75ffe6141f35cef71bae4d:subsbml/Subsystem.py
         initialTime = timepoints[0]
         t_end = timepoints[-1]
         points = len(timepoints)
@@ -2303,20 +2065,10 @@ class Subsystem(object):
             else:
                 raise ValueError('The input species argument should either be a list or a string')
 
-<<<<<<< HEAD:subsbml/Subsystem.py
             if compartmentInput != '':
                 species_inp = simpleModel.getSpeciesByName(input, compartmentInput)
             else:
                 species_inp = simpleModel.getSpeciesByName(input)
-||||||| merged common ancestors
-            species_inp = simpleModel.getSpeciesByName(input)
-=======
-            if compartmentInput != '':
-                species_inp = simpleModel.getSpeciesByName(input, compartmentInput)
-            else:
-                species_inp = simpleModel.getSpeciesByName(input)
-
->>>>>>> 9eb45918691ab2422a75ffe6141f35cef71bae4d:subsbml/Subsystem.py
             if type(species_inp) is list:
                 raise ValueError('Multiple input species found in the model for the input name given.')
             for amount in ListOfListOfAmounts:
@@ -2375,7 +2127,6 @@ class Subsystem(object):
                 if mode == 'continue':
                     for species in model.getListOfSpecies():
                         species.setInitialAmount(data[:,m.get_species_index(species.getId())][-1])
-<<<<<<< HEAD:subsbml/Subsystem.py
         else:
             raise SyntaxError('ListOfInputs argument must be a list of strings or a string')
 
@@ -2494,176 +2245,14 @@ def plotSbmlWithBioscrape(ListOfFiles, initialTime, timepoints, ListOfListOfSpec
  
         sim = bioscrape.simulator.DeterministicSimulator()
         result = sim.py_simulate(s, timepoints)
-||||||| merged common ancestors
-
-        for species_id in species_list:
-            plt.plot(total_time[species_id], final_result[species_id])
-
-        plt.legend(SpeciesToPlot)
-        mpl.rc('xtick', labelsize= sizeOfXLabels) 
-        mpl.rc('ytick', labelsize=sizeOfYLabels)
-=======
-
-        pl = []
-        for s in range(len(species_list)):
-            finalData = []
-            finalTime = []
-            species_id = species_list[s]
-            species = model.getSpecies(species_id)
-            species_name = species.getName()
-            if mode == 'continue':
-                for i,j in zip(final_result[species_id], total_time[species_id]):
-                    finalData.append(i)
-                    finalTime.append(j)
-            else:
-                for i in final_result[species_id]:
-                    finalData.append(i)
-                finalTime = total_time
-
-            if plotShow:
-                for i in range(len(ListOfListOfAmounts)):
-                    if mode == 'continue':
-                        legend_str = species_name + ' for ' + str(ListOfListOfAmounts[i]) + ' ' + ylabel +  ' of ' + str(ListOfInputs)
-                        p1, = plt.plot(finalTime, finalData, label = legend_str, linewidth = lineWidth)
-                        # p1, = plt.plot(total_time[species_id], final_result[species_id], label = legend_str, linewidth = lineWidth)
-                        pl.append(p1)
-                    else:
-                        t0 = i*len(finalTime)
-                        tn = (i+1)*len(finalTime)
-                        legend_str = species_name + ' for ' + str(ListOfListOfAmounts[i]) + ' ' + ylabel + ' of ' + str(ListOfInputs)
-                        p1, = plt.plot(finalTime, finalData[t0:tn], label = legend_str, linewidth = lineWidth)
-                        pl.append(p1)
-
-        if plotShow:
-            plt.legend(prop = {'size':legendFontSize})
-            mpl.rc('xtick', labelsize= sizeOfXLabels) 
-            mpl.rc('ytick', labelsize=sizeOfYLabels)
-            plt.xlabel(xlabel)
-            plt.ylabel(ylabel)
-            plt.show()
-        return finalData, finalTime, plt
-
-def plotSbmlWithBioscrape(ListOfFiles, initialTime, timepoints, ListOfListOfSpeciesToPlot, compartmentSpecies = '', xlabel = 'Time', ylabel = 'Concentration (AU)', lineWidth = 2, sizeOfXLabels = 14, sizeOfYLabels = 14):
-    ''' 
-    Plots the amounts of ListOfSpeciesToPlot in the given SBML files 
-    starting at initialTime and for the timepoints given. 
-    The other arguments for axes labels and sizes are optional.
-    If a list of files is given, then corresponding list of list of species is 
-    used to plot the corresponding list of species for each SBML model. 
-    The same initialTime, timepoints and other arguments are used for all SBML files 
-    NOTE : Needs bioscrape package installed to simulate SBML model.
-    '''
-    mpl.rc('xtick', labelsize=sizeOfXLabels) 
-    mpl.rc('ytick', labelsize=sizeOfYLabels)
-    if type(ListOfFiles) is str:
-        filename = ListOfFiles
-        ListOfSpeciesToPlot = ListOfListOfSpeciesToPlot[:]
-        doc = getFromXML(filename)
-        model = doc.getModel()
-        mod_obj = Subsystem(model.getSBMLDocument())
-        m = bioscrape.types.read_model_from_sbml(filename)
-        s = bioscrape.simulator.ModelCSimInterface(m)
-        s.py_prep_deterministic_simulation()
-        s.py_set_initial_time(initialTime)
-        species_ind = []
-        SpeciesToPlot = ListOfSpeciesToPlot[:]
-        for i in range(len(ListOfSpeciesToPlot)):
-            species_name = ListOfSpeciesToPlot[i]
-            species = mod_obj.getSpeciesByName(species_name)
-            if type(species) is list:
-                warnings.warn('There are multiple species with the name ' + species_name + ' in plot function. Suffixed species will be plotted ')
-                for species_i in species:
-                    if compartmentSpecies != '' and model.getElementBySId(species_i.getCompartment()).getName() != compartmentSpecies:
-                        continue
-                    elif compartmentSpecies != '' and model.getElementBySId(species_i.getCompartment()).getName() == compartmentSpecies:
-                        species_ind.append(m.get_species_index(species_i.getId()))
-                    else:
-                        species_ind.append(m.get_species_index(species_i.getId()))
-                key_ind = ListOfSpeciesToPlot.index(species_name)
-                insert_new = []
-                for j in range(len(species)-1):
-                    insert_new.append(species_name + str(j+1))
-                SpeciesToPlot[key_ind+1:key_ind+1] = insert_new 
-            else:
-                if compartmentSpecies != '' and model.getElementBySId(species.getCompartment()).getName() != compartmentSpecies:
-                    continue
-                elif compartmentSpecies != '' and model.getElementBySId(species.getCompartment()).getName() == compartmentSpecies:
-                    species_ind.append(m.get_species_index(species.getId()))
-                else:
-                    species_ind.append(m.get_species_index(species.getId()))
- 
-        sim = bioscrape.simulator.DeterministicSimulator()
-        result = sim.py_simulate(s, timepoints)
->>>>>>> 9eb45918691ab2422a75ffe6141f35cef71bae4d:subsbml/Subsystem.py
         plt.xlabel(xlabel)
         plt.ylabel(ylabel)
         for i in range(len(species_ind)):
             plt.plot(timepoints, result.py_get_result()[:, species_ind[i]], linewidth = lineWidth)
         plt.legend(SpeciesToPlot)
         plt.show()
-<<<<<<< HEAD:subsbml/Subsystem.py
         return
 
-    # If a list of files is given
-    
-    species_ind = []
-    speciesLegend = []
-    for i in range(len(ListOfFiles)):
-        filename = ListOfFiles[i]
-        ListOfSpeciesToPlot = ListOfListOfSpeciesToPlot[i]
-        doc = getFromXML(filename)
-        model = doc.getModel()
-        mod_obj = SimpleModel(model)
-        m = bioscrape.types.read_model_from_sbml(filename)
-        s = bioscrape.simulator.ModelCSimInterface(m)
-        s.py_prep_deterministic_simulation()
-        s.py_set_initial_time(initialTime)
-        SpeciesToPlot = ListOfSpeciesToPlot[:]
-        for i in range(len(ListOfSpeciesToPlot)):
-            species_name = ListOfSpeciesToPlot[i]
-            speciesLegend.append(species_name)
-            species = mod_obj.getSpeciesByName(species_name)
-            if type(species) is list:
-                warnings.warn('There are multiple species with the name ' + species_name + ' in plot function. Suffixed species will be plotted ')
-                for species_i in species:
-                    if compartmentSpecies != '' and model.getElementBySId(species_i.getCompartment()).getName() != compartmentSpecies:
-                        continue
-                    elif compartmentSpecies != '' and model.getElementBySId(species_i.getCompartment()).getName() == compartmentSpecies:
-                        species_ind.append(m.get_species_index(species_i.getId()))
-                    else:
-                        species_ind.append(m.get_species_index(species_i.getId()))
-||||||| merged common ancestors
-        return final_result, total_time
-=======
-        return
->>>>>>> 9eb45918691ab2422a75ffe6141f35cef71bae4d:subsbml/Subsystem.py
-
-<<<<<<< HEAD:subsbml/Subsystem.py
-                key_ind = ListOfSpeciesToPlot.index(species_name)
-                insert_new = []
-                for i in range(len(species)-1):
-                    insert_new.append(species_name + str(i+1))
-                    speciesLegend.append(species_name + str(i+1))
-                SpeciesToPlot[key_ind+1:key_ind+1] = insert_new 
-            else:
-                if compartmentSpecies != '' and model.getElementBySId(species.getCompartment()).getName() != compartmentSpecies:
-                    continue
-                elif compartmentSpecies != '' and model.getElementBySId(species.getCompartment()).getName() == compartmentSpecies:
-                    species_ind.append(m.get_species_index(species.getId()))
-                else:
-                    species_ind.append(m.get_species_index(species.getId()))
- 
-        sim = bioscrape.simulator.DeterministicSimulator()
-        result = sim.py_simulate(s, timepoints)
-        for i in range(len(species_ind)):
-            plt.plot(timepoints, result.py_get_result()[:, species_ind[i]], linewidth = lineWidth)
-        species_ind = []
-    plt.legend(speciesLegend) # add the extra species to this list
-    plt.xlabel(xlabel)
-    plt.ylabel(ylabel)
-    plt.show()
-||||||| merged common ancestors
-=======
     # If a list of files is given
     
     species_ind = []
@@ -2716,4 +2305,3 @@ def plotSbmlWithBioscrape(ListOfFiles, initialTime, timepoints, ListOfListOfSpec
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
     plt.show()
->>>>>>> 9eb45918691ab2422a75ffe6141f35cef71bae4d:subsbml/Subsystem.py

@@ -14,10 +14,10 @@
       </unitDefinition>
     </listOfUnitDefinitions>
     <listOfCompartments>
-      <compartment id="env" name="env" size="1" units="litre" constant="true"/>
+      <compartment id="env" name="env" spatialDimensions="3" size="1" units="litre" constant="true"/>
     </listOfCompartments>
     <listOfSpecies>
-      <species id="IPTG" name="IPTG" compartment="env" initialAmount="100000" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="IPTG" name="IPTG" compartment="env" initialConcentration="100000" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
     </listOfSpecies>
   </model>
 </sbml>

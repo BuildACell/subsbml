@@ -1,6 +1,5 @@
-<<<<<<< HEAD
 from subsbml import *
-
+import time
 alHL = createSubsystem('models/alHL.xml')
 GFP = createSubsystem('models/GFP.xml')
 membrane = createSubsystem('models/IPTG_membrane.xml')
@@ -19,8 +18,12 @@ cell_sub.setSpeciesAmount('IPTG',500, 'cell_external')
 # cell_sub.setSpeciesAmount('RNAP',50000000)
 # cell_sub.setSpeciesAmount('Ribo',50000000)
 libsbml.writeSBML(cell_model,'models/cell_transport_model.xml')
+print('######################### Model written successfully to an SBML file named "cell_transport_model" in the model subfolder. Different kinds of simulation options follow now###############################')
+time.sleep(3)
+# Simulations 
 gfp = cell_sub.getSpeciesByName('protein deGFP*')
 timepoints = np.linspace(0,10*60*60,100)
+
 # Use Road Runner
 import roadrunner
 rr = roadrunner.RoadRunner('models/cell_transport_model.xml')
@@ -39,6 +42,8 @@ cell_sub.simulateVariableInputs('IPTG',[0, 40, 60, 80, 100], ['protein deGFP*'],
     # lineWidth = 2, sizeOfXLabels = 12, sizeOfYLabels = 12, legendFontSize= 8)
 # cell_sub.simulateVariableInputs(ListOfInputs = ['DNA plac--utr1--deGFP', 'DNA pOR1OR2--utr1--alHL'], ListOfListOfAmounts = [[5,5],[5,15],[5,25],[15,5],[15,15],[15,20],[20,5],[20,15],[20,25]], ListOfSpeciesToPlot = ['protein deGFP*'], timepoints = timepoints, mode = 'reset', compartmentInput = ['cell_internal','cell_internal'],compartmentSpecies= 'cell_internal', plotShow = 'matrix', xlabel = 'time', ylabel = 'concentration', lineWidth = 2, sizeOfXLabels = 12, sizeOfYLabels = 12, legendFontSize= 6)
 # cell_sub.simulateVariableInputs(ListOfInputs = ['DNA plac--utr1--deGFP', 'DNA pOR1OR2--utr1--alHL'], ListOfListOfAmounts = [[5,5],[5,10],[20,5],[20,10]], ListOfSpeciesToPlot = ['protein deGFP*'], timepoints = timepoints, mode = 'reset', plotShow = 'matrix', legendFontSize = 6)
+
+# More simulation options and optimizations in simulations
 
 # DNA_alHl = np.linspace(0,20,20)
 # DNA_gfp = np.linspace(0,20,20)
@@ -60,29 +65,3 @@ cell_sub.simulateVariableInputs('IPTG',[0, 40, 60, 80, 100], ['protein deGFP*'],
 # print(DNA_alHl, DNA_gfp)
 # print(max(max_data))
 # print('{0},{1}'.format(DNA_alHl[y],DNA_gfp[x] ))
-||||||| merged common ancestors
-=======
-from subsbml import *
-
-alHL = createSubsystem('models/alHL.xml')
-GFP = createSubsystem('models/GFP.xml')
-membrane = createSubsystem('models/IPTG_membrane.xml')
-
-external = createSubsystem('models/IPTG_reservoir.xml')
-
-cell = System('cell')
-
-cell.setInternal([alHL, GFP])
-cell.setExternal(external)
-
-cell.setMembrane(membrane)
-cell_model, cell_sub = cell.getModel()
-
-cell_sub.setSpeciesAmount('IPTG',0, 'cell_external')
-libsbml.writeSBML(cell_model,'models/cell_transport_model.xml')
-
-### If bioscrape is installed, uncomment the following to simulate the model. Otherwise, use your own preferred simulator with the SBML model generated above. 
-timepoints = np.linspace(0,14*60*60,100)
-cell_sub.simulateVariableInputsBioscrape('IPTG',[0, 20, 30, 60, 80], ['protein deGFP*'], timepoints, 'reset', 'cell_external')
-
->>>>>>> 9eb45918691ab2422a75ffe6141f35cef71bae4d
