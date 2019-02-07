@@ -43,8 +43,8 @@ class SimpleModel(object):
         Creates a new UnitDefinition inside the 
         Model with the given attributes and returns a pointer to the new libSBML object created
         '''
-        if type(uid) is not str or type(scale) is not int or type(multiplier) is not int:
-            raise ValueError('The arguments are not of expected type. uid must be a string of valid SId format and all others must be integers')
+        if type(uid) is not str:
+            raise ValueError('The arguments are not of expected type. uid must be a string of valid SId format')
 
         model = self.getModel()
         check(model,'retreiving libSBML model object')
@@ -167,7 +167,10 @@ class SimpleModel(object):
             check(s_obj.setId(sId), 'set s_obj ID')
             check(s_obj.setName(sName), 'set s_obj name')
             check(s_obj.setCompartment(sComp), 'set s_obj compartment')
-            check(s_obj.setInitialAmount(sInitial), 'set s_obj initial amount')
+            if sHasOnlySubstance:
+                check(s_obj.setInitialAmount(sInitial), 'set s_obj initial amount')
+            else:
+                check(s_obj.setInitialConcentration(sInitial), 'set s_obj initial amount')
             check(s_obj.setConstant(sConstant), 'set s_obj constant')
             check(s_obj.setBoundaryCondition(sBoundary),
                 'set boundary s_obj condition false')
