@@ -95,13 +95,12 @@
       <species id="mw28f62bd1_3a2b_45ba_be22_53e2eb1a9509_1_combined" name="IPTG" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
       <species id="mw8581196a_7c77_4da8_879e_f2c6f24b1932_1_combined" name="protein alHL*" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
       <species id="xxIPTG_protein_alHL" name="IPTG:protein alHL*" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="IPTG_1_combined" name="IPTG" compartment="cell_external_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="IPTG_1_combined" name="IPTG" compartment="cell_external_combined" initialAmount="500" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
     </listOfSpecies>
     <listOfParameters>
       <parameter id="AGTPdeg_F_combined" name="AGTPdeg_F" value="0" constant="false"/>
-      <parameter id="k1f" name="k1f" value="1" units="per_second" constant="false"/>
-      <parameter id="k1r" name="k1r" value="1" units="per_second" constant="false"/>
-      <parameter id="k2f" name="k2f" value="1" units="per_second" constant="false"/>
+      <parameter id="kb" name="kb" value="2" units="per_second" constant="false"/>
+      <parameter id="kd" name="kd" value="1" units="per_second" constant="false"/>
     </listOfParameters>
     <listOfReactions>
       <reaction id="mwdd72ac09_0203_423a_a52d_0f5873e2fabd" reversible="false">
@@ -2217,20 +2216,20 @@
               <minus/>
               <apply>
                 <times/>
-                <ci> k1f </ci>
+                <ci> kb </ci>
                 <ci> IPTG_1_combined </ci>
                 <ci> mw8581196a_7c77_4da8_879e_f2c6f24b1932_1_combined </ci>
               </apply>
               <apply>
                 <times/>
-                <ci> k1r </ci>
+                <ci> kd </ci>
                 <ci> xxIPTG_protein_alHL </ci>
               </apply>
             </apply>
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="r2" reversible="false">
+      <reaction id="r2" reversible="true">
         <listOfReactants>
           <speciesReference species="xxIPTG_protein_alHL" stoichiometry="1" constant="false"/>
         </listOfReactants>
@@ -2241,9 +2240,18 @@
         <kineticLaw>
           <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
-              <times/>
-              <ci> k2f </ci>
-              <ci> xxIPTG_protein_alHL </ci>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kd </ci>
+                <ci> xxIPTG_protein_alHL </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kb </ci>
+                <ci> mw28f62bd1_3a2b_45ba_be22_53e2eb1a9509_1_combined </ci>
+                <ci> mw8581196a_7c77_4da8_879e_f2c6f24b1932_1_combined </ci>
+              </apply>
             </apply>
           </math>
         </kineticLaw>
