@@ -133,7 +133,7 @@ class Subsystem(object):
         check(document.setLevelAndVersion(newLevel,newVersion), 'converting SBMLDocument to new level and version')
         # To check errors, uncomment:
         # if document.getNumErrors():
-        #     print(document.printErrors())
+        #     print(' The SBML document has errors {0}'.format(document.printErrors()))
         #     raise ValueError('Invalid SBMLDocument error.')
         # else:
         #     return self.getSBMLDocument()
@@ -499,8 +499,7 @@ class Subsystem(object):
                 raise ValueError('All objects in ListOfSubsystems input argument list must be Subsystem objects')
  
         # Merge all other components first and then add species 
-        self.mergeSubsystemModels(ListOfSubsystems)
-        model = self.getSBMLDocument().getModel()
+        model = self.mergeSubsystemModels(ListOfSubsystems).getModel()
         check(model,'retreiving model in shareSubsystems')
         mod_id = ''
         total_size = 0
@@ -570,9 +569,7 @@ class Subsystem(object):
             total_size = 0
             for subsystem in ListOfSubsystems:
                 total_size += subsystem.getSBMLDocument().getModel().getCompartment(0).getSize()
-
-        self.mergeSubsystemModels(ListOfSubsystems)
-        model = self.getSBMLDocument().getModel()
+        model = self.mergeSubsystemModels(ListOfSubsystems).getModel()
         check(model,'retreiving model in combineSubsystems')
         mod_id = ''
  
@@ -1619,30 +1616,30 @@ class Subsystem(object):
         '''
         if comp_name == '':
             if type(inputSpecies) is list:
-                for inp_sp in inputSpecies:
+                for inp_sp,amt in zip(inputSpecies,amount):
                     if type(inp_sp) is not str:
                         raise ValueError('All items of inputSpecies must be strings.')
                     sp = self.getSpeciesByName(inp_sp)
                     if type(sp) is list:
                         for s_i in sp:
-                            if type(amount) is not float and type(amount) is not int:
+                            if not isinstance(amt, (float,int)):
                                 raise ValueError('The amount should be either a float or an int')
-                            check(s_i.setInitialAmount(amount),'setting initial amount to 0 in connectSubsystem')
+                            check(s_i.setInitialAmount(amt),'setting initial amount to 0 in connectSubsystem')
                     else:
-                        if type(amount) is not float and type(amount) is not int:
+                        if not isinstance(amt, (float,int)):
                             raise ValueError('The amount should be either a float or an int')
-                        check(sp.setInitialAmount(amount),'setting initial amount')
+                        check(sp.setInitialAmount(amt),'setting initial amount')
             else:
                 if type(inputSpecies) is not str:
                     raise ValueError('inputSpecies argument must be a string or a list of strings.')
                 sp = self.getSpeciesByName(inputSpecies)
                 if type(sp) is list:
                     for s_i in sp:
-                        if type(amount) is not float and type(amount) is not int:
+                        if not isinstance(amt, (float,int)):
                             raise ValueError('The amount should be either a float or an int')
                         check(s_i.setInitialAmount(amount),'setting initial amount')
                 else:
-                    if type(amount) is not float and type(amount) is not int:
+                    if not isinstance(amt, (float,int)):
                         raise ValueError('The amount should be either a float or an int')
                     check(sp.setInitialAmount(amount),'setting initial amount')
         else:
@@ -1903,6 +1900,31 @@ class Subsystem(object):
     #         else:
     #             species.setInitialAmount(0)
     #     return reducedSubsystem
+    def simulateRoadRunner(self, initialTime, timepoints):
+        ''' 
+        To simulate a Subsystem without generating the plot. 
+        Returns the data for all species which can be used to find out species indexes.
+        NOTE : Needs RoadRunner package installed to simulate. 
+        '''
+        filename = 'models/temp.xml'
+        libsbml.writeSBML(self.getSBMLDocument(), filename) 
+        m = bioscrape.types.read_model_from_sbml(filename)
+        s = bioscrape.simulator.ModelCSimInterface(m)
+        s.py_prep_deterministic_simulation()
+        s.py_set_initial_time(initialTime)
+        sim = bioscrape.simulator.DeterministicSimulator()
+        result = sim.py_simulate(s, timepoints)
+        return result.py_get_result(), m
+
+    def plotRoadRunner(self, ListOfSpeciesToPlot, timepoints, xlabel = 'Time', ylabel = 'Concentration (AU)', sizeOfXLabels = 14, sizeOfYLabels = 14):
+        ''' 
+        To plot a Subsystem model using RoadRunner.
+        NOTE : Needs RoadRunner package installed to plot the Subsystem
+        TODO : Not Implemented
+        '''
+        filename = 'models/temp.xml'
+        libsbml.writeSBML(self.getSBMLDocument(), filename) 
+        # plotRoadRunner(filename, timepoints[0], timepoints, ListOfSpeciesToPlot, xlabel, ylabel, sizeOfXLabels, sizeOfYLabels)
 
     def simulateBioscrape(self, initialTime, timepoints):
         ''' 
@@ -1910,7 +1932,7 @@ class Subsystem(object):
         Returns the data for all species and bioscrape model object which can be used to find out species indexes.
         NOTE : Needs bioscrape package installed to simulate. 
         '''
-        filename = 'models/temp_simulate.xml'
+        filename = 'models/temp.xml'
         libsbml.writeSBML(self.getSBMLDocument(), filename) 
         m = bioscrape.types.read_model_from_sbml(filename)
         s = bioscrape.simulator.ModelCSimInterface(m)
@@ -1925,11 +1947,14 @@ class Subsystem(object):
         To plot a Subsystem model using bioscrape.
         NOTE : Needs bioscrape package installed to plot the Subsystem
         '''
-        filename = 'models/temp_plot.xml'
+        filename = 'models/temp.xml'
         libsbml.writeSBML(self.getSBMLDocument(), filename) 
-        plotSbmlWithBioscrape(filename, timepoints[0], timepoints, ListOfSpeciesToPlot, xlabel, ylabel, sizeOfXLabels, sizeOfYLabels)
+        plotSbmlWithBioscrape(filename, timepoints[0], timepoints, ListOfSpeciesToPlot, xlabel = xlabel, ylabel = ylabel, sizeOfXLabels = sizeOfXLabels, sizeOfYLabels = sizeOfYLabels)
     
-    def simulateVariableInputsBioscrape(self, ListOfInputs, ListOfListOfAmounts, ListOfSpeciesToPlot, timepoints, mode = 'reset', compartmentInput = '', compartmentSpecies = '', plotShow  = True, xlabel = 'Time', ylabel = 'Concentration (AU)', lineWidth = 2, sizeOfXLabels = 16, sizeOfYLabels = 16, legendFontSize = 14):
+    # def simulateVariableInputsBioscrape(self, ListOfInputs, ListOfListOfAmounts, ListOfSpeciesToPlot, timepoints, mode = 'reset', compartmentInput = '', compartmentSpecies = '',
+        # plotShow  = 'single', xlabel = 'Time', ylabel = 'Concentration (AU)', title = '', lineWidth = 2, sizeOfXLabels = 16, sizeOfYLabels = 16, legendFontSize = 14):
+    def simulateVariableInputs(self,  ListOfInputs, ListOfListOfAmounts, ListOfSpeciesToPlot, timepoints, **kwargs):
+
         ''''
         Simulates the Subsystem model with the input species amounts varying 
         Mode : continue - Continues simulation from the simulation data of the previous simulation of the variable value 
@@ -1939,6 +1964,47 @@ class Subsystem(object):
         Returns data, time vectors post simulation
         NOTE : Needs bioscrape package installed to simulate.
         '''
+        # Default values
+        Simulator = 'roadrunner'
+        mode = 'reset'
+        compartmentInput = ''
+        compartmentSpecies = ''
+        plotShow = 'single'
+        compartmentSpecies = ''
+        xlabel = 'Time'
+        ylabel = 'Concentration'
+        title = 'Varying ' + str(ListOfInputs) + ' over ' + str(ListOfListOfAmounts) + ' and plotting ' + str(ListOfSpeciesToPlot)
+        lineWidth = 2
+        sizeOfXLabels = 16
+        sizeOfYLabels = 16
+        legendFontSize = 12
+
+        for key, value in kwargs.items():
+            if key == 'mode':
+                mode = value
+            if key == 'compartmentInput':
+                compartmentInput = value
+            if key == 'compartmentSpecies':
+                compartmentSpecies = value
+            if key == 'plotShow':
+                plotShow = value
+            if key == 'xlabel':
+                xlabel = value
+            if key == 'ylabel':
+                ylabel = value
+            if key == 'title':
+                title = value
+            if key == 'lineWidth':
+                lineWidth = value
+            if key == 'sizeOfXLabels':
+                sizeOfXLabels = value
+            if key == 'sizeOfYLabels':
+                sizeOfYLabels = value
+            if key == 'legendFontSize':
+                legendFontSize = value
+            if key == 'Simulator':
+                Simulator = value
+
         model = self.getSBMLDocument().getModel()
         simpleModel = SimpleModel(model)
         species_list = []
@@ -1946,16 +2012,22 @@ class Subsystem(object):
         total_time = {}
         if type(ListOfSpeciesToPlot) is str:
             ListOfSpeciesToPlot = [ListOfSpeciesToPlot]
-
         SpeciesToPlot = ListOfSpeciesToPlot[:]
-        for species_name in ListOfSpeciesToPlot:
+        for i in range(len(ListOfSpeciesToPlot)):
+            species_name = ListOfSpeciesToPlot[i]
             species = simpleModel.getSpeciesByName(species_name)
+            if type(compartmentSpecies) is list:
+                compartment = compartmentSpecies[i]
+            elif type(compartmentSpecies) is str and compartmentSpecies != '':
+                compartment = compartmentSpecies
+            else:
+                compartment = ''
             if type(species) is list:
                 warnings.warn('There are multiple species with the name ' + species_name + 'Suffixed species will be plotted ')
                 for species_i in species:
-                    if compartmentSpecies != '' and model.getElementBySId(species_i.getCompartment()).getName() != compartmentSpecies:
+                    if model.getElementBySId(species_i.getCompartment()).getName() != compartment and compartment != '':
                        continue 
-                    elif compartmentSpecies != '' and model.getElementBySId(species_i.getCompartment()).getName() == compartmentSpecies:
+                    elif model.getElementBySId(species_i.getCompartment()).getName() == compartment and compartment != '':
                         species_list.append(species_i.getId())
                     else:
                         species_list.append(species_i.getId())
@@ -1963,7 +2035,6 @@ class Subsystem(object):
                     if mode == 'continue':
                         total_time[species_i.getId()] = []
                     else:
-                        total_time = []
                         total_time = timepoints
                 key_ind = ListOfSpeciesToPlot.index(species_name)
                 insert_new = []
@@ -1971,9 +2042,9 @@ class Subsystem(object):
                     insert_new.append(species_name + str(j+1))
                 SpeciesToPlot[key_ind+1:key_ind+1] = insert_new 
             else:
-                if compartmentSpecies != '' and model.getElementBySId(species.getCompartment()).getName() != compartmentSpecies:
+                if model.getElementBySId(species.getCompartment()).getName() != compartment and compartment != '':
                     continue
-                elif compartmentSpecies != '' and model.getElementBySId(species.getCompartment()).getName() == compartmentSpecies:
+                elif model.getElementBySId(species.getCompartment()).getName() == compartment and compartment != '':
                     species_list.append(species.getId())
                 else:
                     species_list.append(species.getId())
@@ -1981,7 +2052,6 @@ class Subsystem(object):
                 if mode == 'continue':
                     total_time[species.getId()] = []
                 else:
-                    total_time = []
                     total_time = timepoints
         initialTime = timepoints[0]
         t_end = timepoints[-1]
@@ -1999,7 +2069,6 @@ class Subsystem(object):
                 species_inp = simpleModel.getSpeciesByName(input, compartmentInput)
             else:
                 species_inp = simpleModel.getSpeciesByName(input)
-
             if type(species_inp) is list:
                 raise ValueError('Multiple input species found in the model for the input name given.')
             for amount in ListOfListOfAmounts:
@@ -2021,19 +2090,28 @@ class Subsystem(object):
                     for species in model.getListOfSpecies():
                         species.setInitialAmount(data[:,m.get_species_index(species.getId())][-1])
 
-        else:
+        elif type(ListOfInputs) is list:
             t = initialTime
             ListOfSpecies = []
+            for i in range(len(ListOfListOfAmounts)):
+                if (type(ListOfListOfAmounts[i]) is not list):
+                    raise ValueError('For multiple inputs, all items of ListOfListOfAmounts argument should be list type')
+            if type(compartmentInput) is list:
+                if len(ListOfInputs) != len(compartmentInput):
+                    raise ValueError('The length of compartmentInput argument when it is a list must be equal to the length of ListOfInputs argument')
             for i in range(len(ListOfInputs)):
                 input = ListOfInputs[i]
-                species_inp = simpleModel.getSpeciesByName(input)
+                if compartmentInput != '':
+                    compartment = compartmentInput[i]
+                    species_inp = simpleModel.getSpeciesByName(input, compartment)
+                else:
+                    species_inp = simpleModel.getSpeciesByName(input)
                 if type(species_inp) is list:
                     raise ValueError('Multiple input species found in the model.')
                 ListOfSpecies.append(species_inp)
-            for i in range(len(ListOfListOfAmounts)):
-                if (type(ListOfListOfAmounts[i]) is not list) or (len(ListOfListOfAmounts[i]) != len(ListOfInputs)) :
-                    raise ValueError('For multiple inputs, all items of ListOfListOfAmounts attribute should be lists of length same as the number of inputs')
             for j in range(len(ListOfListOfAmounts)):
+                if len(ListOfListOfAmounts[j]) != len(ListOfInputs):
+                    raise ValueError('For multiple inputs, the length of each item in ListOfListOfAmounts must be same as the length of ListOfInputs')
                 for amount, species in zip(ListOfListOfAmounts[j], ListOfSpecies):
                 # Start simulating and create data
                     check(species.setInitialAmount(amount), 'setting initial amount to input species')
@@ -2049,6 +2127,8 @@ class Subsystem(object):
                 if mode == 'continue':
                     for species in model.getListOfSpecies():
                         species.setInitialAmount(data[:,m.get_species_index(species.getId())][-1])
+        else:
+            raise SyntaxError('ListOfInputs argument must be a list of strings or a string')
 
         pl = []
         for s in range(len(species_list)):
@@ -2066,7 +2146,7 @@ class Subsystem(object):
                     finalData.append(i)
                 finalTime = total_time
 
-            if plotShow:
+            if plotShow == 'single':
                 for i in range(len(ListOfListOfAmounts)):
                     if mode == 'continue':
                         legend_str = species_name + ' for ' + str(ListOfListOfAmounts[i]) + ' ' + ylabel +  ' of ' + str(ListOfInputs)
@@ -2079,13 +2159,38 @@ class Subsystem(object):
                         legend_str = species_name + ' for ' + str(ListOfListOfAmounts[i]) + ' ' + ylabel + ' of ' + str(ListOfInputs)
                         p1, = plt.plot(finalTime, finalData[t0:tn], label = legend_str, linewidth = lineWidth)
                         pl.append(p1)
-
-        if plotShow:
+            elif plotShow == 'matrix':
+                for i in range(len(ListOfListOfAmounts)):
+                    plt.subplot(np.ceil(len(ListOfListOfAmounts)/3),3,i+1)
+                    if mode == 'continue':
+                        legend_str = species_name + ' for ' + str(ListOfListOfAmounts[i]) + ' ' + ylabel +  ' of ' + str(ListOfInputs)
+                        p1, = plt.plot(finalTime, finalData, label = legend_str, linewidth = lineWidth)
+                        plt.legend(prop = {'size':legendFontSize})
+                        mpl.rc('xtick', labelsize= sizeOfXLabels) 
+                        mpl.rc('ytick', labelsize = sizeOfYLabels)
+                        plt.xlabel(xlabel)
+                        plt.ylabel(ylabel)
+                        plt.title(title)
+                    else:
+                        t0 = i*len(finalTime)
+                        tn = (i+1)*len(finalTime)
+                        legend_str = species_name + ' for \n ' + str(ListOfListOfAmounts[i]) + ' ' + ylabel + ' of \n ' + str(ListOfInputs)
+                        p1, = plt.plot(finalTime, finalData[t0:tn], label = legend_str, linewidth = lineWidth)
+                        plt.legend(prop = {'size':legendFontSize})
+                        mpl.rc('xtick', labelsize= sizeOfXLabels) 
+                        mpl.rc('ytick', labelsize = sizeOfYLabels)
+                        plt.xlabel(xlabel)
+                        plt.ylabel(ylabel)
+                        plt.title(title)
+                plt.subplot_tool()
+                plt.show()
+        if plotShow == 'single':
             plt.legend(prop = {'size':legendFontSize})
             mpl.rc('xtick', labelsize= sizeOfXLabels) 
             mpl.rc('ytick', labelsize=sizeOfYLabels)
             plt.xlabel(xlabel)
             plt.ylabel(ylabel)
+            plt.title(title)
             plt.show()
         return finalData, finalTime, plt
 

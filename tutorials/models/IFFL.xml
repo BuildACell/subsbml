@@ -14,25 +14,25 @@
       </unitDefinition>
     </listOfUnitDefinitions>
     <listOfCompartments>
-      <compartment id="cell" name="cell" size="1" units="litre" constant="true"/>
+      <compartment id="cell" name="cell" spatialDimensions="3" size="1" units="litre" constant="true"/>
     </listOfCompartments>
     <listOfSpecies>
-      <species id="inp_IFFL" name="inp_IFFL" compartment="cell" initialAmount="50" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="DA_IFFL" name="DA_IFFL" compartment="cell" initialAmount="50" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="C1_IFFL" name="C1_IFFL" compartment="cell" initialAmount="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="mA_IFFL" name="mA_IFFL" compartment="cell" initialAmount="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="pA_IFFL" name="pA_IFFL" compartment="cell" initialAmount="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="C2_IFFL" name="C2_IFFL" compartment="cell" initialAmount="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="DB_IFFL" name="DB_IFFL" compartment="cell" initialAmount="50" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="mB_IFFL" name="mB_IFFL" compartment="cell" initialAmount="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="pB_IFFL" name="pB_IFFL" compartment="cell" initialAmount="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="C3_IFFL" name="C3_IFFL" compartment="cell" initialAmount="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="DC_IFFL" name="DC_IFFL" compartment="cell" initialAmount="50" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="C4_IFFL" name="C4_IFFL" compartment="cell" initialAmount="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="C5_IFFL" name="C5_IFFL" compartment="cell" initialAmount="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="C6_IFFL" name="C6_IFFL" compartment="cell" initialAmount="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="mC_IFFL" name="mC_IFFL" compartment="cell" initialAmount="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="out_IFFL" name="out_IFFL" compartment="cell" initialAmount="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="inp_IFFL" name="inp_IFFL" compartment="cell" initialConcentration="50" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="DA_IFFL" name="DA_IFFL" compartment="cell" initialConcentration="50" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="C1_IFFL" name="C1_IFFL" compartment="cell" initialConcentration="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mA_IFFL" name="mA_IFFL" compartment="cell" initialConcentration="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="pA_IFFL" name="pA_IFFL" compartment="cell" initialConcentration="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="C2_IFFL" name="C2_IFFL" compartment="cell" initialConcentration="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="DB_IFFL" name="DB_IFFL" compartment="cell" initialConcentration="50" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mB_IFFL" name="mB_IFFL" compartment="cell" initialConcentration="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="pB_IFFL" name="pB_IFFL" compartment="cell" initialConcentration="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="C3_IFFL" name="C3_IFFL" compartment="cell" initialConcentration="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="DC_IFFL" name="DC_IFFL" compartment="cell" initialConcentration="50" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="C4_IFFL" name="C4_IFFL" compartment="cell" initialConcentration="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="C5_IFFL" name="C5_IFFL" compartment="cell" initialConcentration="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="C6_IFFL" name="C6_IFFL" compartment="cell" initialConcentration="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mC_IFFL" name="mC_IFFL" compartment="cell" initialConcentration="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="out_IFFL" name="out_IFFL" compartment="cell" initialConcentration="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
     </listOfSpecies>
     <listOfParameters>
       <parameter id="k1f" name="k1f" value="1" units="per_second" constant="false"/>

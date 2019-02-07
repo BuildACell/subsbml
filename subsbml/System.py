@@ -225,8 +225,6 @@ class System(object):
         subsystem.setSystem(self)
         if subsystem.getSBMLDocument().getLevel() != latestLevel or subsystem.getSBMLDocument().getVersion() != latestVersion:
             warnings.warn('Subsystem SBML model is not the latest. Converting to latest SBML level and version')
-            print(subsystem.getSBMLDocument().getVersion())
-            print(subsystem.getSBMLDocument().getModel().getId())
             subsystem.convertSubsystemLevelAndVersion(latestLevel,latestVersion)
         subsystem.suffixAllElementIds(subsystemName)
         if model.getNumCompartments() == 0:
