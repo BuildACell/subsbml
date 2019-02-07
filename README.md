@@ -6,3 +6,4 @@ creating subsystems, combining multiple subsystems, and modeling interactions su
 
 Refer to the [Wiki](https://github.com/BuildACell/subsbml/wiki) for more information. 
 
+For latest changes, bug fixes, and updates follow the fork [here](https://github.com/ayush9pandey/subsbml)
