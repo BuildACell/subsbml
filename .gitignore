@@ -5,3 +5,4 @@ dist/
 examples/.ipynb_checkpoints/
 __pycache__/
 *.pyc
+*.orig

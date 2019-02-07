@@ -32,7 +32,14 @@ r1.createRate(math_r1)
 
 r2 = SimpleReaction(model.createReaction())
 r2.setId('r2')
+<<<<<<< HEAD:examples/IPTG transport/IPTG_membrane.py
 r2.setReversible(True)
+||||||| merged common ancestors
+r2.setReversible(False)
+r2.setFast(False)
+=======
+r2.setReversible(False)
+>>>>>>> 9eb45918691ab2422a75ffe6141f35cef71bae4d:examples/IPTG transport/IPTG_membrane.py
 r2.createNewReactant('xxIPTG_protein_alHL',False,1)
 r2.createNewProduct('IPTG_1',False,1)
 r2.createNewProduct('xxprotein_alHL',False,1)

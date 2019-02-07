@@ -55,7 +55,13 @@
           </math>
         </kineticLaw>
       </reaction>
+<<<<<<< HEAD:examples/IPTG transport/models/IPTG_membrane.xml
       <reaction id="r2" reversible="true">
+||||||| merged common ancestors
+      <reaction id="r2" reversible="false" fast="false">
+=======
+      <reaction id="r2" reversible="false">
+>>>>>>> 9eb45918691ab2422a75ffe6141f35cef71bae4d:examples/IPTG transport/models/IPTG_membrane.xml
         <listOfReactants>
           <speciesReference species="xxIPTG_protein_alHL" stoichiometry="1" constant="false"/>
         </listOfReactants>

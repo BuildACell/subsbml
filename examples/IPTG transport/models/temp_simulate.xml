@@ -28,6 +28,7 @@
       <compartment id="cell_external_combined" name="cell_external" size="1" units="litre" constant="true"/>
     </listOfCompartments>
     <listOfSpecies>
+<<<<<<< HEAD:examples/IPTG transport/models/temp_simulate.xml
       <species id="mw20c9d2b7_2d30_489e_82d1_e71648158436" name="protein alHL" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
       <species id="mw3df01083_618d_4509_9811_8b63adf5cb42" name="RNA utr1--alHL" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
       <species id="mwdad3b651_3698_4347_a3af_13c2fd1cd4eb" name="Ribo:RNA utr1--alHL" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
@@ -94,8 +95,149 @@
       <species id="mwbbb6129b_1e4f_4f45_96c0_f3b1fbebdb22_1_combined" name="AGTP_USED" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
       <species id="mw28f62bd1_3a2b_45ba_be22_53e2eb1a9509_1_combined" name="IPTG" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
       <species id="mw8581196a_7c77_4da8_879e_f2c6f24b1932_1_combined" name="protein alHL*" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+||||||| merged common ancestors
+      <species id="mw20c9d2b7_2d30_489e_82d1_e71648158436_SS1" name="protein alHL" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw3df01083_618d_4509_9811_8b63adf5cb42_SS1" name="RNA utr1--alHL" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwdad3b651_3698_4347_a3af_13c2fd1cd4eb_SS1" name="Ribo:RNA utr1--alHL" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw27bf35db_2b1d_439b_a0c4_81972bf226ef_SS1" name="DNA pOR1OR2--utr1--alHL" compartment="cell_internal_combined" initialAmount="0.250000166666777" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwb9ed4bd5_8cd9_4f48_9f51_256760be89c7_SS1" name="RNAP:DNA pOR1OR2--utr1--alHL" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw9c2e00f3_d345_4af1_918d_b211abb46cda_SS1" name="CUTP:AGTP:RNAP:DNA pOR1OR2--utr1--alHL" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw42ea34c3_4490_4d8a_8ee5_dd1c4ac5319c_SS1" name="term_RNAP:DNA pOR1OR2--utr1--alHL" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwd4771b8c_b1d7_4c13_997f_683e301a502a_SS1" name="AA:2AGTP:Ribo:RNA utr1--alHL" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwecef8e3a_4d8c_4f45_87ff_436093b9076f_SS1" name="term_Ribo:RNA utr1--alHL" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw0d097c9c_0e16_42d5_a990_888eb21274ba_SS1" name="AGTP:RNAP:DNA pOR1OR2--utr1--alHL" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwb668d480_993b_469d_8925_7393c33b0558_SS1" name="CUTP:RNAP:DNA pOR1OR2--utr1--alHL" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw722ec4ac_80c5_4501_a092_98560b5118e5_SS1" name="AA:Ribo:RNA utr1--alHL" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw773fc4b1_f808_4bf3_85ad_07ce9b454369_SS1" name="RNA utr1--alHL:RNase" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw3222fc51_b8a6_481b_adcf_8fa66964731e_SS1" name="Ribo:RNA utr1--alHL:RNase" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwbd8bbca4_ad12_4dd6_80fc_656686d30456_SS1" name="AA:2AGTP:Ribo:RNA utr1--alHL:RNase" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw5453f37e_770a_422a_ba2f_43c5372ca7be_SS1" name="term_Ribo:RNA utr1--alHL:RNase" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwe1a34348_ddac_4a4e_be5b_0895f8905865_SS1" name="AA:Ribo:RNA utr1--alHL:RNase" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw3c367a17_7386_470c_8c72_954a48def552_SS1_1_combined" name="RNAP" compartment="cell_internal_combined" initialAmount="200.000133333422" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw27aa16fc_b76d_46c2_b301_0456b7e3aace_SS1_1_combined" name="Ribo" compartment="cell_internal_combined" initialAmount="60.0000400000266" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw8db70522_81fd_468e_bfee_2b7b2106514e_SS1_1_combined" name="RecBCD" compartment="cell_internal_combined" initialAmount="10.0000066666711" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw288eb330_bc2f_470f_9628_e990cb2252e5_SS1_1_combined" name="RNase" compartment="cell_internal_combined" initialAmount="200.000133333422" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw34fb2519_79b1_4f10_8668_6410726988c5_SS1_1_combined" name="AGTP" compartment="cell_internal_combined" initialAmount="6360096.40153886" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw4f8d0806_0366_43d5_8a2a_a05ee3287512_SS1_1_combined" name="CUTP" compartment="cell_internal_combined" initialAmount="3816057.84092332" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw715c6bbe_f050_4257_8bc2_159625dc5aa5_SS1_1_combined" name="AA" compartment="cell_internal_combined" initialAmount="63600964.0153886" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mweb04477f_13a4_4d28_8518_06b1c5bae4de_SS2" name="protein lacI" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw609aa47a_fc0e_418c_a186_aa3a658fb203_SS2" name="protein lacIdimer" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwc00961a6_47d1_4f5a_9c49_00fb0d02cd8a_SS2" name="protein lacItetramer" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwcbd6bcc3_2c61_4e12_a6f7_e1ac7bc57188_SS2" name="RNA utr1--lacI" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw6fb7f787_57b9_494d_a431_121e3ccbcda9_SS2" name="Ribo:RNA utr1--lacI" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwdb801a58_028d_43ff_90eb_830d15b4bc7f_SS2" name="DNA pOR1OR2--utr1--lacI" compartment="cell_internal_combined" initialAmount="5.00000333333555" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwde89bce9_6b96_41b5_ab10_47fdb6f84323_SS2" name="RNAP:DNA pOR1OR2--utr1--lacI" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwb8e6b1d7_6c72_4a9b_a640_24ba06276629_SS2" name="CUTP:AGTP:RNAP:DNA pOR1OR2--utr1--lacI" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw117ae676_633e_4f3a_be8d_eacdbdddfeea_SS2" name="term_RNAP:DNA pOR1OR2--utr1--lacI" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw969018c5_d898_4ea0_bb80_35de71266464_SS2" name="AA:2AGTP:Ribo:RNA utr1--lacI" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw7416e86a_aa61_4745_b4bc_072c5e137891_SS2" name="term_Ribo:RNA utr1--lacI" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw5c94996f_4533_4f46_813f_fb42fa7356f3_SS2" name="protein deGFP" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw6600ba7f_5b6d_4e5d_89a2_4d798f44476d_SS2" name="protein deGFP*" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw6a8ec7cf_9ce3_4f43_a91b_8cf54a67e9cb_SS2" name="RNA utr1--deGFP" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw11bfe9cd_0d22_4115_b9f7_163fa42fa97b_SS2" name="Ribo:RNA utr1--deGFP" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw0f006cd4_e78e_48c5_b532_eb6e2f3c6121_SS2" name="DNA plac--utr1--deGFP" compartment="cell_internal_combined" initialAmount="5.00000333333555" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw55a8259b_29cf_445a_a79e_f0229fbc33d2_SS2" name="RNAP:DNA plac--utr1--deGFP" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw68ff84bd_5ee7_416e_8ada_d4f9bad9d42b_SS2" name="CUTP:AGTP:RNAP:DNA plac--utr1--deGFP" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwc200e475_c73f_465a_8de3_97b93a64c967_SS2" name="term_RNAP:DNA plac--utr1--deGFP" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw50cebc13_eef8_41ce_9a71_72ef3e078558_SS2" name="AA:2AGTP:Ribo:RNA utr1--deGFP" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwe03e3eea_a713_4196_a6d8_44a14c926596_SS2" name="term_Ribo:RNA utr1--deGFP" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw36dad171_05d7_4907_8d71_c2b3b5e51352_SS2" name="IPTG:protein lacItetramer" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw4740c413_fa03_405b_a56e_3a2fd6375f6c_SS2" name="AGTP:RNAP:DNA pOR1OR2--utr1--lacI" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwb71129fd_b0dc_41ce_a833_e547a1c07b4f_SS2" name="CUTP:RNAP:DNA pOR1OR2--utr1--lacI" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwf36a5d62_cdc5_4e90_af35_a9fa5ddb33e2_SS2" name="AA:Ribo:RNA utr1--lacI" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwcb7850c8_3801_4d30_9282_42269ca72cc2_SS2" name="RNA utr1--lacI:RNase" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwf0fa4e98_5b94_43bf_9fd1_16e075a088f9_SS2" name="Ribo:RNA utr1--lacI:RNase" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw87bea200_227d_4010_9616_9bee4d30458b_SS2" name="AA:2AGTP:Ribo:RNA utr1--lacI:RNase" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwd91c4e55_95af_42a7_ac6d_2c307d96e1fe_SS2" name="term_Ribo:RNA utr1--lacI:RNase" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwf056a433_e0f6_461e_bfe3_c2b3c62486ca_SS2" name="AA:Ribo:RNA utr1--lacI:RNase" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwd6c5bf43_5a9f_455e_8341_73d1b30d0264_SS2" name="AGTP:RNAP:DNA plac--utr1--deGFP" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw49de218b_1e29_45e1_862c_0dc03a516700_SS2" name="CUTP:RNAP:DNA plac--utr1--deGFP" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw7da17532_fa9d_4ff2_8436_cb08e7696382_SS2" name="DNA plac--utr1--deGFP:protein lacItetramer" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw6729d170_4447_449b_9e97_0908b0caab6b_SS2" name="AA:Ribo:RNA utr1--deGFP" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw611fccdf_157e_40db_8702_848bfb75c079_SS2" name="RNA utr1--deGFP:RNase" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw7e686ddd_072e_4ab7_8512_92481d978201_SS2" name="Ribo:RNA utr1--deGFP:RNase" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw88722339_572e_456f_85da_875cfc4e92bc_SS2" name="AA:2AGTP:Ribo:RNA utr1--deGFP:RNase" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw6b40acd5_0395_4c2b_a5d8_eae734923797_SS2" name="term_Ribo:RNA utr1--deGFP:RNase" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwa029c0f1_d85f_44ba_a505_84310ebae4b0_SS2" name="AA:Ribo:RNA utr1--deGFP:RNase" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwbbb6129b_1e4f_4f45_96c0_f3b1fbebdb22_SS1_1_combined" name="AGTP_USED" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="IPTG_SS3_1_combined" name="IPTG" compartment="cell_external_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw28f62bd1_3a2b_45ba_be22_53e2eb1a9509_SS2_1_combined" name="IPTG" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw8581196a_7c77_4da8_879e_f2c6f24b1932_SS1_1_combined" name="protein alHL*" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+=======
+      <species id="mw20c9d2b7_2d30_489e_82d1_e71648158436" name="protein alHL" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw3df01083_618d_4509_9811_8b63adf5cb42" name="RNA utr1--alHL" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwdad3b651_3698_4347_a3af_13c2fd1cd4eb" name="Ribo:RNA utr1--alHL" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw27bf35db_2b1d_439b_a0c4_81972bf226ef" name="DNA pOR1OR2--utr1--alHL" compartment="cell_internal_combined" initialAmount="1.00000066666711" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwb9ed4bd5_8cd9_4f48_9f51_256760be89c7" name="RNAP:DNA pOR1OR2--utr1--alHL" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw9c2e00f3_d345_4af1_918d_b211abb46cda" name="CUTP:AGTP:RNAP:DNA pOR1OR2--utr1--alHL" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw42ea34c3_4490_4d8a_8ee5_dd1c4ac5319c" name="term_RNAP:DNA pOR1OR2--utr1--alHL" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwd4771b8c_b1d7_4c13_997f_683e301a502a" name="AA:2AGTP:Ribo:RNA utr1--alHL" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwecef8e3a_4d8c_4f45_87ff_436093b9076f" name="term_Ribo:RNA utr1--alHL" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw0d097c9c_0e16_42d5_a990_888eb21274ba" name="AGTP:RNAP:DNA pOR1OR2--utr1--alHL" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwb668d480_993b_469d_8925_7393c33b0558" name="CUTP:RNAP:DNA pOR1OR2--utr1--alHL" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw722ec4ac_80c5_4501_a092_98560b5118e5" name="AA:Ribo:RNA utr1--alHL" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw773fc4b1_f808_4bf3_85ad_07ce9b454369" name="RNA utr1--alHL:RNase" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw3222fc51_b8a6_481b_adcf_8fa66964731e" name="Ribo:RNA utr1--alHL:RNase" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwbd8bbca4_ad12_4dd6_80fc_656686d30456" name="AA:2AGTP:Ribo:RNA utr1--alHL:RNase" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw5453f37e_770a_422a_ba2f_43c5372ca7be" name="term_Ribo:RNA utr1--alHL:RNase" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwe1a34348_ddac_4a4e_be5b_0895f8905865" name="AA:Ribo:RNA utr1--alHL:RNase" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw3c367a17_7386_470c_8c72_954a48def552_1_combined" name="RNAP" compartment="cell_internal_combined" initialAmount="100.000066666711" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw27aa16fc_b76d_46c2_b301_0456b7e3aace_1_combined" name="Ribo" compartment="cell_internal_combined" initialAmount="30.0000200000133" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw8db70522_81fd_468e_bfee_2b7b2106514e_1_combined" name="RecBCD" compartment="cell_internal_combined" initialAmount="5.00000333333556" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw288eb330_bc2f_470f_9628_e990cb2252e5_1_combined" name="RNase" compartment="cell_internal_combined" initialAmount="100.000066666711" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw34fb2519_79b1_4f10_8668_6410726988c5_1_combined" name="AGTP" compartment="cell_internal_combined" initialAmount="3180048.20076943" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw4f8d0806_0366_43d5_8a2a_a05ee3287512_1_combined" name="CUTP" compartment="cell_internal_combined" initialAmount="1908028.92046166" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw715c6bbe_f050_4257_8bc2_159625dc5aa5_1_combined" name="AA" compartment="cell_internal_combined" initialAmount="31800482.0076943" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mweb04477f_13a4_4d28_8518_06b1c5bae4de" name="protein lacI" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw609aa47a_fc0e_418c_a186_aa3a658fb203" name="protein lacIdimer" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwc00961a6_47d1_4f5a_9c49_00fb0d02cd8a" name="protein lacItetramer" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwcbd6bcc3_2c61_4e12_a6f7_e1ac7bc57188" name="RNA utr1--lacI" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw6fb7f787_57b9_494d_a431_121e3ccbcda9" name="Ribo:RNA utr1--lacI" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwdb801a58_028d_43ff_90eb_830d15b4bc7f" name="DNA pOR1OR2--utr1--lacI" compartment="cell_internal_combined" initialAmount="20.0000133333422" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwde89bce9_6b96_41b5_ab10_47fdb6f84323" name="RNAP:DNA pOR1OR2--utr1--lacI" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwb8e6b1d7_6c72_4a9b_a640_24ba06276629" name="CUTP:AGTP:RNAP:DNA pOR1OR2--utr1--lacI" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw117ae676_633e_4f3a_be8d_eacdbdddfeea" name="term_RNAP:DNA pOR1OR2--utr1--lacI" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw969018c5_d898_4ea0_bb80_35de71266464" name="AA:2AGTP:Ribo:RNA utr1--lacI" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw7416e86a_aa61_4745_b4bc_072c5e137891" name="term_Ribo:RNA utr1--lacI" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw5c94996f_4533_4f46_813f_fb42fa7356f3" name="protein deGFP" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw6600ba7f_5b6d_4e5d_89a2_4d798f44476d" name="protein deGFP*" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw6a8ec7cf_9ce3_4f43_a91b_8cf54a67e9cb" name="RNA utr1--deGFP" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw11bfe9cd_0d22_4115_b9f7_163fa42fa97b" name="Ribo:RNA utr1--deGFP" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw0f006cd4_e78e_48c5_b532_eb6e2f3c6121" name="DNA plac--utr1--deGFP" compartment="cell_internal_combined" initialAmount="20.0000133333422" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw55a8259b_29cf_445a_a79e_f0229fbc33d2" name="RNAP:DNA plac--utr1--deGFP" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw68ff84bd_5ee7_416e_8ada_d4f9bad9d42b" name="CUTP:AGTP:RNAP:DNA plac--utr1--deGFP" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwc200e475_c73f_465a_8de3_97b93a64c967" name="term_RNAP:DNA plac--utr1--deGFP" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw50cebc13_eef8_41ce_9a71_72ef3e078558" name="AA:2AGTP:Ribo:RNA utr1--deGFP" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwe03e3eea_a713_4196_a6d8_44a14c926596" name="term_Ribo:RNA utr1--deGFP" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw36dad171_05d7_4907_8d71_c2b3b5e51352" name="IPTG:protein lacItetramer" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw4740c413_fa03_405b_a56e_3a2fd6375f6c" name="AGTP:RNAP:DNA pOR1OR2--utr1--lacI" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwb71129fd_b0dc_41ce_a833_e547a1c07b4f" name="CUTP:RNAP:DNA pOR1OR2--utr1--lacI" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwf36a5d62_cdc5_4e90_af35_a9fa5ddb33e2" name="AA:Ribo:RNA utr1--lacI" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwcb7850c8_3801_4d30_9282_42269ca72cc2" name="RNA utr1--lacI:RNase" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwf0fa4e98_5b94_43bf_9fd1_16e075a088f9" name="Ribo:RNA utr1--lacI:RNase" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw87bea200_227d_4010_9616_9bee4d30458b" name="AA:2AGTP:Ribo:RNA utr1--lacI:RNase" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwd91c4e55_95af_42a7_ac6d_2c307d96e1fe" name="term_Ribo:RNA utr1--lacI:RNase" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwf056a433_e0f6_461e_bfe3_c2b3c62486ca" name="AA:Ribo:RNA utr1--lacI:RNase" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwd6c5bf43_5a9f_455e_8341_73d1b30d0264" name="AGTP:RNAP:DNA plac--utr1--deGFP" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw49de218b_1e29_45e1_862c_0dc03a516700" name="CUTP:RNAP:DNA plac--utr1--deGFP" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw7da17532_fa9d_4ff2_8436_cb08e7696382" name="DNA plac--utr1--deGFP:protein lacItetramer" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw6729d170_4447_449b_9e97_0908b0caab6b" name="AA:Ribo:RNA utr1--deGFP" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw611fccdf_157e_40db_8702_848bfb75c079" name="RNA utr1--deGFP:RNase" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw7e686ddd_072e_4ab7_8512_92481d978201" name="Ribo:RNA utr1--deGFP:RNase" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw88722339_572e_456f_85da_875cfc4e92bc" name="AA:2AGTP:Ribo:RNA utr1--deGFP:RNase" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw6b40acd5_0395_4c2b_a5d8_eae734923797" name="term_Ribo:RNA utr1--deGFP:RNase" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwa029c0f1_d85f_44ba_a505_84310ebae4b0" name="AA:Ribo:RNA utr1--deGFP:RNase" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mwbbb6129b_1e4f_4f45_96c0_f3b1fbebdb22_1_combined" name="AGTP_USED" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw28f62bd1_3a2b_45ba_be22_53e2eb1a9509_1_combined" name="IPTG" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mw8581196a_7c77_4da8_879e_f2c6f24b1932_1_combined" name="protein alHL*" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+>>>>>>> 9eb45918691ab2422a75ffe6141f35cef71bae4d:examples/IPTG transport/models/temp_simulate.xml
       <species id="xxIPTG_protein_alHL" name="IPTG:protein alHL*" compartment="cell_internal_combined" initialAmount="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+<<<<<<< HEAD:examples/IPTG transport/models/temp_simulate.xml
       <species id="IPTG_1_combined" name="IPTG" compartment="cell_external_combined" initialAmount="500" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+||||||| merged common ancestors
+=======
+      <species id="IPTG_1_combined" name="IPTG" compartment="cell_external_combined" initialAmount="80" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+>>>>>>> 9eb45918691ab2422a75ffe6141f35cef71bae4d:examples/IPTG transport/models/temp_simulate.xml
     </listOfSpecies>
     <listOfParameters>
       <parameter id="AGTPdeg_F_combined" name="AGTPdeg_F" value="0" constant="false"/>
@@ -2216,9 +2358,19 @@
               <minus/>
               <apply>
                 <times/>
+<<<<<<< HEAD:examples/IPTG transport/models/temp_simulate.xml
                 <ci> kb </ci>
                 <ci> IPTG_1_combined </ci>
                 <ci> mw8581196a_7c77_4da8_879e_f2c6f24b1932_1_combined </ci>
+||||||| merged common ancestors
+                <ci> k1f </ci>
+                <ci> IPTG_SS3_1_combined </ci>
+                <ci> mw8581196a_7c77_4da8_879e_f2c6f24b1932_SS1_1_combined </ci>
+=======
+                <ci> k1f </ci>
+                <ci> IPTG_1_combined </ci>
+                <ci> mw8581196a_7c77_4da8_879e_f2c6f24b1932_1_combined </ci>
+>>>>>>> 9eb45918691ab2422a75ffe6141f35cef71bae4d:examples/IPTG transport/models/temp_simulate.xml
               </apply>
               <apply>
                 <times/>
@@ -2229,7 +2381,13 @@
           </math>
         </kineticLaw>
       </reaction>
+<<<<<<< HEAD:examples/IPTG transport/models/temp_simulate.xml
       <reaction id="r2" reversible="true">
+||||||| merged common ancestors
+      <reaction id="r2" reversible="false" fast="false">
+=======
+      <reaction id="r2" reversible="false">
+>>>>>>> 9eb45918691ab2422a75ffe6141f35cef71bae4d:examples/IPTG transport/models/temp_simulate.xml
         <listOfReactants>
           <speciesReference species="xxIPTG_protein_alHL" stoichiometry="1" constant="false"/>
         </listOfReactants>
