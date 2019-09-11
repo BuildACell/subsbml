@@ -506,8 +506,6 @@ class Subsystem(object):
                         check(model.addReaction(each_reaction), 'add reaction to merged model')
                     else:
                         model.addReaction(each_reaction)
-            libsbml.writeSBML(mod.getSBMLDocument(), 'test_mod.xml')
-            libsbml.writeSBML(model.getSBMLDocument(), 'test_model.xml')
         return self.getSBMLDocument()
    
     def shareSubsystems(self, ListOfSubsystems, ListOfSharedResources, mode = 'virtual', **kwargs):
