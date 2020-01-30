@@ -15,7 +15,7 @@ from pathlib import Path
 # The latest level and version of SBML 
 # These are used to convert the models given as input to the latest SBML version
 latestLevel = 3
-latestVersion = 2
+latestVersion = 1
 
 class System(object):
     '''
@@ -224,7 +224,7 @@ class System(object):
         model = sbmlDoc.getModel()
         check(model,'retreiving model in createSubsystem')
         if model == None:
-            raise SyntaxError('Model object not created')
+            raise SyntaxError('No Model found while creating Subsystem')
         subsystem = Subsystem(sbmlDoc)
         subsystem.setSystem(self)
         if subsystem.getSBMLDocument().getLevel() != latestLevel or subsystem.getSBMLDocument().getVersion() != latestVersion:
@@ -235,14 +235,17 @@ class System(object):
             warnings.warn('No compartments in the Subsystem model, the System compartment will be used. Compartment Size will be set to zero for this Subsystem.')
         elif model.getNumCompartments() > 1:
             warnings.warn('More than 1 compartments in the Subsystem model. Check resulting models for consistency.')
-
-        if not model.getCompartment(0).isSetSize():
-            warnings.warn('Compartment Size is not set. Setting to one.')
-            model.getCompartment(0).setSize(1)
+        if model.getNumCompartments():
+            if not model.getCompartment(0).isSetSize():
+                warnings.warn('Compartment Size is not set. Setting to one.')
+                model.getCompartment(0).setSize(1)
+                
     
-        subsystem.setCompartments([name])
         self.ListOfInternalSubsystems.append(subsystem)
-        self.Size += model.getCompartment(0).getSize()
+        if len(model.getListOfCompartments()):
+            subsystem.setCompartments([name])   
+            self.Size += model.getCompartment(0).getSize()
+        # libsbml.writeSBML(subsystem.getSBMLDocument(), 'test_create_ss'+subsystem.getSBMLDocument().getModel().getId()+'.xml')
         return subsystem 
 
     def createNewSubsystem(self, level = latestLevel, version = latestVersion):
@@ -351,7 +354,7 @@ class System(object):
                 raise ValueError('The two compartments of the membrane subsystem must each have a name attribute, with names "internal" and "external"')
         return self.ListOfMembraneSubsystems
 
-    def getModel(self, mode='virtual'):
+    def getModel(self, mode='virtual', **kwargs):
         '''
         Returns the System model (SBMLDocument object) by combining the models of 
         1. All subsystems internal to the System (in a compartment called '<system_name>_internal')
@@ -362,7 +365,7 @@ class System(object):
         internal_subsystems = self.ListOfInternalSubsystems
         external_subsystems = self.ListOfExternalSubsystems
         membranes = self.ListOfMembraneSubsystems
-        system_sbml.combineSubsystems([internal_subsystems, external_subsystems, membranes], mode)
+        system_sbml.combineSubsystems([internal_subsystems, external_subsystems, membranes], mode, **kwargs)
         return system_sbml.getSBMLDocument(), system_sbml
 
 

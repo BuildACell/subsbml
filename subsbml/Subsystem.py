@@ -1,5 +1,6 @@
 # Import packaged available with Python
 import time
+import copy
 import warnings
 import numpy as np
 import matplotlib as mpl
@@ -133,7 +134,7 @@ class Subsystem(object):
         check(document.setLevelAndVersion(newLevel,newVersion), 'converting SBMLDocument to new level and version')
         # To check errors, uncomment:
         # if document.getNumErrors():
-        #     print(' The SBML document has errors {0}'.format(document.printErrors()))
+        #     print(' The SBML document has errors : {0}'.format(document.printErrors()))
         #     raise ValueError('Invalid SBMLDocument error.')
         # else:
         #     return self.getSBMLDocument()
@@ -350,6 +351,8 @@ class Subsystem(object):
         document = self.getSBMLDocument()
         check(document,'retreiving document from subsystem in setSubsystemCompartments')
         compartments = document.getModel().getListOfCompartments()
+        if not len(compartments):
+            return 
         check(compartments,'retreiving list of compartments in setSubsystemCompartments')
         if type(newCompartments) is not list:
             if type(newCompartments) is str:
@@ -405,7 +408,7 @@ class Subsystem(object):
               'set model substance units')
         return model
 
-    def mergeSubsystemModels(self, ListOfSubsystems):
+    def mergeSubsystemModels(self, ListOfSubsystems, **kwargs):
         '''
         The ListOfSubsystems are merged together. All components are 
         merged together except the Species.
@@ -416,56 +419,96 @@ class Subsystem(object):
         # functions, units, compartments, species, parameters, 
         # initial assignments, rules, constraints, reactions, and events
         document = self.getSBMLDocument()
+        debug = kwargs.get('debug')
         check(document,'retreiving document in mergeSubsystem')
         model_base = ListOfSubsystems[0].getSBMLDocument().getModel()
         check(model_base,'retreiving model in mergeSubsystems')
         model = self.createNewModel('merged_model',model_base.getTimeUnits(), model_base.getExtentUnits(), model_base.getSubstanceUnits())
-        check(document.setModel(model),'setting model for document in mergeSubsystem')
+        if debug:
+            check(model.setAreaUnits(model_base.getAreaUnits()), 'set area units to merged ss')
+            check(model.setExtentUnits(model_base.getExtentUnits()), 'set extent units to merged ss')
+            check(model.setLengthUnits(model_base.getLengthUnits()), 'set length units to merged ss')
+            check(model.setSubstanceUnits(model_base.getSubstanceUnits()), 'set substance units to merged ss')
+            check(model.setTimeUnits(model_base.getTimeUnits()), 'set time units to merged ss')
+            check(model.setVolumeUnits(model_base.getVolumeUnits()), 'set volume units to merged ss')
+            check(document.setModel(model),'set model for document in mergeSubsystem')
+        else:
+            model.setAreaUnits(model_base.getAreaUnits())
+            model.setExtentUnits(model_base.getExtentUnits())
+            model.setLengthUnits(model_base.getLengthUnits())
+            model.setSubstanceUnits(model_base.getSubstanceUnits())
+            model.setTimeUnits(model_base.getTimeUnits())
+            model.setVolumeUnits(model_base.getVolumeUnits())
+            document.setModel(model)
+            
         for subsystem in ListOfSubsystems:
             if type(subsystem) is not Subsystem:
                 raise ValueError('All items of the ListOfSubsystems argument should be of Subsystem class')
             mod = subsystem.getSBMLDocument().getModel()
-            check(mod,'retreiving model in mergeSubsystem')
+            if debug:
+                check(mod,'retreive Subsystem model in mergeSubsystem')
             # Obsolete in SBML Level 3 
             # if mod.getNumCompartmentTypes() != 0:
             #     for each_compartmentType in mod.getListOfCompartmentType():
             #         model.addCompartmentType(each_compartmentType)
             if mod.getNumConstraints() != 0:
                 for each_constraint in mod.getListOfConstraints():
-                    model.addConstraint(each_constraint)
+                    if debug:
+                        check(model.addConstraint(each_constraint), 'add constraint to merged model')
+                    else:
+                        model.addConstraint(each_constraint)
+
             if mod.getNumInitialAssignments() != 0:
                 for each_initialAssignment in mod.getListOfInitialAssignments():
-                    model.addInitialAssignment(each_initialAssignment)
+                    if debug:
+                        check(model.addInitialAssignment(each_initialAssignment), 'add initial assignment to merged model')
+                    else:
+                        model.addInitialAssignment(each_initialAssignment)
             if mod.getNumFunctionDefinitions() != 0:
                 for each_functionDefinition in mod.getListOfFunctionDefinitions():
-                    model.addFunctionDefinition(each_functionDefinition)
+                    if debug:
+                        check(model.addFunctionDefinition(each_functionDefinition), 'add function definition to merged model')
+                    else:
+                        model.addFunctionDefinition(each_functionDefinition)
             if mod.getNumRules() != 0:
                 for each_rule in mod.getListOfRules():
-                    model.addRule(each_rule)
+                    if debug:
+                        check(model.addRule(each_rule), 'add rule to merged model')
+                    else:
+                        model.addRule(each_rule)
             if mod.getNumEvents() != 0:
                 for each_event in mod.getListOfEvents():
-                    model.addEvent(each_event)
+                    if debug:
+                        check(model.addEvent(each_event), 'add event to merged model')
+                    else:
+                        model.addEvent(each_event)
             if mod.getNumCompartments() != 0:
                 for each_compartment in mod.getListOfCompartments():
-                    model.addCompartment(each_compartment)
+                    if debug:
+                        check(model.addCompartment(each_compartment), 'add compartment from SS into merged ss')
+                    else:
+                        model.addCompartment(each_compartment)
             if mod.getNumParameters() != 0:
                 for each_parameter in mod.getListOfParameters():
-                    model.addParameter(each_parameter)
+                    if debug:
+                        check(model.addParameter(each_parameter), 'add parameter to merged model')
+                    else:
+                        model.addParameter(each_parameter)
             if mod.getNumUnitDefinitions() != 0:
                 for each_unit in mod.getListOfUnitDefinitions():
-                    model.addUnitDefinition(each_unit)
+                    if debug:
+                        check(model.addUnitDefinition(each_unit), 'add unit definition to merged model')
+                    else:
+                        model.addUnitDefinition(each_unit)
             if mod.getNumReactions() != 0:
                 for each_reaction in mod.getListOfReactions():
-                    model.addReaction(each_reaction)
-            model.setAreaUnits(mod.getAreaUnits())
-            model.setExtentUnits(mod.getExtentUnits())
-            model.setLengthUnits(mod.getLengthUnits())
-            model.setSubstanceUnits(mod.getSubstanceUnits())
-            model.setTimeUnits(mod.getTimeUnits())
-            model.setVolumeUnits(mod.getVolumeUnits())
+                    if debug:
+                        check(model.addReaction(each_reaction), 'add reaction to merged model')
+                    else:
+                        model.addReaction(each_reaction)
         return self.getSBMLDocument()
    
-    def shareSubsystems(self, ListOfSubsystems, ListOfSharedResources, mode = 'virtual'):
+    def shareSubsystems(self, ListOfSubsystems, ListOfSharedResources, mode = 'virtual', **kwargs):
         '''
         Merges the ListOfSubsystems together along with all the Species. 
         The Species in ListOfSharedResources are combined together 
@@ -522,11 +565,11 @@ class Subsystem(object):
         check(model.setId('shared_model_of_' + mod_id),'setting new model id for shared model')
         return self.getSBMLDocument()
 
-    def shareSubsystem(self, ListOfSharedResources, mode = 'virtual'):
+    def shareSubsystem(self, ListOfSharedResources, mode = 'virtual', **kwargs):
         self.shareSpecies([], ListOfSharedResources, mode)
         return self.getSBMLDocument()
 
-    def combineSubsystems(self, ListOfSubsystems, mode = 'virtual', combineNames = True):
+    def combineSubsystems(self, ListOfSubsystems, mode = 'virtual', combineNames = True, **kwargs):
         '''
         Combines the ListOfSubsystems. 
 	    Species with the same name together are combined, if combineNames is True. 
@@ -569,7 +612,7 @@ class Subsystem(object):
             total_size = 0
             for subsystem in ListOfSubsystems:
                 total_size += subsystem.getSBMLDocument().getModel().getCompartment(0).getSize()
-        model = self.mergeSubsystemModels(ListOfSubsystems).getModel()
+        model = self.mergeSubsystemModels(ListOfSubsystems, **kwargs).getModel()
         check(model,'retreiving model in combineSubsystems')
         mod_id = ''
  
@@ -845,7 +888,7 @@ class Subsystem(object):
                             if not system_set:
                                 total_size = 0
                             for species in comp_dict[species_comp]:
-                                check(model.addSpecies(species),'adding species in shareSpecies else case')
+                                check(model.addSpecies(species),'add species in shareSpecies else case')
                                 mod = species.getModel()
                                 ssys_size = mod.getElementBySId(species.getCompartment()).getSize()
                                 if not system_set:
@@ -854,17 +897,17 @@ class Subsystem(object):
                                 cumulative_amount += (species.getInitialAmount()) * ssys_size
                                 spe_id = species.getId()
                                 oldid = spe_id
-                                check(oldid, 'retreiving oldid in combineSpecies else case')
+                                check(oldid, 'retreive oldid in combineSpecies else case')
                                 newid = trans.getValidIdForName(uni_sp.getId()) + '_shared'
                                 self.renameSId(oldid, newid)
                                 if count >= 1:
-                                    check(model.removeSpecies(newid),'removing duplicate species')
-                                    warnings.warn('Removing duplicate species {0} in the same compartment'.format(newid))
+                                    check(model.removeSpecies(newid),'remove duplicate species in shareSpecies' + newid)
+                                    warnings.warn('Remove duplicate species {0} in the same compartment'.format(newid))
                                 else:
                                     id_added_species = newid
                                 count += 1
                             if mode == 'volume':
-                                check(model.getSpecies(id_added_species).setInitialAmount(cumulative_amount/total_size),'setting initial amount to cumulative in volume mode in combineSpecies else case')
+                                check(model.getSpecies(id_added_species).setInitialAmount(cumulative_amount/total_size),'set initial amount to cumulative in volume mode in combineSpecies else case')
         return self.getSBMLDocument()
 
 
@@ -1046,7 +1089,7 @@ class Subsystem(object):
                                     newid = trans.getValidIdForName(uni_sp.getId()) + '_combined'
                                 self.renameSId(oldid, newid)
                                 if count >= 1:
-                                    check(model.removeSpecies(newid),'removing duplicate species')
+                                    check(model.removeSpecies(newid),'remove duplicate species - ' + newid)
                                     warnings.warn('Removing duplicate species {0} in the same compartment'.format(newid))
                                 else:
                                     id_added_species = newid

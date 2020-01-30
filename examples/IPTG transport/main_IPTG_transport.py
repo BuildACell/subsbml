@@ -36,12 +36,21 @@ cell_sub.simulateVariableInputs('IPTG',[0, 40, 60, 80, 100], ['protein deGFP*'],
 # cell_sub.simulateVariableInputs('DNA pOR1OR2--utr1--alHL',[0, 5, 10, 100, 15, 30], ['IPTG'], timepoints, mode = 'reset', compartmentInput= 'cell_internal',compartmentSpecies = 'cell_internal')
 # cell_sub.simulateVariableInputs('DNA pOR1OR2--utr1--alHL',[0, 5, 10, 100, 15, 30], ['IPTG'], timepoints, mode = 'reset', compartmentInput= 'cell_internal',compartmentSpecies = 'cell_external')
 # cell_sub.simulateVariableInputs('DNA pOR1OR2--utr1--alHL',[6, 10, 15, 20], ['protein deGFP*'], timepoints, plotShow = 'single')
+
 # cell_sub.simulateVariableInputs('DNA pOR1OR2--utr1--alHL',[0,5, 10, 20, 100], ['protein deGFP*'], 
-    # timepoints, mode = 'reset', compartmentInput = 'cell_internal', compartmentSpecies= 'cell_internal', 
-    # plotShow = 'single', xlabel = 'time', ylabel = 'concentration',title = 'deGFP with varying DNA-alHL (without resource limits)',
-    # lineWidth = 2, sizeOfXLabels = 12, sizeOfYLabels = 12, legendFontSize= 8)
-# cell_sub.simulateVariableInputs(ListOfInputs = ['DNA plac--utr1--deGFP', 'DNA pOR1OR2--utr1--alHL'], ListOfListOfAmounts = [[5,5],[5,15],[5,25],[15,5],[15,15],[15,20],[20,5],[20,15],[20,25]], ListOfSpeciesToPlot = ['protein deGFP*'], timepoints = timepoints, mode = 'reset', compartmentInput = ['cell_internal','cell_internal'],compartmentSpecies= 'cell_internal', plotShow = 'matrix', xlabel = 'time', ylabel = 'concentration', lineWidth = 2, sizeOfXLabels = 12, sizeOfYLabels = 12, legendFontSize= 6)
-# cell_sub.simulateVariableInputs(ListOfInputs = ['DNA plac--utr1--deGFP', 'DNA pOR1OR2--utr1--alHL'], ListOfListOfAmounts = [[5,5],[5,10],[20,5],[20,10]], ListOfSpeciesToPlot = ['protein deGFP*'], timepoints = timepoints, mode = 'reset', plotShow = 'matrix', legendFontSize = 6)
+#     timepoints, mode = 'reset', compartmentInput = 'cell_internal', compartmentSpecies= 'cell_internal', 
+#     plotShow = 'single', xlabel = 'time', ylabel = 'concentration',title = 'deGFP with varying DNA-alHL',
+#     lineWidth = 2, sizeOfXLabels = 12, sizeOfYLabels = 12, legendFontSize= 8)
+
+# cell_sub.simulateVariableInputs(ListOfInputs = ['DNA plac--utr1--deGFP', 'DNA pOR1OR2--utr1--alHL'], 
+#     ListOfListOfAmounts = [[5,5],[5,15],[5,25],[15,5],[15,15],[15,20],[20,5],[20,15],[20,25]], 
+#     ListOfSpeciesToPlot = ['protein deGFP*'], timepoints = timepoints, mode = 'reset', 
+#     compartmentInput = ['cell_internal','cell_internal'],compartmentSpecies= 'cell_internal', 
+#     plotShow = 'matrix', xlabel = 'time', ylabel = 'concentration', lineWidth = 2, sizeOfXLabels = 12, sizeOfYLabels = 12, legendFontSize= 6)
+
+# cell_sub.simulateVariableInputs(ListOfInputs = ['DNA plac--utr1--deGFP', 'DNA pOR1OR2--utr1--alHL'], 
+#     ListOfListOfAmounts = [[5,5],[5,10],[20,5],[20,10]], ListOfSpeciesToPlot = ['protein deGFP*'], 
+#     timepoints = timepoints, mode = 'reset', plotShow = 'matrix', legendFontSize = 6)
 
 # More simulation options and optimizations in simulations
 
