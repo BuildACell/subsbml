@@ -8,7 +8,8 @@ except:
 
 from .Subsystem import Subsystem 
 from .SimpleModel import SimpleModel 
-from .utilityFunctions import getFromXML, check, createSbmlDoc, createNewModel 
+from .utilityFunctions import getFromXML, check, createSbmlDoc, createNewModel
+from pathlib import Path
 
 
 # The latest level and version of SBML 
@@ -213,10 +214,13 @@ class System(object):
         1. The Subsystem object has its System attribute set to this System.
         2. The Subsystem is added to the list of internal subsystems to this System.
         '''
+        subsys_xml = Path(filename)
+        if subsys_xml.is_file() is False:
+            raise FileNotFoundError('File not found: %s ' % subsys_xml)
         # 1. Read the SBML model
         # 2. Create an object of the Subsystem class with the SBMLDocument read in Step 1
         name = self.getSystemName()
-        sbmlDoc = getFromXML(filename)
+        sbmlDoc = getFromXML(subsys_xml)
         model = sbmlDoc.getModel()
         check(model,'retreiving model in createSubsystem')
         if model == None:
