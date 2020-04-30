@@ -146,6 +146,86 @@ class Subsystem(object):
             return
 
         check(document.setLevelAndVersion(newLevel,newVersion), 'converting SBMLDocument to new level and version')
+<<<<<<< HEAD
+||||||| 79bc6c1
+        # To check errors, uncomment:
+        # if document.getNumErrors():
+        #     print(' The SBML document has errors {0}'.format(document.printErrors()))
+        #     raise ValueError('Invalid SBMLDocument error.')
+        # else:
+        #     return self.getSBMLDocument()
+
+
+        # Obsolete:
+        # config = libsbml.ConversionProperties()
+        # if config != None:
+        #     config.addOption('setLevelAndVersion')
+        # else:
+        #     raise ValueError('Failed to call ConversionProperties')
+        # # Now, need to set the target level and version (to which to convert the document)
+        # Use the setTargetNamespaces() object of the ConversionsProperties as follows.
+        # First, need to create a new SBMLNamespaces object with the desired (target) level and version
+        # sbmlns = libsbml.SBMLNamespaces(newLevel,newVersion)
+        # check(sbmlns, 'creating new sbml namespaces')
+        # check(config.setTargetNamespaces(sbmlns),'setting target namespaces')
+        # config.setTargetNamespaces(sbmlns)
+        # Use the SBMLDocument.convert(ConversionsProperties) syntax to convert
+        # check(document.convert(config),'converting document level and version')
+        # if newLevel == 3 and newVersion == 1:
+        #     conv_status = document.checkL3v1Compatibility()
+        # elif newLevel == 2 and newVersion == 5:
+        #     conv_status = document.checkL2v5Compatibility()
+        # elif newLevel == 2 and newVersion == 4:
+        #     conv_status = document.checkL2v4Compatibility()
+        # elif newLevel == 2 and newVersion == 3:
+        #     conv_status = document.checkL2v3Compatibility()
+        # elif newLevel == 2 and newVersion == 2:
+        #     conv_status = document.checkL2v2Compatibility()
+        # elif newLevel == 2 and newVersion == 1:
+        #     conv_status = document.checkL2v1Compatibility()
+        # if conv_status != 0:
+        #     raise ValueError('SBML Level/Version conversion failed')
+
+=======
+        # To check errors, uncomment:
+        # if document.getNumErrors():
+        #     print(' The SBML document has errors : {0}'.format(document.printErrors()))
+        #     raise ValueError('Invalid SBMLDocument error.')
+        # else:
+        #     return self.getSBMLDocument()
+
+
+        # Obsolete:
+        # config = libsbml.ConversionProperties()
+        # if config != None:
+        #     config.addOption('setLevelAndVersion')
+        # else:
+        #     raise ValueError('Failed to call ConversionProperties')
+        # # Now, need to set the target level and version (to which to convert the document)
+        # Use the setTargetNamespaces() object of the ConversionsProperties as follows.
+        # First, need to create a new SBMLNamespaces object with the desired (target) level and version
+        # sbmlns = libsbml.SBMLNamespaces(newLevel,newVersion)
+        # check(sbmlns, 'creating new sbml namespaces')
+        # check(config.setTargetNamespaces(sbmlns),'setting target namespaces')
+        # config.setTargetNamespaces(sbmlns)
+        # Use the SBMLDocument.convert(ConversionsProperties) syntax to convert
+        # check(document.convert(config),'converting document level and version')
+        # if newLevel == 3 and newVersion == 1:
+        #     conv_status = document.checkL3v1Compatibility()
+        # elif newLevel == 2 and newVersion == 5:
+        #     conv_status = document.checkL2v5Compatibility()
+        # elif newLevel == 2 and newVersion == 4:
+        #     conv_status = document.checkL2v4Compatibility()
+        # elif newLevel == 2 and newVersion == 3:
+        #     conv_status = document.checkL2v3Compatibility()
+        # elif newLevel == 2 and newVersion == 2:
+        #     conv_status = document.checkL2v2Compatibility()
+        # elif newLevel == 2 and newVersion == 1:
+        #     conv_status = document.checkL2v1Compatibility()
+        # if conv_status != 0:
+        #     raise ValueError('SBML Level/Version conversion failed')
+
+>>>>>>> 894f229b2e6a0a7cf0ebdb98fd546b8be6e06893
         return self.getSBMLDocument()
 
     def renameSId(self, oldSId, newSId, debug = False): 
@@ -603,12 +683,18 @@ class Subsystem(object):
             total_size = 0
             for subsystem in ListOfSubsystems:
                 total_size += subsystem.getSBMLDocument().getModel().getCompartment(0).getSize()
+<<<<<<< HEAD
         
         # To fix annotations needed for biocircuits tools suite
         for subsystem in ListOfSubsystems:
             subsystem.fixAnnotations(**kwargs)
 
         model = self.mergeSubsystemModels(ListOfSubsystems, **kwargs).getModel()
+||||||| 79bc6c1
+        model = self.mergeSubsystemModels(ListOfSubsystems).getModel()
+=======
+        model = self.mergeSubsystemModels(ListOfSubsystems, **kwargs).getModel()
+>>>>>>> 894f229b2e6a0a7cf0ebdb98fd546b8be6e06893
         check(model,'retreiving model in combineSubsystems')
         mod_id = ''
  
@@ -903,12 +989,21 @@ class Subsystem(object):
                                 newid = trans.getValidIdForName(uni_sp.getId()) + '_shared'
                                 self.renameSId(oldid, newid)
                                 if count >= 1:
+<<<<<<< HEAD
                                     check(model.removeSpecies(newid),'remove duplicate species in shareSpecies' + newid)
                                     warnings.warn('Remove duplicate species {0} in the same compartment'.format(newid)) if verbose else None
+||||||| 79bc6c1
+                                    check(model.removeSpecies(newid),'removing duplicate species')
+                                    warnings.warn('Removing duplicate species {0} in the same compartment'.format(newid))
+=======
+                                    check(model.removeSpecies(newid),'remove duplicate species in shareSpecies' + newid)
+                                    warnings.warn('Remove duplicate species {0} in the same compartment'.format(newid))
+>>>>>>> 894f229b2e6a0a7cf0ebdb98fd546b8be6e06893
                                 else:
                                     id_added_species = newid
                                 count += 1
                             if mode == 'volume':
+<<<<<<< HEAD
                                 check(model.getSpecies(id_added_species).setInitialAmount(cumulative_amount/total_size),'set initial amount to cumulative in volume mode in combineSpecies else case')
         return self.getSBMLDocument()
 
@@ -939,6 +1034,11 @@ class Subsystem(object):
                 reaction.setAnnotation(updated_annotation)
                 if verbose:
                     warnings.warn('Annotated propensity updated to: ' + updated_annotation)
+||||||| 79bc6c1
+                                check(model.getSpecies(id_added_species).setInitialAmount(cumulative_amount/total_size),'setting initial amount to cumulative in volume mode in combineSpecies else case')
+=======
+                                check(model.getSpecies(id_added_species).setInitialAmount(cumulative_amount/total_size),'set initial amount to cumulative in volume mode in combineSpecies else case')
+>>>>>>> 894f229b2e6a0a7cf0ebdb98fd546b8be6e06893
         return self.getSBMLDocument()
 
 
@@ -1121,8 +1221,16 @@ class Subsystem(object):
                                     newid = trans.getValidIdForName(uni_sp.getId()) + '_combined'
                                 self.renameSId(oldid, newid)
                                 if count >= 1:
+<<<<<<< HEAD
                                     check(model.removeSpecies(newid),'remove duplicate species - ' + newid)
                                     warnings.warn('Removing duplicate species {0} in the same compartment'.format(newid)) if verbose else None
+||||||| 79bc6c1
+                                    check(model.removeSpecies(newid),'removing duplicate species')
+                                    warnings.warn('Removing duplicate species {0} in the same compartment'.format(newid))
+=======
+                                    check(model.removeSpecies(newid),'remove duplicate species - ' + newid)
+                                    warnings.warn('Removing duplicate species {0} in the same compartment'.format(newid))
+>>>>>>> 894f229b2e6a0a7cf0ebdb98fd546b8be6e06893
                                 else:
                                     id_added_species = newid
                                 count += 1
