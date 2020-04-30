@@ -14,7 +14,7 @@ from .SimpleModel import SimpleModel
 # The latest level and version of SBML 
 # These are used to convert the models given as input to the latest SBML version
 latestLevel = 3
-latestVersion = 1
+latestVersion = 2
 
 class System(object):
     '''
