@@ -1,4 +1,4 @@
-##### Creating a membrane model for IPTG transport####
+##### Creating a IPTG reservoir model####
 
 from subsbml import *
 

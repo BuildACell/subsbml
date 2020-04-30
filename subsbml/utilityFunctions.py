@@ -1,21 +1,11 @@
-#### Some utility functions which are used in modules.System, modules.Subsystem 
-#### and may be used elsewhere as well
+#### Utility functions general added here
 import sys
-import numpy as np
-import matplotlib as mpl
-import matplotlib.pyplot as plt
-import warnings
-
 try:
     import libsbml 
 except:
-    warnings.warn('Package not installed : libsbml. The package depends on Python libsbml, install it before using this package.')
+    raise ValueError('Package not installed : libsbml. The package depends on Python libsbml, install it before using this package.')
 
-try:
-    import bioscrape
-except:
-    warnings.warn('Package not installed : bioscrape, simulation options with bioscrape will not work.')
-
+# SBML level and version
 latestLevel = 3
 latestVersion = 2
 

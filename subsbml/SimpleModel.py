@@ -253,8 +253,8 @@ class SimpleModel(object):
         trans = SetIdFromNames(ids)
         rId = trans.getValidIdForName(rId)
         check(r_obj.setId(rId), 'set r_obj ID')
-        # Obsolete in SBML L3V2
-        # check(r_obj.setFast(rFast), 'set r_obj Fast')
+        rFast = False # defaults to False in SBML L3V2
+        check(r_obj.setFast(rFast), 'set r_obj Fast')
         newRxn = SimpleReaction(r_obj)
         reactantList, reactant_stoichList, productList, product_stoichList = newRxn.parseReactionString(rStr)
         for reactant, stoich in zip(reactantList, reactant_stoichList):
@@ -412,11 +412,12 @@ class SimpleModel(object):
         return 
 
   
-    def getSpeciesByName(self, name, compartment = ''):
+    def getSpeciesByName(self, name, compartment = '', **kwargs):
         ''' 
         Returns a list of species in the Model with the given name
         compartment : (Optional) argument to specify the compartment name in which to look for the species.
         '''
+        verbose = kwargs.get('verbose') if 'verbose' in kwargs else None
         if type(name) is not str:
             raise ValueError('The arguments are not of expected type.') 
         model = self.getModel()
@@ -437,14 +438,15 @@ class SimpleModel(object):
         elif not species_found:
             raise ValueError('The species ' + name + ' not found.')
         else:
-            warnings.warn('Multiple species with name ' + name + ' found. Returning a list')
+            warnings.warn('Multiple species with name ' + name + ' found. Returning a list') if verbose else None
             return species_found
     
  
-    def getParameterByName(self, name):
+    def getParameterByName(self, name, **kwargs):
         ''' 
         Returns a list of Parameters in the Model with the given name
         '''
+        verbose = kwargs.get('verbose') if 'verbose' in kwargs else None
         if type(name) is not str:
             raise ValueError('The arguments are not of expected type.') 
         model = self.getModel()
@@ -466,7 +468,7 @@ class SimpleModel(object):
         elif not parameter_found:
             raise ValueError('The parameter ' + name + ' not found.')
         else:
-            warnings.warn('Multiple parameter with name ' + name + ' found. Returning a list')
+            warnings.warn('Multiple parameter with name ' + name + ' found. Returning a list') if verbose else None
             return parameter_found
  
     def getAllIds(self):

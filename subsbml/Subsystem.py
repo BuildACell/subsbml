@@ -11,17 +11,18 @@ import sys
 try:
     import libsbml 
 except:
-    warnings.warn('Package not installed : libsbml. The package depends on Python libsbml, install it before using this package.')
-try:
-    import bioscrape
-except:
-    warnings.warn('Package not installed : bioscrape, simulation options with bioscrape will not work.')
+    raise ValueError('Package not installed : libsbml. The package depends on Python libsbml, install it before using this package.')
 
 # Import subsbml methods
 from .SimpleModel import SimpleModel
 from .SimpleReaction import SimpleReaction
 from .setIdFromNames import SetIdFromNames
-from .utilityFunctions import check, getFromXML
+from .utilityFunctions import check, getFromXML, createSbmlDoc
+
+# The latest level and version of SBML 
+# These are used to convert the models given as input to the latest SBML version
+latestLevel = 3
+latestVersion = 2
 
 class Subsystem(object):
 
@@ -45,6 +46,17 @@ class Subsystem(object):
         check(SBMLDocument,'checking SBMLDocument object')
         self.SBMLDocument = SBMLDocument
         self.System = System
+        self.changeLog = {}
+
+    def __add__(self, subsystem):
+        '''
+        Returns a combined Subsystem object that combines the two Subsystem objects using the '+' operator.
+        Internally calls `combineSubsystems` function.
+        '''
+        temp_ss = createNewSubsystem()
+        ListOfSubsystems = [self, subsystem]
+        temp_ss.combineSubsystems(ListOfSubsystems)
+        return temp_ss
 
     def getSBMLDocument(self):
         '''
@@ -84,11 +96,12 @@ class Subsystem(object):
         '''
         return self.System
 
-    def renameSName(self, ListOfOldNames, new_name):
+    def renameSName(self, ListOfOldNames, new_name, **kwargs):
         '''
         Search the SBMLDocument in this Subsystem for the ListOfOldNames and rename all such 
         components by the new_name. Returns the updated SBMLDocument object of this Subsystem.
         '''
+        verbose = kwargs.get('verbose') if 'verbose' in kwargs else None
         model = self.getSBMLDocument().getModel()
         check(model,'retreiving model from document in renameSName')
         mod_obj = SimpleModel(model)
@@ -110,66 +123,29 @@ class Subsystem(object):
             if species == None:
                 raise ValueError('No species named' + old_name + 'found.')
             if type(species) is list:
-                warnings.warn('Multiple species found with the name' + old_name + '. Replacing all.')
+                warnings.warn('Multiple species found with the name' + old_name + '. Replacing all.') if verbose else None
                 for sp in species:
                     check(sp.setName(new_name), 'setting the new name from rename to the list of species')
             else:
                 check(species.setName(new_name), 'setting new name from rename function call')
         return self.getSBMLDocument()
 
-    def convertSubsystemLevelAndVersion(self, newLevel, newVersion):
+    def convertSubsystemLevelAndVersion(self, newLevel, newVersion, **kwargs):
         '''
         Converts the SBMLDocument of this Subsytem to the newLevel and newVersion
         Returns the SBMLDocument object of the Subsystem with updated level and version.
         '''
+        verbose = kwargs.get('verbose') if 'verbose' in kwargs else None
         document = self.getSBMLDocument()
         check(document,'retreiving document object for subsystem in convert function')
         if type(newLevel) is not int or type(newVersion) is not int:
             raise ValueError('The arguments newLevel and newVersion must be integers')
 
         if newLevel == document.getLevel() and newVersion == document.getVersion():
-            warnings.warn('The current SBMLDocument level and version are the same as the new level and version given')
+            warnings.warn('The current SBMLDocument level and version are the same as the new level and version given') if verbose else None
             return
 
         check(document.setLevelAndVersion(newLevel,newVersion), 'converting SBMLDocument to new level and version')
-        # To check errors, uncomment:
-        # if document.getNumErrors():
-        #     print(' The SBML document has errors : {0}'.format(document.printErrors()))
-        #     raise ValueError('Invalid SBMLDocument error.')
-        # else:
-        #     return self.getSBMLDocument()
-
-
-        # Obsolete:
-        # config = libsbml.ConversionProperties()
-        # if config != None:
-        #     config.addOption('setLevelAndVersion')
-        # else:
-        #     raise ValueError('Failed to call ConversionProperties')
-        # # Now, need to set the target level and version (to which to convert the document)
-        # Use the setTargetNamespaces() object of the ConversionsProperties as follows.
-        # First, need to create a new SBMLNamespaces object with the desired (target) level and version
-        # sbmlns = libsbml.SBMLNamespaces(newLevel,newVersion)
-        # check(sbmlns, 'creating new sbml namespaces')
-        # check(config.setTargetNamespaces(sbmlns),'setting target namespaces')
-        # config.setTargetNamespaces(sbmlns)
-        # Use the SBMLDocument.convert(ConversionsProperties) syntax to convert
-        # check(document.convert(config),'converting document level and version')
-        # if newLevel == 3 and newVersion == 1:
-        #     conv_status = document.checkL3v1Compatibility()
-        # elif newLevel == 2 and newVersion == 5:
-        #     conv_status = document.checkL2v5Compatibility()
-        # elif newLevel == 2 and newVersion == 4:
-        #     conv_status = document.checkL2v4Compatibility()
-        # elif newLevel == 2 and newVersion == 3:
-        #     conv_status = document.checkL2v3Compatibility()
-        # elif newLevel == 2 and newVersion == 2:
-        #     conv_status = document.checkL2v2Compatibility()
-        # elif newLevel == 2 and newVersion == 1:
-        #     conv_status = document.checkL2v1Compatibility()
-        # if conv_status != 0:
-        #     raise ValueError('SBML Level/Version conversion failed')
-
         return self.getSBMLDocument()
 
     def renameSId(self, oldSId, newSId, debug = False): 
@@ -246,26 +222,36 @@ class Subsystem(object):
         for i in range(allElements.getSize()):
             current = allElements.get(i)
             current.renameSIdRefs(oldSId, newSId)
+            self.changeLog[oldSId] = newSId
         return document 
     
-    def getSpeciesByName(self, name):
+    def getSpeciesByName(self, name, compartment = '', **kwargs):
         ''' 
         Returns a list of species in the Model with the given name
+        compartment : (Optional) argument to specify the compartment name in which to look for the species.
         '''
+        verbose = kwargs.get('verbose') if 'verbose' in kwargs else None
+        model = self.getSBMLDocument().getModel()
         if type(name) is not str:
             raise ValueError('The arguments are not of expected type.') 
-        model = self.getSBMLDocument().getModel()
         check(model,'retreived model object')
         species_found =[]
         for species in model.getListOfSpecies():
             if species.getName() == name:
-                species_found.append(species)
+                if compartment != '':
+                    if model.getElementBySId(species.getCompartment()).getName() == compartment:
+                        species_found.append(species)
+                    else:
+                        continue
+                else:
+                    species_found.append(species)
+
         if len(species_found) == 1:
             return species_found[0] 
         elif not species_found:
             raise ValueError('The species ' + name + ' not found.')
         else:
-            warnings.warn('Multiple species with name ' + name + ' found. Returning a list')
+            warnings.warn('Multiple species with name ' + name + ' found. Returning a list') if verbose else None
             return species_found
     
  
@@ -273,6 +259,7 @@ class Subsystem(object):
         ''' 
         Returns a list of Parameters in the Model with the given name
         '''
+        verbose = kwargs.get('verbose') if 'verbose' in kwargs else None
         if type(name) is not str:
             raise ValueError('The arguments are not of expected type.') 
         model = self.getSBMLDocument().getModel()
@@ -294,7 +281,7 @@ class Subsystem(object):
         elif not parameter_found:
             raise ValueError('The parameter ' + name + ' not found.')
         else:
-            warnings.warn('Multiple parameter with name ' + name + ' found. Returning a list')
+            warnings.warn('Multiple parameter with name ' + name + ' found. Returning a list') if verbose else None
             return parameter_found
  
 
@@ -327,6 +314,8 @@ class Subsystem(object):
             raise ValueError('The name argument should be string type')
             
         for oldid in allids:
+            if oldid == self.getSBMLDocument().getModel().getId():
+                continue
             if document.getElementBySId(oldid) != None:
                 if name != '':
                     self.renameSId(oldid, oldid + '_' + name)
@@ -339,15 +328,15 @@ class Subsystem(object):
                     oldname = element.getName()
                     newname = oldname + '_' + name
                     element.setName(newname)
-
         return document
 
-    def setCompartments(self, newCompartments):
+    def setCompartments(self, newCompartments, **kwargs):
         '''
     	The newCompartments list is set as the new ListOfCompartments 
         in theSBMLDocument of this Subsystem
         Returns the updated SBMLDocument 
         '''
+        verbose = kwargs.get('verbose') if 'verbose' in kwargs else None
         document = self.getSBMLDocument()
         check(document,'retreiving document from subsystem in setSubsystemCompartments')
         compartments = document.getModel().getListOfCompartments()
@@ -363,7 +352,7 @@ class Subsystem(object):
                 raise ValueError('The newCompartments argument should be a list of strings or a single string')
 
         if len(compartments) != len(newCompartments):
-            warnings.warn('The number of compartments given is not the same as the number of compartments in the model.') 
+            warnings.warn('The number of compartments given is not the same as the number of compartments in the model.') if verbose else None
             for i in range(len(newCompartments)):
                 # rename compartment name and id
                 if compartments.get(i).isSetName():
@@ -515,6 +504,7 @@ class Subsystem(object):
         and so are shared by all Subsystems among the ListOfSubsystems.
         Returns the combined SBMLDocument object of this Subsystem which stores the combined model
         '''
+        verbose = kwargs.get('verbose') if 'verbose' in kwargs else None
         # Flatten out the ListOfSubsystems argument 
         ListOfListOfSubsystems = []
         if type(ListOfSubsystems) is not list:
@@ -547,7 +537,7 @@ class Subsystem(object):
         mod_id = ''
         total_size = 0
         if flag:
-            warnings.warn('Not all of the Subsystems being shared are in the same Compartment')
+            warnings.warn('Not all of the Subsystems being shared are in the same Compartment') if verbose else None
             for subsystem in ListOfSubsystems:
                 mod = subsystem.getSBMLDocument().getModel()
                 mod_id += mod.getId()
@@ -578,6 +568,7 @@ class Subsystem(object):
         the combineNames (True or False)
         Returns the SBMLDocument object of this Subsystem which holds the combined model.
         '''
+        verbose = kwargs.get('verbose') if 'verbose' in kwargs else None
         # Flatten out the ListOfSubsystems argument 
         ListOfListOfSubsystems = []
         if type(ListOfSubsystems) is not list:
@@ -608,10 +599,15 @@ class Subsystem(object):
             total_size = sys.getSize()
         else:
             ListOfResources = []
-            warnings.warn('Not all of the Subsystems being combined are in the same Compartment')
+            warnings.warn('Not all of the Subsystems being combined are in the same Compartment') if verbose else None
             total_size = 0
             for subsystem in ListOfSubsystems:
                 total_size += subsystem.getSBMLDocument().getModel().getCompartment(0).getSize()
+        
+        # To fix annotations needed for biocircuits tools suite
+        for subsystem in ListOfSubsystems:
+            subsystem.fixAnnotations(**kwargs)
+
         model = self.mergeSubsystemModels(ListOfSubsystems, **kwargs).getModel()
         check(model,'retreiving model in combineSubsystems')
         mod_id = ''
@@ -627,31 +623,37 @@ class Subsystem(object):
             mod_id += '_' + sub_model.getId()
             subsystem.combineSubsystem(ListOfResources, mode)
         if combineNames == True:
-            self.combineSpecies(ListOfSubsystems,ListOfResources, mode)
-            self.combineReactions(ListOfSubsystems)
-            self.combineCompartments(ListOfSubsystems)
-            self.combineParameters(ListOfSubsystems)
-            self.combineEvents(ListOfSubsystems)
-            self.combineFunctionDefinitions(ListOfSubsystems)
-            self.combineUnitDefinitions(ListOfSubsystems)
+            self.combineCompartments(ListOfSubsystems, **kwargs)
+            self.combineSpecies(ListOfSubsystems,ListOfResources, mode, **kwargs)
+            self.combineParameters(ListOfSubsystems, **kwargs)
+            self.combineReactions(ListOfSubsystems, **kwargs)
+            self.combineEvents(ListOfSubsystems, **kwargs)
+            self.combineFunctionDefinitions(ListOfSubsystems, **kwargs)
+            self.combineUnitDefinitions(ListOfSubsystems, **kwargs)
+        # For biocircuits specific annotations:
+        self.fixAnnotations(**kwargs)
 
         check(model.getCompartment(0).setSize(total_size), 'setting compartment size in model')
         # Updating model id
         check(model.setId('combined_model_of_' + mod_id),'setting new model id for shared model')
         return self.getSBMLDocument()
   
-    def combineSubsystem(self, ListOfResources, mode = 'virtual'):
-        self.combineSpecies([], ListOfResources, mode)        
-        self.combineCompartments([])
-        self.combineParameters([])
-        self.combineReactions([])
-        self.combineUnitDefinitions([])
-        self.combineFunctionDefinitions([])
-        self.combineEvents([])
+    def combineSubsystem(self, ListOfResources, mode = 'virtual', **kwargs):
+        '''
+        Returns SBML document object of the current Susbsytem object with all duplicate species, reactions etc. combined together.
+        Can be used to implement resource sharing within a given Subsystem object.
+        '''
+        self.combineCompartments([], **kwargs)
+        self.combineSpecies([], ListOfResources, mode, **kwargs)        
+        self.combineParameters([], **kwargs)
+        self.combineReactions([], **kwargs)
+        self.combineUnitDefinitions([], **kwargs)
+        self.combineFunctionDefinitions([], **kwargs)
+        self.combineEvents([], **kwargs)
         return self.getSBMLDocument()
 
     
-    def connectSubsystems(self, ListOfSubsystems, connectionMap, mode = 'virtual', combineNames = True, amount_mode = 'additive', connected_species_amount = 0):
+    def connectSubsystems(self, ListOfSubsystems, connectionMap, mode = 'virtual', combineNames = True, amount_mode = 'additive', connected_species_amount = 0, **kwargs):
         '''
         The ListOfSubsystems are combined together as in combineSubsystems 
         method (depending on combineNames). Using the map given in connectionMap
@@ -660,10 +662,10 @@ class Subsystem(object):
         or ('constant') mode will set the amount equal to that of the last optional argument, connected_species_amount, which the user provides. 
         Returns the connected SBMLDocument object of this Subsystem
         '''
-        self.combineSubsystems(ListOfSubsystems, mode, combineNames)
+        self.combineSubsystems(ListOfSubsystems, mode, combineNames, **kwargs)
         model = self.getSBMLDocument().getModel()
         check(model,'retreiving self model in connectSubsystem')
-        simpleModel = SimpleModel(model)
+        simpleModel = SimpleModel(model, **kwargs)
         if amount_mode == 'additive':
             connected_species_amount = []
         elif amount_mode == 'constant':
@@ -673,8 +675,8 @@ class Subsystem(object):
                 connected_species_amount = [connected_species_amount]
 
         for species_name in connectionMap.keys():
-            species1 = simpleModel.getSpeciesByName(species_name)
-            species2 = simpleModel.getSpeciesByName(connectionMap[species_name])
+            species1 = simpleModel.getSpeciesByName(species_name, **kwargs)
+            species2 = simpleModel.getSpeciesByName(connectionMap[species_name], **kwargs)
             if amount_mode == 'additive':
                 connected_species_amount.append(species1.getInitialAmount() + species2.getInitialAmount())
             if type(species1) is not list:
@@ -688,7 +690,7 @@ class Subsystem(object):
             raise ValueError('The connected species amount list must have same length as the keys in connection map given')
 
         for species_name, amount in zip(connectionMap.keys(), connected_species_amount):
-            species1 = simpleModel.getSpeciesByName(species_name)
+            species1 = simpleModel.getSpeciesByName(species_name, **kwargs)
             if type(species1) is not list:
                 species1 = [species1]
             count = 0
@@ -702,12 +704,12 @@ class Subsystem(object):
                 if count >= 1:
                     model.removeSpecies(species.getId())
                 count += 1
-
         # self.combineSpecies([], [], mode)
         check(model.setId('connected_subsystems_' + model.getId()),'setting new model id for shared model')
         return self.getSBMLDocument()
 
-    def shareSpecies(self, ListOfSubsystems, ListOfResources, mode):
+    def shareSpecies(self, ListOfSubsystems, ListOfResources, mode, **kwargs):
+        verbose = kwargs.get('verbose') if 'verbose' in kwargs else None
         model = self.getSBMLDocument().getModel()
         if ListOfSubsystems == []:
             if self.isSetSystem():
@@ -735,7 +737,7 @@ class Subsystem(object):
                         if species.isSetName() and comp.getName() == compartment.getName() and species.getName() in ListOfResources:
                             species_hash_map[species.getId()] = species.getName()
                         elif not species.isSetName():
-                            warnings.warn('Species {0} does not have a name attribute. It might be duplicated.'.format(species.getId()))
+                            warnings.warn('Species {0} does not have a name attribute. It might be duplicated.'.format(species.getId())) if verbose else None
                             continue
                     for species_id, species_str in species_hash_map.items():
                         if final_species_hash_map.get(species_str):
@@ -752,13 +754,13 @@ class Subsystem(object):
                             check(species,'retreiving species by id in shareSpecies if case')
                             if species.isSetUnits():
                                 if species.getUnits() != uni_sp.getUnits():
-                                    warnings.warn('Species with same name have different units. They will not be combined. For {0} species id.'.format(species.getId()))
+                                    warnings.warn('Species with same name have different units. They will not be combined. For {0} species id.'.format(species.getId())) if verbose else None
                                     break
                             if species.getConstant() != uni_sp.getConstant():
-                                warnings.warn('Species with same name have different constant attribute. They will not be combined. For {0} species id.'.format(species.getId()))
+                                warnings.warn('Species with same name have different constant attribute. They will not be combined. For {0} species id.'.format(species.getId())) if verbose else None
                                 break
                             if species.getBoundaryCondition() != uni_sp.getBoundaryCondition():
-                                warnings.warn('Species with same name have different boundary condition attribute. They will not be combined. For {0} species id.'.format(species.getId()))
+                                warnings.warn('Species with same name have different boundary condition attribute. They will not be combined. For {0} species id.'.format(species.getId())) if verbose else None
                                 break
                             mod = species.getModel()
                             compartment = mod.getElementBySId(species.getCompartment())
@@ -791,7 +793,7 @@ class Subsystem(object):
                                     self.renameSId(oldid, newid)
                                     if count >= 1 :
                                         check(model.removeSpecies(newid), 'removing duplicate species in shareSpecies if case')
-                                        warnings.warn('Removing duplicates of species {0} in the same compartment'.format(newid))
+                                        warnings.warn('Removing duplicates of species {0} in the same compartment'.format(newid)) if verbose else None
                                         id_added_species = newid
                                     count += 1
                                 if mode == 'volume':
@@ -830,7 +832,7 @@ class Subsystem(object):
                         for species in sub_model.getListOfSpecies():
                             comp = sub_model.getElementBySId(species.getCompartment())
                             if not species.isSetName():
-                                warnings.warn('Species {0} does not have a name attribute. It may be duplicated.'.format(species.getId()))
+                                warnings.warn('Species {0} does not have a name attribute. It may be duplicated.'.format(species.getId())) if verbose else None
                                 continue
                             elif species.getName() in ListOfResources and comp.getName() == compartment.getName():
                                 # Maintain the dictionary for all species in the input subsystems by their name
@@ -862,13 +864,13 @@ class Subsystem(object):
                     for species in final_species_hash_map[unique_species_name]:
                         if species.isSetUnits():
                             if species.getUnits() != uni_sp.getUnits():
-                                warnings.warn('Species with same name have different units. They will not be combined. For {0} species id.'.format(species.getId()))
+                                warnings.warn('Species with same name have different units. They will not be combined. For {0} species id.'.format(species.getId())) if verbose else None
                                 break
                         if species.getConstant() != uni_sp.getConstant():
-                            warnings.warn('Species with same name have different constant attribute. They will not be combined. For {0} species id.'.format(species.getId()))
+                            warnings.warn('Species with same name have different constant attribute. They will not be combined. For {0} species id.'.format(species.getId())) if verbose else None
                             break
                         if species.getBoundaryCondition() != uni_sp.getBoundaryCondition():
-                            warnings.warn('Species with same name have different boundary condition attribute. They will not be combined. For {0} species id.'.format(species.getId()))
+                            warnings.warn('Species with same name have different boundary condition attribute. They will not be combined. For {0} species id.'.format(species.getId())) if verbose else None
                             break
                         mod = species.getModel()
                         comp = mod.getElementBySId(species.getCompartment()) 
@@ -902,7 +904,7 @@ class Subsystem(object):
                                 self.renameSId(oldid, newid)
                                 if count >= 1:
                                     check(model.removeSpecies(newid),'remove duplicate species in shareSpecies' + newid)
-                                    warnings.warn('Remove duplicate species {0} in the same compartment'.format(newid))
+                                    warnings.warn('Remove duplicate species {0} in the same compartment'.format(newid)) if verbose else None
                                 else:
                                     id_added_species = newid
                                 count += 1
@@ -910,8 +912,38 @@ class Subsystem(object):
                                 check(model.getSpecies(id_added_species).setInitialAmount(cumulative_amount/total_size),'set initial amount to cumulative in volume mode in combineSpecies else case')
         return self.getSBMLDocument()
 
+    def fixAnnotations(self, **kwargs):
+        '''
+            The following code is bioscrape specific (reading propensity types in reaction annotation)
+            Will probably be all ignored if the SBML model is not generated by one of biocircuits tools 
+            suite and hence there should not be any effect on other models.
+        '''
+        verbose = kwargs.get('verbose') if 'verbose' in kwargs else None
+        for reaction in self.getSBMLDocument().getModel().getListOfReactions():
+            #biocircuits tools suite specific code begin
+            annotation_string = reaction.getAnnotationString()
+            if 'PropensityType' in annotation_string:
+                ind0 = annotation_string.find('<PropensityType>')
+                ind1 = annotation_string.find('</PropensityType>')
+                if ind0 == -1 or ind1 == -1:
+                    reaction.unsetAnnotation()
+                annotation_list = annotation_string[ind0:ind1].split(' ')
+                key_vals = [(i.split('=')[0], i.split('=')[1]) for i in annotation_list if '=' in i]
+                updated_annotation = '<PropensityType> '
+                for (k, v) in key_vals:
+                    if v in self.changeLog.keys():
+                        v = self.changeLog[v]
+                    updated_annotation += k + '=' + v + ' '
+                updated_annotation += ' </PropensityType>'
+                reaction.unsetAnnotation()
+                reaction.setAnnotation(updated_annotation)
+                if verbose:
+                    warnings.warn('Annotated propensity updated to: ' + updated_annotation)
+        return self.getSBMLDocument()
 
-    def combineSpecies(self, ListOfSubsystems, ListOfResources, mode):
+
+    def combineSpecies(self, ListOfSubsystems, ListOfResources, mode, **kwargs):
+        verbose = kwargs.get('verbose') if 'verbose' in kwargs else None
         model = self.getSBMLDocument().getModel()
         if ListOfSubsystems == []:
             if self.isSetSystem():
@@ -929,7 +961,7 @@ class Subsystem(object):
                     if species.isSetName() and comp.getName() == compartment.getName():
                         species_hash_map[species.getId()] = species.getName()
                     elif not species.isSetName():
-                        warnings.warn('Species {0} does not have a name attribute. It might be duplicated.'.format(species.getId()))
+                        warnings.warn('Species {0} does not have a name attribute. It might be duplicated.'.format(species.getId())) if verbose else None
                         continue
                 for species_id, species_str in species_hash_map.items():
                     if final_species_hash_map.get(species_str):
@@ -948,13 +980,13 @@ class Subsystem(object):
                         check(species,'retreiving species by id in combineSubsystem virtual')
                         if species.isSetUnits():
                             if species.getUnits() != uni_sp.getUnits():
-                                warnings.warn('Species with same name have different units. They will not be combined. For {0} species id.'.format(species.getId()))
+                                warnings.warn('Species with same name have different units. They will not be combined. For {0} species id.'.format(species.getId())) if verbose else None
                                 break
                         if species.getConstant() != uni_sp.getConstant():
-                            warnings.warn('Species with same name have different constant attribute. They will not be combined. For {0} species id.'.format(species.getId()))
+                            warnings.warn('Species with same name have different constant attribute. They will not be combined. For {0} species id.'.format(species.getId())) if verbose else None
                             break
                         if species.getBoundaryCondition() != uni_sp.getBoundaryCondition():
-                            warnings.warn('Species with same name have different boundary condition attribute. They will not be combined. For {0} species id.'.format(species.getId()))
+                            warnings.warn('Species with same name have different boundary condition attribute. They will not be combined. For {0} species id.'.format(species.getId())) if verbose else None
                             break
                         species_comp = comp.getName()
                         if comp_dict.get(species_comp):
@@ -988,7 +1020,7 @@ class Subsystem(object):
                                 self.renameSId(oldid, newid)
                                 if count >= 1 :
                                     check(model.removeSpecies(newid), 'removing duplicate species in combineSpecies if case')
-                                    warnings.warn('Removing duplicates of species {0} in the same compartment'.format(newid))
+                                    warnings.warn('Removing duplicates of species {0} in the same compartment'.format(newid)) if verbose else None
                                     id_added_species = newid
                                 count += 1
                             if mode == 'volume':
@@ -1019,7 +1051,7 @@ class Subsystem(object):
                     for species in sub_model.getListOfSpecies():
                         comp = sub_model.getElementBySId(species.getCompartment())
                         if not species.isSetName():
-                            warnings.warn('Species {0} does not have a name attribute. It may be duplicated.'.format(species.getId()))
+                            warnings.warn('Species {0} does not have a name attribute. It may be duplicated.'.format(species.getId())) if verbose else None
                             continue
                         elif comp.getName() == compartment.getName():
                             # Maintain the dictionary for all species in the input subsystems by their name
@@ -1050,13 +1082,13 @@ class Subsystem(object):
                         comp = mod.getElementBySId(species.getCompartment())
                         if species.isSetUnits():
                             if species.getUnits() != uni_sp.getUnits():
-                                warnings.warn('Species with same name have different units. They will not be combined. For {0} species id.'.format(species.getId()))
+                                warnings.warn('Species with same name have different units. They will not be combined. For {0} species id.'.format(species.getId())) if verbose else None
                                 break
                         if species.getConstant() != uni_sp.getConstant():
-                            warnings.warn('Species with same name have different constant attribute. They will not be combined. For {0} species id.'.format(species.getId()))
+                            warnings.warn('Species with same name have different constant attribute. They will not be combined. For {0} species id.'.format(species.getId())) if verbose else None
                             break
                         if species.getBoundaryCondition() != uni_sp.getBoundaryCondition():
-                            warnings.warn('Species with same name have different boundary condition attribute. They will not be combined. For {0} species id.'.format(species.getId()))
+                            warnings.warn('Species with same name have different boundary condition attribute. They will not be combined. For {0} species id.'.format(species.getId())) if verbose else None
                             break
                         species_comp = comp.getName()
                         if comp_dict.get(species_comp):
@@ -1090,7 +1122,7 @@ class Subsystem(object):
                                 self.renameSId(oldid, newid)
                                 if count >= 1:
                                     check(model.removeSpecies(newid),'remove duplicate species - ' + newid)
-                                    warnings.warn('Removing duplicate species {0} in the same compartment'.format(newid))
+                                    warnings.warn('Removing duplicate species {0} in the same compartment'.format(newid)) if verbose else None
                                 else:
                                     id_added_species = newid
                                 count += 1
@@ -1105,7 +1137,8 @@ class Subsystem(object):
                             check(spe.setInitialAmount(cumulative_amount/total_size), 'setting amount to species in combineSpecies, volume mode, else case, species that are not combined')
         return self.getSBMLDocument()
 
-    def combineParameters(self, ListOfSubsystems):
+    def combineParameters(self, ListOfSubsystems, **kwargs):
+        verbose = kwargs.get('verbose') if 'verbose' in kwargs else None
         model = self.getSBMLDocument().getModel()
         if ListOfSubsystems == []:
             model = self.getSBMLDocument().getModel()
@@ -1115,7 +1148,7 @@ class Subsystem(object):
                 if parameter_hash_map.get(parameter.getId()):
                     raise ValueError('Multiple parameters with same identifier found. This is an invalid SBML.')
                 if not parameter.isSetName():
-                    warnings.warn('Parameter with id {0} does not have name attribute set. To avoid duplicates, use name argument.'.format(parameter.getId()))
+                    warnings.warn('Parameter with id {0} does not have name attribute set. To avoid duplicates, use name argument.'.format(parameter.getId())) if verbose else None
                     continue 
                 parameter_hash_map[parameter.getId()] = parameter.getName()
             for parameter_id, parameter_str in parameter_hash_map.items():
@@ -1131,10 +1164,10 @@ class Subsystem(object):
                         i = model.getElementBySId(sp_id)
                         if i.isSetUnits():
                             if i.getUnits() != uni_param.getUnits():
-                                warnings.warn('Parameters with same name have different units. They will not be combined. For {0} parameter id.'.format(i.getId()))
+                                warnings.warn('Parameters with same name have different units. They will not be combined. For {0} parameter id.'.format(i.getId())) if verbose else None
                                 break
                         if i.getConstant() != uni_param.getConstant():
-                            warnings.warn('Parameters with same name have different constant attribute. They will not be combined. For {0} parameter id.'.format(i.getId()))
+                            warnings.warn('Parameters with same name have different constant attribute. They will not be combined. For {0} parameter id.'.format(i.getId())) if verbose else None
                             break
                         model.addParameter(i)
                         oldid = i.getId()
@@ -1145,7 +1178,7 @@ class Subsystem(object):
                         self.renameSId(oldid, newid)
                         if count >= 1:
                             check(model.removeParameter(newid),'removing parameter in combineParameters')
-                            warnings.warn('Removing duplicate parameter {0} from the combined model'.format(i.getName()))
+                            warnings.warn('Removing duplicate parameter {0} from the combined model'.format(i.getName())) if verbose else None
                         count += 1  
         else:  
             final_parameter_hash_map = {}
@@ -1155,7 +1188,7 @@ class Subsystem(object):
                 for parameter in sub_model.getListOfParameters():
                     # Maintain the dictionary for all parameter in the subsystems by their name and parameter they are in
                     if not parameter.isSetName():
-                        warnings.warn('Parameter with identifier {0} does not have a name argument. To avoid duplication, use name argument'.format(parameter.getId())) 
+                        warnings.warn('Parameter with identifier {0} does not have a name argument. To avoid duplication, use name argument'.format(parameter.getId())) if verbose else None
                         continue 
                     parameter_hash_map[parameter.getName()] = parameter 
                 for parameter_name in parameter_hash_map:
@@ -1184,25 +1217,26 @@ class Subsystem(object):
                         check(oldid, 'retreiving oldid in combineParameters')
                         if i.isSetValue():
                             if i.getValue() != uni_param.getValue():
-                                warnings.warn('Parameters found with same name but different values. They will not be combined together.')
+                                warnings.warn('Parameters found with same name but different values. They will not be combined together.') if verbose else None
                                 break 
                         if i.isSetUnits():
                             if i.getUnits() != uni_param.getUnits():
-                                warnings.warn('Parameters found with same name but different units. They will not be combined together.')
+                                warnings.warn('Parameters found with same name but different units. They will not be combined together.') if verbose else None
                                 break 
                         # Constant attribute is mandatory for valid SBML parameter
                         if i.getConstant() != uni_param.getConstant():
-                            warnings.warn('Parameters found with same name but different units. They will not be combined together.')
+                            warnings.warn('Parameters found with same name but different units. They will not be combined together.') if verbose else None
                             break 
                         # newid = i.getName() + '_combined'
                         self.renameSId(oldid, newid)
                         if count >= 1:
                             check(model.removeParameter(newid), 'removing parameter in combineParameters')
-                            warnings.warn('Removing duplicate parameter {0} from the combined model'.format(i.getName()))
+                            warnings.warn('Removing duplicate parameter {0} from the combined model'.format(i.getName())) if verbose else None
                         count += 1
         return self.getSBMLDocument()   
 
-    def combineCompartments(self, ListOfSubsystems):
+    def combineCompartments(self, ListOfSubsystems, **kwargs):
+        verbose = kwargs.get('verbose') if 'verbose' in kwargs else None
         model = self.getSBMLDocument().getModel()
         if ListOfSubsystems == []:
             model = self.getSBMLDocument().getModel()
@@ -1212,7 +1246,7 @@ class Subsystem(object):
                 if compartment_hash_map.get(compartment.getId()):
                     raise ValueError('Multiple compartments with same identifier found. This is an invalid SBML.')
                 if not compartment.isSetName():
-                    warnings.warn('Compartment with id {0} does not have name attribute set. To avoid duplicates, use name argument.'.format(compartment.getId()))
+                    warnings.warn('Compartment with id {0} does not have name attribute set. To avoid duplicates, use name argument.'.format(compartment.getId())) if verbose else None
                     continue 
                 compartment_hash_map[compartment.getId()] = compartment.getName()
             for compartment_id, compartment_str in compartment_hash_map.items():
@@ -1245,7 +1279,7 @@ class Subsystem(object):
                 for compartment in sub_model.getListOfCompartments():
                     # Maintain the dictionary for all compartment in the subsystems by their name and compartment they are in
                     if not compartment.isSetName():
-                        warnings.warn('Compartment with identifier {0} does not have a name argument. To avoid duplication, use name argument'.format(compartment.getId()))
+                        warnings.warn('Compartment with identifier {0} does not have a name argument. To avoid duplication, use name argument'.format(compartment.getId())) if verbose else None
                         continue
                     compartment_hash_map[compartment.getName()] = compartment
                 for compartment_name in compartment_hash_map:
@@ -1264,24 +1298,33 @@ class Subsystem(object):
             for comp_str in final_compartment_hash_map:
                 if len(final_compartment_hash_map[comp_str]) > 1:
                     uni_comp = final_compartment_hash_map[comp_str][0]
+                    count = 0
                     for ind in range(0,len(final_compartment_hash_map[comp_str])):
                         i = final_compartment_hash_map[comp_str][ind]
                         if i.getSize() != uni_comp.getSize():
-                            warnings.warn('Compartments found with same name but different sizes. They will not be combined together.')
+                            warnings.warn('Compartments found with same name but different sizes. They will not be combined together.') if verbose else None
                             break 
-                        # model.addCompartment(i)
+                        model.addCompartment(i)
                         allids = self.getAllIds()
                         trans = SetIdFromNames(allids)
                         newid = trans.getValidIdForName(uni_comp.getId()+'_combined')
-                        if ind > 0:
+                        if count >= 1:
                             self.renameSId(i.getId(), newid)
-                            # status = model.removeCompartment(newid)
-                            # if status != None:
-                                # warnings.warn('Removing all duplicates of the compartment {0} in the combined model.'.format(comp_str))
+                            # check(model.removeCompartment(newid),'removing compartment in combineCompartments')
+                        count += 1
                     self.renameSId(uni_comp.getId(), newid)
+        compartment_id = model.getCompartment(0).getId()
+        compartment_name = model.getCompartment(0).getName()
+        count = 0
+        for compartment in model.getListOfCompartments():
+            if compartment.getId() == compartment_id and count >= 1:
+                warnings.warn('Multiple compartments with same identifier found. Removing...') if verbose else None
+                model.removeCompartment(compartment.getId())
+            count += 1
         return self.getSBMLDocument()
     
-    def combineReactions(self, ListOfSubsystems):
+    def combineReactions(self, ListOfSubsystems, **kwargs):
+        verbose = kwargs.get('verbose') if 'verbose' in kwargs else None
         model = self.getSBMLDocument().getModel()
         if ListOfSubsystems == []:
             sub_model = self.getSBMLDocument().getModel()
@@ -1298,7 +1341,7 @@ class Subsystem(object):
                     if species.isSetName():
                         rStr += species.getName()
                     else:
-                        warnings.warn('Species {0} does not have a name attribute. Reactions might be duplicated.'.format(species.getId()))
+                        warnings.warn('Species {0} does not have a name attribute. Reactions might be duplicated.'.format(species.getId())) if verbose else None
                         break
                     if i < (len(rc1_list) - 1):
                         rStr += ' + '
@@ -1312,7 +1355,7 @@ class Subsystem(object):
                     if species.isSetName():
                         rStr += species.getName()
                     else:
-                        warnings.warn('Species {0} does not have a name attribute. Reactions might be duplicated.'.format(species.getId()))
+                        warnings.warn('Species {0} does not have a name attribute. Reactions might be duplicated.'.format(species.getId())) if verbose else None
                         break
                     if i < (len(pt1_list) - 1):
                         rStr += ' + '
@@ -1344,7 +1387,7 @@ class Subsystem(object):
                             self.renameSId(i.getId(),trans.getValidIdForName(uni_rxn.getId()+'_combined'))
                             status = sub_model.removeReaction(i.getId())
                             if status != None:
-                                warnings.warn('Removing all duplicates of the reaction {0} in the combined model. Check the reaction rate to ensure model is consistent.'.format(rxn_str))
+                                warnings.warn('Removing all duplicates of the reaction {0} in the combined model. Check the reaction rate to ensure model is consistent.'.format(rxn_str)) if verbose else None
                     self.renameSId(uni_rxn.getId(),trans.getValidIdForName(uni_rxn.getId()+'_combined'))
 
         else:
@@ -1363,7 +1406,7 @@ class Subsystem(object):
                         if species.isSetName():
                             rStr += species.getName()
                         else:
-                            warnings.warn('Species {0} does not have a name attribute. Reactions may be duplicated.'.format(species.getId()))
+                            warnings.warn('Species {0} does not have a name attribute. Reactions may be duplicated.'.format(species.getId())) if verbose else None
                             break
 
                         if i < (len(rc1_list) - 1):
@@ -1378,7 +1421,7 @@ class Subsystem(object):
                         if species.isSetName():
                             rStr += species.getName()
                         else:
-                            warnings.warn('Species {0} does not have a name attribute. Reactions may be duplicated.'.format(species.getId()))
+                            warnings.warn('Species {0} does not have a name attribute. Reactions may be duplicated.'.format(species.getId())) if verbose else None
                             break
 
                         if i < (len(pt1_list) - 1):
@@ -1407,11 +1450,14 @@ class Subsystem(object):
                             status = model.removeReaction(i.getId())
                             self.renameSId(i.getId(), trans.getValidIdForName(uni_rxn.getId() + '_combined'))
                             if status != None:
-                                warnings.warn('Removing all duplicates of the reaction {0} in the combined model. Check the reaction rate to ensure model is consistent.'.format(rxn_str))
+                                warnings.warn('Removing all duplicates of the reaction {0} in the combined model. Check the reaction rate to ensure model is consistent.'.format(rxn_str)) if verbose else None
                     self.renameSId(uni_rxn.getId(), trans.getValidIdForName(uni_rxn.getId() + '_combined'))
+        
+         
         return self.getSBMLDocument()
 
-    def combineUnitDefinitions(self, ListOfSubsystems):
+    def combineUnitDefinitions(self, ListOfSubsystems, **kwargs):
+        verbose = kwargs.get('verbose') if 'verbose' in kwargs else None
         model = self.getSBMLDocument().getModel()
         if ListOfSubsystems == []:
             model = self.getSBMLDocument().getModel()
@@ -1421,7 +1467,7 @@ class Subsystem(object):
                 if unit_definition_hash_map.get(unit_definition.getId()):
                     raise ValueError('Multiple unit_definitions with same identifier found. This is an invalid SBML.')
                 if not unit_definition.isSetName():
-                    warnings.warn('UnitDefinition with id {0} does not have name attribute set. To avoid duplicates, use name argument.'.format(unit_definition.getId()))
+                    warnings.warn('UnitDefinition with id {0} does not have name attribute set. To avoid duplicates, use name argument.'.format(unit_definition.getId())) if verbose else None
                     continue 
                 unit_definition_hash_map[unit_definition.getId()] = unit_definition.getName()
             for unit_definition_id, unit_definition_str in unit_definition_hash_map.items():
@@ -1440,7 +1486,7 @@ class Subsystem(object):
                         if count >= 1:
                             self.renameSId(i.getId(), trans.getValidIdForName(uni_uni_def.getId()+'_combined'))
                             check(model.removeUnitDefinition(i.getId()),'removing unit_definition in combineUnitDefinitions')
-                            warnings.warn('Removing duplicate UnitDefinition of identifier {0}. Check the definition to ensure consistency.'.format(sp_id))
+                            warnings.warn('Removing duplicate UnitDefinition of identifier {0}. Check the definition to ensure consistency.'.format(sp_id)) if verbose else None
                         count += 1  
                     self.renameSId(uni_uni_def.getId(), trans.getValidIdForName(uni_uni_def.getId()+'_combined'))
         else:  
@@ -1451,7 +1497,7 @@ class Subsystem(object):
                 for unit_definition in sub_model.getListOfUnitDefinitions():
                     # Maintain the dictionary for all unit_definition in the subsystems by their name and unit_definition they are in
                     if not unit_definition.isSetName():
-                        warnings.warn('UnitDefinition with identifier {0} does not have a name argument. To avoid duplication, use name argument'.format(unit_definition.getId()))
+                        warnings.warn('UnitDefinition with identifier {0} does not have a name argument. To avoid duplication, use name argument'.format(unit_definition.getId())) if verbose else None
                         continue
                     unit_definition_hash_map[unit_definition.getName()] = unit_definition
                 for unit_definition_name in unit_definition_hash_map:
@@ -1479,11 +1525,12 @@ class Subsystem(object):
                             self.renameSId(i.getId(), trans.getValidIdForName(uni_uni_def.getId()+'_combined'))
                             status = model.removeUnitDefinition(uni_uni_def.getId() + '_combined')
                             if status != None:
-                                warnings.warn('Removing duplicate unit_definition {0} in the combined model. Check other attributes to ensure consistency.'.format(uni_def_str))
+                                warnings.warn('Removing duplicate unit_definition {0} in the combined model. Check other attributes to ensure consistency.'.format(uni_def_str)) if verbose else None
                     self.renameSId(uni_uni_def.getId(), trans.getValidIdForName(uni_uni_def.getId()+'_combined'))
         return self.getSBMLDocument()
    
-    def combineEvents(self, ListOfSubsystems):
+    def combineEvents(self, ListOfSubsystems, **kwargs):
+        verbose = kwargs.get('verbose') if 'verbose' in kwargs else None
         model = self.getSBMLDocument().getModel()
         if ListOfSubsystems == []:
             model = self.getSBMLDocument().getModel()
@@ -1493,7 +1540,7 @@ class Subsystem(object):
                 if event_hash_map.get(event.getId()):
                     raise ValueError('Multiple events with same identifier found. This is an invalid SBML.')
                 if not event.isSetName():
-                    warnings.warn('Event with id {0} does not have name attribute set. To avoid duplicates, use name argument.'.format(event.getId()))
+                    warnings.warn('Event with id {0} does not have name attribute set. To avoid duplicates, use name argument.'.format(event.getId())) if verbose else None
                     continue 
                 event_hash_map[event.getId()] = event.getName()
             for event_id, event_str in event_hash_map.items():
@@ -1512,7 +1559,7 @@ class Subsystem(object):
                         if count >= 1:
                             self.renameSId(i.getId(), trans.getValidIdForName(uni_eve.getId()+'_combined'))
                             check(model.removeEvent(i.getId()),'removing event in combineEvents')
-                            warnings.warn('Removing duplicate event {0} in the combined model. Check other attributes to ensure consistency.'.format(unique_event_str))
+                            warnings.warn('Removing duplicate event {0} in the combined model. Check other attributes to ensure consistency.'.format(unique_event_str)) if verbose else None
                         count += 1  
                     self.renameSId(uni_eve.getId(), trans.getValidIdForName(uni_eve.getId()+'_combined'))
         else:  
@@ -1523,7 +1570,7 @@ class Subsystem(object):
                 for event in sub_model.getListOfEvents():
                     # Maintain the dictionary for all event in the subsystems by their name and event they are in
                     if not event.isSetName():
-                        warnings.warn('Event with identifier {0} does not have a name argument. To avoid duplication, use name argument'.format(event.getId()))
+                        warnings.warn('Event with identifier {0} does not have a name argument. To avoid duplication, use name argument'.format(event.getId())) if verbose else None
                         continue
                     event_hash_map[event.getName()] = event
                 for event_name in event_hash_map:
@@ -1551,12 +1598,13 @@ class Subsystem(object):
                             self.renameSId(i.getId(), trans.getValidIdForName(uni_eve.getId()+'_combined'))
                             status = model.removeEvent(uni_eve.getId() + '_combined')
                             if status != None:
-                                warnings.warn('Removing all duplicates of the event {0} in the combined model. Check other attributes to ensure consistency.'.format(eve_str))
+                                warnings.warn('Removing all duplicates of the event {0} in the combined model. Check other attributes to ensure consistency.'.format(eve_str)) if verbose else None
                     self.renameSId(uni_eve.getId(), trans.getValidIdForName(uni_eve.getId()+'_combined'))
 
         return self.getSBMLDocument()
     
-    def combineFunctionDefinitions(self, ListOfSubsystems):
+    def combineFunctionDefinitions(self, ListOfSubsystems, **kwargs):
+        verbose = kwargs.get('verbose') if 'verbose' in kwargs else None
         model = self.getSBMLDocument().getModel()
         if ListOfSubsystems == []:
             model = self.getSBMLDocument().getModel()
@@ -1566,7 +1614,7 @@ class Subsystem(object):
                 if function_definition_hash_map.get(function_definition.getId()):
                     raise ValueError('Multiple function_definitions with same identifier found. This is an invalid SBML.')
                 if not function_definition.isSetName():
-                    warnings.warn('FunctionDefinition with id {0} does not have name attribute set. To avoid duplicates, use name argument.'.format(function_definition.getId()))
+                    warnings.warn('FunctionDefinition with id {0} does not have name attribute set. To avoid duplicates, use name argument.'.format(function_definition.getId())) if verbose else None
                     continue 
                 function_definition_hash_map[function_definition.getId()] = function_definition.getName()
             for function_definition_id, function_definition_str in function_definition_hash_map.items():
@@ -1585,7 +1633,7 @@ class Subsystem(object):
                         if count >= 1:
                             self.renameSId(i.getId(), trans.getValidIdForName(uni_func_def.getId()+'_combined'))
                             check(model.removeFunctionDefinition(i.getId()),'removing function_definition in combineFunctionDefinitions')
-                            warnings.warn('Removing all duplicates of the function definition {0} in the combined model. Check other attributes to ensure consistency.'.format(unique_function_definition_str))
+                            warnings.warn('Removing all duplicates of the function definition {0} in the combined model. Check other attributes to ensure consistency.'.format(unique_function_definition_str)) if verbose else None
                         count += 1  
                     self.renameSId(uni_func_def.getId(), trans.getValidIdForName(uni_func_def.getId()+'_combined'))
         else:  
@@ -1596,7 +1644,7 @@ class Subsystem(object):
                 for function_definition in sub_model.getListOfFunctionDefinitions():
                     # Maintain the dictionary for all function_definition in the subsystems by their name and function_definition they are in
                     if not function_definition.isSetName():
-                        warnings.warn('FunctionDefinition with identifier {0} does not have a name argument. To avoid duplication, use name argument'.format(function_definition.getId()))
+                        warnings.warn('FunctionDefinition with identifier {0} does not have a name argument. To avoid duplication, use name argument'.format(function_definition.getId())) if verbose else None
                         continue
                     function_definition_hash_map[function_definition.getName()] = function_definition
                 for function_definition_name in function_definition_hash_map:
@@ -1624,14 +1672,16 @@ class Subsystem(object):
                             self.renameSId(i.getId(), trans.getValidIdForName(uni_func_def.getId()+'_combined'))
                             status = model.removeFunctionDefinition(uni_func_def.getId() + '_combined')
                             if status != None:
-                                warnings.warn('Removing all duplicates of the function_definition {0} in the combined model. Check other attributes to ensure consistency.'.format(func_def_str))
+                                warnings.warn('Removing all duplicates of the function_definition {0} in the combined model. Check other attributes to ensure consistency.'.format(func_def_str)) if verbose else None
                     self.renameSId(uni_func_def.getId(), trans.getValidIdForName(uni_func_def.getId()+'_combined'))
         return self.getSBMLDocument()
    
-    def getCompartmentsByName(self, name):
+
+    def getCompartmentsByName(self, name, **kwargs):
         ''' 
         Returns a list of compartments in the Subsystem with the given name
         '''
+        verbose = kwargs.get('verbose') if 'verbose' in kwargs else None
         if type(name) is not str:
             raise ValueError('The arguments are not of expected type.') 
         model = self.getSBMLDocument().getModel()
@@ -1642,22 +1692,22 @@ class Subsystem(object):
                 if compartment.getName() == name:
                     compartment_found.append(compartment)
             else:
-                warnings.warn('Compartment {0} does not have a name attribute. It will not be returned in the list returned in this getCompartmentsByName call.'.format(compartment.getId()))
+                warnings.warn('Compartment {0} does not have a name attribute. It will not be returned in the list returned in this getCompartmentsByName call.'.format(compartment.getId())) if verbose else None
         if len(compartment_found) == 1:
             return compartment_found[0] 
         elif not compartment_found:
             raise ValueError('The compartment ' + name + ' not found.')
         else:
-            warnings.warn('Multiple compartments with name ' + name + ' found. Returning a list')
+            warnings.warn('Multiple compartments with name ' + name + ' found. Returning a list') if verbose else None
             return compartment_found
  
-    def setSpeciesAmount(self, inputSpecies, amount, comp_name = ''):
+    def setSpeciesAmount(self, inputSpecies, amount, compartment = ''):
         '''
         Sets amount of the species with the same name as inputSpecies argument equal to the amount argument
         Arguments may both be lists of same length.
         Returns the updated SBMLDocument object of this Subsystem.
         '''
-        if comp_name == '':
+        if compartment == '':
             if type(inputSpecies) is list:
                 for inp_sp,amt in zip(inputSpecies,amount):
                     if type(inp_sp) is not str:
@@ -1673,6 +1723,7 @@ class Subsystem(object):
                             raise ValueError('The amount should be either a float or an int')
                         check(sp.setInitialAmount(amt),'setting initial amount')
             else:
+                amt = amount
                 if type(inputSpecies) is not str:
                     raise ValueError('inputSpecies argument must be a string or a list of strings.')
                 sp = self.getSpeciesByName(inputSpecies)
@@ -1687,56 +1738,57 @@ class Subsystem(object):
                     check(sp.setInitialAmount(amount),'setting initial amount')
         else:
             model = self.getSBMLDocument().getModel()
-            comp = self.getCompartmentsByName(comp_name)
+            comp = self.getCompartmentsByName(compartment)
             if type(comp) is not list: 
-                comp_name = comp.getId()
+                compartment = comp.getId()
                 if type(inputSpecies) is str:
-                    if not isinstance(amount, (int, float)) or type(comp_name) is not str:
-                        raise ValueError('Amount argument must be int or float and comp_name argument must be string')
+                    if not isinstance(amount, (int, float)) or type(compartment) is not str:
+                        raise ValueError('Amount argument must be int or float and compartment argument must be string')
                     species = self.getSpeciesByName(inputSpecies)
                     if type(species) is not list:
-                        if species.getCompartment() == comp_name:
+                        if species.getCompartment() == compartment:
                             check(species.setInitialAmount(amount), 'setting initial amount in setSpeciesAmount for single species case with compartment')
                     elif type(species) is list:
                         for sp in species:
-                            if sp.getCompartment() == comp_name:
+                            if sp.getCompartment() == compartment:
                                 check(sp.setInitialAmount(amount), 'setting initial amount in setSpeciesAmount for single species case with compartment')
                 
                 elif type(inputSpecies) is list:
                     if len(inputSpecies) != len(amount):
-                        raise ValueError('Length of species name list, amount list, and comp_name must be equal')
+                        raise ValueError('Length of species name list, amount list, and compartment must be equal')
                     for species in model.getListOfSpecies():
                         for sp,am in zip(inputSpecies,amount):
-                            if type(sp) is not str or not isinstance(am, (float,int)) or type(comp_name) is not str:
-                                raise ValueError('inputSpecies list must have all string arguments, comp_name must have all string arguments, and amount list must have all float or int')
-                            if species.getName() == sp and species.getCompartment() == comp_name:
+                            if type(sp) is not str or not isinstance(am, (float,int)) or type(compartment) is not str:
+                                raise ValueError('inputSpecies list must have all string arguments, compartment must have all string arguments, and amount list must have all float or int')
+                            if species.getName() == sp and species.getCompartment() == compartment:
                                 check(sp.setInitialAmount(am),'setting initial amount in setSpeciesAmount list of species case with compartment')
             elif type(comp) is list:
                 for c in comp:
-                    comp_name = c.getId()
+                    compartment = c.getId()
                     if type(inputSpecies) is str:
-                        if not isinstance(amount, (int, float)) or type(comp_name) is not str:
-                            raise ValueError('Amount argument must be int or float and comp_name argument must be string')
+                        if not isinstance(amount, (int, float)) or type(compartment) is not str:
+                            raise ValueError('Amount argument must be int or float and compartment argument must be string')
                         species = self.getSpeciesByName(inputSpecies)
                         if type(species) is not list:
-                            if species.getCompartment() == comp_name:
+                            if species.getCompartment() == compartment:
                                 check(species.setInitialAmount(amount), 'setting initial amount in setSpeciesAmount for single species case with compartment')
                         elif type(species) is list:
                             for sp in species:
-                                if sp.getCompartment() == comp_name:
+                                if sp.getCompartment() == compartment:
                                     check(species.setInitialAmount(amount), 'setting initial amount in setSpeciesAmount for single species case with compartment')
                     
                     elif type(inputSpecies) is list:
                         if len(inputSpecies) != len(amount):
-                            raise ValueError('Length of species name list, amount list, and comp_name must be equal')
+                            raise ValueError('Length of species name list, amount list, and compartment must be equal')
                         for species in model.getListOfSpecies():
                             for sp,am in zip(inputSpecies,amount):
-                                if type(sp) is not str or not isinstance(am, (float,int)) or type(comp_name) is not str:
-                                    raise ValueError('inputSpecies list must have all string arguments, comp_name must have all string arguments, and amount list must have all float or int')
-                                if species.getName() == sp and species.getCompartment() == comp_name:
+                                if type(sp) is not str or not isinstance(am, (float,int)) or type(compartment) is not str:
+                                    raise ValueError('inputSpecies list must have all string arguments, compartment must have all string arguments, and amount list must have all float or int')
+                                if species.getName() == sp and species.getCompartment() == compartment:
                                     check(sp.setInitialAmount(am),'setting initial amount in setSpeciesAmount list of species case with compartment')
             else:
                 raise ValueError('inputSpecies argument must be a string or a list of strings')
+        return True
 
     # Fast attribute in reactions is now obsolete in SBML L3V2
     # def getFastReactions(self):
@@ -1766,6 +1818,11 @@ class Subsystem(object):
     #         model.getReaction(index-1).setFast(True)
     #     return self.getSBMLDocument()
         
+    def writeSBML(self, filename):
+        '''
+        Writes current Subsystem to a SBML file (given by filename)
+        '''
+        return libsbml.writeSBML(self.getSBMLDocument(), filename)
 
     def getReversibleReactions(self):
         '''
@@ -1864,138 +1921,41 @@ class Subsystem(object):
         return newSubsystem
 
 
-    # Fast attribute in Reactions is now obsolete in SBML L3V2. This function depends on it so is now commented out.
-    # def modelReduce(self, timepoints):
-    #     ''' 
-    #     Reduces the model by removing the reactions which are set as fast
-    #     in the Subsystem model. The timepoints are used to simulate the
-    #     fast reactions for these timepoints. The steady state values of 
-    #     the involved species in the fast reactions are used in the
-    #     reduced model as their initial value. 
-    #     Returns the Subsystem object with the reduced model obtained.
-    #     NOTE : Need bioscrape package installed for simulations.  
-    #     '''
-    #     reducedSubsystem = self.getSystem().createNewSubsystem()
-    #     model_orig = self.getSBMLDocument().getModel()
-    #     reducedSubsystem.getSBMLDocument().setModel(model_orig)
-    #     mod = reducedSubsystem.getSBMLDocument().getModel()
-
-    #     fastRxns = self.getFastReactions()
-    #     fastSubsystem = self.getSystem().createNewSubsystem()
-    #     fastModel = fastSubsystem.createNewModel('fastModel', mod.getTimeUnits(), mod.getExtentUnits(), mod.getSubstanceUnits() )
-    #     # adding all global (model level) components of the model
-    #     # to the fastModel, except reactions and species
-    #     if mod.getNumCompartmentTypes() != 0:
-    #         for each_compartmentType in mod.getListOfCompartmentType():
-    #             fastModel.addCompartment(each_compartmentType)
-    #     if mod.getNumConstraints() != 0:
-    #         for each_constraint in mod.getListOfConstraints():
-    #             fastModel.addConstraint(each_constraint)
-    #     if mod.getNumInitialAssignments() != 0:
-    #         for each_initialAssignment in mod.getListOfInitialAssignments():
-    #             fastModel.addInitialAssignment(each_initialAssignment)
-    #     if mod.getNumFunctionDefinitions() != 0:
-    #         for each_functionDefinition in mod.getListOfFunctionDefinitions():
-    #             fastModel.addFunctionDefinition(each_functionDefinition)
-    #     if mod.getNumRules() != 0:
-    #         for each_rule in mod.getListOfRules():
-    #             fastModel.addRule(each_rule)
-    #     if mod.getNumEvents() != 0:
-    #         for each_event in mod.getListOfEvents():
-    #             fastModel.addEvent(each_event)
-    #     if mod.getNumCompartments() != 0:
-    #         for each_compartment in mod.getListOfCompartments():
-    #             fastModel.addCompartment(each_compartment)
-    #     if mod.getNumParameters() != 0:
-    #         for each_parameter in mod.getListOfParameters():
-    #             fastModel.addParameter(each_parameter)
-    #     if mod.getNumUnitDefinitions() != 0:
-    #         for each_unit in mod.getListOfUnitDefinitions():
-    #             fastModel.addUnitDefinition(each_unit)
-    #     fastModel.setAreaUnits(mod.getAreaUnits())
-    #     fastModel.setExtentUnits(mod.getExtentUnits())
-    #     fastModel.setLengthUnits(mod.getLengthUnits())
-    #     fastModel.setSubstanceUnits(mod.getSubstanceUnits())
-    #     fastModel.setTimeUnits(mod.getTimeUnits())
-    #     fastModel.setVolumeUnits(mod.getVolumeUnits())
-
-    #    # adding the reactions that are fast and the species used in them to 
-    #     # the fast model
-    #     for rxn in fastRxns:
-    #         fastModel.addReaction(rxn)
-    #         mod.removeReaction(rxn.getId())
-    #         for reactant_ref in rxn.getListOfReactants():
-    #             fastModel.addSpecies(mod.getElementBySId(reactant_ref.getSpecies()))
-    #         for product_ref in rxn.getListOfProducts():
-    #             fastModel.addSpecies(mod.getElementBySId(product_ref.getSpecies()))
-        
-    #     # get equilibrium values for species in fast reactions
-    #     # writeSBML(fastSubsystem.getSBMLDocument(), 'models/intermediate_model.xml')
-    #     print('###### Simulating the fast reactions in the model...All other species and parameters will be marked useless')
-    #     time.sleep(2)
-    #     data, m = fastSubsystem.simulateSbmlWithBioscrape(0,timepoints)
-    #     allSpecies = fastModel.getListOfSpecies()
-    #     for i in range(len(allSpecies)):
-    #         species = mod.getElementBySId(allSpecies.get(i).getId())
-    #         newAmount = data[:,m.get_species_index(species.getId())][-1]
-    #         if newAmount > 0:
-    #             species.setInitialAmount(newAmount)
-    #         else:
-    #             species.setInitialAmount(0)
-    #     return reducedSubsystem
-    def simulateRoadRunner(self, initialTime, timepoints):
+    def simulateWithRoadRunner(self, initialTime, timepoints):
         ''' 
         To simulate a Subsystem without generating the plot. 
         Returns the data for all species which can be used to find out species indexes.
         NOTE : Needs RoadRunner package installed to simulate. 
+        TODO : Finish implementation
         '''
-        filename = 'models/temp.xml'
-        libsbml.writeSBML(self.getSBMLDocument(), filename) 
-        m = bioscrape.types.read_model_from_sbml(filename)
-        s = bioscrape.simulator.ModelCSimInterface(m)
-        s.py_prep_deterministic_simulation()
-        s.py_set_initial_time(initialTime)
-        sim = bioscrape.simulator.DeterministicSimulator()
-        result = sim.py_simulate(s, timepoints)
-        return result.py_get_result(), m
+        raise NotImplementedError
 
-    def plotRoadRunner(self, ListOfSpeciesToPlot, timepoints, xlabel = 'Time', ylabel = 'Concentration (AU)', sizeOfXLabels = 14, sizeOfYLabels = 14):
-        ''' 
-        To plot a Subsystem model using RoadRunner.
-        NOTE : Needs RoadRunner package installed to plot the Subsystem
-        TODO : Not Implemented
-        '''
-        filename = 'models/temp.xml'
-        libsbml.writeSBML(self.getSBMLDocument(), filename) 
-        # plotRoadRunner(filename, timepoints[0], timepoints, ListOfSpeciesToPlot, xlabel, ylabel, sizeOfXLabels, sizeOfYLabels)
-
-    def simulateBioscrape(self, initialTime, timepoints):
+    def simulateWithBioscrape(self, timepoints, stochastic = False, **kwargs):
         ''' 
         To simulate a Subsystem without generating the plot. 
         Returns the data for all species and bioscrape model object which can be used to find out species indexes.
         NOTE : Needs bioscrape package installed to simulate. 
         '''
-        filename = 'models/temp.xml'
+        try:
+            import bioscrape
+        except:
+            raise ValueError('Package not installed : bioscrape, simulation options with bioscrape will not work.') 
+        filename = 'temp.xml'
         libsbml.writeSBML(self.getSBMLDocument(), filename) 
-        m = bioscrape.types.read_model_from_sbml(filename)
-        s = bioscrape.simulator.ModelCSimInterface(m)
-        s.py_prep_deterministic_simulation()
-        s.py_set_initial_time(initialTime)
-        sim = bioscrape.simulator.DeterministicSimulator()
-        result = sim.py_simulate(s, timepoints)
-        return result.py_get_result(), m
+        m = bioscrape.sbmlutil.import_sbml(filename)
+        m.write_bioscrape_xml('temp_bs.xml')
+        result = bioscrape.simulator.py_simulate_model(timepoints, Model = m, stochastic = stochastic, **kwargs)
+        return result, m
 
-    def plotBioscrape(self, ListOfSpeciesToPlot, timepoints, xlabel = 'Time', ylabel = 'Concentration (AU)', sizeOfXLabels = 14, sizeOfYLabels = 14):
+    def plotWithBioscrape(self, ListOfSpeciesToPlot, timepoints, **kwargs):
         ''' 
         To plot a Subsystem model using bioscrape.
         NOTE : Needs bioscrape package installed to plot the Subsystem
         '''
-        filename = 'models/temp.xml'
+        filename = 'temp.xml'
         libsbml.writeSBML(self.getSBMLDocument(), filename) 
-        plotSbmlWithBioscrape(filename, timepoints[0], timepoints, ListOfSpeciesToPlot, xlabel = xlabel, ylabel = ylabel, sizeOfXLabels = sizeOfXLabels, sizeOfYLabels = sizeOfYLabels)
+        plotSbmlWithBioscrape(filename, timepoints[0], timepoints, ListOfSpeciesToPlot, **kwargs)
     
-    # def simulateVariableInputsBioscrape(self, ListOfInputs, ListOfListOfAmounts, ListOfSpeciesToPlot, timepoints, mode = 'reset', compartmentInput = '', compartmentSpecies = '',
-        # plotShow  = 'single', xlabel = 'Time', ylabel = 'Concentration (AU)', title = '', lineWidth = 2, sizeOfXLabels = 16, sizeOfYLabels = 16, legendFontSize = 14):
     def simulateVariableInputs(self,  ListOfInputs, ListOfListOfAmounts, ListOfSpeciesToPlot, timepoints, **kwargs):
 
         ''''
@@ -2007,6 +1967,7 @@ class Subsystem(object):
         Returns data, time vectors post simulation
         NOTE : Needs bioscrape package installed to simulate.
         '''
+        verbose = kwargs.get('verbose') if 'verbose' in kwargs else None
         # Default values
         Simulator = 'roadrunner'
         mode = 'reset'
@@ -2066,7 +2027,7 @@ class Subsystem(object):
             else:
                 compartment = ''
             if type(species) is list:
-                warnings.warn('There are multiple species with the name ' + species_name + 'Suffixed species will be plotted ')
+                warnings.warn('There are multiple species with the name ' + species_name + 'Suffixed species will be plotted ') if verbose else None
                 for species_i in species:
                     if model.getElementBySId(species_i.getCompartment()).getName() != compartment and compartment != '':
                        continue 
@@ -2121,17 +2082,17 @@ class Subsystem(object):
                 # Start simulating and create data
                 amount = ListOfListOfAmounts[j]
                 check(species_inp.setInitialAmount(amount), 'setting initial amount to input species')
-                time = np.linspace(t,t+t_end,points)
-                data, m = self.simulateBioscrape(t, time)
+                timep = np.linspace(t,t+t_end,points)
+                data, m = self.simulateWithBioscrape(timep)
                 for species_id in species_list:
-                    sp_data = data[:,m.get_species_index(species_id)]
-                    t = time[-1]
+                    sp_data = data[species_id]
+                    t = timep[-1]
                     final_result[species_id].extend(sp_data)
                     if mode == 'continue':
-                        total_time[species_id].extend(time)
+                        total_time[species_id].extend(timep)
                 if mode == 'continue':
                     for species in model.getListOfSpecies():
-                        species.setInitialAmount(data[:,m.get_species_index(species.getId())][-1])
+                        species.setInitialAmount(data[species.getId()][-1])
 
         elif type(ListOfInputs) is list:
             t = initialTime
@@ -2158,10 +2119,10 @@ class Subsystem(object):
                 for amount, species in zip(ListOfListOfAmounts[j], ListOfSpecies):
                 # Start simulating and create data
                     check(species.setInitialAmount(amount), 'setting initial amount to input species')
-                time = np.linspace(t,t+t_end,points)
-                data, m = self.simulateBioscrape(t, time)
+                timep = np.linspace(t,t+t_end,points)
+                data, m = self.simulateWithBioscrape(timep)
                 for species_id in species_list:
-                    sp_data = data[:,m.get_species_index(species_id)]
+                    sp_data = data[species_id]
                     t = time[-1]
                     final_result[species_id].extend(sp_data)
                     if mode == 'continue':
@@ -2169,7 +2130,7 @@ class Subsystem(object):
 
                 if mode == 'continue':
                     for species in model.getListOfSpecies():
-                        species.setInitialAmount(data[:,m.get_species_index(species.getId())][-1])
+                        species.setInitialAmount(data[species.getId()][-1])
         else:
             raise SyntaxError('ListOfInputs argument must be a list of strings or a string')
 
@@ -2237,7 +2198,9 @@ class Subsystem(object):
             plt.show()
         return finalData, finalTime, plt
 
-def plotSbmlWithBioscrape(ListOfFiles, initialTime, timepoints, ListOfListOfSpeciesToPlot, compartmentSpecies = '', xlabel = 'Time', ylabel = 'Concentration (AU)', lineWidth = 2, sizeOfXLabels = 14, sizeOfYLabels = 14):
+def plotSbmlWithBioscrape(ListOfFiles, initialTime, timepoints, ListOfListOfSpeciesToPlot, 
+                        compartmentSpecies = '', xlabel = 'Time', ylabel = 'Concentration (AU)', 
+                        lineWidth = 2, sizeOfXLabels = 14, sizeOfYLabels = 14, **kwargs):
     ''' 
     Plots the amounts of ListOfSpeciesToPlot in the given SBML files 
     starting at initialTime and for the timepoints given. 
@@ -2247,6 +2210,11 @@ def plotSbmlWithBioscrape(ListOfFiles, initialTime, timepoints, ListOfListOfSpec
     The same initialTime, timepoints and other arguments are used for all SBML files 
     NOTE : Needs bioscrape package installed to simulate SBML model.
     '''
+    try:
+        import bioscrape
+    except:
+        raise ValueError('Package not installed : bioscrape, simulation options with bioscrape will not work.') 
+    verbose = kwargs.get('verbose') if 'verbose' in kwargs else None
     mpl.rc('xtick', labelsize=sizeOfXLabels) 
     mpl.rc('ytick', labelsize=sizeOfYLabels)
     if type(ListOfFiles) is str:
@@ -2255,17 +2223,14 @@ def plotSbmlWithBioscrape(ListOfFiles, initialTime, timepoints, ListOfListOfSpec
         doc = getFromXML(filename)
         model = doc.getModel()
         mod_obj = Subsystem(model.getSBMLDocument())
-        m = bioscrape.types.read_model_from_sbml(filename)
-        s = bioscrape.simulator.ModelCSimInterface(m)
-        s.py_prep_deterministic_simulation()
-        s.py_set_initial_time(initialTime)
+        m = bioscrape.sbmlutil.import_sbml(filename)
         species_ind = []
         SpeciesToPlot = ListOfSpeciesToPlot[:]
         for i in range(len(ListOfSpeciesToPlot)):
             species_name = ListOfSpeciesToPlot[i]
             species = mod_obj.getSpeciesByName(species_name)
             if type(species) is list:
-                warnings.warn('There are multiple species with the name ' + species_name + ' in plot function. Suffixed species will be plotted ')
+                warnings.warn('There are multiple species with the name ' + species_name + ' in plot function. Suffixed species will be plotted ') if verbose else None
                 for species_i in species:
                     if compartmentSpecies != '' and model.getElementBySId(species_i.getCompartment()).getName() != compartmentSpecies:
                         continue
@@ -2286,12 +2251,11 @@ def plotSbmlWithBioscrape(ListOfFiles, initialTime, timepoints, ListOfListOfSpec
                 else:
                     species_ind.append(m.get_species_index(species.getId()))
  
-        sim = bioscrape.simulator.DeterministicSimulator()
-        result = sim.py_simulate(s, timepoints)
+        result = bioscrape.simulator.py_simulate_model(timepoints, Model = m, **kwargs)
         plt.xlabel(xlabel)
         plt.ylabel(ylabel)
         for i in range(len(species_ind)):
-            plt.plot(timepoints, result.py_get_result()[:, species_ind[i]], linewidth = lineWidth)
+            plt.plot(timepoints, result[:, species_ind[i]], linewidth = lineWidth)
         plt.legend(SpeciesToPlot)
         plt.show()
         return
@@ -2306,17 +2270,14 @@ def plotSbmlWithBioscrape(ListOfFiles, initialTime, timepoints, ListOfListOfSpec
         doc = getFromXML(filename)
         model = doc.getModel()
         mod_obj = SimpleModel(model)
-        m = bioscrape.types.read_model_from_sbml(filename)
-        s = bioscrape.simulator.ModelCSimInterface(m)
-        s.py_prep_deterministic_simulation()
-        s.py_set_initial_time(initialTime)
+        m = bioscrape.sbmlutil.import_sbml(filename)
         SpeciesToPlot = ListOfSpeciesToPlot[:]
         for i in range(len(ListOfSpeciesToPlot)):
             species_name = ListOfSpeciesToPlot[i]
             speciesLegend.append(species_name)
             species = mod_obj.getSpeciesByName(species_name)
             if type(species) is list:
-                warnings.warn('There are multiple species with the name ' + species_name + ' in plot function. Suffixed species will be plotted ')
+                warnings.warn('There are multiple species with the name ' + species_name + ' in plot function. Suffixed species will be plotted ') if verbose else None
                 for species_i in species:
                     if compartmentSpecies != '' and model.getElementBySId(species_i.getCompartment()).getName() != compartmentSpecies:
                         continue
@@ -2339,12 +2300,58 @@ def plotSbmlWithBioscrape(ListOfFiles, initialTime, timepoints, ListOfListOfSpec
                 else:
                     species_ind.append(m.get_species_index(species.getId()))
  
-        sim = bioscrape.simulator.DeterministicSimulator()
-        result = sim.py_simulate(s, timepoints)
+        result = bioscrape.simulator.py_simulate_model(timepoints, Model = m, **kwargs)
         for i in range(len(species_ind)):
-            plt.plot(timepoints, result.py_get_result()[:, species_ind[i]], linewidth = lineWidth)
+            plt.plot(timepoints, result[:, species_ind[i]], linewidth = lineWidth)
         species_ind = []
     plt.legend(speciesLegend) # add the extra species to this list
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
     plt.show()
+
+def createNewSubsystem(level = latestLevel, version = latestVersion):
+    '''
+    Creates a new empty Subsystem object with a SBMLDocument 
+    of given level and version.
+    Returns the Subsystem object
+    '''
+    if type(level) is not int or type(version) is not int:
+        raise ValueError('The optional arguments for level and version must be integers')
+    newDocument = createSbmlDoc(level,version)
+    subsystem = Subsystem(newDocument)
+    return subsystem
+
+def createSubsystem(filename, subsystemName = '', **kwargs):
+    ''' 
+    Creates a new Subsystem object inside the System
+    with the SubsystemName suffixed to all elements of the given SBML filename
+    Returns the created Subsystem object.
+    '''
+    # 1. Read the SBML model
+    # 2. Create an object of the Subsystem class with the SBMLDocument read in Step 1
+    verbose = kwargs.get('verbose') if 'verbose' in kwargs else None
+    membrane = kwargs.get('membrane') if 'membrane' in kwargs else None
+    sbmlDoc = getFromXML(filename)
+    model = sbmlDoc.getModel()
+    if model.isSetName():
+        subsystemName = model.getName()
+    else:
+        subsystemName = model.getId()
+    if membrane:
+        subsystemName = ''
+    subsystem = Subsystem(sbmlDoc)
+    if subsystem.getSBMLDocument().getLevel() != latestLevel or subsystem.getSBMLDocument().getVersion() != latestVersion:
+        warnings.warn('Subsystem SBML model is not the latest. Converting to the latest SBML level and version') if verbose else None
+        subsystem.convertSubsystemLevelAndVersion(latestLevel,latestVersion)
+    if subsystemName != '':
+        subsystem.suffixAllElementIds(subsystemName)
+    if model.getNumCompartments() == 0:
+        warnings.warn('No compartments in the Subsystem model, the System compartment will be used. Compartment Size will be set to zero for this Subsystem.') if verbose else None
+    elif model.getNumCompartments() > 1:
+        print('The subsystem from ' + filename + ' has multiple compartments')
+        warnings.warn('More than 1 compartments found in the Subsystem model. Check resulting models for consistency.') if verbose else None
+    if not model.getCompartment(0).isSetSize():
+        warnings.warn('Compartment Size attribute is not set. Setting to one.') if verbose else None
+        model.getCompartment(0).setSize(1)
+    return subsystem 
+

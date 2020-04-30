@@ -4,18 +4,17 @@ import warnings
 try:
     import libsbml
 except:
-    warnings.warn('Package not installed : libsbml. The package depends on Python libsbml, install it before using this package.')
+    raise ValueError('Package not installed : libsbml. The package depends on Python libsbml, install it before using this package.')
 
 from .Subsystem import Subsystem 
-from .SimpleModel import SimpleModel 
 from .utilityFunctions import getFromXML, check, createSbmlDoc, createNewModel
 from pathlib import Path
-
+from .SimpleModel import SimpleModel
 
 # The latest level and version of SBML 
 # These are used to convert the models given as input to the latest SBML version
 latestLevel = 3
-latestVersion = 1
+latestVersion = 2
 
 class System(object):
     '''
@@ -37,11 +36,99 @@ class System(object):
         self.Size = 0
         self.ListOfInternalSubsystems = []
         self.ListOfExternalSubsystems = []
+        self.ListOfMembraneSubsystems = []
+        self.ListOfSharedResources = []
+        self.ExternalSystemFlag = False
+        self.ExternalSystem = self
+        if len(ListOfInternalSubsystems):
+            self.setInternal(ListOfInternalSubsystems)
+            self.ListOfInternalSubsystems = ListOfInternalSubsystems
+        if len(ListOfExternalSubsystems):
+            self.setExternal(ListOfExternalSubsystems)
+            self.ListOfExternalSubsystems = ListOfExternalSubsystems
+        if len(ListOfMembraneSubsystems):
+            for membrane_ss in ListOfMembraneSubsystems:
+                self.setMembrane(membrane_ss)
+            self.ListOfMembraneSubsystems = ListOfMembraneSubsystems
+    
+    def __len__(self):
+        '''
+        Returns the "length" of the System object : defined as 
+        the total number of Subsystem objects assigned to this System object.
+        That is, sum of internal, external, and membrane subsystems.
+        '''
+        return int(len(ListOfInternalSubsystems) + len(ListOfExternalSubsystems) + len(ListOfMembraneSubsystems))
+
+    def __add__(self, system):
+        '''
+        Returns a combined Subsystem object that combines the two System objects using the '+' operator.
+        Internally calls `combineSystems` function.
+        '''
+        temp_ss = createNewSubsystem()
+        ListOfSystems = [self, system]
+        return Subsystem(combineSystems(ListOfSystems))
+
+
+    def getSystemName(self):
+        ''' 
+        Returns the system name attribute
+        '''
+        return self.SystemName
+
+        self.ListOfExternalSubsystems = []
         self.ListOfMembraneSubsystems = [] 
         self.ListOfSharedResources = []
         self.ExternalSystemFlag = False
         self.ExternalSystem = self
     
+    def __len__(self):
+        '''
+        Returns the "length" of the System object : defined as 
+        the total number of Subsystem objects assigned to this System object.
+        That is, sum of internal, external, and membrane subsystems.
+        '''
+        return int(len(ListOfInternalSubsystems) + len(ListOfExternalSubsystems) + len(ListOfMembraneSubsystems))
+
+    def __add__(self, system):
+        '''
+        Returns a combined Subsystem object that combines the two System objects using the '+' operator.
+        Internally calls `combineSystems` function.
+        '''
+        temp_ss = createNewSubsystem()
+        ListOfSystems = [self, system]
+        return Subsystem(combineSystems(ListOfSystems))
+
+
+    def getSystemName(self):
+        ''' 
+        Returns the system name attribute
+        '''
+        return self.SystemName
+
+        self.ListOfExternalSubsystems = []
+        self.ListOfMembraneSubsystems = [] 
+        self.ListOfSharedResources = []
+        self.ExternalSystemFlag = False
+        self.ExternalSystem = self
+    
+    def __len__(self):
+        '''
+        Returns the "length" of the System object : defined as 
+        the total number of Subsystem objects assigned to this System object.
+        That is, sum of internal, external, and membrane subsystems.
+        '''
+        return int(len(ListOfInternalSubsystems) + len(ListOfExternalSubsystems) + len(ListOfMembraneSubsystems))
+
+    def __add__(self, system):
+        '''
+        Returns a combined Subsystem object that combines the two System objects using the '+' operator.
+        Internally calls `combineSystems` function.
+        '''
+        temp_ss = createNewSubsystem()
+        ListOfSystems = [self, system]
+        return Subsystem(combineSystems(ListOfSystems))
+
+
     def getSystemName(self):
         ''' 
         Returns the system name attribute
@@ -206,7 +293,7 @@ class System(object):
         shared_subsystem.shareSubsystems(ListOfSubsystems, ListOfResources, mode)
         return shared_subsystem.getSBMLDocument()
 
-    def createSubsystem(self, filename, subsystemName = ''):
+    def createSubsystem(self, filename, subsystemName = '', **kwargs):
         ''' 
         Creates a new Subsystem object inside the System
         with the SubsystemName suffixed to all elements of the given SBML filename.
@@ -214,6 +301,7 @@ class System(object):
         1. The Subsystem object has its System attribute set to this System.
         2. The Subsystem is added to the list of internal subsystems to this System.
         '''
+        verbose = kwargs.get('verbose') if 'verbose' in kwargs else None
         subsys_xml = Path(filename)
         if subsys_xml.is_file() is False:
             raise FileNotFoundError('File not found: %s ' % subsys_xml)
@@ -228,19 +316,17 @@ class System(object):
         subsystem = Subsystem(sbmlDoc)
         subsystem.setSystem(self)
         if subsystem.getSBMLDocument().getLevel() != latestLevel or subsystem.getSBMLDocument().getVersion() != latestVersion:
-            warnings.warn('Subsystem SBML model is not the latest. Converting to latest SBML level and version')
+            warnings.warn('Subsystem SBML model is not the latest. Converting to latest SBML level and version') if verbose else None
             subsystem.convertSubsystemLevelAndVersion(latestLevel,latestVersion)
         subsystem.suffixAllElementIds(subsystemName)
         if model.getNumCompartments() == 0:
-            warnings.warn('No compartments in the Subsystem model, the System compartment will be used. Compartment Size will be set to zero for this Subsystem.')
+            warnings.warn('No compartments in the Subsystem model, the System compartment will be used. Compartment Size will be set to zero for this Subsystem.') if verbose else None
         elif model.getNumCompartments() > 1:
-            warnings.warn('More than 1 compartments in the Subsystem model. Check resulting models for consistency.')
+            warnings.warn('More than 1 compartments in the Subsystem model. Check resulting models for consistency.') if verbose else None
         if model.getNumCompartments():
             if not model.getCompartment(0).isSetSize():
-                warnings.warn('Compartment Size is not set. Setting to one.')
+                warnings.warn('Compartment Size is not set. Setting to one.') if verbose else None
                 model.getCompartment(0).setSize(1)
-                
-    
         self.ListOfInternalSubsystems.append(subsystem)
         if len(model.getListOfCompartments()):
             subsystem.setCompartments([name])   
@@ -362,11 +448,20 @@ class System(object):
         3. All subsystems in the membrane to the System (in respective compartments called '<system_name>_internal' and '<system_name>_external')
         '''
         system_sbml = createNewSubsystem()
-        internal_subsystems = self.ListOfInternalSubsystems
-        external_subsystems = self.ListOfExternalSubsystems
+        sys_internal_membrane = createNewSubsystem()
+        internal_combined_subsystems = createNewSubsystem()
+        internal_combined_subsystems.combineSubsystems(self.ListOfInternalSubsystems, mode = mode, **kwargs)
+        external_combined_subsystems = createNewSubsystem()
+        external_combined_subsystems.combineSubsystems(self.ListOfExternalSubsystems, mode = mode, **kwargs)
         membranes = self.ListOfMembraneSubsystems
-        system_sbml.combineSubsystems([internal_subsystems, external_subsystems, membranes], mode, **kwargs)
-        return system_sbml.getSBMLDocument(), system_sbml
+        membrane_internal = []
+        for membrane in membranes:
+            membrane_internal.append(membrane)
+        membrane_internal.append(internal_combined_subsystems)
+        sys_internal_membrane.combineSubsystems(membrane_internal, mode = mode, **kwargs)
+        system_sbml.combineSubsystems([external_combined_subsystems, sys_internal_membrane], mode = mode, **kwargs)
+        # system_sbml.combineSubsystems([self.ListOfInternalSubsystems, self.ListOfExternalSubsystems, self.ListOfMembraneSubsystems], mode = mode, **kwargs)
+        return system_sbml
 
 
 def combineSystems(ListOfSystems, mode = 'virtual'):
@@ -405,8 +500,7 @@ def combineSystems(ListOfSystems, mode = 'virtual'):
         if subsystem not in subsystem_list_final:
             subsystem_list_final.append(subsystem)
     newSS.combineSubsystems(subsystem_list_final, mode)
-    return newSS.getSBMLDocument()
-
+    return newSS
 
 
 def createNewSubsystem(level = latestLevel, version = latestVersion):
@@ -433,32 +527,5 @@ def createBasicSubsystem(id, level = latestLevel, version = latestVersion, size 
     simpleModel.createNewUnitDefinition('square_metre',libsbml.UNIT_KIND_METRE, exponent = 2)
     check(model.setAreaUnits('square_metre'), 'setting area units to the model')
     simpleModel.createNewCompartment(cId = id, cName = id, cSize = size, cUnits = 'litre', cConstant = True, spatialDim = 3)
-    return Subsystem(document)
+    return Subsystem(document), SimpleModel(Subsystem(document).getSBMLDocument().getModel())
 
-def createSubsystem(filename, subsystemName = ''):
-    ''' 
-    Creates a new Subsystem object inside the System
-    with the SubsystemName suffixed to all elements of the given SBML filename
-    Returns the created Subsystem object.
-    '''
-    # 1. Read the SBML model
-    # 2. Create an object of the Subsystem class with the SBMLDocument read in Step 1
-    sbmlDoc = getFromXML(filename)
-    model = sbmlDoc.getModel()
-    subsystem = Subsystem(sbmlDoc)
-    if subsystem.getSBMLDocument().getLevel() != latestLevel or subsystem.getSBMLDocument().getVersion() != latestVersion:
-        warnings.warn('Subsystem SBML model is not the latest. Converting to the latest SBML level and version')
-        subsystem.convertSubsystemLevelAndVersion(latestLevel,latestVersion)
-    if subsystemName != '':
-        subsystem.suffixAllElementIds(subsystemName)
-    if model.getNumCompartments() == 0:
-        warnings.warn('No compartments in the Subsystem model, the System compartment will be used. Compartment Size will be set to zero for this Subsystem.')
-    elif model.getNumCompartments() > 1:
-        print('The subsystem from ' + filename + ' has multiple compartments')
-        warnings.warn('More than 1 compartments found in the Subsystem model. Check resulting models for consistency.')
-
-    if not model.getCompartment(0).isSetSize():
-        warnings.warn('Compartment Size attribute is not set. Setting to one.')
-        model.getCompartment(0).setSize(1)
-
-    return subsystem 
