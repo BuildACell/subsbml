@@ -322,29 +322,11 @@ class System(object):
         if model.getNumCompartments() == 0:
             warnings.warn('No compartments in the Subsystem model, the System compartment will be used. Compartment Size will be set to zero for this Subsystem.') if verbose else None
         elif model.getNumCompartments() > 1:
-<<<<<<< HEAD
             warnings.warn('More than 1 compartments in the Subsystem model. Check resulting models for consistency.') if verbose else None
         if model.getNumCompartments():
             if not model.getCompartment(0).isSetSize():
                 warnings.warn('Compartment Size is not set. Setting to one.') if verbose else None
                 model.getCompartment(0).setSize(1)
-||||||| 79bc6c1
-            warnings.warn('More than 1 compartments in the Subsystem model. Check resulting models for consistency.')
-
-        if not model.getCompartment(0).isSetSize():
-            warnings.warn('Compartment Size is not set. Setting to one.')
-            model.getCompartment(0).setSize(1)
-    
-        subsystem.setCompartments([name])
-=======
-            warnings.warn('More than 1 compartments in the Subsystem model. Check resulting models for consistency.')
-        if model.getNumCompartments():
-            if not model.getCompartment(0).isSetSize():
-                warnings.warn('Compartment Size is not set. Setting to one.')
-                model.getCompartment(0).setSize(1)
-                
-    
->>>>>>> 894f229b2e6a0a7cf0ebdb98fd546b8be6e06893
         self.ListOfInternalSubsystems.append(subsystem)
         if len(model.getListOfCompartments()):
             subsystem.setCompartments([name])   
@@ -472,7 +454,6 @@ class System(object):
         external_combined_subsystems = createNewSubsystem()
         external_combined_subsystems.combineSubsystems(self.ListOfExternalSubsystems, mode = mode, **kwargs)
         membranes = self.ListOfMembraneSubsystems
-<<<<<<< HEAD
         membrane_internal = []
         for membrane in membranes:
             membrane_internal.append(membrane)
@@ -481,13 +462,6 @@ class System(object):
         system_sbml.combineSubsystems([external_combined_subsystems, sys_internal_membrane], mode = mode, **kwargs)
         # system_sbml.combineSubsystems([self.ListOfInternalSubsystems, self.ListOfExternalSubsystems, self.ListOfMembraneSubsystems], mode = mode, **kwargs)
         return system_sbml
-||||||| 79bc6c1
-        system_sbml.combineSubsystems([internal_subsystems, external_subsystems, membranes], mode)
-        return system_sbml.getSBMLDocument(), system_sbml
-=======
-        system_sbml.combineSubsystems([internal_subsystems, external_subsystems, membranes], mode, **kwargs)
-        return system_sbml.getSBMLDocument(), system_sbml
->>>>>>> 894f229b2e6a0a7cf0ebdb98fd546b8be6e06893
 
 
 def combineSystems(ListOfSystems, mode = 'virtual'):
