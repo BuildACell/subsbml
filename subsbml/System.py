@@ -524,7 +524,7 @@ def createBasicSubsystem(id, level = latestLevel, version = latestVersion, size 
     check(model,'created a new model in createBasicSubsystem')
     simpleModel = SimpleModel(model)
     # Creating a derived unit for the area and setting it to the model
-    simpleModel.createNewUnitDefinition('square_metre',libsbml.UNIT_KIND_METRE, exponent = 2)
+    simpleModel.createNewUnitDefinition('square_metre',libsbml.UNIT_KIND_METRE, uExponent = 2)
     check(model.setAreaUnits('square_metre'), 'setting area units to the model')
     simpleModel.createNewCompartment(cId = id, cName = id, cSize = size, cUnits = 'litre', cConstant = True, spatialDim = 3)
     return Subsystem(document), SimpleModel(Subsystem(document).getSBMLDocument().getModel())

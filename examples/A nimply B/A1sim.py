@@ -12,4 +12,10 @@ libsbml.writeSBML(A1.getSBMLDocument(),'models/A1converted.xml')
 # Simulate using bioscrape
 timepoints = np.linspace(0,14*60*6000,1000)
 
-A1.plotBioscrape(['protein deGFP*','protein sigma28'],timepoints)
+
+GFP_id = A1.getSpeciesByName('protein deGFP*').getId()
+results, _ = A1.simulateWithBioscrape(timepoints)
+
+import pylab as plt
+plt.plot(timepoints, results[GFP_id])
+plt.show()

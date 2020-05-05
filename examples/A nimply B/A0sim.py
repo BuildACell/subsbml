@@ -9,5 +9,9 @@ A0 = cell.createSubsystem('models/A0.xml','A0')
 # Simulate using bioscrape
 timepoints = np.linspace(0,14*60*60,1000)
 
-A0.plotBioscrape(['protein deGFP*','protein sigma28'],timepoints, xlabel = 'Time',
-ylabel = 'concentration (nM)',sizeOfXLabels = 14,sizeOfYLabels = 14)
+GFP_id = A0.getSpeciesByName('protein deGFP*').getId()
+results, _ = A0.simulateWithBioscrape(timepoints)
+
+import pylab as plt
+plt.plot(timepoints, results[GFP_id])
+plt.show()

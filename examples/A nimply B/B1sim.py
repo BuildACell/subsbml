@@ -12,3 +12,13 @@ libsbml.writeSBML(B1.getSBMLDocument(),'models/B1converted.xml')
 timepoints = np.linspace(0,14*60*60000,1000)
 
 B1.plotBioscrape(['protein tetRdimer','protein sigmaX'],timepoints)
+
+
+tetR_id = B1.getSpeciesByName('protein tetRdimer').getId()
+sigmaX_id = B1.getSpeciesByName('protein sigmaX').getId()
+results, _ = B1.simulateWithBioscrape(timepoints)
+
+import pylab as plt
+plt.plot(timepoints, results[tetR_id])
+plt.plot(timepoints, results[sigmaX_id])
+plt.show()

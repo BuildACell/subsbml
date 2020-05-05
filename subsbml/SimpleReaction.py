@@ -3,9 +3,6 @@ import re
 
 from .utilityFunctions import check
 
-latestLevel = 3
-latestVersion = 1
-
 class SimpleReaction(object):
     '''
     SimpleReaction class can be used to create reactions in a Model in a simple manner.
@@ -173,12 +170,13 @@ class SimpleReaction(object):
               'set species_ref_obj_product stoichiometry')
         return species_ref_obj_product
 
-    def createRate(self, math_ast):
+    def createRate(self, formulaString):
         '''
         Creates a new KineticLaw object inside the current Reaction and returns it.
-        The AST_Node object given as an argument in 
-        math_ast is used to define the rate 
+        The formula string given as an argument is converted to a MATH AST node
+        and then is used to define the rate (as required by SBML)
         '''
+        math_ast = self.createMath(formulaString)
         kinetic_law_reaction = self.getReaction().createKineticLaw()
         check(kinetic_law_reaction, 'create kinetic law')
         check(kinetic_law_reaction.setMath(math_ast), 'set math on kinetic law')

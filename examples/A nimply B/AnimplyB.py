@@ -52,7 +52,7 @@ timepoints = np.linspace(0, t_end, points)
 # plotSbmlWithBioscrape('models/combined00.xml',0,
 # plotSbmlWithBioscrape('models/combined01.xml',0,
 # plotSbmlWithBioscrape('models/combined10.xml',0,
-plotSbmlWithBioscrape('models/combined11.xml',0,
+# plotSbmlWithBioscrape('models/combined11.xml',0,
 # plotSbmlWithBioscrape('models/AnimplyB_mod.xml',0,
 # plotSbmlWithBioscrape('combined11_mod.xml',0,
 # plotSbmlWithBioscrape('models/connected11.xml',0,
