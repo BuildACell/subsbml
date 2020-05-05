@@ -14,7 +14,7 @@
       </unitDefinition>
     </listOfUnitDefinitions>
     <listOfCompartments>
-      <compartment id="cell" name="cell" spatialDimensions="3" size="1" units="litre" constant="true"/>
+      <compartment id="cell" name="cell" spatialDimensions="3" size="1e-06" units="litre" constant="true"/>
     </listOfCompartments>
     <listOfSpecies>
       <species id="inP" name="inP" compartment="cell" initialConcentration="100" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
@@ -42,7 +42,7 @@
       <parameter id="k8f" name="k8f" value="1" units="per_second" constant="false"/>
     </listOfParameters>
     <listOfReactions>
-      <reaction id="r1" name="r1" reversible="true">
+      <reaction id="r1" name="r1" reversible="true" compartment="cell">
         <listOfReactants>
           <speciesReference species="inP" stoichiometry="1" constant="false"/>
           <speciesReference species="X" stoichiometry="1" constant="false"/>
@@ -87,7 +87,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="r3" name="r3" reversible="true">
+      <reaction id="r3" name="r3" reversible="true" compartment="cell">
         <listOfReactants>
           <speciesReference species="E" stoichiometry="1" constant="false"/>
           <speciesReference species="X_P" stoichiometry="1" constant="false"/>
@@ -114,7 +114,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="r4" name="r4" reversible="false">
+      <reaction id="r4" name="r4" reversible="false" compartment="cell">
         <listOfReactants>
           <speciesReference species="E_X_P" stoichiometry="1" constant="false"/>
         </listOfReactants>
@@ -132,7 +132,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="r5" name="r5" reversible="true">
+      <reaction id="r5" name="r5" reversible="true" compartment="cell">
         <listOfReactants>
           <speciesReference species="inP" stoichiometry="1" constant="false"/>
           <speciesReference species="X_P" stoichiometry="1" constant="false"/>
@@ -159,7 +159,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="r6" name="r6" reversible="false">
+      <reaction id="r6" name="r6" reversible="false" compartment="cell">
         <listOfReactants>
           <speciesReference species="inP_X_P" stoichiometry="1" constant="false"/>
         </listOfReactants>
@@ -177,7 +177,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="r7" name="r7" reversible="true">
+      <reaction id="r7" name="r7" reversible="true" compartment="cell">
         <listOfReactants>
           <speciesReference species="E" stoichiometry="1" constant="false"/>
           <speciesReference species="X_P_P" stoichiometry="1" constant="false"/>
@@ -204,7 +204,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="r8" name="r8" reversible="false">
+      <reaction id="r8" name="r8" reversible="false" compartment="cell">
         <listOfReactants>
           <speciesReference species="E_X_P_P" stoichiometry="1" constant="false"/>
         </listOfReactants>

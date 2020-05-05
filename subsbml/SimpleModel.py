@@ -136,6 +136,8 @@ class SimpleModel(object):
                 amount.append(ListOfAmounts)
             if type(ListOfSpecies) is str:
                 speciesList.append(ListOfSpecies)
+            elif len(ListOfSpecies) == 1:
+                speciesList.append(ListOfSpecies[0])
                 
         # Multiple species
         elif (type(ListOfSpecies) is list) and (len(ListOfSpecies) > 1):
@@ -202,6 +204,8 @@ class SimpleModel(object):
                 values.append(ListOfValues)
             if type(ListOfParameters) is str:
                 parametersList.append(ListOfParameters)
+            elif len(ListOfParameters) == 1:
+                parametersList.append(ListOfParameters[0])
                 
         # Multiple parameters 
         elif (type(ListOfParameters) is list) and (len(ListOfParameters) > 1):
@@ -272,8 +276,7 @@ class SimpleModel(object):
             if type(product_sp) is list:
                 raise ValueError('Multiple species found with the same name.')
             newRxn.createNewProduct(product_sp.getId(), isConstant, stoich)
-        newRxn_math = newRxn.createMath(rRate)
-        newRxn.createRate(newRxn_math)
+        newRxn.createRate(rRate)
         return r_obj
 
  
@@ -295,43 +298,44 @@ class SimpleModel(object):
         
         return constr
 
-    def createNewEvent(self, id, triggerPersistent, triggerInitialValue, 
+    def createNewEvent(self, eId,  
         triggerFormula, variableId, assignmentFormula, delayFormula = '', 
-        priorityFormula = '', useValuesFromTriggerTime = True, name = ''):
+        priorityFormula = '', useValuesFromTriggerTime = True, name = '',
+        triggerPersistent = True, triggerInitialValue = True,):
         '''
         Creates a new Event in the Model and returns a pointer to the libSBML object created
         '''
-        if (type(id) is not str) or (type(triggerPersistent) is not bool) or (type(triggerInitialValue) is not bool) or (type(triggerFormula) is not str) or (type(variableId) is not str) or (type(assignmentFormula) is not str) or (type(delayFormula) is not str) or (type(priorityFormula) is not str) or (type(useValuesFromTriggerTime) is not bool) or (type(name) is not str):
+        if (type(eId) is not str) or (type(triggerPersistent) is not bool) or (type(triggerInitialValue) is not bool) or (type(triggerFormula) is not str) or (type(variableId) is not str) or (type(assignmentFormula) is not str) or (type(delayFormula) is not str) or (type(priorityFormula) is not str) or (type(useValuesFromTriggerTime) is not bool) or (type(name) is not str):
             raise ValueError('The arguments are not of expected type.') 
         model = self.getModel()
         check(model,'retreived model object')
         e = model.createEvent()
         check(e,'creating new event in the model')
-        check(e.setId(id), 'setting ID of the event created')
+        check(e.setId(eId), 'setting ID of the event created')
         if name != '':
             check(e.setName(name),'setting name of the event created')
 
         eTrig = e.createTrigger()
-        check(eTrig,'creating trigger inside the event')
+        check(eTrig,'creating trigger inseIde the event')
         check(eTrig.setPersistent(triggerPersistent), 'setting persistent value to the trigger')
         check(eTrig.setInitialValue(triggerInitialValue), 'setting initial value to the trigger')
         trig_math = libsbml.parseL3Formula(triggerFormula)
         check(eTrig.setMath(trig_math), 'setting math to the trigger')
 
         eA = e.createEventAssignment()
-        check(eA, 'creating event assignment inside the event')
+        check(eA, 'creating event assignment inseIde the event')
         check(eA.setVariable(variableId), 'setting variable in the event assignment')
         asmt_math = libsbml.parseL3Formula(assignmentFormula)
         check(eA.setMath(asmt_math), 'setting math to the event assignment')
 
         if delayFormula != '':
             eDel = e.createDelay()
-            check(eDel, 'creating a new delay inside the event')
+            check(eDel, 'creating a new delay inseIde the event')
             del_math = libsbml.parseL3Formula(delayFormula)
             check(eDel.setMath(del_math), 'setting the math to the delay')
         if priorityFormula != '':
             eP = e.createPriority()
-            check(eP, 'creating a new priority inside the event')
+            check(eP, 'creating a new priority inseIde the event')
             prio_math = libsbml.parseL3Formula(priorityFormula)
             check(eP.setMath(prio_math), 'setting the math to the priority')
         e.setUseValuesFromTriggerTime(useValuesFromTriggerTime)
