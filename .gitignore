@@ -104,3 +104,7 @@ interactive_testing.ipynb
 
 examples/IPTG transport/temp.xml
 examples/IPTG transport/temp_bs.xml
+examples/A nimply B/temp.xml
+examples/A nimply B/temp_bs.xml
+examples/tutorials/temp.xml
+examples/tutorials/temp_bs.xml

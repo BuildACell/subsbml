@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sbml xmlns="http://www.sbml.org/sbml/level3/version2/core" level="3" version="2">
-  <model id="combined_model_of__DP_DP1_DP_DP2_IFFLmodel_IFFL" substanceUnits="count" timeUnits="second" extentUnits="mole">
+  <model id="combined_model_of__DP_DP_IFFLmodel" substanceUnits="count" timeUnits="second" extentUnits="mole">
     <listOfUnitDefinitions>
       <unitDefinition id="per_second">
         <listOfUnits>
@@ -14,10 +14,10 @@
       </unitDefinition>
     </listOfUnitDefinitions>
     <listOfCompartments>
-      <compartment id="cell_combined" name="cell" spatialDimensions="3" size="3" units="litre" constant="true"/>
+      <compartment id="cell_combined" name="cell" spatialDimensions="3" size="1.000002" units="litre" constant="true"/>
     </listOfCompartments>
     <listOfSpecies>
-      <species id="inP_DP1_1_shared" name="inP" compartment="cell_combined" initialConcentration="50" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species id="inP_DP1_1_shared" name="inP" compartment="cell_combined" initialConcentration="100" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
       <species id="X_DP1_1_combined" name="X" compartment="cell_combined" initialConcentration="50" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
       <species id="inP_X_DP1_1_combined" name="inP:X" compartment="cell_combined" initialConcentration="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
       <species id="X_P_DP1_1_shared" name="X:P" compartment="cell_combined" initialConcentration="0" substanceUnits="count" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
@@ -73,7 +73,7 @@
       <parameter id="k18f_IFFL" name="k18f" value="1" units="per_second" constant="false"/>
     </listOfParameters>
     <listOfReactions>
-      <reaction id="r1_DP1_combined" name="r1" reversible="true">
+      <reaction id="r1_DP1_combined" name="r1" reversible="true" compartment="cell_combined">
         <listOfReactants>
           <speciesReference species="inP_DP1_1_shared" stoichiometry="1" constant="false"/>
           <speciesReference species="X_DP1_1_combined" stoichiometry="1" constant="false"/>
@@ -118,7 +118,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="r3_DP1_combined" name="r3" reversible="true">
+      <reaction id="r3_DP1_combined" name="r3" reversible="true" compartment="cell_combined">
         <listOfReactants>
           <speciesReference species="E_DP1_1_combined" stoichiometry="1" constant="false"/>
           <speciesReference species="X_P_DP1_1_shared" stoichiometry="1" constant="false"/>
@@ -145,7 +145,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="r4_DP1_combined" name="r4" reversible="false">
+      <reaction id="r4_DP1_combined" name="r4" reversible="false" compartment="cell_combined">
         <listOfReactants>
           <speciesReference species="E_X_P_DP1_1_combined" stoichiometry="1" constant="false"/>
         </listOfReactants>
@@ -163,7 +163,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="r5_DP1_combined" name="r5" reversible="true">
+      <reaction id="r5_DP1_combined" name="r5" reversible="true" compartment="cell_combined">
         <listOfReactants>
           <speciesReference species="inP_DP1_1_shared" stoichiometry="1" constant="false"/>
           <speciesReference species="X_P_DP1_1_shared" stoichiometry="1" constant="false"/>
@@ -190,7 +190,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="r6_DP1_combined" name="r6" reversible="false">
+      <reaction id="r6_DP1_combined" name="r6" reversible="false" compartment="cell_combined">
         <listOfReactants>
           <speciesReference species="inP_X_P_DP1_1_combined" stoichiometry="1" constant="false"/>
         </listOfReactants>
@@ -208,7 +208,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="r7_DP1_combined" name="r7" reversible="true">
+      <reaction id="r7_DP1_combined" name="r7" reversible="true" compartment="cell_combined">
         <listOfReactants>
           <speciesReference species="E_DP1_1_combined" stoichiometry="1" constant="false"/>
           <speciesReference species="X_P_P_DP1_1_combined" stoichiometry="1" constant="false"/>
@@ -235,7 +235,7 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="r8_DP1_combined" name="r8" reversible="false">
+      <reaction id="r8_DP1_combined" name="r8" reversible="false" compartment="cell_combined">
         <listOfReactants>
           <speciesReference species="E_X_P_P_DP1_1_combined" stoichiometry="1" constant="false"/>
         </listOfReactants>

@@ -2125,11 +2125,10 @@ class Subsystem(object):
                 data, m = self.simulateWithBioscrape(timep)
                 for species_id in species_list:
                     sp_data = data[species_id]
-                    t = time[-1]
+                    t = timep[-1]
                     final_result[species_id].extend(sp_data)
                     if mode == 'continue':
-                        total_time[species_id].extend(time)
-
+                        total_time[species_id].extend(timep)
                 if mode == 'continue':
                     for species in model.getListOfSpecies():
                         species.setInitialAmount(data[species.getId()][-1])

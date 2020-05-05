@@ -5,7 +5,7 @@
       <Version Major="5" Minor="5" Point="0"/>
     </SimBiology>
   </annotation>
-  <model id="mw7604a264_1d1b_4426_acc5_061d8d17b628_AnB" name="mix_of_E30VNPRL_E30VNPRL_gene_expression" substanceUnits="substance" timeUnits="second" volumeUnits="volume" areaUnits="area" lengthUnits="metre" extentUnits="substance">
+  <model id="mw7604a264_1d1b_4426_acc5_061d8d17b628" name="mix_of_E30VNPRL_E30VNPRL_gene_expression" substanceUnits="substance" timeUnits="second" volumeUnits="volume" areaUnits="area" lengthUnits="metre" extentUnits="substance">
     <listOfUnitDefinitions>
       <unitDefinition id="volume">
         <listOfUnits>
