@@ -1,0 +1,58 @@
+<model>
+<species name="inP" value="100.0" />
+<species name="X" value="50.0" />
+<species name="inP_X" value="0.0" />
+<species name="X_P" value="0.0" />
+<species name="E" value="50.0" />
+<species name="E_X_P" value="0.0" />
+<species name="inP_X_P" value="0.0" />
+<species name="X_P_P" value="0.0" />
+<species name="E_X_P_P" value="0.0" />
+
+<parameter name="k1f" value="1.0" />
+<parameter name="k1r" value="1.0" />
+<parameter name="k2f" value="1.0" />
+<parameter name="k3f" value="1.0" />
+<parameter name="k3r" value="1.0" />
+<parameter name="k4f" value="1.0" />
+<parameter name="k5f" value="1.0" />
+<parameter name="k5r" value="1.0" />
+<parameter name="k6f" value="1.0" />
+<parameter name="k7f" value="1.0" />
+<parameter name="k7r" value="1.0" />
+<parameter name="k8f" value="1.0" />
+
+<reaction text= "inP + X -- inP_X ">
+	<propensity type="general" rate="X*_k1f*inP - _k1r*inP_X" />
+	<delay type="none" />
+</reaction>
+<reaction text= "inP_X -- inP + X_P ">
+	<propensity type="general" rate="_k2f*inP_X" />
+	<delay type="none" />
+</reaction>
+<reaction text= "E + X_P -- E_X_P ">
+	<propensity type="general" rate="E*X_P*_k3f - E_X_P*_k3r" />
+	<delay type="none" />
+</reaction>
+<reaction text= "E_X_P -- E + X ">
+	<propensity type="general" rate="E_X_P*_k4f" />
+	<delay type="none" />
+</reaction>
+<reaction text= "inP + X_P -- inP_X_P ">
+	<propensity type="general" rate="X_P*_k5f*inP - _k5r*inP_X_P" />
+	<delay type="none" />
+</reaction>
+<reaction text= "inP_X_P -- X_P_P + inP ">
+	<propensity type="general" rate="_k6f*inP_X_P" />
+	<delay type="none" />
+</reaction>
+<reaction text= "E + X_P_P -- E_X_P_P ">
+	<propensity type="general" rate="E*X_P_P*_k7f - E_X_P_P*_k7r" />
+	<delay type="none" />
+</reaction>
+<reaction text= "E_X_P_P -- X_P + E ">
+	<propensity type="general" rate="E_X_P_P*_k8f" />
+	<delay type="none" />
+</reaction>
+
+</model>

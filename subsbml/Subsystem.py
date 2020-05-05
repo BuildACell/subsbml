@@ -617,6 +617,8 @@ class Subsystem(object):
         # Combine each subsystem, to remove duplicate named components
         for subsystem in ListOfSubsystems:
             sub_model = subsystem.getSBMLDocument().getModel()
+            if sub_model is None:
+                raise ValueError('Subsystem model not loaded correctly. Check that the SBML file has a valid SBML model.')
             check(sub_model,'retreiving subsystem model in combineSubsystems')
             for species in sub_model.getListOfSpecies():
                 model.addSpecies(species)

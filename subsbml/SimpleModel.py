@@ -6,8 +6,6 @@ from .setIdFromNames import SetIdFromNames
 from .SimpleReaction import SimpleReaction
 from .utilityFunctions import check
 
-latestLevel = 3
-latestVersion = 1
 class SimpleModel(object):
     '''
     The SimpleModel class has methods which help in creating SBML models using simple commands
@@ -38,61 +36,61 @@ class SimpleModel(object):
         self.Model = Model
         return self.Model
    
-    def createNewUnitDefinition(self, uid, ukind, exponent, scale = 0, multiplier = 1):
+    def createNewUnitDefinition(self, uId, uKind, uExponent, uScale = 0, uMultiplier = 1):
         ''' 
         Creates a new UnitDefinition inside the 
         Model with the given attributes and returns a pointer to the new libSBML object created
         '''
-        if type(uid) is not str:
-            raise ValueError('The arguments are not of expected type. uid must be a string of valid SId format')
+        if type(uId) is not str:
+            raise ValueError('The arguments are not of expected type. uId must be a string of valid SId format')
 
         model = self.getModel()
         check(model,'retreiving libSBML model object')
         unitdef = model.createUnitDefinition()
         check(unitdef, 'create unit definition')
-        check(unitdef.setId(uid), 'set unit definition id')
+        check(unitdef.setId(uId), 'set unit definition id')
         #Scale list
-        if type(ukind) is list and type(scale) is not list:
-            scaleList = []
-            for kind in ukind:
-                scaleList.append(scale)
+        if type(uKind) is list and type(uScale) is not list:
+            uScaleList = []
+            for kind in uKind:
+                uScaleList.append(uScale)
 
-        elif type(ukind) is list and type(scale) is list:
-            if len(ukind) != len(scale):
-                raise ValueError('Lengths of scale and unit kind lists are not equal')
-            scaleList = scale[:]
+        elif type(uKind) is list and type(uScale) is list:
+            if len(uKind) != len(uScale):
+                raise ValueError('Lengths of uScale and unit kind lists are not equal')
+            uScaleList = uScale[:]
 
         # Multiplier list
-        if type(ukind) is list and type(multiplier) is not list:
-            multiplierList = []
-            for kind in ukind:
-                multiplierList.append(multiplier)
+        if type(uKind) is list and type(uMultiplier) is not list:
+            uMultiplierList = []
+            for kind in uKind:
+                uMultiplierList.append(uMultiplier)
 
-        elif type(ukind) is list and type(multiplier) is list:
-            if len(ukind) != len(multiplier):
-                raise ValueError('Lengths of unit kind and multiplier lists are not equal')
-            multiplierList = multiplier[:]
+        elif type(uKind) is list and type(uMultiplier) is list:
+            if len(uKind) != len(uMultiplier):
+                raise ValueError('Lengths of unit kind and uMultiplier lists are not equal')
+            uMultiplierList = uMultiplier[:]
 
-        if type(ukind) is not list:
-            ukind = [ukind]
-            if type(scale) is not int or type(multiplier) is not int:
-                raise ValueError('Scale and multiplier must be integers when there is only one unit kind')
-            scaleList = [scale]
-            multiplierList = [multiplier]
-        if type(exponent) is not list:
-            if type(exponent) is not int:
-                raise ValueError('All exponents should be integers')
-            exponent = [exponent]
-        if len(ukind) != len(exponent):
-            raise ValueError('Lengths of unit kind and unit exponent lists must be equal')
+        if type(uKind) is not list:
+            uKind = [uKind]
+            if type(uScale) is not int or type(uMultiplier) is not int:
+                raise ValueError('Scale and uMultiplier must be integers when there is only one unit kind')
+            uScaleList = [uScale]
+            uMultiplierList = [uMultiplier]
+        if type(uExponent) is not list:
+            if type(uExponent) is not int:
+                raise ValueError('All uExponents should be integers')
+            uExponent = [uExponent]
+        if len(uKind) != len(uExponent):
+            raise ValueError('Lengths of unit kind and unit uExponent lists must be equal')
         
-        for kind, expo, scale, multiplier in zip(ukind, exponent, scaleList, multiplierList):
+        for kind, expo, uScale, uMultiplier in zip(uKind, uExponent, uScaleList, uMultiplierList):
             unit = unitdef.createUnit()
             check(unit, 'create unit on unitdef')
             check(unit.setKind(kind), 'set unit kind')
-            check(unit.setExponent(expo), 'set unit exponent')
-            check(unit.setScale(scale), 'set unit scale')
-            check(unit.setMultiplier(multiplier), 'set unit multiplier')
+            check(unit.setExponent(expo), 'set unit uExponent')
+            check(unit.setScale(uScale), 'set unit uScale')
+            check(unit.setMultiplier(uMultiplier), 'set unit uMultiplier')
 
         return unitdef
 
@@ -237,7 +235,7 @@ class SimpleModel(object):
         return list_p_obj
 
 
-    def createSimpleReaction(self, rId, rStr, rRate, isConstant = False):
+    def createSimpleReaction(self, rId, rStr, rRate, rCompartment = None, isConstant = False):
         ''' 
         Creates a new Reaction object inside the 
         Model with the given attributes and returns a pointer to the libSBML Reaction object created
@@ -245,16 +243,19 @@ class SimpleModel(object):
         if type(rId) is not str or type(rStr) is not str or type(rRate) is not str or type(isConstant) is not bool:
             raise ValueError('The arguments are not of expected type. rId, rStr, rRate must be strings of appropriate valid format, isConstant must be boolean type')
         model = self.getModel()
+        if len(model.getListOfCompartments()):
+            rCompartment = model.getCompartment(0).getId()
         check(model,'retreived model object')
         r_obj = model.createReaction()
         check(r_obj, 'created r_obj reaction')
         check(r_obj.setName(rId), 'set r_obj name')
+        check(r_obj.setCompartment(rCompartment), 'set compartment to the reaction object')
         ids = self.getAllIds()
         trans = SetIdFromNames(ids)
         rId = trans.getValidIdForName(rId)
         check(r_obj.setId(rId), 'set r_obj ID')
         rFast = False # defaults to False in SBML L3V2
-        check(r_obj.setFast(rFast), 'set r_obj Fast')
+        # check(r_obj.setFast(rFast), 'set r_obj Fast')
         newRxn = SimpleReaction(r_obj)
         reactantList, reactant_stoichList, productList, product_stoichList = newRxn.parseReactionString(rStr)
         for reactant, stoich in zip(reactantList, reactant_stoichList):
@@ -294,13 +295,13 @@ class SimpleModel(object):
         
         return constr
 
-    def createNewEvent(self, id, trigger_persistent, trigger_initialValue, 
-        trigger_formula, variable_id, assignment_formula, delay_formula = '', 
-        priority_formula = '', useValuesFromTriggerTime = True, name = ''):
+    def createNewEvent(self, id, triggerPersistent, triggerInitialValue, 
+        triggerFormula, variableId, assignmentFormula, delayFormula = '', 
+        priorityFormula = '', useValuesFromTriggerTime = True, name = ''):
         '''
         Creates a new Event in the Model and returns a pointer to the libSBML object created
         '''
-        if (type(id) is not str) or (type(trigger_persistent) is not bool) or (type(trigger_initialValue) is not bool) or (type(trigger_formula) is not str) or (type(variable_id) is not str) or (type(assignment_formula) is not str) or (type(delay_formula) is not str) or (type(priority_formula) is not str) or (type(useValuesFromTriggerTime) is not bool) or (type(name) is not str):
+        if (type(id) is not str) or (type(triggerPersistent) is not bool) or (type(triggerInitialValue) is not bool) or (type(triggerFormula) is not str) or (type(variableId) is not str) or (type(assignmentFormula) is not str) or (type(delayFormula) is not str) or (type(priorityFormula) is not str) or (type(useValuesFromTriggerTime) is not bool) or (type(name) is not str):
             raise ValueError('The arguments are not of expected type.') 
         model = self.getModel()
         check(model,'retreived model object')
@@ -312,102 +313,102 @@ class SimpleModel(object):
 
         eTrig = e.createTrigger()
         check(eTrig,'creating trigger inside the event')
-        check(eTrig.setPersistent(trigger_persistent), 'setting persistent value to the trigger')
-        check(eTrig.setInitialValue(trigger_initialValue), 'setting initial value to the trigger')
-        trig_math = libsbml.parseL3Formula(trigger_formula)
+        check(eTrig.setPersistent(triggerPersistent), 'setting persistent value to the trigger')
+        check(eTrig.setInitialValue(triggerInitialValue), 'setting initial value to the trigger')
+        trig_math = libsbml.parseL3Formula(triggerFormula)
         check(eTrig.setMath(trig_math), 'setting math to the trigger')
 
         eA = e.createEventAssignment()
         check(eA, 'creating event assignment inside the event')
-        check(eA.setVariable(variable_id), 'setting variable in the event assignment')
-        asmt_math = libsbml.parseL3Formula(assignment_formula)
+        check(eA.setVariable(variableId), 'setting variable in the event assignment')
+        asmt_math = libsbml.parseL3Formula(assignmentFormula)
         check(eA.setMath(asmt_math), 'setting math to the event assignment')
 
-        if delay_formula != '':
+        if delayFormula != '':
             eDel = e.createDelay()
             check(eDel, 'creating a new delay inside the event')
-            del_math = libsbml.parseL3Formula(delay_formula)
+            del_math = libsbml.parseL3Formula(delayFormula)
             check(eDel.setMath(del_math), 'setting the math to the delay')
-        if priority_formula != '':
+        if priorityFormula != '':
             eP = e.createPriority()
             check(eP, 'creating a new priority inside the event')
-            prio_math = libsbml.parseL3Formula(priority_formula)
+            prio_math = libsbml.parseL3Formula(priorityFormula)
             check(eP.setMath(prio_math), 'setting the math to the priority')
         e.setUseValuesFromTriggerTime(useValuesFromTriggerTime)
         return e
 
-    def createNewInitialAssignment(self, symbol, initialAssignment_formula):
+    def createNewInitialAssignment(self, aSymbol, initialAssignmentFormula):
         '''
         Creates a new InitialAssignment in the Model and returns a pointer to the libSBML object created
         '''
-        if type(symbol) is not str or type(initialAssignment_formula) is not str:
+        if type(aSymbol) is not str or type(initialAssignmentFormula) is not str:
             raise ValueError('The arguments are not of expected type.') 
         model = self.getModel()
         check(model,'retreived model object')
         init_asmt = model.createInitialAssignment()
         check(init_asmt,'creating new initial assignment inside the model')
-        check(init_asmt.setSymbol(symbol),'setting the symbol to the initial assignment')
-        initAsmt_math = libsbml.parseL3Formula(initialAssignment_formula)
+        check(init_asmt.setSymbol(aSymbol),'setting the aSymbol to the initial assignment')
+        initAsmt_math = libsbml.parseL3Formula(initialAssignmentFormula)
         check(init_asmt.setMath(initAsmt_math),'setting math to the initial assignment')
         return 
 
-    def createNewAssignmentRule(self, variable_id, assignmentRule_formula):
+    def createNewAssignmentRule(self, variableId, assignmentRuleFormula):
         '''
         Creates a new AssignmentRule in the Model and returns a pointer to the libSBML object created
         '''
-        if type(variable_id) is not str or type(assignmentRule_formula) is not str:
+        if type(variableId) is not str or type(assignmentRuleFormula) is not str:
             raise ValueError('The arguments are not of expected type.') 
 
         model = self.getModel()
         check(model,'retreived model object')
         asmt = model.createAssignmentRule()
         check(asmt, 'creating new assignment rule in the model')
-        check(asmt.setFormula(assignmentRule_formula), 'setting the formula to the assignment rule')
-        check(asmt.setVariable(variable_id), 'setting the variable to the assignment rule')
+        check(asmt.setFormula(assignmentRuleFormula), 'setting the formula to the assignment rule')
+        check(asmt.setVariable(variableId), 'setting the variable to the assignment rule')
         return 
 
-    def createNewRateRule(self, variable_id, rateRule_formula):
+    def createNewRateRule(self, variableId, rateRuleFormula):
         '''
         Creates a new RateRule in the Model and returns a pointer to the libSBML object created
         '''
-        if type(variable_id) is not str or type(rateRule_formula) is not str:
+        if type(variableId) is not str or type(rateRuleFormula) is not str:
             raise ValueError('The arguments are not of expected type.') 
         model = self.getModel()
         check(model,'retreived model object')
         rateRule = model.createRateRule()
         check(rateRule, 'creating a new rate rule inside the model')
-        check(rateRule.setFormula(rateRule_formula), 'setting the formula for the rate rule')
-        check(rateRule.setVariable(variable_id), 'setting the variable for the rate rule')
+        check(rateRule.setFormula(rateRuleFormula), 'setting the formula for the rate rule')
+        check(rateRule.setVariable(variableId), 'setting the variable for the rate rule')
         return 
 
-    def createNewAlgebraicRule(self, variable_id, algebraicRule_formula):
+    def createNewAlgebraicRule(self, variableId, algebraicRuleFormula):
         '''
         Creates a new AlgebraicRule in the Model and returnsa pointer to the libSBML object created
         '''
-        if type(variable_id) is not str or type(algebraicRule_formula) is not str:
+        if type(variableId) is not str or type(algebraicRuleFormula) is not str:
             raise ValueError('The arguments are not of expected type.') 
         model = self.getModel()
         check(model,'retreived model object')
         algbRule = model.createAlgebraicRule()
         check(algbRule, 'creating new algebraic rule inside the model')
-        check(algbRule.setFormula(algebraicRule_formula), 'setting the formula for the algebraic rule')
-        check(algbRule.setVariable(variable_id), 'setting the variable for the algebraic rule')
+        check(algbRule.setFormula(algebraicRuleFormula), 'setting the formula for the algebraic rule')
+        check(algbRule.setVariable(variableId), 'setting the variable for the algebraic rule')
         return 
 
-    def createNewFunctionDefinition(self, id, functionDefinition_formula, name = ''):
+    def createNewFunctionDefinition(self, fId, functionDefinitionFormula, name = ''):
         '''
         Creates a new FunctionDefinition in the Model and returns a pointer to the libSBML object created
         '''
-        if type(id) is not str or type(functionDefinition_formula) is not str or type(name) is not str:
+        if type(fId) is not str or type(functionDefinitionFormula) is not str or type(name) is not str:
             raise ValueError('The arguments are not of expected type.') 
         model = self.getModel()
         check(model,'retreived model object')
         func_def = model.createFunctionDefinition()
-        check(func_def, 'creating a new function definition inside the model')
-        check(func_def.setId(id), 'setting the id of the function definition')
+        check(func_def, 'creating a new function definition insfIde the model')
+        check(func_def.setId(fId), 'setting the fId of the function definition')
         if name != '' :
             check(func_def.setName(name), 'setting the name of the function definition')
-        func_math = libsbml.parseL3Formula(functionDefinition_formula)
+        func_math = libsbml.parseL3Formula(functionDefinitionFormula)
         check(func_def.setMath(func_math), 'setting the math for the function definition')
         return 
 
