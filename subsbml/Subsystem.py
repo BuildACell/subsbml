@@ -1439,7 +1439,6 @@ class Subsystem(object):
                         final_reaction_map[rStr].append(reaction_map[rStr])
                     else:
                         final_reaction_map[rStr] = [reaction_map[rStr]]
-
             # Removing duplicate reactions and adding only one
             allids = self.getAllIds()
             trans = SetIdFromNames(allids)
@@ -2335,9 +2334,9 @@ def createSubsystem(filename, subsystemName = '', **kwargs):
     sbmlDoc = getFromXML(filename)
     model = sbmlDoc.getModel()
     if model.isSetName():
-        subsystemName = model.getName()
+        subsystemName += model.getName()
     else:
-        subsystemName = model.getId()
+        subsystemName += model.getId()
     if membrane:
         subsystemName = ''
     subsystem = Subsystem(sbmlDoc)
