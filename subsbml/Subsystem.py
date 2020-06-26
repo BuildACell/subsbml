@@ -1943,9 +1943,9 @@ class Subsystem(object):
             raise ValueError('Package not installed : bioscrape, simulation options with bioscrape will not work.') 
         filename = 'temp.xml'
         libsbml.writeSBML(self.getSBMLDocument(), filename) 
-        m = bioscrape.sbmlutil.import_sbml(filename)
+        m = bioscrape.sbmlutil.import_sbml(filename, **kwargs)
         m.write_bioscrape_xml('temp_bs.xml')
-        result = bioscrape.simulator.py_simulate_model(timepoints, Model = m, stochastic = stochastic, **kwargs)
+        result = bioscrape.simulator.py_simulate_model(timepoints, Model = m, stochastic = stochastic)
         return result, m
 
     def plotWithBioscrape(self, ListOfSpeciesToPlot, timepoints, **kwargs):
