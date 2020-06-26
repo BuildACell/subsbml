@@ -1439,7 +1439,6 @@ class Subsystem(object):
                         final_reaction_map[rStr].append(reaction_map[rStr])
                     else:
                         final_reaction_map[rStr] = [reaction_map[rStr]]
-
             # Removing duplicate reactions and adding only one
             allids = self.getAllIds()
             trans = SetIdFromNames(allids)
@@ -1944,9 +1943,9 @@ class Subsystem(object):
             raise ValueError('Package not installed : bioscrape, simulation options with bioscrape will not work.') 
         filename = 'temp.xml'
         libsbml.writeSBML(self.getSBMLDocument(), filename) 
-        m = bioscrape.sbmlutil.import_sbml(filename)
+        m = bioscrape.sbmlutil.import_sbml(filename, **kwargs)
         m.write_bioscrape_xml('temp_bs.xml')
-        result = bioscrape.simulator.py_simulate_model(timepoints, Model = m, stochastic = stochastic, **kwargs)
+        result = bioscrape.simulator.py_simulate_model(timepoints, Model = m, stochastic = stochastic)
         return result, m
 
     def plotWithBioscrape(self, ListOfSpeciesToPlot, timepoints, **kwargs):
@@ -2335,9 +2334,9 @@ def createSubsystem(filename, subsystemName = '', **kwargs):
     sbmlDoc = getFromXML(filename)
     model = sbmlDoc.getModel()
     if model.isSetName():
-        subsystemName = model.getName()
+        subsystemName += model.getName()
     else:
-        subsystemName = model.getId()
+        subsystemName += model.getId()
     if membrane:
         subsystemName = ''
     subsystem = Subsystem(sbmlDoc)
