@@ -379,17 +379,15 @@ class Subsystem(object):
     
     def renameCompartments(self,oldCompartments, newCompartments, **kwargs):
         '''
+        The oldCompartments list is the ListofCompartments you want to rename 
     	The newCompartments list is set as the new ListOfCompartments 
         in theSBMLDocument of this Subsystem
         Returns the updated SBMLDocument 
         '''
         verbose = kwargs.get('verbose') if 'verbose' in kwargs else None
         document = self.getSBMLDocument()
-        check(document,'retreiving document from subsystem in setSubsystemCompartments')
-        #compartments = document.getModel().getListOfCompartments()
-        #if not len(compartments):
-        #    return 
-        #check(compartments,'retreiving list of compartments in setSubsystemCompartments')
+        check(document,'retreiving document from subsystem in renameCompartments')
+        
         if type(newCompartments) is not list:
             if type(newCompartments) is str:
                 newcomp = newCompartments
@@ -414,8 +412,6 @@ class Subsystem(object):
                 # rename compartment name and id
                 compName= oldCompartments[i]
                 compartment= self.getCompartmentsByName(compName)
-               
-                
                 status = compartment.setName(newCompartments[i])
                 check(status, 'setting name of compartment in setSubsystemCompartments')
                 oldid = compartment.getId()
