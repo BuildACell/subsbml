@@ -376,7 +376,51 @@ class Subsystem(object):
                 trans = SetIdFromNames(allids)
                 self.renameSId(oldid, trans.getValidIdForName(newCompartments[i]))
         return self.getSBMLDocument()
+    
+    def renameCompartments(self,oldCompartments, newCompartments, **kwargs):
+        '''
+        The oldCompartments list is the ListofCompartments you want to rename 
+    	The newCompartments list is set as the new ListOfCompartments 
+        in theSBMLDocument of this Subsystem
+        Returns the updated SBMLDocument 
+        '''
+        verbose = kwargs.get('verbose') if 'verbose' in kwargs else None
+        document = self.getSBMLDocument()
+        check(document,'retreiving document from subsystem in renameCompartments')
+        
+        if type(newCompartments) is not list:
+            if type(newCompartments) is str:
+                newcomp = newCompartments
+                newCompartments = []
+                newCompartments.append(newcomp)
+            else:
+                raise ValueError('The newCompartments argument should be a list of strings or a single string')
+        if type(oldCompartments) is not list:
+            if type(oldCompartments) is str:
+                oldcomp = oldCompartments
+                oldCompartments = []
+                oldCompartments.append(oldcomp)
+            else:
+                raise ValueError('The oldCompartments argument should be a list of strings or a single string')
+
+        if len(oldCompartments) != len(newCompartments):
+            raise ValueError('The number of old compartments given is not the same as the number of new compartments in the model.')
+            
    
+        else:
+            for i in range(len(oldCompartments)):
+                # rename compartment name and id
+                compName= oldCompartments[i]
+                compartment= self.getCompartmentsByName(compName)
+                status = compartment.setName(newCompartments[i])
+                check(status, 'setting name of compartment in setSubsystemCompartments')
+                oldid = compartment.getId()
+                check(oldid,'retreiving oldid in setSubsystemCompartments')
+                allids = self.getAllIds()
+                trans = SetIdFromNames(allids)
+                self.renameSId(oldid, trans.getValidIdForName(newCompartments[i]))
+        return self.getSBMLDocument()
+    
     def createNewModel(self, modelId, timeUnits, extentUnits, substanceUnits):
         '''
         Creates a new Model object in the SBMLDocument of this Subsystem 
