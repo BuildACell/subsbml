@@ -1380,6 +1380,7 @@ class Subsystem(object):
             for reaction in sub_model.getListOfReactions():
                 rc1_list = reaction.getListOfReactants()
                 pt1_list = reaction.getListOfProducts()
+                modifier_list = reaction.getListOfModifiers()
                 rStr = ''
                 for i in range(len(rc1_list)):
                     sref = rc1_list[i]
@@ -1395,6 +1396,20 @@ class Subsystem(object):
                     rStr += ' <-> '
                 else:
                     rStr += ' --> '
+                
+                for i in range(len(modifier_list)):
+                    rStr += '['
+                    sref = modifier_list[i]
+                    species = sub_model.getElementBySId(sref.getSpecies())
+                    if species.isSetName():
+                        rStr += species.getName()
+                    else:
+                        warnings.warn('Species {0} does not have a name attribute. Reactions might be duplicated.'.format(species.getId())) if verbose else None
+                        break
+                    if i < (len(modifier_list) - 1):
+                        rStr += ' + '
+                    rStr += ']'
+
                 for i in range(len(pt1_list)):
                     sref = pt1_list[i]
                     species = sub_model.getElementBySId(sref.getSpecies())
@@ -1405,6 +1420,7 @@ class Subsystem(object):
                         break
                     if i < (len(pt1_list) - 1):
                         rStr += ' + '
+
 
                 if reaction_map.get(reaction.getId()):
                     raise ValueError('Multiple reactions with same identifier {0} found. Invalid SBML.'.format(reaction.getId()))
@@ -1421,20 +1437,24 @@ class Subsystem(object):
                     final_reaction_map[rStr] = [rxn_id]
 
             # Removing duplicate reactions and adding only one
-            allids = self.getAllIds()
-            trans = SetIdFromNames(allids)
             for rxn_str in final_reaction_map:
                 if len(final_reaction_map[rxn_str]) > 1:
                     uni_rxn = sub_model.getElementBySId(final_reaction_map[rxn_str][0])
+                    count = 0
                     for ind in range(0,len(final_reaction_map[rxn_str])):
                         i = sub_model.getElementBySId(final_reaction_map[rxn_str][ind])
-                        check(i,'retreiving species by id in removing duplicate reactions')
-                        if ind > 0:
-                            self.renameSId(i.getId(),trans.getValidIdForName(uni_rxn.getId()+'_combined'))
+                        check(i,'retreiving reaction by id in removing duplicate reactions')
+                        sub_model.addReaction(i)
+                        oldid = i.getId()
+                        allids = self.getAllIds()
+                        trans = SetIdFromNames(allids)
+                        newid = trans.getValidIdForName(i.getName()) + '_combined'
+                        self.renameSId(oldid, newid)
+                        if count >= 1:
                             status = sub_model.removeReaction(i.getId())
                             if status != None:
                                 warnings.warn('Removing all duplicates of the reaction {0} in the combined model. Check the reaction rate to ensure model is consistent.'.format(rxn_str)) if verbose else None
-                    self.renameSId(uni_rxn.getId(),trans.getValidIdForName(uni_rxn.getId()+'_combined'))
+                        count += 1
 
         else:
             final_reaction_map = {}
@@ -1445,6 +1465,7 @@ class Subsystem(object):
                 for reaction in sub_model.getListOfReactions():
                     rc1_list = reaction.getListOfReactants()
                     pt1_list = reaction.getListOfProducts()
+                    modifier_list = reaction.getListOfModifiers()
                     rStr = ''
                     for i in range(len(rc1_list)):
                         sref = rc1_list[i]
@@ -1461,6 +1482,20 @@ class Subsystem(object):
                         rStr += ' <-> '
                     else:
                         rStr += ' --> '
+                    for i in range(len(modifier_list)):
+                        rStr += '['
+                        sref = modifier_list[i]
+                        species = sub_model.getElementBySId(sref.getSpecies())
+                        if species.isSetName():
+                            rStr += species.getName()
+                        else:
+                            warnings.warn('Species {0} does not have a name attribute. Reactions might be duplicated.'.format(species.getId())) if verbose else None
+                            break
+                        if i < (len(modifier_list) - 1):
+                            rStr += ' + '
+                        rStr += ']'
+
+
                     for i in range(len(pt1_list)):
                         sref = pt1_list[i]
                         species = sub_model.getElementBySId(sref.getSpecies())
@@ -1484,23 +1519,24 @@ class Subsystem(object):
                     else:
                         final_reaction_map[rStr] = [reaction_map[rStr]]
             # Removing duplicate reactions and adding only one
-            allids = self.getAllIds()
-            trans = SetIdFromNames(allids)
             for rxn_str in final_reaction_map:
                 if len(final_reaction_map[rxn_str]) > 1:
                     uni_rxn = final_reaction_map[rxn_str][0]
+                    model.addReaction(uni_rxn)
+                    allids = self.getAllIds()
+                    trans = SetIdFromNames(allids)
+                    newid = trans.getValidIdForName(uni_rxn.getName() + '_combined')
                     count = 0
                     for ind in range(0,len(final_reaction_map[rxn_str])):
                         i = final_reaction_map[rxn_str][ind]
+                        oldid = i.getId()
+                        self.renameSId(oldid, newid)
                         if count >= 1:
-                            self.renameSId(i.getId(), trans.getValidIdForName(uni_rxn.getId() + '_combined'))
-                            status = model.removeReaction(i.getId())
+                            status = model.removeReaction(newid)
                             if status != None:
                                 warnings.warn('Removing all duplicates of the reaction {0} in the combined model. Check the reaction rate to ensure model is consistent.'.format(rxn_str)) if verbose else None
                         count += 1
-                    self.renameSId(uni_rxn.getId(), trans.getValidIdForName(uni_rxn.getId() + '_combined'))
-        
-         
+                    # self.renameSId(uni_rxn.getId(), trans.getValidIdForName(uni_rxn.getId() + '_combined'))
         return self.getSBMLDocument()
 
     def combineUnitDefinitions(self, ListOfSubsystems, **kwargs):
