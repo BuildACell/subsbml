@@ -1421,20 +1421,24 @@ class Subsystem(object):
                     final_reaction_map[rStr] = [rxn_id]
 
             # Removing duplicate reactions and adding only one
-            allids = self.getAllIds()
-            trans = SetIdFromNames(allids)
             for rxn_str in final_reaction_map:
                 if len(final_reaction_map[rxn_str]) > 1:
                     uni_rxn = sub_model.getElementBySId(final_reaction_map[rxn_str][0])
+                    count = 0
                     for ind in range(0,len(final_reaction_map[rxn_str])):
                         i = sub_model.getElementBySId(final_reaction_map[rxn_str][ind])
-                        check(i,'retreiving species by id in removing duplicate reactions')
-                        if ind > 0:
-                            self.renameSId(i.getId(),trans.getValidIdForName(uni_rxn.getId()+'_combined'))
+                        check(i,'retreiving reaction by id in removing duplicate reactions')
+                        sub_model.addReaction(i)
+                        oldid = i.getId()
+                        allids = self.getAllIds()
+                        trans = SetIdFromNames(allids)
+                        newid = trans.getValidIdForName(i.getName()) + '_combined'
+                        self.renameSId(oldid, newid)
+                        if count >= 1:
                             status = sub_model.removeReaction(i.getId())
                             if status != None:
                                 warnings.warn('Removing all duplicates of the reaction {0} in the combined model. Check the reaction rate to ensure model is consistent.'.format(rxn_str)) if verbose else None
-                    self.renameSId(uni_rxn.getId(),trans.getValidIdForName(uni_rxn.getId()+'_combined'))
+                        count += 1
 
         else:
             final_reaction_map = {}
@@ -1484,23 +1488,24 @@ class Subsystem(object):
                     else:
                         final_reaction_map[rStr] = [reaction_map[rStr]]
             # Removing duplicate reactions and adding only one
-            allids = self.getAllIds()
-            trans = SetIdFromNames(allids)
             for rxn_str in final_reaction_map:
                 if len(final_reaction_map[rxn_str]) > 1:
                     uni_rxn = final_reaction_map[rxn_str][0]
+                    allids = self.getAllIds()
+                    trans = SetIdFromNames(allids)
+                    newid = trans.getValidIdForName(uni_rxn.getName() + '_combined')
                     count = 0
                     for ind in range(0,len(final_reaction_map[rxn_str])):
+                        model.addReaction(uni_rxn)
                         i = final_reaction_map[rxn_str][ind]
+                        oldid = i.getId()
+                        self.renameSId(oldid, newid)
                         if count >= 1:
-                            self.renameSId(i.getId(), trans.getValidIdForName(uni_rxn.getId() + '_combined'))
-                            status = model.removeReaction(i.getId())
+                            status = model.removeReaction(newid)
                             if status != None:
                                 warnings.warn('Removing all duplicates of the reaction {0} in the combined model. Check the reaction rate to ensure model is consistent.'.format(rxn_str)) if verbose else None
                         count += 1
-                    self.renameSId(uni_rxn.getId(), trans.getValidIdForName(uni_rxn.getId() + '_combined'))
-        
-         
+                    # self.renameSId(uni_rxn.getId(), trans.getValidIdForName(uni_rxn.getId() + '_combined'))
         return self.getSBMLDocument()
 
     def combineUnitDefinitions(self, ListOfSubsystems, **kwargs):
