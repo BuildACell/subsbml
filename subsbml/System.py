@@ -318,7 +318,11 @@ class System(object):
         if subsystem.getSBMLDocument().getLevel() != latestLevel or subsystem.getSBMLDocument().getVersion() != latestVersion:
             warnings.warn('Subsystem SBML model is not the latest. Converting to latest SBML level and version') if verbose else None
             subsystem.convertSubsystemLevelAndVersion(latestLevel,latestVersion)
-        subsystem.suffixAllElementIds(subsystemName)
+        if 'suffixNames' in kwargs:
+            suffixNames = kwargs.get('suffixNames')
+        else:
+            suffixNames = False
+        subsystem.suffixAllElementIds(subsystemName, suffixNames = suffixNames)
         if model.getNumCompartments() == 0:
             warnings.warn('No compartments in the Subsystem model, the System compartment will be used. Compartment Size will be set to zero for this Subsystem.') if verbose else None
         elif model.getNumCompartments() > 1:
