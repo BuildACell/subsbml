@@ -1489,13 +1489,15 @@ class Subsystem(object):
             for rxn_str in final_reaction_map:
                 if len(final_reaction_map[rxn_str]) > 1:
                     uni_rxn = final_reaction_map[rxn_str][0]
+                    count = 0
                     for ind in range(0,len(final_reaction_map[rxn_str])):
                         i = final_reaction_map[rxn_str][ind]
-                        if ind > 0:
-                            status = model.removeReaction(i.getId())
+                        if count >= 1:
                             self.renameSId(i.getId(), trans.getValidIdForName(uni_rxn.getId() + '_combined'))
+                            status = model.removeReaction(i.getId())
                             if status != None:
                                 warnings.warn('Removing all duplicates of the reaction {0} in the combined model. Check the reaction rate to ensure model is consistent.'.format(rxn_str)) if verbose else None
+                        count += 1
                     self.renameSId(uni_rxn.getId(), trans.getValidIdForName(uni_rxn.getId() + '_combined'))
         
          
@@ -2388,7 +2390,11 @@ def createSubsystem(filename, subsystemName = '', **kwargs):
         warnings.warn('Subsystem SBML model is not the latest. Converting to the latest SBML level and version') if verbose else None
         subsystem.convertSubsystemLevelAndVersion(latestLevel,latestVersion)
     if subsystemName != '':
-        subsystem.suffixAllElementIds(subsystemName)
+        if 'suffixNames' in kwargs:
+            suffixNames = kwargs.get('suffixNames')
+        else:
+            suffixNames = False
+        subsystem.suffixAllElementIds(subsystemName, suffixNames=suffixNames)
     if model.getNumCompartments() == 0:
         warnings.warn('No compartments in the Subsystem model, the System compartment will be used. Compartment Size will be set to zero for this Subsystem.') if verbose else None
     elif model.getNumCompartments() > 1:
