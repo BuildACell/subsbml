@@ -1380,6 +1380,7 @@ class Subsystem(object):
             for reaction in sub_model.getListOfReactions():
                 rc1_list = reaction.getListOfReactants()
                 pt1_list = reaction.getListOfProducts()
+                modifier_list = reaction.getListOfModifiers()
                 rStr = ''
                 for i in range(len(rc1_list)):
                     sref = rc1_list[i]
@@ -1395,6 +1396,20 @@ class Subsystem(object):
                     rStr += ' <-> '
                 else:
                     rStr += ' --> '
+                
+                for i in range(len(modifier_list)):
+                    rStr += '['
+                    sref = modifier_list[i]
+                    species = sub_model.getElementBySId(sref.getSpecies())
+                    if species.isSetName():
+                        rStr += species.getName()
+                    else:
+                        warnings.warn('Species {0} does not have a name attribute. Reactions might be duplicated.'.format(species.getId())) if verbose else None
+                        break
+                    if i < (len(modifier_list) - 1):
+                        rStr += ' + '
+                    rStr += ']'
+
                 for i in range(len(pt1_list)):
                     sref = pt1_list[i]
                     species = sub_model.getElementBySId(sref.getSpecies())
@@ -1405,6 +1420,7 @@ class Subsystem(object):
                         break
                     if i < (len(pt1_list) - 1):
                         rStr += ' + '
+
 
                 if reaction_map.get(reaction.getId()):
                     raise ValueError('Multiple reactions with same identifier {0} found. Invalid SBML.'.format(reaction.getId()))
@@ -1449,6 +1465,7 @@ class Subsystem(object):
                 for reaction in sub_model.getListOfReactions():
                     rc1_list = reaction.getListOfReactants()
                     pt1_list = reaction.getListOfProducts()
+                    modifier_list = reaction.getListOfModifiers()
                     rStr = ''
                     for i in range(len(rc1_list)):
                         sref = rc1_list[i]
@@ -1465,6 +1482,20 @@ class Subsystem(object):
                         rStr += ' <-> '
                     else:
                         rStr += ' --> '
+                    for i in range(len(modifier_list)):
+                        rStr += '['
+                        sref = modifier_list[i]
+                        species = sub_model.getElementBySId(sref.getSpecies())
+                        if species.isSetName():
+                            rStr += species.getName()
+                        else:
+                            warnings.warn('Species {0} does not have a name attribute. Reactions might be duplicated.'.format(species.getId())) if verbose else None
+                            break
+                        if i < (len(modifier_list) - 1):
+                            rStr += ' + '
+                        rStr += ']'
+
+
                     for i in range(len(pt1_list)):
                         sref = pt1_list[i]
                         species = sub_model.getElementBySId(sref.getSpecies())
@@ -1491,12 +1522,12 @@ class Subsystem(object):
             for rxn_str in final_reaction_map:
                 if len(final_reaction_map[rxn_str]) > 1:
                     uni_rxn = final_reaction_map[rxn_str][0]
+                    model.addReaction(uni_rxn)
                     allids = self.getAllIds()
                     trans = SetIdFromNames(allids)
                     newid = trans.getValidIdForName(uni_rxn.getName() + '_combined')
                     count = 0
                     for ind in range(0,len(final_reaction_map[rxn_str])):
-                        model.addReaction(uni_rxn)
                         i = final_reaction_map[rxn_str][ind]
                         oldid = i.getId()
                         self.renameSId(oldid, newid)
