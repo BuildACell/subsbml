@@ -6,7 +6,7 @@ with open('README.md') as fp:
 
 setup(
     name = 'subsbml',
-    version = '1.0.0',
+    version = '0.9.0',
     author = 'Ayush Pandey',
     author_email = 'apandey@caltech.edu',
     url = 'https://github.com/BuildACell/subsbml',
