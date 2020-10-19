@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version2/core" level="3" version="2">
+  <model id="IPTG_membrane" substanceUnits="substance" timeUnits="second" extentUnits="mole">
+    <listOfUnitDefinitions>
+      <unitDefinition id="per_second">
+        <listOfUnits>
+          <unit kind="second" exponent="-1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="substance">
+        <listOfUnits>
+          <unit kind="dimensionless" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment id="internal" name="internal" spatialDimensions="3" size="1e-06" units="litre" constant="true"/>
+      <compartment id="external" name="external" spatialDimensions="3" size="1e-06" units="litre" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species id="IPTG" name="IPTG" compartment="external" initialConcentration="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="IPTG_1" name="IPTG" compartment="internal" initialConcentration="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="transport_protein" name="transport_protein" compartment="internal" initialConcentration="1" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="IPTG_transport_protein" name="IPTG_transport_protein" compartment="internal" initialConcentration="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter id="kb" name="kb" value="0.01" units="per_second" constant="false"/>
+      <parameter id="kd" name="kd" value="0.2" units="per_second" constant="false"/>
+    </listOfParameters>
+    <listOfReactions>
+      <reaction id="r1" reversible="true">
+        <listOfReactants>
+          <speciesReference species="IPTG" stoichiometry="1" constant="false"/>
+          <speciesReference species="transport_protein" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="IPTG_transport_protein" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kb </ci>
+                <ci> IPTG </ci>
+                <ci> transport_protein </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kd </ci>
+                <ci> IPTG_transport_protein </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="r2" reversible="true">
+        <listOfReactants>
+          <speciesReference species="IPTG_transport_protein" stoichiometry="1" constant="false"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="IPTG_1" stoichiometry="1" constant="false"/>
+          <speciesReference species="transport_protein" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> kd </ci>
+                <ci> IPTG_transport_protein </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kb </ci>
+                <ci> IPTG_1 </ci>
+                <ci> transport_protein </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

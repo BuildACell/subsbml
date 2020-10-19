@@ -19,15 +19,18 @@ cell_sub.setSpeciesAmount('IPTG',500, 'cell_external')
 # cell_sub.setSpeciesAmount('Ribo',50000000)
 cell_sub.writeSBML('models/cell_transport_model.xml')
 print('######################### Model written successfully to an SBML file named "cell_transport_model" in the model subfolder. Different kinds of simulation options follow now###############################')
-time.sleep(3)
-# Simulations 
-gfp = cell_sub.getSpeciesByName('protein deGFP*')
-timepoints = np.linspace(0,10*60*60,100)
+try:
+
+    time.sleep(3)
+    # Simulations 
+    gfp = cell_sub.getSpeciesByName('protein deGFP*')
+    timepoints = np.linspace(0,10*60*60,100)
 
 
-### If bioscrape is installed, uncomment the following to simulate the model. Otherwise, use your own preferred simulator with the SBML model generated above. 
-cell_sub.simulateVariableInputs('IPTG',[0, 40, 60, 80, 100], ['protein deGFP*'], timepoints, Simulator = 'roadrunner', mode = 'reset', compartmentInput= 'cell_external',compartmentSpecies = 'cell_internal')
-
+    ### If bioscrape is installed, uncomment the following to simulate the model. Otherwise, use your own preferred simulator with the SBML model generated above. 
+    cell_sub.simulateVariableInputs('IPTG',[0, 40, 60, 80, 100], ['protein deGFP*'], timepoints, Simulator = 'roadrunner', mode = 'reset', compartmentInput= 'cell_external',compartmentSpecies = 'cell_internal')
+except:
+    print('Simulator not found.')
 
 
 # cell_sub.simulateVariableInputs('DNA pOR1OR2--utr1--alHL',[0, 5, 10, 100, 15, 30], ['IPTG'], timepoints, mode = 'reset', compartmentInput= 'cell_internal',compartmentSpecies = 'cell_internal')
