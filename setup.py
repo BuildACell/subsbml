@@ -26,13 +26,9 @@ setup(
     install_requires=[
           "python-libsbml",
           "scipy",
-          "numpy"
+          "numpy",
+          "matplotlib"
           ],
-    extras_require = { 
-        "all": [
-            "matplotlib"
-            ]
-            },
     setup_requires=["pytest-runner"],
     python_requires='>=3.6',
     keywords="SBML Automated Model Reduction Modeling QSSA Hill functions",
