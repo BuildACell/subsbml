@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sbml xmlns="http://www.sbml.org/sbml/level3/version2/core" level="3" version="2">
-  <model id="combined_model_of__bioscrape_generated_model_154456_bioscrape_generated_model_920755" substanceUnits="mole" timeUnits="second" volumeUnits="litre" areaUnits="square_metre" lengthUnits="metre" extentUnits="mole">
+  <model id="combined_model_of__bioscrape_generated_model_288980_bioscrape_generated_model_963930" substanceUnits="mole" timeUnits="second" volumeUnits="litre" areaUnits="square_metre" lengthUnits="metre" extentUnits="mole">
     <listOfUnitDefinitions>
       <unitDefinition id="square_metre" name="square_metre">
         <listOfUnits>
@@ -9,37 +9,37 @@
       </unitDefinition>
     </listOfUnitDefinitions>
     <listOfCompartments>
-      <compartment id="default_bioscrape_generated_model_154456_combined" name="default" spatialDimensions="3" size="2e-06" constant="true"/>
+      <compartment id="default_bioscrape_generated_model_288980_combined" name="default" spatialDimensions="3" size="2e-06" constant="true"/>
     </listOfCompartments>
     <listOfSpecies>
-      <species id="G_bioscrape_generated_model_154456" name="G" compartment="default_bioscrape_generated_model_154456_combined" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="S_bioscrape_generated_model_154456" name="S" compartment="default_bioscrape_generated_model_154456_combined" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="mRNA_T_bioscrape_generated_model_154456_1_combined" name="T" compartment="default_bioscrape_generated_model_154456_combined" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
-      <species id="X_bioscrape_generated_model_920755" name="X" compartment="default_bioscrape_generated_model_154456_combined" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="G_bioscrape_generated_model_288980" name="G" compartment="default_bioscrape_generated_model_288980_combined" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="S_bioscrape_generated_model_288980" name="S" compartment="default_bioscrape_generated_model_288980_combined" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="mRNA_T_bioscrape_generated_model_288980_1_combined" name="T" compartment="default_bioscrape_generated_model_288980_combined" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="X_bioscrape_generated_model_963930" name="X" compartment="default_bioscrape_generated_model_288980_combined" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
     </listOfSpecies>
     <listOfParameters>
-      <parameter id="KI_bioscrape_generated_model_154456" name="KI" value="10" constant="true"/>
-      <parameter id="KX_bioscrape_generated_model_154456" name="KX" value="2" constant="true"/>
-      <parameter id="DummyVar_PositiveHillPropensity_n_0_bioscrape_generated_model_920755" name="DummyVar_PositiveHillPropensity_n_0" value="1" constant="true"/>
-      <parameter id="KR_bioscrape_generated_model_920755" name="KR" value="20" constant="true"/>
-      <parameter id="KTR_bioscrape_generated_model_920755" name="KTR" value="5" constant="true"/>
+      <parameter id="KI_bioscrape_generated_model_288980" name="KI" value="10" constant="true"/>
+      <parameter id="KX_bioscrape_generated_model_288980" name="KX" value="2" constant="true"/>
+      <parameter id="DummyVar_PositiveHillPropensity_n_0_bioscrape_generated_model_963930" name="DummyVar_PositiveHillPropensity_n_0" value="1" constant="true"/>
+      <parameter id="KR_bioscrape_generated_model_963930" name="KR" value="20" constant="true"/>
+      <parameter id="KTR_bioscrape_generated_model_963930" name="KTR" value="5" constant="true"/>
       <parameter id="delta_combined" name="delta" value="0.1" constant="true"/>
       <parameter id="n_combined" name="n" value="2" constant="true"/>
     </listOfParameters>
     <listOfReactions>
-      <reaction id="r0_bioscrape_generated_model_154456" name="r0" reversible="false">
+      <reaction id="r0_bioscrape_generated_model_288980" name="r0" reversible="false">
         <annotation>
-          <PropensityType> type=proportionalhillpositive k=KX_bioscrape_generated_model_154456 K=KI_bioscrape_generated_model_154456 n=n_combined s1=S_bioscrape_generated_model_154456 d=G_bioscrape_generated_model_154456  </PropensityType>
+          <PropensityType> type=proportionalhillpositive k=KX_bioscrape_generated_model_288980 K=KI_bioscrape_generated_model_288980 n=n_combined s1=S_bioscrape_generated_model_288980 d=G_bioscrape_generated_model_288980  </PropensityType>
         </annotation>
         <listOfReactants>
-          <speciesReference species="G_bioscrape_generated_model_154456" stoichiometry="1" constant="false"/>
+          <speciesReference species="G_bioscrape_generated_model_288980" stoichiometry="1" constant="false"/>
         </listOfReactants>
         <listOfProducts>
-          <speciesReference species="G_bioscrape_generated_model_154456" stoichiometry="1" constant="false"/>
-          <speciesReference species="mRNA_T_bioscrape_generated_model_154456_1_combined" stoichiometry="1" constant="false"/>
+          <speciesReference species="G_bioscrape_generated_model_288980" stoichiometry="1" constant="false"/>
+          <speciesReference species="mRNA_T_bioscrape_generated_model_288980_1_combined" stoichiometry="1" constant="false"/>
         </listOfProducts>
         <listOfModifiers>
-          <modifierSpeciesReference species="S_bioscrape_generated_model_154456"/>
+          <modifierSpeciesReference species="S_bioscrape_generated_model_288980"/>
         </listOfModifiers>
         <kineticLaw>
           <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -47,20 +47,20 @@
               <divide/>
               <apply>
                 <times/>
-                <ci> G_bioscrape_generated_model_154456 </ci>
-                <ci> KX_bioscrape_generated_model_154456 </ci>
+                <ci> G_bioscrape_generated_model_288980 </ci>
+                <ci> KX_bioscrape_generated_model_288980 </ci>
                 <apply>
                   <power/>
-                  <ci> S_bioscrape_generated_model_154456 </ci>
+                  <ci> S_bioscrape_generated_model_288980 </ci>
                   <ci> n_combined </ci>
                 </apply>
               </apply>
               <apply>
                 <plus/>
-                <ci> KI_bioscrape_generated_model_154456 </ci>
+                <ci> KI_bioscrape_generated_model_288980 </ci>
                 <apply>
                   <power/>
-                  <ci> S_bioscrape_generated_model_154456 </ci>
+                  <ci> S_bioscrape_generated_model_288980 </ci>
                   <ci> n_combined </ci>
                 </apply>
               </apply>
@@ -68,33 +68,33 @@
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="r1_bioscrape_generated_model_154456" name="r1" reversible="false">
+      <reaction id="r1_bioscrape_generated_model_288980" name="r1" reversible="false">
         <annotation>
           <PropensityType> type=massaction k=delta_combined  </PropensityType>
         </annotation>
         <listOfReactants>
-          <speciesReference species="mRNA_T_bioscrape_generated_model_154456_1_combined" stoichiometry="1" constant="false"/>
+          <speciesReference species="mRNA_T_bioscrape_generated_model_288980_1_combined" stoichiometry="1" constant="false"/>
         </listOfReactants>
         <kineticLaw>
           <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <times/>
               <ci> delta_combined </ci>
-              <ci> mRNA_T_bioscrape_generated_model_154456_1_combined </ci>
+              <ci> mRNA_T_bioscrape_generated_model_288980_1_combined </ci>
             </apply>
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="r0_bioscrape_generated_model_920755" name="r0" reversible="false">
+      <reaction id="r0_bioscrape_generated_model_963930" name="r0" reversible="false">
         <annotation>
-          <PropensityType> type=hillpositive k=KTR_bioscrape_generated_model_920755 K=KR_bioscrape_generated_model_920755 n=DummyVar_PositiveHillPropensity_n_0_bioscrape_generated_model_920755 s1=mRNA_T_bioscrape_generated_model_154456_1_combined  </PropensityType>
+          <PropensityType> type=hillpositive k=KTR_bioscrape_generated_model_963930 K=KR_bioscrape_generated_model_963930 n=DummyVar_PositiveHillPropensity_n_0_bioscrape_generated_model_963930 s1=mRNA_T_bioscrape_generated_model_288980_1_combined  </PropensityType>
         </annotation>
         <listOfReactants>
-          <speciesReference species="mRNA_T_bioscrape_generated_model_154456_1_combined" stoichiometry="1" constant="false"/>
+          <speciesReference species="mRNA_T_bioscrape_generated_model_288980_1_combined" stoichiometry="1" constant="false"/>
         </listOfReactants>
         <listOfProducts>
-          <speciesReference species="mRNA_T_bioscrape_generated_model_154456_1_combined" stoichiometry="1" constant="false"/>
-          <speciesReference species="X_bioscrape_generated_model_920755" stoichiometry="1" constant="false"/>
+          <speciesReference species="mRNA_T_bioscrape_generated_model_288980_1_combined" stoichiometry="1" constant="false"/>
+          <speciesReference species="X_bioscrape_generated_model_963930" stoichiometry="1" constant="false"/>
         </listOfProducts>
         <kineticLaw>
           <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -102,38 +102,38 @@
               <divide/>
               <apply>
                 <times/>
-                <ci> KTR_bioscrape_generated_model_920755 </ci>
+                <ci> KTR_bioscrape_generated_model_963930 </ci>
                 <apply>
                   <power/>
-                  <ci> mRNA_T_bioscrape_generated_model_154456_1_combined </ci>
+                  <ci> mRNA_T_bioscrape_generated_model_288980_1_combined </ci>
                   <ci> n_combined </ci>
                 </apply>
               </apply>
               <apply>
                 <plus/>
-                <ci> KR_bioscrape_generated_model_920755 </ci>
+                <ci> KR_bioscrape_generated_model_963930 </ci>
                 <apply>
                   <power/>
-                  <ci> mRNA_T_bioscrape_generated_model_154456_1_combined </ci>
-                  <ci> DummyVar_PositiveHillPropensity_n_0_bioscrape_generated_model_920755 </ci>
+                  <ci> mRNA_T_bioscrape_generated_model_288980_1_combined </ci>
+                  <ci> DummyVar_PositiveHillPropensity_n_0_bioscrape_generated_model_963930 </ci>
                 </apply>
               </apply>
             </apply>
           </math>
         </kineticLaw>
       </reaction>
-      <reaction id="r1_bioscrape_generated_model_920755" name="r1" reversible="false">
+      <reaction id="r1_bioscrape_generated_model_963930" name="r1" reversible="false">
         <annotation>
           <PropensityType> type=massaction k=delta_combined  </PropensityType>
         </annotation>
         <listOfReactants>
-          <speciesReference species="X_bioscrape_generated_model_920755" stoichiometry="1" constant="false"/>
+          <speciesReference species="X_bioscrape_generated_model_963930" stoichiometry="1" constant="false"/>
         </listOfReactants>
         <kineticLaw>
           <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
               <times/>
-              <ci> X_bioscrape_generated_model_920755 </ci>
+              <ci> X_bioscrape_generated_model_963930 </ci>
               <ci> delta_combined </ci>
             </apply>
           </math>
