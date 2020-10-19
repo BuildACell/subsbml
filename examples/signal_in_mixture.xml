@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version2/core" level="3" version="2">
+  <model id="bioscrape_generated_model_119886" substanceUnits="mole" timeUnits="second" volumeUnits="litre" areaUnits="square_metre" lengthUnits="metre" extentUnits="mole">
+    <listOfUnitDefinitions>
+      <unitDefinition id="square_metre" name="square_metre">
+        <listOfUnits>
+          <unit kind="metre" exponent="2" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment id="default" name="default" spatialDimensions="3" size="1e-06" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species id="I" name="I" compartment="default" initialConcentration="100" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="S" name="S" compartment="default" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter id="K0" name="K0" value="20" constant="true"/>
+      <parameter id="KI" name="KI" value="25" constant="true"/>
+      <parameter id="n" name="n" value="2" constant="true"/>
+    </listOfParameters>
+    <listOfReactions>
+      <reaction id="r0" name="r0" reversible="false">
+        <annotation>
+          <PropensityType> type=hillpositive k=K0 K=KI n=n s1=I</PropensityType>
+        </annotation>
+        <listOfProducts>
+          <speciesReference species="S" stoichiometry="1" constant="false"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="I"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <apply>
+                  <power/>
+                  <ci> I </ci>
+                  <ci> n </ci>
+                </apply>
+                <ci> K0 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <power/>
+                  <ci> I </ci>
+                  <ci> n </ci>
+                </apply>
+                <ci> KI </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

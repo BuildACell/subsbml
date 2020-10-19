@@ -1,0 +1,45 @@
+<model>
+<species name="IPTG_reservoir_model_1_combined" value="10000.0" />
+<species name="transport_protein" value="1.0" />
+<species name="IPTG_transport_protein" value="0.0" />
+<species name="G_bioscrape_generated_model_288980_combined_model_of__bioscrape_generated_model_288980_bioscrape_generated_model_963930" value="1.0" />
+<species name="IPTG_1_1_combined" value="0.0" />
+<species name="mRNA_T_bioscrape_generated_model_288980_1_combined_combined_model_of__bioscrape_generated_model_288980_bioscrape_generated_model_963930" value="0.0" />
+<species name="X_bioscrape_generated_model_963930_combined_model_of__bioscrape_generated_model_288980_bioscrape_generated_model_963930" value="0.0" />
+
+<parameter name="kb" value="0.01" />
+<parameter name="kd" value="0.2" />
+<parameter name="KI_bioscrape_generated_model_288980_combined_model_of__bioscrape_generated_model_288980_bioscrape_generated_model_963930" value="10.0" />
+<parameter name="KX_bioscrape_generated_model_288980_combined_model_of__bioscrape_generated_model_288980_bioscrape_generated_model_963930" value="2.0" />
+<parameter name="DummyVar_PositiveHillPropensity_n_0_bioscrape_generated_model_963930_combined_model_of__bioscrape_generated_model_288980_bioscrape_generated_model_963930" value="1.0" />
+<parameter name="KR_bioscrape_generated_model_963930_combined_model_of__bioscrape_generated_model_288980_bioscrape_generated_model_963930" value="20.0" />
+<parameter name="KTR_bioscrape_generated_model_963930_combined_model_of__bioscrape_generated_model_288980_bioscrape_generated_model_963930" value="5.0" />
+<parameter name="delta_combined_combined_model_of__bioscrape_generated_model_288980_bioscrape_generated_model_963930" value="0.1" />
+<parameter name="n_combined_combined_model_of__bioscrape_generated_model_288980_bioscrape_generated_model_963930" value="2.0" />
+
+<reaction text= "IPTG_reservoir_model_1_combined + transport_protein -- IPTG_transport_protein ">
+	<propensity type="general" rate="kb * IPTG_reservoir_model_1_combined * transport_protein - kd * IPTG_transport_protein" />
+	<delay type="none" />
+</reaction>
+<reaction text= "IPTG_transport_protein -- IPTG_1_1_combined + transport_protein ">
+	<propensity type="general" rate="kd * IPTG_transport_protein - kb * IPTG_1_1_combined * transport_protein" />
+	<delay type="none" />
+</reaction>
+<reaction text= "G_bioscrape_generated_model_288980_combined_model_of__bioscrape_generated_model_288980_bioscrape_generated_model_963930 -- G_bioscrape_generated_model_288980_combined_model_of__bioscrape_generated_model_288980_bioscrape_generated_model_963930 + mRNA_T_bioscrape_generated_model_288980_1_combined_combined_model_of__bioscrape_generated_model_288980_bioscrape_generated_model_963930 ">
+	<propensity type="proportionalhillpositive" k="KX_bioscrape_generated_model_288980_combined_model_of__bioscrape_generated_model_288980_bioscrape_generated_model_963930" K="KI_bioscrape_generated_model_288980_combined_model_of__bioscrape_generated_model_288980_bioscrape_generated_model_963930" n="n_combined_combined_model_of__bioscrape_generated_model_288980_bioscrape_generated_model_963930" s1="IPTG_1_1_combined" d="G_bioscrape_generated_model_288980_combined_model_of__bioscrape_generated_model_288980_bioscrape_generated_model_963930" />
+	<delay type="none" />
+</reaction>
+<reaction text= "mRNA_T_bioscrape_generated_model_288980_1_combined_combined_model_of__bioscrape_generated_model_288980_bioscrape_generated_model_963930 -- ">
+	<propensity type="massaction" k="delta_combined_combined_model_of__bioscrape_generated_model_288980_bioscrape_generated_model_963930" species="mRNA_T_bioscrape_generated_model_288980_1_combined_combined_model_of__bioscrape_generated_model_288980_bioscrape_generated_model_963930" />
+	<delay type="none" />
+</reaction>
+<reaction text= "mRNA_T_bioscrape_generated_model_288980_1_combined_combined_model_of__bioscrape_generated_model_288980_bioscrape_generated_model_963930 -- mRNA_T_bioscrape_generated_model_288980_1_combined_combined_model_of__bioscrape_generated_model_288980_bioscrape_generated_model_963930 + X_bioscrape_generated_model_963930_combined_model_of__bioscrape_generated_model_288980_bioscrape_generated_model_963930 ">
+	<propensity type="hillpositive" k="KTR_bioscrape_generated_model_963930_combined_model_of__bioscrape_generated_model_288980_bioscrape_generated_model_963930" K="KR_bioscrape_generated_model_963930_combined_model_of__bioscrape_generated_model_288980_bioscrape_generated_model_963930" n="DummyVar_PositiveHillPropensity_n_0_bioscrape_generated_model_963930_combined_model_of__bioscrape_generated_model_288980_bioscrape_generated_model_963930" s1="mRNA_T_bioscrape_generated_model_288980_1_combined_combined_model_of__bioscrape_generated_model_288980_bioscrape_generated_model_963930" />
+	<delay type="none" />
+</reaction>
+<reaction text= "X_bioscrape_generated_model_963930_combined_model_of__bioscrape_generated_model_288980_bioscrape_generated_model_963930 -- ">
+	<propensity type="massaction" k="delta_combined_combined_model_of__bioscrape_generated_model_288980_bioscrape_generated_model_963930" species="X_bioscrape_generated_model_963930_combined_model_of__bioscrape_generated_model_288980_bioscrape_generated_model_963930" />
+	<delay type="none" />
+</reaction>
+
+</model>

@@ -1,5 +1,6 @@
 include examples/*.py
 include tutorials/*.py
+include tests/*.py
 include models/*.xml
 include README.md
 include LICENSE

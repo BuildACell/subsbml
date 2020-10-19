@@ -816,23 +816,6 @@
           </listOfLocalParameters>
         </kineticLaw>
       </reaction>
-      <reaction id="mwdf2c0f1e_af7c_4b62_9d47_6cc4f9f42a01_mix_of_E30VNPRL_E30VNPRL_gene_expression_combined" reversible="false">
-        <listOfReactants>
-          <speciesReference species="mw34fb2519_79b1_4f10_8668_6410726988c5_mix_of_E30VNPRL_E30VNPRL_gene_expression_1_combined" stoichiometry="1" constant="true"/>
-        </listOfReactants>
-        <listOfProducts>
-          <speciesReference species="mwbbb6129b_1e4f_4f45_96c0_f3b1fbebdb22_mix_of_E30VNPRL_E30VNPRL_gene_expression_1_combined" stoichiometry="1" constant="true"/>
-        </listOfProducts>
-        <kineticLaw>
-          <math xmlns="http://www.w3.org/1998/Math/MathML">
-            <apply>
-              <times/>
-              <ci> AGTPdeg_F_combined </ci>
-              <ci> mw34fb2519_79b1_4f10_8668_6410726988c5_mix_of_E30VNPRL_E30VNPRL_gene_expression_1_combined </ci>
-            </apply>
-          </math>
-        </kineticLaw>
-      </reaction>
       <reaction id="mwff1cec63_4a3e_4cb5_8e16_57bef83e3ddf_mix_of_E30VNPRL_E30VNPRL_gene_expression" reversible="true">
         <listOfReactants>
           <speciesReference species="mwc00961a6_47d1_4f5a_9c49_00fb0d02cd8a_mix_of_E30VNPRL_E30VNPRL_gene_expression" stoichiometry="1" constant="true"/>
@@ -2255,6 +2238,23 @@
           <listOfLocalParameters>
             <localParameter id="mw47f65815_3810_49b1_98a8_e8576ae26c72" name="TXTL_RNAdeg_F" value="0.00277777777777778"/>
           </listOfLocalParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="_combined" reversible="false">
+        <listOfReactants>
+          <speciesReference species="mw34fb2519_79b1_4f10_8668_6410726988c5_mix_of_E30VNPRL_E30VNPRL_gene_expression_1_combined" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwbbb6129b_1e4f_4f45_96c0_f3b1fbebdb22_mix_of_E30VNPRL_E30VNPRL_gene_expression_1_combined" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> AGTPdeg_F_combined </ci>
+              <ci> mw34fb2519_79b1_4f10_8668_6410726988c5_mix_of_E30VNPRL_E30VNPRL_gene_expression_1_combined </ci>
+            </apply>
+          </math>
         </kineticLaw>
       </reaction>
     </listOfReactions>
